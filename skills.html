@@ -1,258 +1,776 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Skills | MD Abdul Al Mamun</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-font-family:Arial,Helvetica,sans-serif;
-background:#070707;
-color:#fff;
-line-height:1.6;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070707;
+    color:#fff;
+    line-height:1.6;
 }
 
-a{text-decoration:none;color:inherit}
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
 .container{
-width:90%;
-max-width:1100px;
-margin:auto;
+    width:90%;
+    max-width:1120px;
+    margin:auto;
 }
 
+/* ================= NAVBAR ================= */
+
 nav{
-height:72px;
-border-bottom:1px solid #222;
-background:#090909;
-display:flex;
-align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:72px;
+    background:rgba(8,8,8,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #222;
+    display:flex;
+    align-items:center;
 }
 
 .nav{
-width:90%;
-max-width:1100px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
+    width:90%;
+    max-width:1120px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-font-size:20px;
-font-weight:bold;
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:.5px;
 }
 
 .logo span{
-color:#d4af37;
+    color:#d4af37;
 }
 
 .links{
-display:flex;
-gap:22px;
-list-style:none;
+    display:flex;
+    gap:20px;
+    list-style:none;
 }
 
 .links a{
-font-size:14px;
-color:#aaa;
-transition:.3s;
+    color:#999;
+    font-size:13px;
+    transition:.3s;
 }
 
 .links a:hover,
 .links a.active{
-color:#d4af37;
+    color:#d4af37;
 }
-
-/* Mobile Menu Button */
 
 .menu-btn{
-display:none;
-font-size:27px;
-color:#d4af37;
-cursor:pointer;
-background:none;
-border:none;
+    display:none;
+    background:none;
+    border:none;
+    color:#d4af37;
+    font-size:27px;
+    cursor:pointer;
 }
 
-/* Mobile Menu */
+/* ================= MOBILE MENU ================= */
 
 .mobile-menu{
-display:none;
-position:absolute;
-top:72px;
-left:0;
-width:100%;
-background:#0b0b0b;
-border-bottom:1px solid #222;
-padding:20px;
-z-index:999;
+    display:none;
+    position:fixed;
+    top:72px;
+    left:0;
+    width:100%;
+    background:#0b0b0b;
+    border-bottom:1px solid #222;
+    padding:15px 5%;
+    z-index:999;
 }
 
 .mobile-menu a{
-display:block;
-padding:13px 5%;
-color:#aaa;
-border-bottom:1px solid #1c1c1c;
-font-size:15px;
+    display:block;
+    padding:13px 0;
+    color:#aaa;
+    border-bottom:1px solid #1d1d1d;
+    font-size:15px;
 }
 
 .mobile-menu a:hover,
 .mobile-menu a.active{
-color:#d4af37;
+    color:#d4af37;
 }
 
+/* ================= HERO ================= */
+
 .page{
-padding:110px 0 80px;
-min-height:calc(100vh - 72px);
+    padding:105px 0 100px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    background:#d4af37;
+    opacity:.035;
+    filter:blur(120px);
+    top:-250px;
+    right:-150px;
+    pointer-events:none;
 }
 
 .label{
-color:#d4af37;
-font-size:12px;
-letter-spacing:3px;
-margin-bottom:15px;
+    position:relative;
+    color:#d4af37;
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:18px;
 }
 
 h1{
-font-size:clamp(45px,7vw,75px);
-line-height:1;
-margin-bottom:20px;
+    position:relative;
+    font-size:clamp(48px,7vw,78px);
+    line-height:1;
+    letter-spacing:-2px;
+    margin-bottom:23px;
 }
 
 h1 span{
-color:#d4af37;
+    color:#d4af37;
 }
 
 .intro{
-max-width:650px;
-color:#888;
-font-size:17px;
-margin-bottom:55px;
+    position:relative;
+    max-width:730px;
+    color:#888;
+    font-size:16px;
+    margin-bottom:35px;
 }
 
-.skills{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:85px;
 }
 
-.skill{
-background:#0d0d0d;
-border:1px solid #252525;
-border-radius:18px;
-padding:35px;
-transition:.3s;
+.primary-btn,
+.secondary-btn{
+    display:inline-block;
+    padding:13px 21px;
+    border-radius:30px;
+    font-size:13px;
+    transition:.3s;
 }
 
-.skill:hover{
-transform:translateY(-7px);
-border-color:#d4af37;
+.primary-btn{
+    background:#d4af37;
+    color:#050505;
+    border:1px solid #d4af37;
+    font-weight:bold;
 }
 
-.number{
-font-size:13px;
-color:#d4af37;
-letter-spacing:2px;
-margin-bottom:25px;
+.primary-btn:hover{
+    background:transparent;
+    color:#d4af37;
 }
 
-.skill h2{
-font-size:24px;
-margin-bottom:15px;
+.secondary-btn{
+    border:1px solid #333;
+    color:#aaa;
 }
 
-.skill p{
-color:#777;
-font-size:15px;
+.secondary-btn:hover{
+    color:#d4af37;
+    border-color:#d4af37;
 }
 
-.bar{
-height:4px;
-background:#222;
-margin-top:25px;
-border-radius:10px;
-overflow:hidden;
+/* ================= SECTION ================= */
+
+.section-head{
+    margin-bottom:30px;
 }
 
-.fill{
-height:100%;
-background:#d4af37;
+.section-label{
+    color:#777;
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:7px;
 }
 
-.graphic{width:88%}
-.marketing{width:82%}
-.web{width:78%}
-
-.other{
-margin-top:55px;
+.section-head h2{
+    font-size:32px;
 }
 
-.other h2{
-font-size:30px;
-margin-bottom:25px;
+/* ================= CORE SKILLS ================= */
+
+.skill-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
 }
 
-.tags{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
+.skill-card{
+    position:relative;
+    padding:31px;
+    background:linear-gradient(145deg,#121212,#0b0b0b);
+    border:1px solid #292929;
+    border-radius:22px;
+    overflow:hidden;
+    transition:.4s;
 }
 
-.tag{
-border:1px solid #333;
-padding:10px 17px;
-border-radius:25px;
-font-size:13px;
-color:#aaa;
+.skill-card:before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#d4af37;
+    opacity:.035;
+    right:-75px;
+    top:-75px;
+    transition:.4s;
 }
+
+.skill-card:hover{
+    transform:translateY(-6px);
+    border-color:#d4af37;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.skill-card:hover:before{
+    opacity:.07;
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.skill-number{
+    color:#d4af37;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.skill-icon{
+    width:46px;
+    height:46px;
+    border:1px solid #333;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#d4af37;
+    font-size:19px;
+}
+
+.skill-card h3{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.skill-description{
+    color:#888;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.skill-title{
+    color:#d4af37;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.skill-list{
+    list-style:none;
+}
+
+.skill-list li{
+    color:#aaa;
+    font-size:13px;
+    padding:7px 0;
+    border-bottom:1px solid #1e1e1e;
+}
+
+.skill-list li:before{
+    content:"✓";
+    color:#d4af37;
+    margin-right:9px;
+}
+
+/* ================= SKILL KNOWLEDGE ================= */
+
+.knowledge{
+    margin-top:100px;
+}
+
+.knowledge-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.knowledge-card{
+    padding:25px;
+    background:#0d0d0d;
+    border:1px solid #292929;
+    border-radius:17px;
+    transition:.3s;
+}
+
+.knowledge-card:hover{
+    transform:translateY(-5px);
+    border-color:#555;
+}
+
+.knowledge-number{
+    color:#d4af37;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.knowledge-card h3{
+    font-size:18px;
+    margin:9px 0;
+}
+
+.knowledge-card p{
+    color:#777;
+    font-size:13px;
+    margin-bottom:17px;
+}
+
+.knowledge-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.knowledge-tags span{
+    color:#999;
+    border:1px solid #2d2d2d;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
+}
+
+/* ================= CREATIVE SKILLS ================= */
+
+.creative{
+    margin-top:100px;
+}
+
+.creative-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.creative-card{
+    padding:28px;
+    border:1px solid #292929;
+    background:linear-gradient(145deg,#101010,#0b0b0b);
+    border-radius:19px;
+}
+
+.creative-card span{
+    color:#d4af37;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.creative-card h3{
+    font-size:20px;
+    margin:9px 0;
+}
+
+.creative-card p{
+    color:#777;
+    font-size:13px;
+}
+
+/* ================= PROFESSIONAL SKILLS ================= */
+
+.professional{
+    margin-top:100px;
+}
+
+.professional-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.professional-card{
+    padding:25px;
+    border:1px solid #292929;
+    border-radius:17px;
+    background:#0d0d0d;
+}
+
+.professional-card span{
+    color:#d4af37;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.professional-card h3{
+    font-size:17px;
+    margin:8px 0;
+}
+
+.professional-card p{
+    color:#777;
+    font-size:13px;
+}
+
+/* ================= TOOLS ================= */
+
+.tools{
+    margin-top:100px;
+}
+
+.tools-box{
+    padding:32px;
+    background:
+        radial-gradient(circle at top right,rgba(212,175,55,.07),transparent 40%),
+        #0d0d0d;
+    border:1px solid #292929;
+    border-radius:22px;
+}
+
+.tool-group{
+    margin-bottom:25px;
+}
+
+.tool-group:last-child{
+    margin-bottom:0;
+}
+
+.tool-group h3{
+    font-size:15px;
+    margin-bottom:11px;
+}
+
+.tool-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tool-tags span{
+    border:1px solid #303030;
+    background:#101010;
+    color:#999;
+    padding:8px 13px;
+    border-radius:25px;
+    font-size:11px;
+}
+
+/* ================= LEARNING ================= */
+
+.learning{
+    margin-top:100px;
+}
+
+.learning-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.learning-card{
+    padding:30px;
+    border:1px solid #292929;
+    border-radius:20px;
+    background:#0d0d0d;
+}
+
+.learning-card h3{
+    font-size:20px;
+    margin-bottom:9px;
+}
+
+.learning-card p{
+    color:#777;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.learning-list{
+    list-style:none;
+}
+
+.learning-list li{
+    color:#aaa;
+    padding:7px 0;
+    border-bottom:1px solid #1e1e1e;
+    font-size:13px;
+}
+
+.learning-list li:before{
+    content:"→";
+    color:#d4af37;
+    margin-right:9px;
+}
+
+/* ================= APPROACH ================= */
+
+.approach{
+    margin-top:100px;
+}
+
+.approach-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid #292929;
+    border-bottom:1px solid #292929;
+}
+
+.approach-card{
+    padding:30px 22px;
+    border-right:1px solid #292929;
+}
+
+.approach-card:last-child{
+    border-right:none;
+}
+
+.approach-number{
+    color:#d4af37;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.approach-card h3{
+    margin:12px 0 7px;
+    font-size:17px;
+}
+
+.approach-card p{
+    color:#777;
+    font-size:12px;
+}
+
+/* ================= SUMMARY ================= */
+
+.summary{
+    margin-top:100px;
+}
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.summary-card{
+    padding:27px;
+    border:1px solid #292929;
+    border-radius:18px;
+    background:#0d0d0d;
+}
+
+.summary-card h3{
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.summary-card p{
+    color:#777;
+    font-size:13px;
+}
+
+/* ================= CTA ================= */
+
+.final-cta{
+    position:relative;
+    overflow:hidden;
+    margin-top:100px;
+    padding:60px 35px;
+    text-align:center;
+    border:1px solid #332d1b;
+    border-radius:23px;
+    background:
+        radial-gradient(circle at center,rgba(212,175,55,.09),transparent 58%),
+        #0c0c0c;
+}
+
+.final-cta h2{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.final-cta p{
+    max-width:620px;
+    margin:auto;
+    color:#888;
+    font-size:14px;
+    margin-bottom:27px;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+/* ================= FOOTER ================= */
 
 footer{
-border-top:1px solid #222;
-padding:25px;
-text-align:center;
-color:#666;
-font-size:13px;
+    border-top:1px solid #222;
+    padding:25px;
+    text-align:center;
+    color:#666;
+    font-size:13px;
 }
 
-@media(max-width:700px){
+/* ================= MOBILE ================= */
 
-.links{
-display:none;
+@media(max-width:900px){
+
+    .links{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .skill-grid{
+        grid-template-columns:1fr;
+    }
+
+    .knowledge-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .approach-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .approach-card:nth-child(2){
+        border-right:none;
+    }
+
+    .approach-card:nth-child(3),
+    .approach-card:nth-child(4){
+        border-top:1px solid #292929;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr;
+    }
+
 }
 
-.menu-btn{
-display:block;
+@media(max-width:600px){
+
+    .container{
+        width:92%;
+    }
+
+    .page{
+        padding:80px 0 70px;
+    }
+
+    h1{
+        font-size:50px;
+    }
+
+    .intro{
+        font-size:15px;
+    }
+
+    .hero-buttons{
+        margin-bottom:60px;
+    }
+
+    .knowledge-grid,
+    .creative-grid,
+    .professional-grid,
+    .learning-box{
+        grid-template-columns:1fr;
+    }
+
+    .approach-grid{
+        grid-template-columns:1fr;
+    }
+
+    .approach-card{
+        border-right:none;
+        border-bottom:1px solid #292929;
+    }
+
+    .approach-card:last-child{
+        border-bottom:none;
+    }
+
+    .approach-card:nth-child(3),
+    .approach-card:nth-child(4){
+        border-top:none;
+    }
+
+    .tools-box{
+        padding:25px;
+    }
+
+    .final-cta{
+        margin-top:75px;
+        padding:42px 22px;
+    }
+
+    .final-cta h2{
+        font-size:28px;
+    }
+
 }
 
-.skills{
-grid-template-columns:1fr;
-}
-
-h1{
-font-size:50px;
-}
-
-.intro{
-font-size:16px;
-}
-
-.page{
-padding:80px 0 60px;
-}
-
-.skill{
-padding:28px;
-}
-
-}
 </style>
+
 </head>
 
 <body>
+
+
+<!-- ================= NAVBAR ================= -->
 
 <nav>
 
@@ -282,6 +800,8 @@ MD <span>Abdul Al Mamun</span>
 </nav>
 
 
+<!-- ================= MOBILE MENU ================= -->
+
 <div class="mobile-menu" id="mobileMenu">
 
 <a href="index.html">Home</a>
@@ -300,91 +820,1007 @@ MD <span>Abdul Al Mamun</span>
 
 <div class="container">
 
-<div class="label">WHAT I DO</div>
 
-<h1>My <span>Skills.</span></h1>
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="label">
+SKILLS & CAPABILITIES
+</div>
+
+<h1>
+What I <span>Know.</span>
+</h1>
 
 <p class="intro">
-A combination of creative and digital skills that I use
-to build meaningful online experiences and help ideas
-grow digitally.
+A growing set of creative, digital and technical skills developed
+through practical projects, continuous learning and hands-on experience.
+My focus is on combining creativity, technology and digital thinking
+to build clear and professional outcomes.
 </p>
 
+<div class="hero-buttons">
 
-<div class="skills">
+<a href="#core-skills" class="primary-btn">
+Explore My Skills →
+</a>
+
+<a href="services.html" class="secondary-btn">
+View Services
+</a>
+
+</div>
+
+</section>
 
 
-<div class="skill">
+<!-- ================= CORE SKILLS ================= -->
 
-<div class="number">01 — CREATIVE</div>
+<section id="core-skills">
 
-<h2>Graphic Design</h2>
+<div class="section-head">
+
+<div class="section-label">
+CORE SKILLS
+</div>
+
+<h2>
+Creative & Digital Capabilities
+</h2>
+
+</div>
+
+
+<div class="skill-grid">
+
+
+<!-- DESIGN -->
+
+<div class="skill-card">
+
+<div class="skill-top">
+
+<div class="skill-number">
+01 / CREATIVE
+</div>
+
+<div class="skill-icon">
+✦
+</div>
+
+</div>
+
+<h3>
+Design & Visual Skills
+</h3>
+
+<p class="skill-description">
+A practical understanding of visual design principles used
+to create clean, balanced and professional digital visuals.
+</p>
+
+<div class="skill-title">
+Key Knowledge
+</div>
+
+<ul class="skill-list">
+
+<li>Visual Composition</li>
+<li>Typography & Font Selection</li>
+<li>Color Theory & Contrast</li>
+<li>Layout & Visual Hierarchy</li>
+<li>Brand Visual Consistency</li>
+<li>Creative Concept Development</li>
+<li>Photo Editing & Enhancement</li>
+<li>Promotional Visual Design</li>
+
+</ul>
+
+</div>
+
+
+<!-- MARKETING -->
+
+<div class="skill-card">
+
+<div class="skill-top">
+
+<div class="skill-number">
+02 / DIGITAL
+</div>
+
+<div class="skill-icon">
+↗
+</div>
+
+</div>
+
+<h3>
+Digital Marketing Skills
+</h3>
+
+<p class="skill-description">
+Understanding of digital marketing fundamentals and how
+content, audience and promotional campaigns work together.
+</p>
+
+<div class="skill-title">
+Key Knowledge
+</div>
+
+<ul class="skill-list">
+
+<li>Audience Research</li>
+<li>Content Strategy</li>
+<li>Campaign Planning</li>
+<li>Facebook & Instagram Marketing</li>
+<li>Meta Marketing Fundamentals</li>
+<li>Ad Creative Planning</li>
+<li>Basic Performance Analysis</li>
+<li>Promotional Strategy</li>
+
+</ul>
+
+</div>
+
+
+<!-- WEB -->
+
+<div class="skill-card">
+
+<div class="skill-top">
+
+<div class="skill-number">
+03 / TECHNICAL
+</div>
+
+<div class="skill-icon">
+&lt;/&gt;
+</div>
+
+</div>
+
+<h3>
+Web Design & Development
+</h3>
+
+<p class="skill-description">
+Practical web design knowledge focused on creating
+clean, responsive and structured websites.
+</p>
+
+<div class="skill-title">
+Key Knowledge
+</div>
+
+<ul class="skill-list">
+
+<li>HTML Structure</li>
+<li>CSS Styling</li>
+<li>Responsive Web Design</li>
+<li>Website UI Structure</li>
+<li>Landing Page Layout</li>
+<li>Basic SEO Structure</li>
+<li>Domain & DNS Basics</li>
+<li>Basic Website Deployment</li>
+
+</ul>
+
+</div>
+
+
+<!-- SOCIAL -->
+
+<div class="skill-card">
+
+<div class="skill-top">
+
+<div class="skill-number">
+04 / SOCIAL
+</div>
+
+<div class="skill-icon">
+◎
+</div>
+
+</div>
+
+<h3>
+Social Media Skills
+</h3>
+
+<p class="skill-description">
+Knowledge of organizing, presenting and maintaining
+content across social media platforms.
+</p>
+
+<div class="skill-title">
+Key Knowledge
+</div>
+
+<ul class="skill-list">
+
+<li>Content Planning</li>
+<li>Caption Writing</li>
+<li>Content Organization</li>
+<li>Post Scheduling</li>
+<li>Page Optimization</li>
+<li>Audience Engagement</li>
+<li>Social Media Branding</li>
+<li>Content Calendar Planning</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= KNOWLEDGE ================= -->
+
+<section class="knowledge">
+
+<div class="section-head">
+
+<div class="section-label">
+KNOWLEDGE AREAS
+</div>
+
+<h2>
+What I Understand
+</h2>
+
+</div>
+
+
+<div class="knowledge-grid">
+
+
+<div class="knowledge-card">
+
+<div class="knowledge-number">
+01 / DESIGN
+</div>
+
+<h3>
+Visual Design
+</h3>
 
 <p>
-Creating clean, attractive and professional visual
-content for brands, businesses and social media.
+Understanding how visual elements work together to create
+clarity, consistency and strong presentation.
 </p>
 
-<div class="bar">
-<div class="fill graphic"></div>
-</div>
+<div class="knowledge-tags">
+
+<span>Typography</span>
+<span>Color</span>
+<span>Layout</span>
+<span>Composition</span>
+<span>Branding</span>
 
 </div>
 
+</div>
 
-<div class="skill">
 
-<div class="number">02 — DIGITAL</div>
+<div class="knowledge-card">
 
-<h2>Digital Marketing</h2>
+<div class="knowledge-number">
+02 / CONTENT
+</div>
+
+<h3>
+Content Thinking
+</h3>
 
 <p>
-Digital promotion, social media marketing and
-audience-focused online strategies.
+Planning content around audience, purpose, message and
+the platform where it will be presented.
 </p>
 
-<div class="bar">
-<div class="fill marketing"></div>
-</div>
+<div class="knowledge-tags">
+
+<span>Content Ideas</span>
+<span>Captions</span>
+<span>Storytelling</span>
+<span>Planning</span>
 
 </div>
 
+</div>
 
-<div class="skill">
 
-<div class="number">03 — WEB</div>
+<div class="knowledge-card">
 
-<h2>Web Design</h2>
+<div class="knowledge-number">
+03 / DIGITAL
+</div>
+
+<h3>
+Digital Marketing
+</h3>
 
 <p>
-Creating modern, responsive and user-friendly
-web experiences for personal and business needs.
+Understanding the relationship between content,
+audience, promotion, engagement and digital visibility.
 </p>
 
-<div class="bar">
-<div class="fill web"></div>
-</div>
+<div class="knowledge-tags">
+
+<span>Audience</span>
+<span>Marketing</span>
+<span>Campaigns</span>
+<span>Analytics</span>
 
 </div>
 
 </div>
 
 
-<div class="other">
+<div class="knowledge-card">
 
-<h2>Other Interests</h2>
+<div class="knowledge-number">
+04 / WEB
+</div>
 
-<div class="tags">
+<h3>
+Web Structure
+</h3>
 
-<div class="tag">Social Media</div>
-<div class="tag">Creative Content</div>
-<div class="tag">Online Projects</div>
-<div class="tag">Brand Promotion</div>
-<div class="tag">Digital Solutions</div>
+<p>
+Understanding how a website is structured, styled,
+organized and presented across different devices.
+</p>
+
+<div class="knowledge-tags">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>Responsive</span>
+<span>UI</span>
 
 </div>
 
 </div>
+
+
+<div class="knowledge-card">
+
+<div class="knowledge-number">
+05 / SOCIAL
+</div>
+
+<h3>
+Social Platforms
+</h3>
+
+<p>
+Understanding content presentation, page structure and
+audience interaction across major social platforms.
+</p>
+
+<div class="knowledge-tags">
+
+<span>Facebook</span>
+<span>Instagram</span>
+<span>Content</span>
+<span>Engagement</span>
+
+</div>
+
+</div>
+
+
+<div class="knowledge-card">
+
+<div class="knowledge-number">
+06 / DIGITAL TOOLS
+</div>
+
+<h3>
+Online Workflow
+</h3>
+
+<p>
+Comfortable working with different online platforms,
+digital tools and modern creative workflows.
+</p>
+
+<div class="knowledge-tags">
+
+<span>GitHub</span>
+<span>Cloudflare</span>
+<span>AI Tools</span>
+<span>Workspace</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= CREATIVE ================= -->
+
+<section class="creative">
+
+<div class="section-head">
+
+<div class="section-label">
+CREATIVE THINKING
+</div>
+
+<h2>
+How I Think Creatively
+</h2>
+
+</div>
+
+
+<div class="creative-grid">
+
+
+<div class="creative-card">
+
+<span>01 / PROBLEM SOLVING</span>
+
+<h3>
+Turning Problems Into Ideas
+</h3>
+
+<p>
+I try to understand the actual problem first and then
+look for a practical and visually clear way to solve it.
+</p>
+
+</div>
+
+
+<div class="creative-card">
+
+<span>02 / VISUAL STORYTELLING</span>
+
+<h3>
+Making Information Clear
+</h3>
+
+<p>
+Good design is not only about appearance. I focus on
+organizing information so that people can understand it easily.
+</p>
+
+</div>
+
+
+<div class="creative-card">
+
+<span>03 / CREATIVE RESEARCH</span>
+
+<h3>
+Learning From Ideas
+</h3>
+
+<p>
+I explore different design styles, digital trends and
+creative references to improve the quality of my work.
+</p>
+
+</div>
+
+
+<div class="creative-card">
+
+<span>04 / ADAPTABILITY</span>
+
+<h3>
+Learning New Methods
+</h3>
+
+<p>
+Digital work changes quickly, so I continue learning
+new tools, techniques and workflows when needed.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= PROFESSIONAL ================= -->
+
+<section class="professional">
+
+<div class="section-head">
+
+<div class="section-label">
+PROFESSIONAL SKILLS
+</div>
+
+<h2>
+Beyond Technical Skills
+</h2>
+
+</div>
+
+
+<div class="professional-grid">
+
+
+<div class="professional-card">
+
+<span>01 / COMMUNICATION</span>
+
+<h3>
+Clear Communication
+</h3>
+
+<p>
+Understanding requirements, sharing ideas clearly and
+keeping project-related communication organized.
+</p>
+
+</div>
+
+
+<div class="professional-card">
+
+<span>02 / DETAIL</span>
+
+<h3>
+Attention to Detail
+</h3>
+
+<p>
+Careful attention to spacing, alignment, typography,
+content and overall presentation.
+</p>
+
+</div>
+
+
+<div class="professional-card">
+
+<span>03 / ORGANIZATION</span>
+
+<h3>
+Project Organization
+</h3>
+
+<p>
+Keeping tasks, content, files and project requirements
+structured and easy to manage.
+</p>
+
+</div>
+
+
+<div class="professional-card">
+
+<span>04 / TIME</span>
+
+<h3>
+Time Management
+</h3>
+
+<p>
+Organizing priorities and maintaining a structured
+workflow while working on multiple tasks.
+</p>
+
+</div>
+
+
+<div class="professional-card">
+
+<span>05 / ADAPTABILITY</span>
+
+<h3>
+Adaptability
+</h3>
+
+<p>
+Being open to new tools, different project requirements
+and changing digital workflows.
+</p>
+
+</div>
+
+
+<div class="professional-card">
+
+<span>06 / LEARNING</span>
+
+<h3>
+Continuous Learning
+</h3>
+
+<p>
+Continuously developing new skills through practice,
+research and hands-on digital projects.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= TOOLS ================= -->
+
+<section class="tools">
+
+<div class="section-head">
+
+<div class="section-label">
+TOOLS & PLATFORMS
+</div>
+
+<h2>
+My Digital Toolkit
+</h2>
+
+</div>
+
+
+<div class="tools-box">
+
+
+<div class="tool-group">
+
+<h3>
+Design & Creative
+</h3>
+
+<div class="tool-tags">
+
+<span>Canva</span>
+<span>Adobe Photoshop</span>
+<span>Image Editing Tools</span>
+<span>AI Creative Tools</span>
+
+</div>
+
+</div>
+
+
+<div class="tool-group">
+
+<h3>
+Marketing & Social
+</h3>
+
+<div class="tool-tags">
+
+<span>Facebook</span>
+<span>Instagram</span>
+<span>Meta Ecosystem</span>
+<span>Social Media Platforms</span>
+
+</div>
+
+</div>
+
+
+<div class="tool-group">
+
+<h3>
+Web & Technical
+</h3>
+
+<div class="tool-tags">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>GitHub</span>
+<span>Cloudflare</span>
+<span>DNS</span>
+
+</div>
+
+</div>
+
+
+<div class="tool-group">
+
+<h3>
+Productivity & Workflow
+</h3>
+
+<div class="tool-tags">
+
+<span>Google Workspace</span>
+<span>Online Collaboration</span>
+<span>AI-Assisted Workflow</span>
+<span>Digital Research</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= LEARNING ================= -->
+
+<section class="learning">
+
+<div class="section-head">
+
+<div class="section-label">
+CONTINUOUS DEVELOPMENT
+</div>
+
+<h2>
+Currently Learning
+</h2>
+
+</div>
+
+
+<div class="learning-box">
+
+
+<div class="learning-card">
+
+<h3>
+Building My Technical Skills
+</h3>
+
+<p>
+I am continuously improving my understanding of web
+technologies and modern digital workflows.
+</p>
+
+<ul class="learning-list">
+
+<li>Advanced HTML & CSS</li>
+<li>Modern Web Design</li>
+<li>JavaScript Fundamentals</li>
+<li>UI/UX Principles</li>
+<li>Website Optimization</li>
+
+</ul>
+
+</div>
+
+
+<div class="learning-card">
+
+<h3>
+Developing My Digital Knowledge
+</h3>
+
+<p>
+My learning also focuses on improving my understanding
+of marketing, content and digital growth concepts.
+</p>
+
+<ul class="learning-list">
+
+<li>Advanced Digital Marketing</li>
+<li>Meta Ads</li>
+<li>SEO Fundamentals</li>
+<li>Digital Analytics</li>
+<li>Content Strategy</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= APPROACH ================= -->
+
+<section class="approach">
+
+<div class="section-head">
+
+<div class="section-label">
+SKILL APPROACH
+</div>
+
+<h2>
+How I Develop My Skills
+</h2>
+
+</div>
+
+
+<div class="approach-grid">
+
+
+<div class="approach-card">
+
+<div class="approach-number">
+01
+</div>
+
+<h3>
+Understand
+</h3>
+
+<p>
+Learn the fundamentals and understand why
+a particular method or tool is used.
+</p>
+
+</div>
+
+
+<div class="approach-card">
+
+<div class="approach-number">
+02
+</div>
+
+<h3>
+Practice
+</h3>
+
+<p>
+Apply knowledge through personal work,
+experiments and real-world projects.
+</p>
+
+</div>
+
+
+<div class="approach-card">
+
+<div class="approach-number">
+03
+</div>
+
+<h3>
+Improve
+</h3>
+
+<p>
+Review results, identify weaknesses and
+continuously improve the quality of work.
+</p>
+
+</div>
+
+
+<div class="approach-card">
+
+<div class="approach-number">
+04
+</div>
+
+<h3>
+Adapt
+</h3>
+
+<p>
+Keep learning new tools, techniques and
+workflows as digital technology evolves.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= SUMMARY ================= -->
+
+<section class="summary">
+
+<div class="section-head">
+
+<div class="section-label">
+SKILL OVERVIEW
+</div>
+
+<h2>
+My Core Areas
+</h2>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="summary-card">
+
+<h3>
+🎨 Creative
+</h3>
+
+<p>
+Graphic Design · Visual Content · Typography ·
+Branding · Creative Thinking
+</p>
+
+</div>
+
+
+<div class="summary-card">
+
+<h3>
+📈 Digital
+</h3>
+
+<p>
+Digital Marketing · Social Media · Content Strategy ·
+Campaign Planning · Audience Research
+</p>
+
+</div>
+
+
+<div class="summary-card">
+
+<h3>
+🌐 Technical
+</h3>
+
+<p>
+HTML · CSS · Responsive Design · GitHub ·
+Cloudflare · Domain & DNS Basics
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="final-cta">
+
+<h2>
+Let's Build Something
+</h2>
+
+<p>
+Have a project, idea or digital challenge?
+Explore my services or get in touch to discuss your requirements.
+</p>
+
+<div class="cta-buttons">
+
+<a href="services.html" class="primary-btn">
+Explore Services →
+</a>
+
+<a href="contact.html" class="secondary-btn">
+Contact Me
+
+</a>
+
+</div>
+
+</section>
+
 
 </div>
 
@@ -392,7 +1828,9 @@ web experiences for personal and business needs.
 
 
 <footer>
+
 © 2026 MD Abdul Al Mamun — Digital Service
+
 </footer>
 
 
@@ -400,12 +1838,17 @@ web experiences for personal and business needs.
 
 function toggleMenu(){
 
-const menu = document.getElementById("mobileMenu");
+const menu =
+document.getElementById("mobileMenu");
 
 if(menu.style.display === "block"){
+
 menu.style.display = "none";
+
 }else{
+
 menu.style.display = "block";
+
 }
 
 }
