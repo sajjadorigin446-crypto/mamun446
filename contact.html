@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Contact | MD Abdul Al Mamun</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact | MD Abdul Al Mamun</title><style>
 
 *{
     margin:0;
@@ -25,6 +20,8 @@ body{
     line-height:1.6;
 }
 
+/* HEADER */
+
 header{
     position:sticky;
     top:0;
@@ -32,7 +29,7 @@ header{
     height:72px;
     padding:0 5%;
     background:rgba(7,7,7,.94);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(14px);
     border-bottom:1px solid #222;
 
     display:flex;
@@ -112,11 +109,28 @@ nav a.active{
 /* HERO */
 
 .hero{
+    position:relative;
     text-align:center;
-    padding:90px 20px 55px;
+    padding:95px 20px 60px;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    background:#d4af37;
+    opacity:.035;
+    filter:blur(100px);
+    border-radius:50%;
+    top:-180px;
+    left:50%;
+    transform:translateX(-50%);
 }
 
 .hero span{
+    position:relative;
     color:#d4af37;
     font-size:12px;
     letter-spacing:4px;
@@ -124,12 +138,14 @@ nav a.active{
 }
 
 .hero h1{
+    position:relative;
     font-size:52px;
     margin:12px 0;
     letter-spacing:-1px;
 }
 
 .hero p{
+    position:relative;
     max-width:650px;
     margin:auto;
     color:#999;
@@ -144,7 +160,27 @@ nav a.active{
     padding:20px 20px 90px;
 }
 
-/* CONTACT CARDS */
+/* AVAILABILITY */
+
+.availability{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin:0 auto 35px;
+    color:#aaa;
+    font-size:13px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+    background:#35d07f;
+    border-radius:50%;
+    box-shadow:0 0 12px rgba(53,208,127,.7);
+}
+
+/* CONTACT GRID */
 
 .contact-grid{
     display:grid;
@@ -157,7 +193,7 @@ nav a.active{
     background:linear-gradient(145deg,#121212,#0c0c0c);
     border:1px solid #292929;
     border-radius:18px;
-    padding:32px;
+    padding:30px;
     transition:.35s;
     overflow:hidden;
 }
@@ -165,19 +201,19 @@ nav a.active{
 .card::before{
     content:"";
     position:absolute;
-    width:100px;
-    height:100px;
+    width:120px;
+    height:120px;
     background:#d4af37;
-    opacity:.04;
+    opacity:.035;
     border-radius:50%;
-    right:-30px;
-    top:-30px;
+    right:-35px;
+    top:-35px;
 }
 
 .card:hover{
     transform:translateY(-6px);
     border-color:#d4af37;
-    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    box-shadow:0 18px 45px rgba(0,0,0,.45);
 }
 
 .icon{
@@ -187,15 +223,19 @@ nav a.active{
     align-items:center;
     justify-content:center;
     border:1px solid #333;
-    border-radius:12px;
+    border-radius:13px;
     color:#d4af37;
-    font-size:23px;
-    margin-bottom:20px;
+    margin-bottom:19px;
+}
+
+.icon svg{
+    width:23px;
+    height:23px;
 }
 
 .card h2{
-    font-size:21px;
-    margin-bottom:8px;
+    font-size:20px;
+    margin-bottom:7px;
 }
 
 .card p{
@@ -214,6 +254,105 @@ nav a.active{
 
 .card a:hover{
     letter-spacing:.5px;
+}
+
+/* COPY ROW */
+
+.copy-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:15px;
+}
+
+.copy-text{
+    color:#ddd;
+    font-size:14px;
+    word-break:break-word;
+}
+
+.copy-btn{
+    background:#181818;
+    color:#aaa;
+    border:1px solid #333;
+    padding:6px 10px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:11px;
+    transition:.3s;
+}
+
+.copy-btn:hover{
+    color:#d4af37;
+    border-color:#d4af37;
+}
+
+/* LOCATION + AVAILABILITY */
+
+.info-strip{
+    margin-top:22px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.info-box{
+    background:#0d0d0d;
+    border:1px solid #252525;
+    border-radius:14px;
+    padding:18px 20px;
+}
+
+.info-box small{
+    display:block;
+    color:#777;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:5px;
+}
+
+.info-box strong{
+    color:#ddd;
+    font-size:14px;
+}
+
+/* WORK TOGETHER */
+
+.work-box{
+    margin-top:25px;
+    padding:35px;
+    border-radius:18px;
+    border:1px solid #292929;
+    background:
+        radial-gradient(circle at top right,rgba(212,175,55,.08),transparent 35%),
+        linear-gradient(145deg,#121212,#0b0b0b);
+}
+
+.work-box h2{
+    font-size:27px;
+    margin-bottom:7px;
+}
+
+.work-box p{
+    color:#888;
+    font-size:14px;
+    max-width:650px;
+}
+
+.service-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:20px;
+}
+
+.service-tags span{
+    border:1px solid #333;
+    color:#aaa;
+    padding:7px 12px;
+    border-radius:30px;
+    font-size:12px;
 }
 
 /* MESSAGE */
@@ -238,6 +377,7 @@ nav a.active{
 }
 
 input,
+select,
 textarea{
     width:100%;
     background:#080808;
@@ -251,7 +391,12 @@ textarea{
     transition:.3s;
 }
 
+select{
+    appearance:auto;
+}
+
 input:focus,
+select:focus,
 textarea:focus{
     border-color:#d4af37;
     box-shadow:0 0 0 2px rgba(212,175,55,.05);
@@ -300,6 +445,9 @@ textarea{
 }
 
 .social-links a{
+    display:flex;
+    align-items:center;
+    gap:8px;
     color:#aaa;
     border:1px solid #333;
     padding:9px 18px;
@@ -312,6 +460,12 @@ textarea{
 .social-links a:hover{
     color:#d4af37;
     border-color:#d4af37;
+    transform:translateY(-2px);
+}
+
+.social-links svg{
+    width:16px;
+    height:16px;
 }
 
 /* FOOTER */
@@ -339,10 +493,14 @@ footer{
     align-items:center;
     justify-content:center;
     text-decoration:none;
-    font-size:25px;
     z-index:999;
     box-shadow:0 8px 25px rgba(0,0,0,.5);
     transition:.3s;
+}
+
+.whatsapp svg{
+    width:25px;
+    height:25px;
 }
 
 .whatsapp:hover{
@@ -381,24 +539,24 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .message-box{
+    .info-strip{
+        grid-template-columns:1fr;
+    }
+
+    .message-box,
+    .work-box{
         padding:25px;
+    }
+
+    .copy-row{
+        flex-wrap:wrap;
     }
 
 }
 
-</style>
-
-</head>
-
-<body>
-
-<header>
-
-<a href="index.html" class="logo">MAMUN.</a>
+</style></head><body><header><a href="index.html" class="logo">MAMUN.</a>
 
 <nav>
-
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="skills.html">Skills</a>
@@ -407,17 +565,9 @@ footer{
 <a href="experience.html">Experience</a>
 <a href="resume.html">Resume</a>
 <a href="contact.html" class="active">Contact</a>
+</nav><button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-</nav>
-
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-</header>
-
-
-<div class="mobile-menu" id="mobileMenu">
-
-<a href="index.html">Home</a>
+</header><div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="skills.html">Skills</a>
 <a href="services.html">Services</a>
@@ -426,172 +576,125 @@ footer{
 <a href="resume.html">Resume</a>
 <a href="contact.html" class="active">Contact</a>
 
-</div>
+</div><section class="hero"><span>LET'S CONNECT</span>
 
-
-<section class="hero">
-
-<span>LET'S CONNECT</span>
-
-<h1>Contact Me</h1>
-
-<p>
+<h1>Contact Me</h1><p>
 Have a project, opportunity or idea?
 Let's connect and create something meaningful together.
-</p>
-
-</section>
-
-
-<div class="container">
-
-<div class="contact-grid">
-
-<div class="card">
-
-<div class="icon">✆</div>
-
-<h2>WhatsApp</h2>
-
-<p>
+</p></section><div class="container"><div class="availability">
+<span class="status-dot"></span>
+Available for freelance projects & collaborations
+</div><div class="contact-grid"><!-- WHATSAPP --><div class="card"><div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+<path d="M20 11.5a8.4 8.4 0 0 1-8.5 8.5 8.3 8.3 0 0 1-4-.98L4 20l.98-3.4A8.3 8.3 0 0 1 4 12a8.5 8.5 0 1 1 16 0"/>
+<path d="M8.7 8.3c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c.7 1.2 1.6 2 2.8 2.7l.6-.5c.2-.2.4-.2.6-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1.1.4-1.5.3-1-.2-2.1-.7-3.1-1.5-1.4-1.1-2.5-2.5-3.1-3.7-.5-1-.6-1.8-.4-2.1z"/>
+</svg>
+</div><h2>WhatsApp</h2><p>
 For quick communication, project discussions
 and professional inquiries.
-</p>
-
-<a href="https://wa.me/8801679606860" target="_blank">
+</p><div class="copy-row">
+<span class="copy-text">01679606860</span>
+<button class="copy-btn" onclick="copyText('01679606860',this)">Copy</button>
+</div><a href="https://wa.me/8801679606860" target="_blank">
 Chat on WhatsApp →
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">✉</div>
-
-<h2>Email</h2>
-
-<p>
+</a></div><!-- EMAIL --><div class="card"><div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+<rect x="3" y="5" width="18" height="14" rx="2"/>
+<path d="m4 7 8 6 8-6"/>
+</svg>
+</div><h2>Email</h2><p>
 For professional inquiries, opportunities
 and detailed project discussions.
-</p>
-
-<a href="mailto:sajjadorigin446@gmail.com">
-sajjadorigin446@gmail.com →
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">⌖</div>
-
-<h2>Location</h2>
-
-<p>
-Chattogram, Bangladesh
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">✦</div>
-
-<h2>My Services</h2>
-
-<p>
-Graphic Design · Digital Marketing · Web Design
-</p>
-
-<a href="services.html">
-Explore Services →
-</a>
-
-</div>
-
-</div>
-
-
-<div class="message-box">
-
-<h2>Send Me a Message</h2>
-
-<p class="subtitle">
-Fill in the form below. Your email app will open with the message ready to send.
-</p>
-
-<form onsubmit="sendMessage(); return false;">
-
-<input
+</p><div class="copy-row">
+<span class="copy-text">sajjadorigin446@gmail.com</span>
+<button class="copy-btn" onclick="copyText('sajjadorigin446@gmail.com',this)">Copy</button>
+</div><a href="mailto:sajjadorigin446@gmail.com">
+Send an Email →
+</a></div><!-- FACEBOOK --><div class="card"><div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+<path d="M14 8h2V4h-2c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/>
+</svg>
+</div><h2>Facebook</h2><p>
+Connect with me on Facebook for updates,
+social networking and communication.
+</p><a href="https://www.facebook.com/sajjadhossain9865" target="_blank">
+Visit Facebook Profile →
+</a></div><!-- LINKEDIN --><div class="card"><div class="icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+<rect x="4" y="4" width="16" height="16" rx="2"/>
+<path d="M8 10v6"/>
+<path d="M8 7.5v.01"/>
+<path d="M12 16v-3.2a2.8 2.8 0 0 1 5.6 0V16"/>
+<path d="M12 10v6"/>
+</svg>
+</div><h2>LinkedIn</h2><p>
+For professional networking, career opportunities
+and collaborations.
+</p><a href="https://www.linkedin.com/in/md-abdullah-al-mamun-453a39363/" target="_blank">
+View LinkedIn Profile →
+</a></div></div><!-- INFO --><div class="info-strip"><div class="info-box">
+<small>Location</small>
+<strong>Chattogram, Bangladesh</strong>
+</div><div class="info-box">
+<small>Availability</small>
+<strong>Open for Freelance & Professional Projects</strong>
+</div></div><!-- WORK TOGETHER --><div class="work-box"><h2>Let's Work Together</h2><p>
+Have a project, business idea or creative opportunity?
+I'm open to professional collaborations and selected freelance projects.
+</p><div class="service-tags">
+<span>Graphic Design</span>
+<span>Digital Marketing</span>
+<span>Web Design</span>
+</div></div><!-- MESSAGE --><div class="message-box"><h2>Send Me a Message</h2><p class="subtitle">
+Tell me a little about your project. Your email app will open with the message ready to send.
+</p><form onsubmit="sendMessage(); return false;"><input
 type="text"
 id="name"
 placeholder="Your Name"
 required
->
+
+«»
 
 <input
 type="email"
 id="email"
 placeholder="Your Email"
 required
->
 
-<textarea
+«»
+
+<select id="service" required>
+<option value="" disabled selected>Select a Service</option>
+<option>Graphic Design</option>
+<option>Digital Marketing</option>
+<option>Web Design</option>
+<option>Other</option>
+</select><textarea
 id="message"
-placeholder="Write your message..."
+placeholder="Tell me about your project..."
 required
-></textarea>
-
-<button type="submit" class="send-btn">
+></textarea><button type="submit" class="send-btn">
 Send Message →
-</button>
-
-</form>
-
-</div>
-
-
-<div class="social">
-
-<h2>Let's Connect</h2>
-
-<div class="social-links">
-
-<a href="mailto:sajjadorigin446@gmail.com">
-Email
-</a>
-
-<a href="https://wa.me/8801679606860" target="_blank">
+</button></form></div><!-- SOCIAL --><div class="social"><h2>Let's Connect</h2><div class="social-links"><a href="https://www.facebook.com/sajjadhossain9865" target="_blank">
+Facebook
+</a><a href="https://www.linkedin.com/in/md-abdullah-al-mamun-453a39363/" target="_blank">
+LinkedIn
+</a><a href="https://wa.me/8801679606860" target="_blank">
 WhatsApp
-</a>
+</a><a href="mailto:sajjadorigin446@gmail.com">
+Email
+</a></div></div></div><footer>© 2026 MD Abdul Al Mamun. All Rights Reserved.
 
-</div>
-
-</div>
-
-</div>
-
-
-<footer>
-
-© 2026 MD Abdul Al Mamun. All Rights Reserved.
-
-</footer>
-
-
-<a
+</footer><!-- FLOATING WHATSAPP --><a
 href="https://wa.me/8801679606860"
 target="_blank"
 class="whatsapp"
 aria-label="Chat on WhatsApp">
-✆
-</a>
 
-
-<script>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+<path d="M20 11.5a8.4 8.4 0 0 1-8.5 8.5 8.3 8.3 0 0 1-4-.98L4 20l.98-3.4A8.3 8.3 0 0 1 4 12a8.5 8.5 0 1 1 16 0"/>
+<path d="M8.7 8.3c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c.7 1.2 1.6 2 2.8 2.7l.6-.5c.2-.2.4-.2.6-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1.1.4-1.5.3-1-.2-2.1-.7-3.1-1.5-1.4-1.1-2.5-2.5-3.1-3.7-.5-1-.6-1.8-.4-2.1z"/>
+</svg></a><script>
 
 function toggleMenu(){
 
@@ -606,6 +709,23 @@ function toggleMenu(){
 }
 
 
+function copyText(text,button){
+
+    navigator.clipboard.writeText(text).then(function(){
+
+        const oldText = button.innerText;
+
+        button.innerText = "Copied!";
+
+        setTimeout(function(){
+            button.innerText = oldText;
+        },1500);
+
+    });
+
+}
+
+
 function sendMessage(){
 
     let name =
@@ -614,18 +734,22 @@ function sendMessage(){
     let email =
     document.getElementById("email").value;
 
+    let service =
+    document.getElementById("service").value;
+
     let message =
     document.getElementById("message").value;
 
     let subject =
     encodeURIComponent(
-        "Website Contact from " + name
+        "Website Inquiry - " + service
     );
 
     let body =
     encodeURIComponent(
         "Name: " + name +
         "\nEmail: " + email +
+        "\nService: " + service +
         "\n\nMessage:\n" + message
     );
 
@@ -636,7 +760,5 @@ function sendMessage(){
 
 }
 
-</script>
-
-</body>
+</script></body>
 </html>
