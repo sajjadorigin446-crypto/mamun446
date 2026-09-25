@@ -1,587 +1,616 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>About | MD Abdul Al Mamun</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#070707;
-    color:#fff;
-    line-height:1.7;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-
-/* ================= NAVBAR ================= */
-
-nav{
-    height:72px;
-    border-bottom:1px solid #222;
-    background:rgba(9,9,9,.95);
-    backdrop-filter:blur(15px);
-
-    display:flex;
-    align-items:center;
-
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-}
-
-.logo{
-    font-size:20px;
-    font-weight:bold;
-}
-
-.logo span{
-    color:#d4af37;
-}
-
-.links{
-    display:flex;
-    gap:22px;
-    list-style:none;
-}
-
-.links a{
-    font-size:13px;
-    color:#999;
-    transition:.3s;
-}
-
-.links a:hover,
-.links a.active{
-    color:#d4af37;
-}
-
-
-/* MOBILE MENU BUTTON */
-
-.menu-btn{
-    display:none;
-
-    background:none;
-    border:0;
-
-    color:#d4af37;
-    font-size:28px;
-
-    cursor:pointer;
-}
-
-
-/* ================= PAGE ================= */
-
-.container{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-}
-
-.page{
-    padding:110px 0 80px;
-    min-height:calc(100vh - 72px);
-}
-
-.label{
-    color:#d4af37;
-    font-size:12px;
-    letter-spacing:3px;
-    margin-bottom:15px;
-}
-
-h1{
-    font-size:clamp(45px,7vw,75px);
-    line-height:1;
-    margin-bottom:45px;
-}
-
-h1 span{
-    color:#d4af37;
-}
-
-
-/* ================= MAIN GRID ================= */
-
-.grid{
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:50px;
-}
-
-.text{
-    color:#999;
-    font-size:17px;
-}
-
-.text p{
-    margin-bottom:20px;
-}
-
-.text strong{
-    color:#fff;
-}
-
-
-/* ================= INFO CARD ================= */
-
-.card{
-    background:linear-gradient(145deg,#101010,#0b0b0b);
-
-    border:1px solid #242424;
-
-    border-radius:18px;
-
-    padding:30px;
-
-    transition:.35s;
-}
-
-.card:hover{
-    border-color:#d4af37;
-    transform:translateY(-5px);
-}
-
-.info{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-
-    padding:15px 0;
-
-    border-bottom:1px solid #222;
-
-    font-size:14px;
-}
-
-.info:last-child{
-    border:0;
-}
-
-.info span:first-child{
-    color:#777;
-}
-
-.info span:last-child{
-    text-align:right;
-    color:#ddd;
-}
-
-
-/* ================= EDUCATION ================= */
-
-.education{
-    margin-top:65px;
-}
-
-.education h2{
-    font-size:30px;
-    margin-bottom:25px;
-}
-
-.edu{
-    padding:22px 0;
-    border-bottom:1px solid #222;
-}
-
-.edu:last-child{
-    border:0;
-}
-
-.edu .year{
-    color:#d4af37;
-    font-size:13px;
-    letter-spacing:1px;
-}
-
-.edu h3{
-    margin:5px 0;
-    font-size:18px;
-}
-
-.edu p{
-    color:#777;
-    font-size:14px;
-}
-
-
-/* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid #222;
-    padding:25px;
-
-    text-align:center;
-
-    color:#666;
-    font-size:13px;
-}
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:850px){
-
-    nav{
-        height:68px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About | MD Abdul Al Mamun</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .nav{
-        width:90%;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .menu-btn{
-        display:block;
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: #f5f5f5;
+      line-height: 1.7;
     }
 
-    .links{
-        display:none;
-
-        position:absolute;
-
-        top:68px;
-        left:0;
-
-        width:100%;
-
-        background:#0a0a0a;
-
-        border-bottom:1px solid #292929;
-
-        padding:10px 5%;
-
-        flex-direction:column;
-
-        gap:0;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .links.show{
-        display:flex;
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.18);
     }
 
-    .links li{
-        width:100%;
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .links a{
-        display:block;
-
-        width:100%;
-
-        padding:13px 5px;
-
-        border-bottom:1px solid #1d1d1d;
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #d4af37;
     }
 
-    .links li:last-child a{
-        border-bottom:none;
+    .menu {
+      display: flex;
+      gap: 25px;
     }
 
-    .page{
-        padding:75px 0 65px;
+    .menu a {
+      color: #ddd;
+      font-size: 14px;
+      transition: 0.3s;
     }
 
-    .grid{
-        grid-template-columns:1fr;
-        gap:30px;
+    .menu a:hover,
+    .menu a.active {
+      color: #d4af37;
     }
 
-    h1{
-        font-size:50px;
-        margin-bottom:35px;
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: #d4af37;
+      cursor: pointer;
     }
 
-    .text{
-        font-size:15px;
+    /* HERO */
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 25px 55px;
     }
 
-    .card{
-        padding:25px;
+    .small-title {
+      color: #d4af37;
+      font-size: 13px;
+      letter-spacing: 4px;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
-}
-
-
-/* ================= SMALL MOBILE ================= */
-
-@media(max-width:420px){
-
-    h1{
-        font-size:45px;
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 1;
+      margin-bottom: 25px;
     }
 
-    .info{
-        font-size:13px;
+    .hero h1 span {
+      color: #d4af37;
     }
 
-}
+    .hero-text {
+      max-width: 700px;
+      color: #aaa;
+      font-size: 17px;
+    }
 
-</style>
+    /* MAIN */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 25px 90px;
+    }
 
+    .profile-section {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 70px;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+
+    /* PHOTO */
+    .photo-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-frame {
+      width: 290px;
+      height: 290px;
+      padding: 6px;
+      border: 1px solid #d4af37;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #d4af37, #6d5715);
+      box-shadow: 0 0 45px rgba(212, 175, 55, 0.13);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #111;
+    }
+
+    /* ABOUT TEXT */
+    .profile-info .tag {
+      display: inline-block;
+      color: #d4af37;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      padding: 7px 14px;
+      border-radius: 30px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .profile-info h2 {
+      font-size: 38px;
+      margin-bottom: 5px;
+    }
+
+    .profile-info h3 {
+      color: #d4af37;
+      font-size: 14px;
+      letter-spacing: 3px;
+      margin-bottom: 22px;
+    }
+
+    .profile-info p {
+      color: #aaa;
+      max-width: 700px;
+      margin-bottom: 25px;
+    }
+
+    /* INFO */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .info-box {
+      padding: 18px;
+      background: #101010;
+      border: 1px solid #202020;
+      border-radius: 12px;
+    }
+
+    .info-box small {
+      display: block;
+      color: #777;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 5px;
+    }
+
+    .info-box strong {
+      color: #eee;
+      font-size: 14px;
+    }
+
+    /* EDUCATION */
+    .section-title {
+      margin-bottom: 35px;
+    }
+
+    .section-title span {
+      color: #d4af37;
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-top: 8px;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 90px;
+    }
+
+    .edu-card {
+      background: #101010;
+      border: 1px solid #202020;
+      border-radius: 16px;
+      padding: 28px;
+      transition: 0.3s;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .edu-year {
+      color: #d4af37;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .edu-card h3 {
+      font-size: 20px;
+      margin: 10px 0 5px;
+    }
+
+    .edu-card p {
+      color: #888;
+      font-size: 14px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 65px 25px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 20px;
+      background: linear-gradient(
+        145deg,
+        rgba(212, 175, 55, 0.08),
+        rgba(255, 255, 255, 0.015)
+      );
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #999;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #080808;
+      padding: 13px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      z-index: 999;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #666;
+      font-size: 13px;
+      border-top: 1px solid #181818;
+    }
+
+    footer span {
+      color: #d4af37;
+    }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+
+      .menu {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: #0b0b0b;
+        flex-direction: column;
+        padding: 20px 25px;
+        border-bottom: 1px solid #222;
+      }
+
+      .menu.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .profile-section {
+        grid-template-columns: 1fr;
+        gap: 45px;
+        text-align: center;
+      }
+
+      .photo-wrapper {
+        order: -1;
+      }
+
+      .profile-info p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .info-grid {
+        text-align: left;
+      }
+
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .nav {
+        padding: 16px 18px;
+      }
+
+      .hero {
+        padding: 65px 20px 40px;
+      }
+
+      .container {
+        padding: 10px 20px 70px;
+      }
+
+      .photo-frame {
+        width: 245px;
+        height: 245px;
+      }
+
+      .profile-info h2 {
+        font-size: 30px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
 
-<!-- ================= NAVBAR ================= -->
+      <a href="index.html" class="logo">MAMUN.</a>
 
-<nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-<div class="nav">
+      <nav class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
+    </div>
+  </header>
 
-<div class="logo">
-MD <span>Abdul Al Mamun</span>
-</div>
 
+  <!-- HERO -->
+  <section class="hero">
 
-<button
-class="menu-btn"
-onclick="toggleMenu()"
-aria-label="Open menu">
+    <div class="small-title">GET TO KNOW ME</div>
 
-☰
+    <h1>
+      About <span>Me.</span>
+    </h1>
 
-</button>
+    <p class="hero-text">
+      A digital-focused creative professional passionate about
+      design, marketing and modern web experiences.
+    </p>
 
+  </section>
 
-<ul class="links" id="menu">
 
-<li>
-<a href="index.html">Home</a>
-</li>
+  <!-- MAIN -->
+  <main class="container">
 
-<li>
-<a href="about.html" class="active">About</a>
-</li>
+    <!-- PROFILE -->
+    <section class="profile-section">
 
-<li>
-<a href="skills.html">Skills</a>
-</li>
+      <div class="photo-wrapper">
 
-<li>
-<a href="services.html">Services</a>
-</li>
+        <div class="photo-frame">
 
-<li>
-<a href="projects.html">Projects</a>
-</li>
+          <img
+            src="profile.jpg"
+            alt="MD Abdul Al Mamun"
+          >
 
-<li>
-<a href="experience.html">Experience</a>
-</li>
+        </div>
 
-<li>
-<a href="resume.html">Resume</a>
-</li>
+      </div>
 
-<li>
-<a href="contact.html">Contact</a>
-</li>
 
-</ul>
+      <div class="profile-info">
 
+        <div class="tag">DIGITAL SERVICE</div>
 
-</div>
+        <h2>MD Abdul Al Mamun</h2>
 
-</nav>
+        <h3>GRAPHIC DESIGN · DIGITAL MARKETING · WEB DESIGN</h3>
 
+        <p>
+          I’m a creative and digital-focused professional who enjoys
+          turning ideas into clean, meaningful and engaging digital
+          experiences. My work combines creativity, design and digital
+          strategy to help brands and businesses communicate better.
+        </p>
 
+        <p>
+          I’m continuously developing my skills through practical
+          projects and real-world experience, with a strong interest
+          in digital services, creative design and online business.
+        </p>
 
-<!-- ================= CONTENT ================= -->
 
-<main class="page">
+        <div class="info-grid">
 
-<div class="container">
+          <div class="info-box">
+            <small>Location</small>
+            <strong>Chattogram, Bangladesh</strong>
+          </div>
 
+          <div class="info-box">
+            <small>Profession</small>
+            <strong>Digital Service</strong>
+          </div>
 
-<div class="label">
-WHO I AM
-</div>
+          <div class="info-box">
+            <small>Education</small>
+            <strong>Honours — History</strong>
+          </div>
 
+          <div class="info-box">
+            <small>Current Year</small>
+            <strong>3rd Year</strong>
+          </div>
 
-<h1>
-About <span>Me.</span>
-</h1>
+        </div>
 
+      </div>
 
-<div class="grid">
+    </section>
 
 
-<div class="text">
+    <!-- EDUCATION -->
+    <section>
 
-<p>
-Hello, I'm <strong>MD Abdul Al Mamun</strong>, a Digital Service
-professional based in Chattogram, Bangladesh.
-</p>
+      <div class="section-title">
+        <span>MY BACKGROUND</span>
+        <h2>Education</h2>
+      </div>
 
-<p>
-I'm interested in creative digital work, graphic design,
-digital marketing and web design. I enjoy turning ideas
-into clean, useful and visually appealing digital experiences.
-</p>
 
-<p>
-My goal is to keep learning, create meaningful work and
-build a strong professional journey in the digital world.
-</p>
+      <div class="education-grid">
 
-</div>
+        <div class="edu-card">
+          <div class="edu-year">2026 — PRESENT</div>
+          <h3>Honours — History</h3>
+          <p>Rangamati Government College</p>
+        </div>
 
+        <div class="edu-card">
+          <div class="edu-year">2022</div>
+          <h3>Higher Secondary Certificate</h3>
+          <p>Govt. Ashekane Aulia College</p>
+        </div>
 
+        <div class="edu-card">
+          <div class="edu-year">2020</div>
+          <h3>Secondary School Certificate</h3>
+          <p>Rahmania High School</p>
+        </div>
 
-<div class="card">
+        <div class="edu-card">
+          <div class="edu-year">COMPLETED</div>
+          <h3>Freelancing Course</h3>
+          <p>E-Learning &amp; Earning Ltd.</p>
+        </div>
 
+      </div>
 
-<div class="info">
-<span>Name</span>
-<span>MD Abdul Al Mamun</span>
-</div>
+    </section>
 
 
-<div class="info">
-<span>Profession</span>
-<span>Digital Service</span>
-</div>
+    <!-- CTA -->
+    <section class="cta">
 
+      <h2>Let’s Work Together.</h2>
 
-<div class="info">
-<span>Location</span>
-<span>Chattogram, Bangladesh</span>
-</div>
+      <p>
+        Have a project or idea in mind? Let’s turn it into something
+        meaningful.
+      </p>
 
+      <a href="contact.html" class="btn">
+        Contact Me
+      </a>
 
-<div class="info">
-<span>Focus</span>
-<span>Digital & Creative Work</span>
-</div>
+    </section>
 
+  </main>
 
-</div>
 
-</div>
+  <!-- WHATSAPP -->
+  <a
+    href="https://wa.me/8801679606860"
+    class="whatsapp"
+    target="_blank"
+    aria-label="WhatsApp"
+  >
+    ☎
+  </a>
 
 
+  <!-- FOOTER -->
+  <footer>
+    © 2026 <span>MD Abdul Al Mamun</span>. All Rights Reserved.
+  </footer>
 
-<!-- ================= EDUCATION ================= -->
 
-<div class="education">
-
-<h2>
-Education
-</h2>
-
-
-<div class="edu">
-
-<div class="year">
-2026 — Present
-</div>
-
-<h3>
-Honours — History
-</h3>
-
-<p>
-Rangamati Government College
-</p>
-
-</div>
-
-
-<div class="edu">
-
-<div class="year">
-2022
-</div>
-
-<h3>
-Higher Secondary Certificate
-</h3>
-
-<p>
-Govt. Ashekane Aulia College
-</p>
-
-</div>
-
-
-<div class="edu">
-
-<div class="year">
-2020
-</div>
-
-<h3>
-Secondary School Certificate
-</h3>
-
-<p>
-Rahmania High School
-</p>
-
-</div>
-
-
-</div>
-
-
-</div>
-
-</main>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-© 2026 MD Abdul Al Mamun — Digital Service
-
-</footer>
-
-
-
-<script>
-
-function toggleMenu(){
-
-    document
-    .getElementById("menu")
-    .classList
-    .toggle("show");
-
-}
-
-</script>
-
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+  </script>
 
 </body>
 </html>
