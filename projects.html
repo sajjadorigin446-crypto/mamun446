@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projects | MD Abdul Al Mamun</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#080808;
+    color:#fff;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
+
+header{
+    height:72px;
+    padding:0 5%;
+    border-bottom:1px solid #222;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#090909;
+    position:relative;
+    z-index:1000;
+}
+
+.logo{
+    color:#d4af37;
+    font-size:22px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+nav a{
+    color:#aaa;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover,
+nav a.active{
+    color:#d4af37;
+}
+
+/* MOBILE BUTTON */
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:#d4af37;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    display:none;
+    position:absolute;
+    top:72px;
+    left:0;
+    width:100%;
+    background:#0b0b0b;
+    border-bottom:1px solid #222;
+    padding:15px 6%;
+    z-index:999;
+}
+
+.mobile-menu a{
+    display:block;
+    padding:13px 0;
+    color:#aaa;
+    border-bottom:1px solid #1d1d1d;
+    font-size:15px;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active{
+    color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:80px 20px 45px;
+}
+
+.hero span{
+    color:#d4af37;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:48px;
+    margin:12px 0;
+}
+
+.hero p{
+    color:#aaa;
+    max-width:650px;
+    margin:auto;
+}
+
+/* PROJECTS */
+
+.projects{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px 80px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:16px;
+    padding:30px 24px;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#d4af37;
+}
+
+.number{
+    color:#d4af37;
+    font-size:13px;
+    letter-spacing:2px;
+}
+
+.card h2{
+    margin:12px 0;
+    font-size:23px;
+}
+
+.card p{
+    color:#aaa;
+    font-size:14px;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:20px;
+    padding:6px 12px;
+    border:1px solid #333;
+    border-radius:30px;
+    color:#d4af37;
+    font-size:12px;
+}
+
+/* CTA */
+
+.cta{
+    text-align:center;
+    padding:20px 20px 80px;
+}
+
+.cta h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.cta p{
+    color:#999;
+    margin-bottom:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 25px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    border-radius:30px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#d4af37;
+    color:#000;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #222;
+    text-align:center;
+    padding:25px;
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        padding-top:60px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+        padding:25px 18px 60px;
+    }
+
+    .card{
+        padding:28px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">MAMUN.</a>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="skills.html">Skills</a>
+<a href="services.html">Services</a>
+<a href="projects.html" class="active">Projects</a>
+<a href="experience.html">Experience</a>
+<a href="resume.html">Resume</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+</header>
+
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="skills.html">Skills</a>
+<a href="services.html">Services</a>
+<a href="projects.html" class="active">Projects</a>
+<a href="experience.html">Experience</a>
+<a href="resume.html">Resume</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+
+<section class="hero">
+
+<span>My Work</span>
+
+<h1>Projects</h1>
+
+<p>
+A selection of digital projects, creative work and online activities
+that represent my skills and experience.
+</p>
+
+</section>
+
+
+<section class="projects">
+
+<div class="card">
+
+<div class="number">01 — DESIGN</div>
+
+<h2>Graphic Design Projects</h2>
+
+<p>
+Creative social media designs, promotional materials,
+brand visuals and digital graphics created for different projects.
+</p>
+
+<div class="tag">Graphic Design</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">02 — MARKETING</div>
+
+<h2>Digital Marketing</h2>
+
+<p>
+Social media marketing, promotional campaigns and
+digital marketing activities focused on improving online visibility.
+</p>
+
+<div class="tag">Digital Marketing</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">03 — WEB</div>
+
+<h2>Personal Portfolio</h2>
+
+<p>
+A modern personal portfolio website designed to present
+my skills, experience, services and professional profile.
+</p>
+
+<div class="tag">Web Design</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">04 — BUSINESS</div>
+
+<h2>Baraka Farmyard</h2>
+
+<p>
+Worked on daily outlet operations, customer service,
+sales support, product management and business activities.
+</p>
+
+<div class="tag">Business Support</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">05 — ONLINE</div>
+
+<h2>Online Projects</h2>
+
+<p>
+Various online projects involving digital services,
+creative work and client-focused tasks.
+</p>
+
+<div class="tag">Online Projects</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">06 — FUTURE</div>
+
+<h2>Upcoming Projects</h2>
+
+<p>
+More creative digital projects and professional work
+will be added here as my portfolio continues to grow.
+</p>
+
+<div class="tag">Coming Soon</div>
+
+</div>
+
+</section>
+
+
+<section class="cta">
+
+<h2>Have a project in mind?</h2>
+
+<p>Let's create something meaningful together.</p>
+
+<a href="contact.html" class="btn">Get In Touch</a>
+
+</section>
+
+
+<footer>
+© 2026 MD Abdul Al Mamun. All Rights Reserved.
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+const menu = document.getElementById("mobileMenu");
+
+if(menu.style.display === "block"){
+    menu.style.display = "none";
+}else{
+    menu.style.display = "block";
+}
+
+}
+
+</script>
+
+</body>
+</html>

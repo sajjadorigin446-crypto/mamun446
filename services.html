@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | MD Abdul Al Mamun</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070707;
+    color:#fff;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* NAVBAR */
+
+nav{
+    height:72px;
+    background:#090909;
+    border-bottom:1px solid #222;
+    display:flex;
+    align-items:center;
+}
+
+.nav{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#d4af37;
+}
+
+.links{
+    display:flex;
+    gap:22px;
+    list-style:none;
+}
+
+.links a{
+    color:#aaa;
+    font-size:14px;
+    transition:.3s;
+}
+
+.links a:hover,
+.links a.active{
+    color:#d4af37;
+}
+
+/* MOBILE MENU BUTTON */
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:#d4af37;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    display:none;
+    position:absolute;
+    top:72px;
+    left:0;
+    width:100%;
+    background:#0b0b0b;
+    border-bottom:1px solid #222;
+    padding:15px 5%;
+    z-index:999;
+}
+
+.mobile-menu a{
+    display:block;
+    padding:13px 0;
+    color:#aaa;
+    border-bottom:1px solid #1c1c1c;
+    font-size:15px;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active{
+    color:#d4af37;
+}
+
+/* PAGE */
+
+.page{
+    padding:110px 0 90px;
+}
+
+.label{
+    color:#d4af37;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:clamp(45px,7vw,75px);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+h1 span{
+    color:#d4af37;
+}
+
+.intro{
+    max-width:650px;
+    color:#888;
+    font-size:17px;
+    margin-bottom:55px;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.service{
+    position:relative;
+    background:#0d0d0d;
+    border:1px solid #252525;
+    border-radius:20px;
+    padding:35px;
+    min-height:330px;
+    transition:.35s;
+    overflow:hidden;
+}
+
+.service:before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:rgba(212,175,55,.06);
+    right:-50px;
+    top:-50px;
+}
+
+.service:hover{
+    transform:translateY(-8px);
+    border-color:#d4af37;
+}
+
+.number{
+    color:#d4af37;
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:55px;
+}
+
+.service h2{
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.service p{
+    color:#777;
+    font-size:15px;
+}
+
+.service a{
+    position:absolute;
+    bottom:30px;
+    color:#d4af37;
+    font-size:13px;
+}
+
+/* PROCESS */
+
+.process{
+    margin-top:80px;
+}
+
+.process h2{
+    font-size:32px;
+    margin-bottom:30px;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.step{
+    padding:25px;
+    border-top:1px solid #333;
+}
+
+.step span{
+    color:#d4af37;
+    font-size:13px;
+}
+
+.step h3{
+    margin:12px 0 8px;
+}
+
+.step p{
+    color:#777;
+    font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #222;
+    padding:25px;
+    text-align:center;
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .links{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+    h1{
+        font-size:50px;
+    }
+
+    .page{
+        padding:80px 0 60px;
+    }
+}
+
+@media(max-width:500px){
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .service{
+        padding:30px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="nav">
+
+<div class="logo">
+MD <span>Abdul Al Mamun</span>
+</div>
+
+<ul class="links">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="skills.html">Skills</a></li>
+<li><a href="services.html" class="active">Services</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="experience.html">Experience</a></li>
+<li><a href="resume.html">Resume</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+</div>
+
+</nav>
+
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="skills.html">Skills</a>
+<a href="services.html" class="active">Services</a>
+<a href="projects.html">Projects</a>
+<a href="experience.html">Experience</a>
+<a href="resume.html">Resume</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+
+<main class="page">
+
+<div class="container">
+
+<div class="label">MY EXPERTISE</div>
+
+<h1>My <span>Services.</span></h1>
+
+<p class="intro">
+Creative and digital solutions designed to help individuals,
+brands and businesses build a stronger presence online.
+</p>
+
+
+<div class="services">
+
+
+<div class="service">
+
+<div class="number">01</div>
+
+<h2>Graphic Design</h2>
+
+<p>
+Professional and creative visual designs for social media,
+promotional campaigns, businesses and digital platforms.
+</p>
+
+<a href="contact.html">Let's work together →</a>
+
+</div>
+
+
+<div class="service">
+
+<div class="number">02</div>
+
+<h2>Digital Marketing</h2>
+
+<p>
+Digital promotion and social media marketing solutions
+focused on reaching the right audience and building
+online visibility.
+</p>
+
+<a href="contact.html">Let's work together →</a>
+
+</div>
+
+
+<div class="service">
+
+<div class="number">03</div>
+
+<h2>Web Design</h2>
+
+<p>
+Modern, responsive and user-friendly website experiences
+for personal portfolios, projects and businesses.
+</p>
+
+<a href="contact.html">Let's work together →</a>
+
+</div>
+
+
+</div>
+
+
+<div class="process">
+
+<h2>How I Work</h2>
+
+<div class="steps">
+
+
+<div class="step">
+<span>01</span>
+<h3>Discover</h3>
+<p>Understanding the idea, goals and requirements.</p>
+</div>
+
+
+<div class="step">
+<span>02</span>
+<h3>Plan</h3>
+<p>Creating a clear direction for the project.</p>
+</div>
+
+
+<div class="step">
+<span>03</span>
+<h3>Create</h3>
+<p>Turning the concept into a polished digital solution.</p>
+</div>
+
+
+<div class="step">
+<span>04</span>
+<h3>Deliver</h3>
+<p>Finalizing the work and delivering the result.</p>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+© 2026 MD Abdul Al Mamun — Digital Service
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+const menu = document.getElementById("mobileMenu");
+
+if(menu.style.display === "block"){
+menu.style.display = "none";
+}else{
+menu.style.display = "block";
+}
+
+}
+
+</script>
+
+</body>
+</html>

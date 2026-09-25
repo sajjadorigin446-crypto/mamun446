@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Experience | MD Abdul Al Mamun</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#080808;
+    color:#fff;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
+
+header{
+    height:72px;
+    padding:0 5%;
+    border-bottom:1px solid #222;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#090909;
+    position:relative;
+    z-index:1000;
+}
+
+.logo{
+    color:#d4af37;
+    font-size:22px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+nav a{
+    color:#aaa;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover,
+nav a.active{
+    color:#d4af37;
+}
+
+/* MOBILE BUTTON */
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:#d4af37;
+    font-size:27px;
+    cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    display:none;
+    position:absolute;
+    top:72px;
+    left:0;
+    width:100%;
+    background:#0b0b0b;
+    border-bottom:1px solid #222;
+    padding:15px 6%;
+    z-index:999;
+}
+
+.mobile-menu a{
+    display:block;
+    padding:13px 0;
+    color:#aaa;
+    border-bottom:1px solid #1d1d1d;
+    font-size:15px;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active{
+    color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:80px 20px 50px;
+}
+
+.hero span{
+    color:#d4af37;
+    letter-spacing:3px;
+    font-size:13px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:48px;
+    margin:12px 0;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#999;
+}
+
+/* EXPERIENCE */
+
+.experience{
+    max-width:900px;
+    margin:auto;
+    padding:20px 20px 80px;
+}
+
+.item{
+    position:relative;
+    padding:30px;
+    margin-bottom:25px;
+    background:#111;
+    border:1px solid #292929;
+    border-radius:16px;
+    transition:.3s;
+}
+
+.item:hover{
+    border-color:#d4af37;
+    transform:translateY(-5px);
+}
+
+.date{
+    color:#d4af37;
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.item h2{
+    font-size:25px;
+    margin:8px 0 3px;
+}
+
+.company{
+    color:#aaa;
+    margin-bottom:18px;
+}
+
+.item p{
+    color:#999;
+    font-size:14px;
+}
+
+.item ul{
+    margin-top:15px;
+    padding-left:20px;
+    color:#aaa;
+}
+
+.item li{
+    margin-bottom:8px;
+}
+
+/* EDUCATION */
+
+.education-title{
+    text-align:center;
+    margin:20px 0 35px;
+}
+
+.education-title span{
+    color:#d4af37;
+    font-size:13px;
+    letter-spacing:3px;
+}
+
+.education-title h2{
+    font-size:32px;
+    margin-top:8px;
+}
+
+.edu{
+    max-width:900px;
+    margin:auto;
+    padding:0 20px 80px;
+}
+
+.edu-card{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:18px;
+    transition:.3s;
+}
+
+.edu-card:hover{
+    border-color:#d4af37;
+}
+
+.edu-card h3{
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.edu-card .place{
+    color:#d4af37;
+}
+
+.edu-card p{
+    color:#888;
+    margin-top:8px;
+    font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #222;
+    text-align:center;
+    padding:25px;
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    header{
+        padding:0 20px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        padding-top:60px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .item{
+        padding:24px;
+    }
+
+    .experience{
+        padding-bottom:60px;
+    }
+
+    .edu{
+        padding-bottom:60px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="logo">MAMUN.</a>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="skills.html">Skills</a>
+<a href="services.html">Services</a>
+<a href="projects.html">Projects</a>
+<a href="experience.html" class="active">Experience</a>
+<a href="resume.html">Resume</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+</header>
+
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="skills.html">Skills</a>
+<a href="services.html">Services</a>
+<a href="projects.html">Projects</a>
+<a href="experience.html" class="active">Experience</a>
+<a href="resume.html">Resume</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+
+<section class="hero">
+
+<span>My Journey</span>
+
+<h1>Experience</h1>
+
+<p>
+My professional experience, responsibilities and educational journey
+that shaped my digital skills and working approach.
+</p>
+
+</section>
+
+
+<section class="experience">
+
+<div class="item">
+
+<div class="date">Professional Experience</div>
+
+<h2>Outlet Manager</h2>
+
+<div class="company">Baraka Farmyard</div>
+
+<p>
+Responsible for supporting daily outlet operations and ensuring
+smooth business activities while maintaining good customer service.
+</p>
+
+<ul>
+<li>Managed daily outlet operations and workflow.</li>
+<li>Handled customer service and sales support.</li>
+<li>Coordinated product management and inventory.</li>
+<li>Supported day-to-day business activities.</li>
+<li>Helped maintain a smooth and organized working environment.</li>
+</ul>
+
+</div>
+
+
+<div class="item">
+
+<div class="date">Freelance & Online Work</div>
+
+<h2>Various Online Projects</h2>
+
+<div class="company">Digital Services</div>
+
+<p>
+Worked on various online projects involving creative digital services,
+design-related tasks and online activities.
+</p>
+
+<ul>
+<li>Graphic design related projects.</li>
+<li>Digital marketing activities.</li>
+<li>Online project management.</li>
+<li>Client-focused digital tasks.</li>
+</ul>
+
+</div>
+
+</section>
+
+
+<section class="education-title">
+
+<span>EDUCATION</span>
+
+<h2>Academic Background</h2>
+
+</section>
+
+
+<section class="edu">
+
+<div class="edu-card">
+
+<h3>Honours — 3rd Year</h3>
+
+<div class="place">Rangamati Government College</div>
+
+<p>Subject: History</p>
+
+</div>
+
+
+<div class="edu-card">
+
+<h3>Higher Secondary Certificate (HSC)</h3>
+
+<div class="place">Govt. Ashekane Aulia College</div>
+
+<p>Completed in 2022</p>
+
+</div>
+
+
+<div class="edu-card">
+
+<h3>Secondary School Certificate (SSC)</h3>
+
+<div class="place">Rahmania High School</div>
+
+<p>Completed in 2020</p>
+
+</div>
+
+
+<div class="edu-card">
+
+<h3>Freelancing Course</h3>
+
+<div class="place">E-Learning & Earning Ltd.</div>
+
+<p>Professional freelancing training completed.</p>
+
+</div>
+
+</section>
+
+
+<footer>
+© 2026 MD Abdul Al Mamun. All Rights Reserved.
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+const menu = document.getElementById("mobileMenu");
+
+if(menu.style.display === "block"){
+    menu.style.display = "none";
+}else{
+    menu.style.display = "block";
+}
+
+}
+
+</script>
+
+</body>
+</html>

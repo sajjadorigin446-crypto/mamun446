@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About | MD Abdul Al Mamun</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#070707;
+    color:#fff;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* ================= NAVBAR ================= */
+
+nav{
+    height:72px;
+    border-bottom:1px solid #222;
+    background:rgba(9,9,9,.95);
+    backdrop-filter:blur(15px);
+
+    display:flex;
+    align-items:center;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#d4af37;
+}
+
+.links{
+    display:flex;
+    gap:22px;
+    list-style:none;
+}
+
+.links a{
+    font-size:13px;
+    color:#999;
+    transition:.3s;
+}
+
+.links a:hover,
+.links a.active{
+    color:#d4af37;
+}
+
+
+/* MOBILE MENU BUTTON */
+
+.menu-btn{
+    display:none;
+
+    background:none;
+    border:0;
+
+    color:#d4af37;
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+
+/* ================= PAGE ================= */
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
+
+.page{
+    padding:110px 0 80px;
+    min-height:calc(100vh - 72px);
+}
+
+.label{
+    color:#d4af37;
+    font-size:12px;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:clamp(45px,7vw,75px);
+    line-height:1;
+    margin-bottom:45px;
+}
+
+h1 span{
+    color:#d4af37;
+}
+
+
+/* ================= MAIN GRID ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:50px;
+}
+
+.text{
+    color:#999;
+    font-size:17px;
+}
+
+.text p{
+    margin-bottom:20px;
+}
+
+.text strong{
+    color:#fff;
+}
+
+
+/* ================= INFO CARD ================= */
+
+.card{
+    background:linear-gradient(145deg,#101010,#0b0b0b);
+
+    border:1px solid #242424;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    transition:.35s;
+}
+
+.card:hover{
+    border-color:#d4af37;
+    transform:translateY(-5px);
+}
+
+.info{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #222;
+
+    font-size:14px;
+}
+
+.info:last-child{
+    border:0;
+}
+
+.info span:first-child{
+    color:#777;
+}
+
+.info span:last-child{
+    text-align:right;
+    color:#ddd;
+}
+
+
+/* ================= EDUCATION ================= */
+
+.education{
+    margin-top:65px;
+}
+
+.education h2{
+    font-size:30px;
+    margin-bottom:25px;
+}
+
+.edu{
+    padding:22px 0;
+    border-bottom:1px solid #222;
+}
+
+.edu:last-child{
+    border:0;
+}
+
+.edu .year{
+    color:#d4af37;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+.edu h3{
+    margin:5px 0;
+    font-size:18px;
+}
+
+.edu p{
+    color:#777;
+    font-size:14px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid #222;
+    padding:25px;
+
+    text-align:center;
+
+    color:#666;
+    font-size:13px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:850px){
+
+    nav{
+        height:68px;
+    }
+
+    .nav{
+        width:90%;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .links{
+        display:none;
+
+        position:absolute;
+
+        top:68px;
+        left:0;
+
+        width:100%;
+
+        background:#0a0a0a;
+
+        border-bottom:1px solid #292929;
+
+        padding:10px 5%;
+
+        flex-direction:column;
+
+        gap:0;
+    }
+
+    .links.show{
+        display:flex;
+    }
+
+    .links li{
+        width:100%;
+    }
+
+    .links a{
+        display:block;
+
+        width:100%;
+
+        padding:13px 5px;
+
+        border-bottom:1px solid #1d1d1d;
+    }
+
+    .links li:last-child a{
+        border-bottom:none;
+    }
+
+    .page{
+        padding:75px 0 65px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    h1{
+        font-size:50px;
+        margin-bottom:35px;
+    }
+
+    .text{
+        font-size:15px;
+    }
+
+    .card{
+        padding:25px;
+    }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:420px){
+
+    h1{
+        font-size:45px;
+    }
+
+    .info{
+        font-size:13px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+<div class="nav">
+
+
+<div class="logo">
+MD <span>Abdul Al Mamun</span>
+</div>
+
+
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+aria-label="Open menu">
+
+☰
+
+</button>
+
+
+<ul class="links" id="menu">
+
+<li>
+<a href="index.html">Home</a>
+</li>
+
+<li>
+<a href="about.html" class="active">About</a>
+</li>
+
+<li>
+<a href="skills.html">Skills</a>
+</li>
+
+<li>
+<a href="services.html">Services</a>
+</li>
+
+<li>
+<a href="projects.html">Projects</a>
+</li>
+
+<li>
+<a href="experience.html">Experience</a>
+</li>
+
+<li>
+<a href="resume.html">Resume</a>
+</li>
+
+<li>
+<a href="contact.html">Contact</a>
+</li>
+
+</ul>
+
+
+</div>
+
+</nav>
+
+
+
+<!-- ================= CONTENT ================= -->
+
+<main class="page">
+
+<div class="container">
+
+
+<div class="label">
+WHO I AM
+</div>
+
+
+<h1>
+About <span>Me.</span>
+</h1>
+
+
+<div class="grid">
+
+
+<div class="text">
+
+<p>
+Hello, I'm <strong>MD Abdul Al Mamun</strong>, a Digital Service
+professional based in Chattogram, Bangladesh.
+</p>
+
+<p>
+I'm interested in creative digital work, graphic design,
+digital marketing and web design. I enjoy turning ideas
+into clean, useful and visually appealing digital experiences.
+</p>
+
+<p>
+My goal is to keep learning, create meaningful work and
+build a strong professional journey in the digital world.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+
+<div class="info">
+<span>Name</span>
+<span>MD Abdul Al Mamun</span>
+</div>
+
+
+<div class="info">
+<span>Profession</span>
+<span>Digital Service</span>
+</div>
+
+
+<div class="info">
+<span>Location</span>
+<span>Chattogram, Bangladesh</span>
+</div>
+
+
+<div class="info">
+<span>Focus</span>
+<span>Digital & Creative Work</span>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- ================= EDUCATION ================= -->
+
+<div class="education">
+
+<h2>
+Education
+</h2>
+
+
+<div class="edu">
+
+<div class="year">
+2026 — Present
+</div>
+
+<h3>
+Honours — History
+</h3>
+
+<p>
+Rangamati Government College
+</p>
+
+</div>
+
+
+<div class="edu">
+
+<div class="year">
+2022
+</div>
+
+<h3>
+Higher Secondary Certificate
+</h3>
+
+<p>
+Govt. Ashekane Aulia College
+</p>
+
+</div>
+
+
+<div class="edu">
+
+<div class="year">
+2020
+</div>
+
+<h3>
+Secondary School Certificate
+</h3>
+
+<p>
+Rahmania High School
+</p>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+© 2026 MD Abdul Al Mamun — Digital Service
+
+</footer>
+
+
+
+<script>
+
+function toggleMenu(){
+
+    document
+    .getElementById("menu")
+    .classList
+    .toggle("show");
+
+}
+
+</script>
+
+
+</body>
+</html>
