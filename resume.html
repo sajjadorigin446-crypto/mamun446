@@ -44,8 +44,8 @@ a{
 nav{
     position:sticky;
     top:0;
-    z-index:999;
-    background:rgba(6,6,6,.95);
+    z-index:9999;
+    background:rgba(6,6,6,.96);
     backdrop-filter:blur(15px);
     border-bottom:1px solid rgba(212,175,55,.20);
 }
@@ -65,24 +65,61 @@ nav{
     font-size:19px;
     font-weight:bold;
     letter-spacing:.5px;
+    white-space:nowrap;
 }
 
 .nav-links{
     display:flex;
+    align-items:center;
     gap:17px;
-    flex-wrap:wrap;
-    justify-content:center;
 }
 
 .nav-links a{
     color:#aaa;
     font-size:13px;
     transition:.3s;
+    position:relative;
 }
 
 .nav-links a:hover,
-.nav-links .active{
+.nav-links a.active{
     color:#d4af37;
+}
+
+.nav-links a.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-7px;
+    height:2px;
+    background:#d4af37;
+    border-radius:5px;
+}
+
+
+/* =========================
+   HAMBURGER MENU
+========================= */
+
+.menu-toggle{
+    display:none;
+    width:42px;
+    height:42px;
+    border:1px solid rgba(212,175,55,.35);
+    background:#101010;
+    color:#d4af37;
+    border-radius:9px;
+    font-size:20px;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+}
+
+.menu-toggle:hover{
+    border-color:#d4af37;
+    box-shadow:0 0 15px rgba(212,175,55,.15);
 }
 
 
@@ -180,7 +217,6 @@ nav{
 }
 
 .photo-frame{
-
     position:relative;
 
     width:205px;
@@ -213,7 +249,6 @@ nav{
 }
 
 .photo-frame::before{
-
     content:"";
 
     position:absolute;
@@ -228,7 +263,6 @@ nav{
 }
 
 .photo-inner{
-
     width:100%;
     height:100%;
 
@@ -244,7 +278,6 @@ nav{
 }
 
 .photo-inner img{
-
     width:100%;
     height:100%;
 
@@ -267,7 +300,6 @@ nav{
 /* PHOTO BADGE */
 
 .photo-badge{
-
     position:absolute;
 
     bottom:0px;
@@ -342,22 +374,15 @@ nav{
 ========================= */
 
 .contact-row{
-
     display:flex;
-
     flex-wrap:wrap;
-
     gap:10px;
-
     margin-top:20px;
 }
 
 .contact-pill{
-
     display:inline-flex;
-
     align-items:center;
-
     gap:8px;
 
     padding:9px 13px;
@@ -384,23 +409,15 @@ nav{
 }
 
 .contact-pill i{
-
     width:18px;
-
     text-align:center;
-
     font-size:14px;
-
     color:#d4af37;
-
 }
 
 .contact-pill:hover{
-
     border-color:#d4af37;
-
     color:#d4af37;
-
     transform:translateY(-2px);
 
     box-shadow:
@@ -413,22 +430,15 @@ nav{
 ========================= */
 
 .actions{
-
     display:flex;
-
     gap:12px;
-
     flex-wrap:wrap;
-
     margin-bottom:25px;
 }
 
 .btn{
-
     border:1px solid #d4af37;
-
     background:#d4af37;
-
     color:#050505;
 
     padding:12px 20px;
@@ -436,16 +446,13 @@ nav{
     border-radius:9px;
 
     font-weight:bold;
-
     font-size:13px;
 
     cursor:pointer;
-
     transition:.3s;
 }
 
 .btn:hover{
-
     transform:translateY(-2px);
 
     box-shadow:
@@ -453,9 +460,7 @@ nav{
 }
 
 .btn-outline{
-
     background:transparent;
-
     color:#d4af37;
 }
 
@@ -465,21 +470,14 @@ nav{
 ========================= */
 
 .stats{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:14px;
-
     margin-bottom:25px;
 }
 
 .stat{
-
     padding:20px;
-
     text-align:center;
 
     border-radius:15px;
@@ -492,34 +490,22 @@ nav{
 }
 
 .stat:hover{
-
-    border-color:
-    rgba(212,175,55,.45);
-
+    border-color:rgba(212,175,55,.45);
     transform:translateY(-3px);
 }
 
 .stat strong{
-
     display:block;
-
     font-size:28px;
-
     color:#d4af37;
-
     line-height:1.2;
-
     margin-bottom:5px;
 }
 
 .stat span{
-
     color:#888;
-
     font-size:11px;
-
     text-transform:uppercase;
-
     letter-spacing:.7px;
 }
 
@@ -529,13 +515,8 @@ nav{
 ========================= */
 
 .content-grid{
-
     display:grid;
-
-    grid-template-columns:
-    minmax(0,2fr)
-    minmax(280px,1fr);
-
+    grid-template-columns:minmax(0,2fr) minmax(280px,1fr);
     gap:25px;
 }
 
@@ -545,7 +526,6 @@ nav{
 ========================= */
 
 .card{
-
     background:
     linear-gradient(
         145deg,
@@ -565,13 +545,10 @@ nav{
 }
 
 .card:hover{
-
-    border-color:
-    rgba(212,175,55,.28);
+    border-color:rgba(212,175,55,.28);
 }
 
 .section-title{
-
     color:#d4af37;
 
     font-size:20px;
@@ -589,9 +566,7 @@ nav{
 ========================= */
 
 .summary{
-
     color:#aaa;
-
     font-size:14px;
 }
 
@@ -601,7 +576,6 @@ nav{
 ========================= */
 
 .timeline{
-
     position:relative;
 
     border-left:2px solid #806516;
@@ -610,29 +584,23 @@ nav{
 }
 
 .timeline-item{
-
     position:relative;
-
     margin-bottom:32px;
 }
 
 .timeline-item:last-child{
-
     margin-bottom:0;
 }
 
 .timeline-item::before{
-
     content:"";
 
     position:absolute;
 
     left:-30px;
-
     top:5px;
 
     width:12px;
-
     height:12px;
 
     background:#d4af37;
@@ -645,50 +613,35 @@ nav{
 }
 
 .timeline-item h3{
-
     font-size:18px;
-
     color:#eee;
 }
 
 .company{
-
     color:#d4af37;
-
     font-weight:bold;
-
     font-size:14px;
 }
 
 .meta{
-
     color:#666;
-
     font-size:11px;
-
     margin:3px 0 10px;
 }
 
 .timeline-item p{
-
     color:#aaa;
-
     font-size:13px;
 }
 
 .timeline-item ul{
-
     margin-top:10px;
-
     padding-left:18px;
-
     color:#aaa;
-
     font-size:13px;
 }
 
 .timeline-item li{
-
     margin-bottom:5px;
 }
 
@@ -698,11 +651,8 @@ nav{
 ========================= */
 
 .project-highlight{
-
     display:grid;
-
     grid-template-columns:110px 1fr;
-
     gap:20px;
 
     padding:20px;
@@ -720,35 +670,26 @@ nav{
 }
 
 .project-number{
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     color:#d4af37;
 
     font-size:32px;
-
     font-weight:bold;
 
     border-right:1px solid #333;
 }
 
 .project-highlight h3{
-
     font-size:17px;
-
     margin-bottom:5px;
 }
 
 .project-highlight p{
-
     color:#999;
-
     font-size:13px;
-
     margin-bottom:12px;
 }
 
@@ -758,16 +699,12 @@ nav{
 ========================= */
 
 .tags{
-
     display:flex;
-
     flex-wrap:wrap;
-
     gap:7px;
 }
 
 .tag{
-
     padding:6px 9px;
 
     background:#151515;
@@ -787,7 +724,6 @@ nav{
 ========================= */
 
 .edu{
-
     padding:15px 0 15px 17px;
 
     border-left:3px solid #d4af37;
@@ -796,30 +732,22 @@ nav{
 }
 
 .edu:last-child{
-
     margin-bottom:0;
 }
 
 .edu h3{
-
     font-size:15px;
-
     color:#eee;
 }
 
 .edu .institution{
-
     color:#d4af37;
-
     font-size:13px;
-
     font-weight:bold;
 }
 
 .edu p{
-
     color:#777;
-
     font-size:12px;
 }
 
@@ -829,57 +757,40 @@ nav{
 ========================= */
 
 .skill{
-
     margin-bottom:18px;
 }
 
 .skill:last-child{
-
     margin-bottom:0;
 }
 
 .skill-head{
-
     display:flex;
-
     justify-content:space-between;
-
     margin-bottom:7px;
 }
 
 .skill-head span:first-child{
-
     color:#ddd;
-
     font-size:13px;
 }
 
 .skill-head span:last-child{
-
     color:#d4af37;
-
     font-size:10px;
 }
 
 .skill-bar{
-
     height:5px;
-
     background:#252525;
-
     border-radius:10px;
-
     overflow:hidden;
 }
 
 .skill-bar span{
-
     display:block;
-
     height:100%;
-
     background:#d4af37;
-
     border-radius:10px;
 }
 
@@ -889,14 +800,11 @@ nav{
 ========================= */
 
 .strength-list{
-
     list-style:none;
 }
 
 .strength-list li{
-
     color:#aaa;
-
     font-size:13px;
 
     padding:9px 0;
@@ -905,12 +813,10 @@ nav{
 }
 
 .strength-list li:last-child{
-
     border-bottom:none;
 }
 
 .strength-list li::before{
-
     content:"◆";
 
     color:#d4af37;
@@ -926,7 +832,6 @@ nav{
 ========================= */
 
 .career-box{
-
     padding:20px;
 
     border-radius:13px;
@@ -943,18 +848,13 @@ nav{
 }
 
 .career-box h3{
-
     color:#d4af37;
-
     font-size:17px;
-
     margin-bottom:7px;
 }
 
 .career-box p{
-
     color:#999;
-
     font-size:13px;
 }
 
@@ -964,7 +864,6 @@ nav{
 ========================= */
 
 footer{
-
     border-top:1px solid #222;
 
     text-align:center;
@@ -977,7 +876,6 @@ footer{
 }
 
 footer strong{
-
     color:#d4af37;
 }
 
@@ -989,49 +887,80 @@ footer strong{
 @media(max-width:850px){
 
     .nav-container{
+        padding:13px 16px;
+        flex-wrap:wrap;
+    }
 
-        flex-direction:column;
+    .menu-toggle{
+        display:flex;
     }
 
     .nav-links{
+        display:none;
 
-        gap:11px;
+        width:100%;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:0;
+
+        padding:8px 0 4px;
     }
 
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links a{
+        width:100%;
+
+        padding:12px 10px;
+
+        border-bottom:1px solid #1d1d1d;
+
+        font-size:13px;
+    }
+
+    .nav-links a:last-child{
+        border-bottom:none;
+    }
+
+    .nav-links a.active::after{
+        display:none;
+    }
+
+    .nav-links a.active{
+        background:rgba(212,175,55,.07);
+        border-radius:6px;
+    }
+
+
     .profile-header{
-
         grid-template-columns:1fr;
-
         text-align:center;
-
         padding:30px 20px;
-
         gap:30px;
     }
 
     .profile-content{
-
         align-items:center;
     }
 
     .profile-content h1{
-
         font-size:32px;
     }
 
     .contact-row{
-
         justify-content:center;
     }
 
     .stats{
-
-        grid-template-columns:
-        repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .content-grid{
-
         grid-template-columns:1fr;
     }
 }
@@ -1040,82 +969,63 @@ footer strong{
 @media(max-width:500px){
 
     .container{
-
         padding:25px 13px 60px;
     }
 
     .profile-header{
-
         border-radius:18px;
     }
 
     .photo-frame{
-
         width:175px;
-
         height:175px;
     }
 
     .photo-badge{
-
         right:-18px;
-
         bottom:-4px;
     }
 
     .profile-content h1{
-
         font-size:28px;
     }
 
     .profile-role{
-
         font-size:14px;
     }
 
     .stats{
-
         gap:9px;
     }
 
     .stat{
-
         padding:15px 8px;
     }
 
     .stat strong{
-
         font-size:23px;
     }
 
     .stat span{
-
         font-size:9px;
     }
 
     .card{
-
         padding:19px;
     }
 
     .project-highlight{
-
         grid-template-columns:1fr;
     }
 
     .project-number{
-
         border-right:none;
-
         border-bottom:1px solid #333;
-
         padding-bottom:12px;
     }
 
     .contact-pill{
-
         font-size:11px;
-
         padding:8px 10px;
     }
 }
@@ -1128,36 +1038,27 @@ footer strong{
 @media print{
 
     body{
-
         background:#fff;
-
         color:#111;
     }
 
     nav,
     .actions,
     footer{
-
         display:none !important;
     }
 
     .container{
-
         max-width:100%;
-
         padding:0;
     }
 
     .profile-header,
     .card,
     .stat{
-
         background:#fff !important;
-
         color:#111;
-
         border:1px solid #ccc;
-
         box-shadow:none;
     }
 
@@ -1165,7 +1066,6 @@ footer strong{
     .timeline-item h3,
     .project-highlight h3,
     .edu h3{
-
         color:#111;
     }
 
@@ -1174,7 +1074,6 @@ footer strong{
     .timeline-item li,
     .career-box p,
     .project-highlight p{
-
         color:#333;
     }
 
@@ -1183,7 +1082,6 @@ footer strong{
     .profile-role,
     .stat strong,
     .career-box h3{
-
         color:#8a6b00;
     }
 }
@@ -1207,23 +1105,48 @@ footer strong{
 MD ABDUL AL MAMUN
 </a>
 
-<div class="nav-links">
+<button
+class="menu-toggle"
+id="menuToggle"
+aria-label="Open Menu">
 
-<a href="index.html">Home</a>
+<i class="fa-solid fa-bars"></i>
 
-<a href="about.html">About</a>
+</button>
 
-<a href="skills.html">Skills</a>
+<div class="nav-links" id="navLinks">
 
-<a href="services.html">Services</a>
+<a href="index.html">
+Home
+</a>
 
-<a href="projects.html">Projects</a>
+<a href="about.html">
+About
+</a>
 
-<a href="experience.html">Experience</a>
+<a href="skills.html">
+Skills
+</a>
 
-<a href="resume.html" class="active">Resume</a>
+<a href="services.html">
+Services
+</a>
 
-<a href="contact.html">Contact</a>
+<a href="projects.html">
+Projects
+</a>
+
+<a href="experience.html">
+Experience
+</a>
+
+<a href="resume.html" class="active">
+Resume
+</a>
+
+<a href="contact.html">
+Contact
+</a>
 
 </div>
 
@@ -1362,7 +1285,8 @@ onclick="window.print()">
 </button>
 
 
-<a href="contact.html"
+<a
+href="contact.html"
 class="btn btn-outline">
 
 <i class="fa-solid fa-paper-plane"></i>
@@ -2186,6 +2110,56 @@ MD Abdul Al Mamun
 Chattogram, Bangladesh
 
 </footer>
+
+
+<!-- =========================
+     MOBILE MENU SCRIPT
+========================= -->
+
+<script>
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function(){
+
+    navLinks.classList.toggle("show");
+
+    const icon = menuToggle.querySelector("i");
+
+    if(navLinks.classList.contains("show")){
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+
+    }else{
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    }
+
+});
+
+
+/* Close menu after clicking a link */
+
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        navLinks.classList.remove("show");
+
+        const icon = menuToggle.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+    });
+
+});
+
+</script>
 
 
 </body>
