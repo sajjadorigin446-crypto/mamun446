@@ -6,18 +6,29 @@
 
 <title>Resume | MD Abdul Al Mamun</title>
 
+<meta name="description" content="Professional Resume of MD Abdul Al Mamun — Digital Service, Graphic Design, Digital Marketing, Web Design and Video Editing.">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#080808;
-    color:#fff;
-    line-height:1.6;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#060606;
+    color:#f4f4f4;
+    line-height:1.7;
 }
 
 a{
@@ -25,501 +36,2157 @@ a{
     color:inherit;
 }
 
-/* HEADER */
 
-header{
-    height:72px;
-    padding:0 5%;
-    border-bottom:1px solid #222;
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(6,6,6,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(212,175,55,.20);
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:#090909;
-    position:relative;
-    z-index:1000;
+    gap:20px;
 }
 
 .logo{
     color:#d4af37;
-    font-size:22px;
+    font-size:19px;
     font-weight:bold;
+    letter-spacing:.5px;
 }
 
-nav{
+.nav-links{
     display:flex;
-    align-items:center;
-    gap:22px;
+    gap:17px;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
-nav a{
+.nav-links a{
     color:#aaa;
-    font-size:14px;
+    font-size:13px;
     transition:.3s;
 }
 
-nav a:hover,
-nav a.active{
+.nav-links a:hover,
+.nav-links .active{
     color:#d4af37;
 }
 
-/* MOBILE BUTTON */
 
-.menu-btn{
-    display:none;
-    background:none;
-    border:none;
-    color:#d4af37;
-    font-size:27px;
-    cursor:pointer;
-}
-
-/* MOBILE MENU */
-
-.mobile-menu{
-    display:none;
-    position:absolute;
-    top:72px;
-    left:0;
-    width:100%;
-    background:#0b0b0b;
-    border-bottom:1px solid #222;
-    padding:15px 6%;
-    z-index:999;
-}
-
-.mobile-menu a{
-    display:block;
-    padding:13px 0;
-    color:#aaa;
-    border-bottom:1px solid #1d1d1d;
-    font-size:15px;
-}
-
-.mobile-menu a:hover,
-.mobile-menu a.active{
-    color:#d4af37;
-}
-
-/* HERO */
-
-.hero{
-    text-align:center;
-    padding:75px 20px 45px;
-}
-
-.hero span{
-    color:#d4af37;
-    letter-spacing:3px;
-    font-size:13px;
-}
-
-.hero h1{
-    font-size:48px;
-    margin:10px 0;
-}
-
-.hero p{
-    color:#999;
-    max-width:650px;
-    margin:auto;
-}
-
-/* RESUME */
+/* =========================
+   MAIN
+========================= */
 
 .container{
-    max-width:950px;
+    max-width:1150px;
     margin:auto;
-    padding:20px;
+    padding:40px 20px 80px;
 }
 
-.resume{
-    background:#101010;
-    border:1px solid #292929;
-    border-radius:18px;
+
+/* =========================
+   PREMIUM PROFILE HEADER
+========================= */
+
+.profile-header{
+    position:relative;
+
+    display:grid;
+    grid-template-columns:240px 1fr;
+
+    gap:40px;
+
     padding:40px;
+
+    margin-bottom:25px;
+
+    border-radius:25px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    background:
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(212,175,55,.15),
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at 90% 80%,
+        rgba(212,175,55,.07),
+        transparent 30%
+    ),
+    linear-gradient(145deg,#151515,#090909);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.5),
+    inset 0 1px rgba(255,255,255,.03);
+
+    overflow:hidden;
 }
 
-.top{
+.profile-header::before{
+    content:"";
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    border:1px solid rgba(212,175,55,.15);
+
+    border-radius:50%;
+
+    top:-120px;
+    right:-80px;
+}
+
+.profile-header::after{
+    content:"";
+    position:absolute;
+
+    width:140px;
+    height:140px;
+
+    border:1px solid rgba(212,175,55,.12);
+
+    border-radius:50%;
+
+    bottom:-80px;
+    left:-50px;
+}
+
+
+/* =========================
+   PREMIUM ROUND PHOTO
+========================= */
+
+.photo-area{
     display:flex;
-    justify-content:space-between;
-    gap:30px;
-    padding-bottom:30px;
-    border-bottom:1px solid #292929;
+    justify-content:center;
+    align-items:center;
+    position:relative;
 }
 
-.name h2{
-    font-size:30px;
+.photo-frame{
+
+    position:relative;
+
+    width:205px;
+    height:205px;
+
+    padding:7px;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        145deg,
+        #f1d477,
+        #b8860b,
+        #d4af37,
+        #7a5a08,
+        #e4c45e
+    );
+
+    box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 20px 45px rgba(0,0,0,.55),
+    0 0 40px rgba(212,175,55,.25);
+
+    transform:rotate(-2deg);
+
+    z-index:2;
+
+    transition:.4s;
 }
 
-.name h3{
+.photo-frame::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-8px;
+
+    border:1px solid rgba(212,175,55,.30);
+
+    border-radius:50%;
+
+    z-index:-1;
+}
+
+.photo-inner{
+
+    width:100%;
+    height:100%;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    background:#111;
+
+    border:4px solid #090909;
+
+    position:relative;
+}
+
+.photo-inner img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.5s;
+}
+
+.photo-frame:hover{
+    transform:rotate(0deg) scale(1.03);
+}
+
+.photo-frame:hover img{
+    transform:scale(1.04);
+}
+
+
+/* PHOTO BADGE */
+
+.photo-badge{
+
+    position:absolute;
+
+    bottom:0px;
+    right:-24px;
+
+    background:#0b0b0b;
+
+    border:1px solid #d4af37;
+
     color:#d4af37;
-    font-size:16px;
-    font-weight:normal;
-    margin-top:5px;
+
+    padding:7px 12px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:.6px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.5);
+
+    z-index:5;
 }
 
-.contact{
-    text-align:right;
-    color:#999;
-    font-size:13px;
+
+/* =========================
+   HEADER CONTENT
+========================= */
+
+.profile-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
-.section{
-    margin-top:32px;
-}
-
-.section h2{
+.small-title{
     color:#d4af37;
-    font-size:18px;
-    margin-bottom:15px;
-    letter-spacing:1px;
+    font-size:12px;
+    letter-spacing:3px;
     text-transform:uppercase;
+    margin-bottom:8px;
 }
 
-.section p{
+.profile-content h1{
+    font-size:42px;
+    line-height:1.15;
+    margin-bottom:8px;
+}
+
+.profile-content h1 span{
+    color:#d4af37;
+}
+
+.profile-role{
+    color:#d4af37;
+    font-size:17px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.profile-description{
+    max-width:720px;
     color:#aaa;
     font-size:14px;
 }
 
-.row{
-    margin-bottom:20px;
-}
 
-.row h3{
-    font-size:18px;
-}
+/* =========================
+   SOCIAL CONTACT BUTTONS
+========================= */
 
-.row .sub{
-    color:#d4af37;
-    font-size:14px;
-}
+.contact-row{
 
-.row p{
-    color:#888;
-    font-size:13px;
-    margin-top:5px;
-}
-
-.skills{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:10px;
+
+    margin-top:20px;
 }
 
-.skill{
-    border:1px solid #333;
-    padding:8px 15px;
-    border-radius:30px;
-    color:#bbb;
-    font-size:13px;
+.contact-pill{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:9px 13px;
+
+    border:1px solid #303030;
+
+    background:
+    linear-gradient(
+        145deg,
+        #161616,
+        #0d0d0d
+    );
+
+    border-radius:9px;
+
+    color:#ccc;
+
+    font-size:12px;
+
+    transition:.3s;
+
+    box-shadow:
+    inset 0 1px rgba(255,255,255,.03);
 }
 
-/* BUTTONS */
+.contact-pill i{
 
-.buttons{
+    width:18px;
+
     text-align:center;
-    margin:35px 0 70px;
+
+    font-size:14px;
+
+    color:#d4af37;
+
+}
+
+.contact-pill:hover{
+
+    border-color:#d4af37;
+
+    color:#d4af37;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 7px 18px rgba(212,175,55,.10);
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.actions{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:25px;
 }
 
 .btn{
-    display:inline-block;
-    padding:13px 28px;
-    margin:5px;
+
     border:1px solid #d4af37;
-    border-radius:30px;
-    color:#d4af37;
+
+    background:#d4af37;
+
+    color:#050505;
+
+    padding:12px 20px;
+
+    border-radius:9px;
+
+    font-weight:bold;
+
+    font-size:13px;
+
+    cursor:pointer;
+
     transition:.3s;
 }
 
 .btn:hover{
-    background:#d4af37;
-    color:#000;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 8px 20px rgba(212,175,55,.15);
 }
 
-/* FOOTER */
+.btn-outline{
 
-footer{
-    border-top:1px solid #222;
+    background:transparent;
+
+    color:#d4af37;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:14px;
+
+    margin-bottom:25px;
+}
+
+.stat{
+
+    padding:20px;
+
     text-align:center;
+
+    border-radius:15px;
+
+    background:#101010;
+
+    border:1px solid #252525;
+
+    transition:.3s;
+}
+
+.stat:hover{
+
+    border-color:
+    rgba(212,175,55,.45);
+
+    transform:translateY(-3px);
+}
+
+.stat strong{
+
+    display:block;
+
+    font-size:28px;
+
+    color:#d4af37;
+
+    line-height:1.2;
+
+    margin-bottom:5px;
+}
+
+.stat span{
+
+    color:#888;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    minmax(0,2fr)
+    minmax(280px,1fr);
+
+    gap:25px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+
+    background:
+    linear-gradient(
+        145deg,
+        #111,
+        #0b0b0b
+    );
+
+    border:1px solid #242424;
+
+    border-radius:18px;
+
     padding:25px;
+
+    margin-bottom:25px;
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    border-color:
+    rgba(212,175,55,.28);
+}
+
+.section-title{
+
+    color:#d4af37;
+
+    font-size:20px;
+
+    padding-bottom:12px;
+
+    margin-bottom:20px;
+
+    border-bottom:1px solid #292929;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+
+    color:#aaa;
+
+    font-size:14px;
+}
+
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+
+    position:relative;
+
+    border-left:2px solid #806516;
+
+    padding-left:23px;
+}
+
+.timeline-item{
+
+    position:relative;
+
+    margin-bottom:32px;
+}
+
+.timeline-item:last-child{
+
+    margin-bottom:0;
+}
+
+.timeline-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-30px;
+
+    top:5px;
+
+    width:12px;
+
+    height:12px;
+
+    background:#d4af37;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 0 5px #111,
+    0 0 15px rgba(212,175,55,.35);
+}
+
+.timeline-item h3{
+
+    font-size:18px;
+
+    color:#eee;
+}
+
+.company{
+
+    color:#d4af37;
+
+    font-weight:bold;
+
+    font-size:14px;
+}
+
+.meta{
+
     color:#666;
+
+    font-size:11px;
+
+    margin:3px 0 10px;
+}
+
+.timeline-item p{
+
+    color:#aaa;
+
     font-size:13px;
 }
 
-/* MOBILE */
+.timeline-item ul{
 
-@media(max-width:700px){
+    margin-top:10px;
 
-    header{
-        padding:0 20px;
+    padding-left:18px;
+
+    color:#aaa;
+
+    font-size:13px;
+}
+
+.timeline-item li{
+
+    margin-bottom:5px;
+}
+
+
+/* =========================
+   PROJECT HIGHLIGHT
+========================= */
+
+.project-highlight{
+
+    display:grid;
+
+    grid-template-columns:110px 1fr;
+
+    gap:20px;
+
+    padding:20px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(212,175,55,.22);
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(212,175,55,.09),
+        rgba(0,0,0,.15)
+    );
+}
+
+.project-number{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#d4af37;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    border-right:1px solid #333;
+}
+
+.project-highlight h3{
+
+    font-size:17px;
+
+    margin-bottom:5px;
+}
+
+.project-highlight p{
+
+    color:#999;
+
+    font-size:13px;
+
+    margin-bottom:12px;
+}
+
+
+/* =========================
+   TAGS
+========================= */
+
+.tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+}
+
+.tag{
+
+    padding:6px 9px;
+
+    background:#151515;
+
+    border:1px solid #292929;
+
+    color:#aaa;
+
+    border-radius:6px;
+
+    font-size:11px;
+}
+
+
+/* =========================
+   EDUCATION
+========================= */
+
+.edu{
+
+    padding:15px 0 15px 17px;
+
+    border-left:3px solid #d4af37;
+
+    margin-bottom:18px;
+}
+
+.edu:last-child{
+
+    margin-bottom:0;
+}
+
+.edu h3{
+
+    font-size:15px;
+
+    color:#eee;
+}
+
+.edu .institution{
+
+    color:#d4af37;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+.edu p{
+
+    color:#777;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skill{
+
+    margin-bottom:18px;
+}
+
+.skill:last-child{
+
+    margin-bottom:0;
+}
+
+.skill-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:7px;
+}
+
+.skill-head span:first-child{
+
+    color:#ddd;
+
+    font-size:13px;
+}
+
+.skill-head span:last-child{
+
+    color:#d4af37;
+
+    font-size:10px;
+}
+
+.skill-bar{
+
+    height:5px;
+
+    background:#252525;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.skill-bar span{
+
+    display:block;
+
+    height:100%;
+
+    background:#d4af37;
+
+    border-radius:10px;
+}
+
+
+/* =========================
+   STRENGTHS
+========================= */
+
+.strength-list{
+
+    list-style:none;
+}
+
+.strength-list li{
+
+    color:#aaa;
+
+    font-size:13px;
+
+    padding:9px 0;
+
+    border-bottom:1px solid #222;
+}
+
+.strength-list li:last-child{
+
+    border-bottom:none;
+}
+
+.strength-list li::before{
+
+    content:"◆";
+
+    color:#d4af37;
+
+    font-size:8px;
+
+    margin-right:9px;
+}
+
+
+/* =========================
+   CAREER
+========================= */
+
+.career-box{
+
+    padding:20px;
+
+    border-radius:13px;
+
+    background:
+    radial-gradient(
+        circle at top right,
+        rgba(212,175,55,.13),
+        transparent 45%
+    ),
+    #0c0c0c;
+
+    border:1px solid rgba(212,175,55,.22);
+}
+
+.career-box h3{
+
+    color:#d4af37;
+
+    font-size:17px;
+
+    margin-bottom:7px;
+}
+
+.career-box p{
+
+    color:#999;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    border-top:1px solid #222;
+
+    text-align:center;
+
+    padding:28px 20px;
+
+    color:#666;
+
+    font-size:12px;
+}
+
+footer strong{
+
+    color:#d4af37;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    .nav-container{
+
+        flex-direction:column;
     }
 
-    nav{
-        display:none;
+    .nav-links{
+
+        gap:11px;
     }
 
-    .menu-btn{
-        display:block;
+    .profile-header{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        padding:30px 20px;
+
+        gap:30px;
     }
 
-    .hero{
-        padding:60px 20px 35px;
+    .profile-content{
+
+        align-items:center;
     }
 
-    .hero h1{
-        font-size:36px;
+    .profile-content h1{
+
+        font-size:32px;
     }
 
-    .hero p{
+    .contact-row{
+
+        justify-content:center;
+    }
+
+    .stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .content-grid{
+
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media(max-width:500px){
+
+    .container{
+
+        padding:25px 13px 60px;
+    }
+
+    .profile-header{
+
+        border-radius:18px;
+    }
+
+    .photo-frame{
+
+        width:175px;
+
+        height:175px;
+    }
+
+    .photo-badge{
+
+        right:-18px;
+
+        bottom:-4px;
+    }
+
+    .profile-content h1{
+
+        font-size:28px;
+    }
+
+    .profile-role{
+
         font-size:14px;
     }
 
-    .resume{
-        padding:25px 20px;
+    .stats{
+
+        gap:9px;
     }
 
-    .top{
-        flex-direction:column;
-        gap:18px;
+    .stat{
+
+        padding:15px 8px;
     }
 
-    .contact{
-        text-align:left;
+    .stat strong{
+
+        font-size:23px;
     }
 
-    .name h2{
-        font-size:26px;
+    .stat span{
+
+        font-size:9px;
     }
 
-    .section{
-        margin-top:28px;
+    .card{
+
+        padding:19px;
     }
 
-    .buttons{
-        margin-bottom:50px;
+    .project-highlight{
+
+        grid-template-columns:1fr;
     }
 
+    .project-number{
+
+        border-right:none;
+
+        border-bottom:1px solid #333;
+
+        padding-bottom:12px;
+    }
+
+    .contact-pill{
+
+        font-size:11px;
+
+        padding:8px 10px;
+    }
 }
+
+
+/* =========================
+   PRINT
+========================= */
+
+@media print{
+
+    body{
+
+        background:#fff;
+
+        color:#111;
+    }
+
+    nav,
+    .actions,
+    footer{
+
+        display:none !important;
+    }
+
+    .container{
+
+        max-width:100%;
+
+        padding:0;
+    }
+
+    .profile-header,
+    .card,
+    .stat{
+
+        background:#fff !important;
+
+        color:#111;
+
+        border:1px solid #ccc;
+
+        box-shadow:none;
+    }
+
+    .profile-content h1,
+    .timeline-item h3,
+    .project-highlight h3,
+    .edu h3{
+
+        color:#111;
+    }
+
+    .summary,
+    .timeline-item p,
+    .timeline-item li,
+    .career-box p,
+    .project-highlight p{
+
+        color:#333;
+    }
+
+    .section-title,
+    .company,
+    .profile-role,
+    .stat strong,
+    .career-box h3{
+
+        color:#8a6b00;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header>
 
-<a href="index.html" class="logo">MAMUN.</a>
+<!-- =========================
+     NAVBAR
+========================= -->
 
 <nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="skills.html">Skills</a>
-<a href="services.html">Services</a>
-<a href="projects.html">Projects</a>
-<a href="experience.html">Experience</a>
-<a href="resume.html" class="active">Resume</a>
-<a href="contact.html">Contact</a>
-</nav>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<div class="nav-container">
 
-</header>
+<a href="index.html" class="logo">
+MD ABDUL AL MAMUN
+</a>
 
-
-<div class="mobile-menu" id="mobileMenu">
+<div class="nav-links">
 
 <a href="index.html">Home</a>
+
 <a href="about.html">About</a>
+
 <a href="skills.html">Skills</a>
+
 <a href="services.html">Services</a>
+
 <a href="projects.html">Projects</a>
+
 <a href="experience.html">Experience</a>
+
 <a href="resume.html" class="active">Resume</a>
+
 <a href="contact.html">Contact</a>
 
 </div>
 
+</div>
 
-<section class="hero">
+</nav>
 
-<span>PROFESSIONAL PROFILE</span>
 
-<h1>Resume</h1>
 
-<p>
-A concise overview of my professional experience, education,
-skills and digital capabilities.
+<main class="container">
+
+
+<!-- =========================
+     PROFILE HEADER
+========================= -->
+
+<section class="profile-header">
+
+
+<div class="photo-area">
+
+<div class="photo-frame">
+
+<div class="photo-inner">
+
+<img
+src="mamun1.jpg"
+alt="MD Abdul Al Mamun"
+>
+
+</div>
+
+</div>
+
+<div class="photo-badge">
+DIGITAL SERVICE
+</div>
+
+</div>
+
+
+
+<div class="profile-content">
+
+<div class="small-title">
+Professional Resume
+</div>
+
+<h1>
+MD Abdul <span>Al Mamun</span>
+</h1>
+
+<div class="profile-role">
+Digital Service • Graphic Design • Digital Marketing • Web Design • Video Editing
+</div>
+
+<p class="profile-description">
+
+Creative and digitally focused professional with practical experience
+in business operations, customer service, graphic design, digital
+marketing, web design and video editing. Experienced in completing
+100+ digital and creative projects while continuously developing
+modern creative and technical skills.
+
+</p>
+
+
+<div class="contact-row">
+
+
+<a class="contact-pill"
+href="mailto:sajjadorigin446@gmail.com">
+
+<i class="fa-solid fa-envelope"></i>
+
+<span>Email</span>
+
+</a>
+
+
+<a class="contact-pill"
+href="https://wa.me/8801679606860"
+target="_blank">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+<span>WhatsApp</span>
+
+</a>
+
+
+<a class="contact-pill"
+href="https://www.linkedin.com/in/md-abdullah-al-mamun-453a39363"
+target="_blank">
+
+<i class="fa-brands fa-linkedin-in"></i>
+
+<span>LinkedIn</span>
+
+</a>
+
+
+<a class="contact-pill"
+href="https://www.facebook.com/sajjadhossain9865"
+target="_blank">
+
+<i class="fa-brands fa-facebook-f"></i>
+
+<span>Facebook</span>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     BUTTONS
+========================= -->
+
+<div class="actions">
+
+<button
+class="btn"
+onclick="window.print()">
+
+<i class="fa-solid fa-file-arrow-down"></i>
+
+&nbsp; Download / Print Resume
+
+</button>
+
+
+<a href="contact.html"
+class="btn btn-outline">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+&nbsp; Contact Me
+
+</a>
+
+</div>
+
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+
+
+<div class="stat">
+
+<strong>100+</strong>
+
+<span>
+Projects Completed
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>4+</strong>
+
+<span>
+Core Digital Skills
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>5+</strong>
+
+<span>
+Creative Areas
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>2023</strong>
+
+<span>
+Honours Started
+</span>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<div class="content-grid">
+
+
+<!-- LEFT -->
+
+<div>
+
+
+<!-- PROFILE -->
+
+<section class="card">
+
+<h2 class="section-title">
+Professional Profile
+</h2>
+
+<p class="summary">
+
+I am MD Abdul Al Mamun, a Digital Service professional with practical
+experience in business operations and hands-on involvement in digital
+and creative projects.
+
+My professional interests include Graphic Design, Digital Marketing,
+Web Design, Social Media, Video Editing and Freelance Digital Services.
+
+I have completed 100+ digital and creative projects across different
+areas and continue to strengthen my professional capabilities through
+practical work, experimentation and continuous learning.
+
+My approach combines creativity, attention to detail, practical thinking
+and a strong willingness to learn and improve.
+
 </p>
 
 </section>
 
 
-<div class="container">
 
-<div class="resume">
+<!-- EXPERIENCE -->
 
-<div class="top">
+<section class="card">
 
-<div class="name">
-<h2>MD Abdul Al Mamun</h2>
-<h3>Digital Service</h3>
+<h2 class="section-title">
+Professional Experience
+</h2>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<h3>
+Outlet Manager
+</h3>
+
+<div class="company">
+Baraka Farmyard
 </div>
 
-<div class="contact">
-Chattogram, Bangladesh<br>
-Graphic Design · Digital Marketing · Web Design
+<div class="meta">
+Retail • Business Operations • Customer Service
 </div>
-
-</div>
-
-
-<div class="section">
-
-<h2>Profile</h2>
 
 <p>
-Digital service professional with experience in business operations,
-customer service, creative digital work and online projects.
-Interested in building useful digital experiences through design,
-marketing and web solutions.
+
+Hands-on professional experience in outlet operations, customer
+interaction and day-to-day business activities.
+
+</p>
+
+<ul>
+
+<li>
+Managing daily outlet operations and workflow.
+</li>
+
+<li>
+Supporting customer service and sales activities.
+</li>
+
+<li>
+Coordinating product arrangement and availability.
+</li>
+
+<li>
+Supporting product management and inventory coordination.
+</li>
+
+<li>
+Maintaining an organized and customer-friendly environment.
+</li>
+
+<li>
+Supporting smooth business operations and communication.
+</li>
+
+</ul>
+
+</div>
+
+
+
+<div class="timeline-item">
+
+<h3>
+Digital Project Experience
+</h3>
+
+<div class="company">
+Freelance & Personal Digital Projects
+</div>
+
+<div class="meta">
+100+ Projects • Design • Web • Marketing • Video
+</div>
+
+<p>
+
+Completed 100+ digital and creative projects involving visual design,
+promotional content, web design, social media creatives and digital
+content production.
+
+</p>
+
+<ul>
+
+<li>
+Graphic and visual design projects.
+</li>
+
+<li>
+Responsive web page development.
+</li>
+
+<li>
+HTML and CSS based website work.
+</li>
+
+<li>
+Promotional and social media creative content.
+</li>
+
+<li>
+Digital marketing related project work.
+</li>
+
+<li>
+Video editing and creative video projects using Adobe Premiere Pro.
+</li>
+
+<li>
+AI-assisted creative and digital workflows.
+</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- PROJECTS -->
+
+<section class="card">
+
+<h2 class="section-title">
+Project Experience
+</h2>
+
+
+<div class="project-highlight">
+
+<div class="project-number">
+100+
+</div>
+
+<div>
+
+<h3>
+Digital & Creative Projects Completed
+</h3>
+
+<p>
+
+Completed 100+ projects across graphic design, promotional content,
+web design, social media creatives, video editing and other online
+digital activities.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">
+Graphic Design
+</span>
+
+<span class="tag">
+Digital Marketing
+</span>
+
+<span class="tag">
+Web Design
+</span>
+
+<span class="tag">
+Social Media
+</span>
+
+<span class="tag">
+Video Editing
+</span>
+
+<span class="tag">
+Creative Content
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- EDUCATION -->
+
+<section class="card">
+
+<h2 class="section-title">
+Education
+</h2>
+
+
+<div class="edu">
+
+<h3>
+Honours — History
+</h3>
+
+<div class="institution">
+Rangamati Government College
+</div>
+
+<p>
+2023 – Present • 3rd Year • Currently Studying
 </p>
 
 </div>
 
 
-<div class="section">
+<div class="edu">
 
-<h2>Experience</h2>
+<h3>
+Higher Secondary Certificate — HSC
+</h3>
 
-<div class="row">
-
-<h3>Outlet Manager</h3>
-
-<div class="sub">Baraka Farmyard</div>
+<div class="institution">
+Govt. Ashekane Aulia College
+</div>
 
 <p>
-Daily outlet operations, business activities, customer service,
-sales support, product management, inventory coordination and
-smooth workflow management.
+2022
 </p>
 
 </div>
 
 
-<div class="row">
+<div class="edu">
 
-<h3>Various Online Projects</h3>
+<h3>
+Secondary School Certificate — SSC
+</h3>
 
-<div class="sub">Digital Services</div>
+<div class="institution">
+Rahmania High School
+</div>
 
 <p>
-Worked on various online projects involving graphic design,
-digital services and online activities.
+2020
 </p>
 
 </div>
 
+</section>
+
+
+
+<!-- TRAINING -->
+
+<section class="card">
+
+<h2 class="section-title">
+Training & Development
+</h2>
+
+<div class="edu">
+
+<h3>
+Freelancing Course
+</h3>
+
+<div class="institution">
+E-Learning & Earning Ltd.
 </div>
 
-
-<div class="section">
-
-<h2>Education</h2>
-
-<div class="row">
-
-<h3>Honours — 3rd Year</h3>
-
-<div class="sub">Rangamati Government College</div>
-
-<p>History</p>
-
-</div>
-
-
-<div class="row">
-
-<h3>HSC — 2022</h3>
-
-<div class="sub">Govt. Ashekane Aulia College</div>
-
-</div>
-
-
-<div class="row">
-
-<h3>SSC — 2020</h3>
-
-<div class="sub">Rahmania High School</div>
+<p>
+Professional development in freelancing and online digital work.
+</p>
 
 </div>
 
+</section>
 
-<div class="row">
 
-<h3>Freelancing Course</h3>
 
-<div class="sub">E-Learning & Earning Ltd.</div>
+<!-- CAREER -->
+
+<section class="card">
+
+<h2 class="section-title">
+Career Direction
+</h2>
+
+<div class="career-box">
+
+<h3>
+Building a Modern Digital Career
+</h3>
+
+<p>
+
+My career direction is focused on expanding practical expertise in
+Graphic Design, Digital Marketing, Web Design, Social Media Management,
+Video Editing and Freelance Digital Services while continuously
+learning modern digital technologies and creative workflows.
+
+</p>
 
 </div>
 
-</div>
+</section>
 
-
-<div class="section">
-
-<h2>Skills</h2>
-
-<div class="skills">
-
-<div class="skill">Graphic Design</div>
-<div class="skill">Digital Marketing</div>
-<div class="skill">Web Design</div>
-<div class="skill">Customer Service</div>
-<div class="skill">Business Operations</div>
-<div class="skill">Online Projects</div>
-
-</div>
-
-</div>
 
 </div>
 
 
-<div class="buttons">
 
-<a href="#" class="btn" onclick="alert('CV PDF will be added here soon.'); return false;">
-Download CV
-</a>
+<!-- RIGHT -->
 
-<a href="contact.html" class="btn">
-Contact Me
-</a>
+<div>
+
+
+<!-- CONTACT -->
+
+<section class="card">
+
+<h2 class="section-title">
+Contact
+</h2>
+
+<div class="tags">
+
+<span class="tag">
+Chattogram, Bangladesh
+</span>
+
+<span class="tag">
+01679606860
+</span>
+
+<span class="tag">
+sajjadorigin446@gmail.com
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- CORE SKILLS -->
+
+<section class="card">
+
+<h2 class="section-title">
+Core Skills
+</h2>
+
+
+<div class="skill">
+
+<div class="skill-head">
+
+<span>
+Graphic Design
+</span>
+
+<span>
+Advanced
+</span>
+
+</div>
+
+<div class="skill-bar">
+<span style="width:88%"></span>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-head">
+
+<span>
+Digital Marketing
+</span>
+
+<span>
+Strong
+</span>
+
+</div>
+
+<div class="skill-bar">
+<span style="width:82%"></span>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-head">
+
+<span>
+Web Design
+</span>
+
+<span>
+Developing
+</span>
+
+</div>
+
+<div class="skill-bar">
+<span style="width:78%"></span>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-head">
+
+<span>
+Video Editing
+</span>
+
+<span>
+Strong
+</span>
+
+</div>
+
+<div class="skill-bar">
+<span style="width:82%"></span>
+</div>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-head">
+
+<span>
+Social Media
+</span>
+
+<span>
+Strong
+</span>
+
+</div>
+
+<div class="skill-bar">
+<span style="width:82%"></span>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- TOOLS -->
+
+<section class="card">
+
+<h2 class="section-title">
+Tools & Platforms
+</h2>
+
+<div class="tags">
+
+<span class="tag">
+Canva
+</span>
+
+<span class="tag">
+Adobe Photoshop
+</span>
+
+<span class="tag">
+Adobe Premiere Pro
+</span>
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+GitHub
+</span>
+
+<span class="tag">
+Cloudflare
+</span>
+
+<span class="tag">
+DNS
+</span>
+
+<span class="tag">
+Facebook
+</span>
+
+<span class="tag">
+Instagram
+</span>
+
+<span class="tag">
+Meta
+</span>
+
+<span class="tag">
+Google Workspace
+</span>
+
+<span class="tag">
+AI Creative Tools
+</span>
+
+<span class="tag">
+Digital Research
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- STRENGTHS -->
+
+<section class="card">
+
+<h2 class="section-title">
+Professional Strengths
+</h2>
+
+<ul class="strength-list">
+
+<li>
+Creative Thinking
+</li>
+
+<li>
+Attention to Detail
+</li>
+
+<li>
+Visual Communication
+</li>
+
+<li>
+Problem Solving
+</li>
+
+<li>
+Communication
+</li>
+
+<li>
+Adaptability
+</li>
+
+<li>
+Time Management
+</li>
+
+<li>
+Continuous Learning
+</li>
+
+</ul>
+
+</section>
+
+
+
+<!-- LANGUAGES -->
+
+<section class="card">
+
+<h2 class="section-title">
+Languages
+</h2>
+
+<div class="tags">
+
+<span class="tag">
+Bangla — Native
+</span>
+
+<span class="tag">
+English — Working Knowledge
+</span>
+
+<span class="tag">
+Hindi — Working Knowledge
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- CURRENTLY DEVELOPING -->
+
+<section class="card">
+
+<h2 class="section-title">
+Currently Developing
+</h2>
+
+<div class="tags">
+
+<span class="tag">
+Advanced HTML / CSS
+</span>
+
+<span class="tag">
+JavaScript
+</span>
+
+<span class="tag">
+UI / UX
+</span>
+
+<span class="tag">
+SEO
+</span>
+
+<span class="tag">
+Meta Ads
+</span>
+
+<span class="tag">
+Analytics
+</span>
+
+<span class="tag">
+Content Strategy
+</span>
+
+<span class="tag">
+Website Optimization
+</span>
+
+</div>
+
+</section>
+
 
 </div>
 
 </div>
+
+
+
+<!-- =========================
+     PHILOSOPHY
+========================= -->
+
+<section class="card">
+
+<h2 class="section-title">
+Professional Philosophy
+</h2>
+
+<div class="career-box">
+
+<h3>
+Learn • Create • Improve • Grow
+</h3>
+
+<p>
+
+I believe professional growth comes from consistent learning, practical
+experience and the willingness to improve. My goal is to combine
+creativity, technology and practical business understanding to create
+professional, useful and meaningful digital work.
+
+</p>
+
+</div>
+
+</section>
+
+
+</main>
+
 
 
 <footer>
-© 2026 MD Abdul Al Mamun. All Rights Reserved.
+
+<strong>
+MD Abdul Al Mamun
+</strong>
+
+— Digital Service
+
+<br>
+
+Chattogram, Bangladesh
+
 </footer>
 
-
-<script>
-
-function toggleMenu(){
-
-const menu = document.getElementById("mobileMenu");
-
-if(menu.style.display === "block"){
-    menu.style.display = "none";
-}else{
-    menu.style.display = "block";
-}
-
-}
-
-</script>
 
 </body>
 </html>
