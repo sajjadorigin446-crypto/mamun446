@@ -6,18 +6,21 @@
 
 <title>Projects | MD Abdul Al Mamun</title>
 
+<meta name="description" content="Explore selected digital, web, graphic design, marketing and personal projects by MD Abdul Al Mamun.">
+
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#080808;
-    color:#fff;
-    line-height:1.6;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#050505;
+    color:#f5f5f5;
+    line-height:1.7;
 }
 
 a{
@@ -25,230 +28,749 @@ a{
     color:inherit;
 }
 
-/* HEADER */
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
 
-header{
-    height:72px;
-    padding:0 5%;
-    border-bottom:1px solid #222;
+/* NAVBAR */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(5,5,5,.96);
+    border-bottom:1px solid rgba(212,175,55,.18);
+    backdrop-filter:blur(15px);
+}
+
+.nav-container{
+    min-height:70px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    background:#090909;
-    position:relative;
-    z-index:1000;
+    justify-content:space-between;
 }
 
 .logo{
-    color:#d4af37;
-    font-size:22px;
+    font-size:20px;
     font-weight:bold;
+    color:#d4af37;
+    letter-spacing:.5px;
 }
 
-nav{
+.nav-links{
     display:flex;
-    align-items:center;
-    gap:22px;
+    gap:25px;
+    list-style:none;
 }
 
-nav a{
-    color:#aaa;
+.nav-links a{
+    color:#ddd;
     font-size:14px;
     transition:.3s;
 }
 
-nav a:hover,
-nav a.active{
+.nav-links a:hover,
+.nav-links .active{
     color:#d4af37;
 }
-
-/* MOBILE BUTTON */
 
 .menu-btn{
     display:none;
-    background:none;
-    border:none;
+    font-size:26px;
     color:#d4af37;
-    font-size:27px;
     cursor:pointer;
-}
-
-/* MOBILE MENU */
-
-.mobile-menu{
-    display:none;
-    position:absolute;
-    top:72px;
-    left:0;
-    width:100%;
-    background:#0b0b0b;
-    border-bottom:1px solid #222;
-    padding:15px 6%;
-    z-index:999;
-}
-
-.mobile-menu a{
-    display:block;
-    padding:13px 0;
-    color:#aaa;
-    border-bottom:1px solid #1d1d1d;
-    font-size:15px;
-}
-
-.mobile-menu a:hover,
-.mobile-menu a.active{
-    color:#d4af37;
 }
 
 /* HERO */
 
 .hero{
+    min-height:72vh;
+    display:flex;
+    align-items:center;
     text-align:center;
-    padding:80px 20px 45px;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 50% 20%,rgba(212,175,55,.13),transparent 35%),
+    #050505;
 }
 
-.hero span{
+.hero-content{
+    width:100%;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 17px;
+    border:1px solid rgba(212,175,55,.45);
+    border-radius:30px;
     color:#d4af37;
-    font-size:14px;
-    letter-spacing:3px;
+    font-size:12px;
+    letter-spacing:1.5px;
     text-transform:uppercase;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:48px;
-    margin:12px 0;
+    font-size:clamp(42px,7vw,78px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#d4af37;
 }
 
 .hero p{
+    max-width:750px;
+    margin:auto;
     color:#aaa;
-    max-width:650px;
+    font-size:17px;
+}
+
+.hero-buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:13px 24px;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:14px;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#d4af37;
+    color:#050505;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(212,175,55,.2);
+}
+
+.btn-outline{
+    border:1px solid #444;
+    color:#ddd;
+}
+
+.btn-outline:hover{
+    border-color:#d4af37;
+    color:#d4af37;
+}
+
+/* SECTION */
+
+section{
+    padding:90px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-heading .small{
+    color:#d4af37;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.section-heading h2{
+    font-size:38px;
+    margin:10px 0;
+}
+
+.section-heading p{
+    max-width:700px;
+    margin:auto;
+    color:#999;
+}
+
+/* PROJECT OVERVIEW */
+
+.overview-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.overview-card{
+    background:#0b0b0b;
+    border:1px solid #1c1c1c;
+    border-radius:14px;
+    padding:28px;
+    text-align:center;
+    transition:.3s;
+}
+
+.overview-card:hover{
+    border-color:rgba(212,175,55,.45);
+    transform:translateY(-5px);
+}
+
+.overview-icon{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.overview-card h3{
+    font-size:17px;
+    margin-bottom:6px;
+}
+
+.overview-card p{
+    color:#999;
+    font-size:14px;
+}
+
+/* FEATURED PROJECT */
+
+.featured{
+    background:linear-gradient(145deg,#0d0d0d,#070707);
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.featured-top{
+    padding:40px;
+    border-bottom:1px solid #1c1c1c;
+}
+
+.featured-label{
+    color:#d4af37;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.featured-top h3{
+    font-size:32px;
+    margin:10px 0;
+}
+
+.featured-top p{
+    color:#999;
+    max-width:800px;
+}
+
+.project-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:22px;
+}
+
+.meta{
+    border:1px solid #292929;
+    background:#101010;
+    padding:7px 12px;
+    border-radius:5px;
+    color:#bbb;
+    font-size:12px;
+}
+
+.meta strong{
+    color:#d4af37;
+}
+
+.featured-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+.featured-box{
+    padding:35px;
+    border-right:1px solid #1c1c1c;
+    border-bottom:1px solid #1c1c1c;
+}
+
+.featured-box:nth-child(even){
+    border-right:none;
+}
+
+.featured-box h4{
+    color:#d4af37;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.featured-box p{
+    color:#aaa;
+    font-size:14px;
+}
+
+.featured-box ul{
+    padding-left:20px;
+    color:#aaa;
+}
+
+.featured-box li{
+    margin:7px 0;
+}
+
+/* JOURNEY */
+
+.journey{
+    position:relative;
+    max-width:900px;
     margin:auto;
 }
 
-/* PROJECTS */
+.journey::before{
+    content:"";
+    position:absolute;
+    left:18px;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:#292929;
+}
 
-.projects{
-    max-width:1100px;
-    margin:auto;
-    padding:30px 20px 80px;
+.journey-item{
+    position:relative;
+    padding-left:60px;
+    margin-bottom:35px;
+}
+
+.journey-dot{
+    position:absolute;
+    left:10px;
+    top:4px;
+    width:17px;
+    height:17px;
+    border-radius:50%;
+    background:#d4af37;
+    box-shadow:0 0 0 5px rgba(212,175,55,.08);
+}
+
+.journey-item h3{
+    font-size:18px;
+    margin-bottom:5px;
+}
+
+.journey-item p{
+    color:#999;
+    font-size:14px;
+}
+
+/* FILTER */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.filter-btn{
+    background:#0c0c0c;
+    color:#aaa;
+    border:1px solid #242424;
+    padding:10px 17px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#d4af37;
+    color:#050505;
+    border-color:#d4af37;
+}
+
+/* PROJECT GRID */
+
+.project-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:22px;
 }
 
-.card{
-    background:#111;
-    border:1px solid #292929;
-    border-radius:16px;
-    padding:30px 24px;
-    transition:.3s;
-    position:relative;
+.project-card{
+    background:#0b0b0b;
+    border:1px solid #1d1d1d;
+    border-radius:14px;
     overflow:hidden;
+    transition:.35s;
 }
 
-.card:hover{
+.project-card:hover{
     transform:translateY(-7px);
-    border-color:#d4af37;
+    border-color:rgba(212,175,55,.45);
 }
 
-.number{
+.project-image{
+    height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+    radial-gradient(circle,rgba(212,175,55,.15),transparent 55%),
+    #111;
+    font-size:45px;
     color:#d4af37;
-    font-size:13px;
-    letter-spacing:2px;
 }
 
-.card h2{
-    margin:12px 0;
-    font-size:23px;
+.project-content{
+    padding:24px;
 }
 
-.card p{
-    color:#aaa;
+.project-tag{
+    color:#d4af37;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+.project-content h3{
+    margin:8px 0;
+    font-size:20px;
+}
+
+.project-content p{
+    color:#999;
     font-size:14px;
+    margin-bottom:17px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
 }
 
 .tag{
-    display:inline-block;
-    margin-top:20px;
-    padding:6px 12px;
-    border:1px solid #333;
-    border-radius:30px;
+    padding:5px 9px;
+    border:1px solid #292929;
+    border-radius:4px;
+    color:#aaa;
+    font-size:11px;
+}
+
+/* CASE STUDY */
+
+.case-study{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.case-box{
+    background:#0b0b0b;
+    border:1px solid #1d1d1d;
+    border-radius:14px;
+    padding:30px;
+}
+
+.case-number{
+    font-size:13px;
     color:#d4af37;
-    font-size:12px;
+}
+
+.case-box h3{
+    margin:10px 0;
+}
+
+.case-box p{
+    color:#999;
+    font-size:14px;
+}
+
+/* BARAKA */
+
+.baraka{
+    background:linear-gradient(135deg,#0d0d0d,#080808);
+    border:1px solid rgba(212,175,55,.22);
+    border-radius:18px;
+    padding:45px;
+}
+
+.baraka-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:40px;
+    align-items:center;
+}
+
+.baraka h3{
+    font-size:30px;
+    margin:10px 0;
+}
+
+.baraka p{
+    color:#999;
+}
+
+.baraka-list{
+    display:grid;
+    gap:12px;
+}
+
+.baraka-item{
+    padding:15px;
+    background:#111;
+    border:1px solid #222;
+    border-radius:8px;
+}
+
+.baraka-item strong{
+    color:#d4af37;
+    display:block;
+    margin-bottom:3px;
+}
+
+.baraka-item span{
+    color:#999;
+    font-size:13px;
+}
+
+/* TOOLS */
+
+.tools{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+}
+
+.tool{
+    padding:12px 18px;
+    background:#0c0c0c;
+    border:1px solid #252525;
+    border-radius:6px;
+    color:#ccc;
+    font-size:13px;
+    transition:.3s;
+}
+
+.tool:hover{
+    border-color:#d4af37;
+    color:#d4af37;
+}
+
+/* SHOWCASE */
+
+.showcase-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.showcase{
+    min-height:180px;
+    border:1px dashed #303030;
+    border-radius:12px;
+    background:#0a0a0a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.showcase span{
+    color:#777;
+    font-size:13px;
+}
+
+.showcase strong{
+    display:block;
+    color:#d4af37;
+    margin-bottom:5px;
+}
+
+/* CURRENTLY BUILDING */
+
+.building{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.build-card{
+    padding:30px;
+    background:#0b0b0b;
+    border:1px solid #1e1e1e;
+    border-radius:14px;
+}
+
+.build-card h3{
+    margin:10px 0;
+}
+
+.build-card p{
+    color:#999;
+    font-size:14px;
+}
+
+/* PHILOSOPHY */
+
+.philosophy{
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+.quote{
+    font-size:28px;
+    line-height:1.4;
+    color:#eee;
+}
+
+.quote span{
+    color:#d4af37;
+}
+
+.philosophy p{
+    margin-top:15px;
+    color:#888;
 }
 
 /* CTA */
 
 .cta{
     text-align:center;
-    padding:20px 20px 80px;
+    background:
+    radial-gradient(circle at center,rgba(212,175,55,.13),transparent 55%),
+    #080808;
+    border-top:1px solid #191919;
+    border-bottom:1px solid #191919;
 }
 
 .cta h2{
-    font-size:30px;
-    margin-bottom:10px;
+    font-size:38px;
+    margin-bottom:12px;
 }
 
 .cta p{
     color:#999;
-    margin-bottom:25px;
+    max-width:650px;
+    margin:auto;
 }
 
-.btn{
-    display:inline-block;
-    padding:12px 25px;
-    border:1px solid #d4af37;
-    color:#d4af37;
-    border-radius:30px;
-    transition:.3s;
-}
-
-.btn:hover{
-    background:#d4af37;
-    color:#000;
+.cta-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
 /* FOOTER */
 
 footer{
-    border-top:1px solid #222;
+    padding:35px 0;
     text-align:center;
-    padding:25px;
-    color:#666;
+    background:#030303;
+    border-top:1px solid #161616;
+}
+
+footer p{
+    color:#777;
     font-size:13px;
 }
 
-/* MOBILE */
+footer strong{
+    color:#d4af37;
+}
 
-@media(max-width:800px){
+/* RESPONSIVE */
 
-    header{
-        padding:0 20px;
+@media(max-width:900px){
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+        background:#070707;
+        display:none;
+        flex-direction:column;
+        padding:20px;
+        border-bottom:1px solid #222;
     }
 
-    nav{
-        display:none;
+    .nav-links.show{
+        display:flex;
     }
 
     .menu-btn{
         display:block;
     }
 
+    .overview-grid,
+    .project-grid,
+    .case-study,
+    .building{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .baraka-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    section{
+        padding:65px 0;
+    }
+
+    .container{
+        width:92%;
+    }
+
     .hero{
-        padding-top:60px;
+        min-height:65vh;
     }
 
     .hero h1{
-        font-size:36px;
+        font-size:45px;
     }
 
-    .projects{
+    .hero p{
+        font-size:15px;
+    }
+
+    .section-heading h2{
+        font-size:30px;
+    }
+
+    .overview-grid,
+    .project-grid,
+    .case-study,
+    .building,
+    .showcase-grid,
+    .featured-grid{
         grid-template-columns:1fr;
-        padding:25px 18px 60px;
     }
 
-    .card{
-        padding:28px 22px;
+    .featured-box{
+        border-right:none;
+    }
+
+    .baraka{
+        padding:28px;
+    }
+
+    .baraka h3{
+        font-size:25px;
+    }
+
+    .quote{
+        font-size:22px;
     }
 }
 </style>
@@ -256,167 +778,962 @@ footer{
 
 <body>
 
-<header>
-
-<a href="index.html" class="logo">MAMUN.</a>
+<!-- NAVBAR -->
 
 <nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="skills.html">Skills</a>
-<a href="services.html">Services</a>
-<a href="projects.html" class="active">Projects</a>
-<a href="experience.html">Experience</a>
-<a href="resume.html">Resume</a>
-<a href="contact.html">Contact</a>
-</nav>
+<div class="container nav-container">
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<a href="index.html" class="logo">MD ABDUL AL MAMUN</a>
 
-</header>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-
-<div class="mobile-menu" id="mobileMenu">
-
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="skills.html">Skills</a>
-<a href="services.html">Services</a>
-<a href="projects.html" class="active">Projects</a>
-<a href="experience.html">Experience</a>
-<a href="resume.html">Resume</a>
-<a href="contact.html">Contact</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="skills.html">Skills</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="projects.html" class="active">Projects</a></li>
+<li><a href="experience.html">Experience</a></li>
+<li><a href="resume.html">Resume</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
 
 </div>
+</nav>
 
+
+<!-- HERO -->
 
 <section class="hero">
 
-<span>My Work</span>
+<div class="container hero-content">
 
-<h1>Projects</h1>
+<div class="badge">Selected Work & Digital Projects</div>
+
+<h1>My <span>Projects.</span></h1>
 
 <p>
-A selection of digital projects, creative work and online activities
-that represent my skills and experience.
+A collection of personal, creative, web, marketing and real-world digital work
+that represents my learning journey, practical experience and continuous growth.
 </p>
+
+<div class="hero-buttons">
+<a href="#featured" class="btn btn-primary">Explore Featured Project</a>
+<a href="#projects" class="btn btn-outline">View All Projects</a>
+</div>
+
+</div>
 
 </section>
 
 
-<section class="projects">
+<!-- PROJECT OVERVIEW -->
 
-<div class="card">
+<section>
 
-<div class="number">01 — DESIGN</div>
+<div class="container">
 
-<h2>Graphic Design Projects</h2>
+<div class="section-heading">
+
+<div class="small">Project Overview</div>
+
+<h2>Built With Purpose</h2>
 
 <p>
-Creative social media designs, promotional materials,
-brand visuals and digital graphics created for different projects.
+Every project is an opportunity to learn, experiment, solve problems and improve
+the way ideas are transformed into digital experiences.
 </p>
-
-<div class="tag">Graphic Design</div>
 
 </div>
 
 
-<div class="card">
+<div class="overview-grid">
 
-<div class="number">02 — MARKETING</div>
+<div class="overview-card">
+<div class="overview-icon">💻</div>
+<h3>Web Projects</h3>
+<p>Responsive pages, personal website development and web experiments.</p>
+</div>
 
-<h2>Digital Marketing</h2>
+<div class="overview-card">
+<div class="overview-icon">🎨</div>
+<h3>Creative Work</h3>
+<p>Visual concepts, promotional creatives and graphic design experiments.</p>
+</div>
+
+<div class="overview-card">
+<div class="overview-icon">📈</div>
+<h3>Digital Marketing</h3>
+<p>Product promotion, social media content and digital communication concepts.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURED PROJECT -->
+
+<section id="featured">
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Featured Project</div>
+
+<h2>Personal Portfolio Website</h2>
 
 <p>
-Social media marketing, promotional campaigns and
-digital marketing activities focused on improving online visibility.
+A personal digital platform created to present my professional identity,
+skills, services, experience and selected work.
 </p>
-
-<div class="tag">Digital Marketing</div>
 
 </div>
 
 
-<div class="card">
+<div class="featured">
 
-<div class="number">03 — WEB</div>
+<div class="featured-top">
 
-<h2>Personal Portfolio</h2>
+<div class="featured-label">Featured • Personal Project • Ongoing</div>
+
+<h3>MD Abdul Al Mamun — Personal Portfolio</h3>
 
 <p>
-A modern personal portfolio website designed to present
-my skills, experience, services and professional profile.
+A responsive personal portfolio website focused on personal branding,
+professional presentation and creating a central online presence.
 </p>
 
-<div class="tag">Web Design</div>
+<div class="project-meta">
+
+<div class="meta"><strong>Type:</strong> Personal Website</div>
+
+<div class="meta"><strong>Role:</strong> Designer & Developer</div>
+
+<div class="meta"><strong>Status:</strong> Ongoing</div>
+
+<div class="meta"><strong>Focus:</strong> Personal Branding</div>
+
+<div class="meta"><strong>Platform:</strong> Web</div>
+
+<div class="meta"><strong>Technology:</strong> HTML & CSS</div>
+
+</div>
 
 </div>
 
 
-<div class="card">
+<div class="featured-grid">
 
-<div class="number">04 — BUSINESS</div>
+<div class="featured-box">
+
+<h4>Project Objective</h4>
+
+<p>
+The objective is to create a professional online presence where visitors
+can easily understand my background, capabilities, experience, projects
+and digital services.
+</p>
+
+</div>
+
+
+<div class="featured-box">
+
+<h4>My Role</h4>
+
+<p>
+I am responsible for planning the structure, preparing content,
+designing the visual direction and building the website pages while
+continuously improving the overall presentation.
+</p>
+
+</div>
+
+
+<div class="featured-box">
+
+<h4>Key Features</h4>
+
+<ul>
+<li>Responsive layout</li>
+<li>Premium dark visual style</li>
+<li>Professional navigation</li>
+<li>Skills & services presentation</li>
+<li>Project showcase</li>
+<li>Experience & resume sections</li>
+<li>Contact and social links</li>
+</ul>
+
+</div>
+
+
+<div class="featured-box">
+
+<h4>Project Journey</h4>
+
+<ul>
+<li>Define personal goals</li>
+<li>Plan website structure</li>
+<li>Create page content</li>
+<li>Develop HTML/CSS layout</li>
+<li>Review mobile responsiveness</li>
+<li>Refine visual presentation</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECT JOURNEY -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Project Journey</div>
+
+<h2>From Idea to Execution</h2>
+
+<p>
+My project workflow focuses on understanding the objective first and improving
+the final result through structured steps.
+</p>
+
+</div>
+
+
+<div class="journey">
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<h3>01 — Research</h3>
+<p>
+Understand the purpose, audience, requirements and visual direction of the project.
+</p>
+</div>
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<h3>02 — Planning</h3>
+<p>
+Organize the structure, content, sections and overall project direction.
+</p>
+</div>
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<h3>03 — Creation</h3>
+<p>
+Turn the concept into visual designs, web layouts or digital content.
+</p>
+</div>
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<h3>04 — Testing</h3>
+<p>
+Review layouts, readability, responsiveness and overall user experience.
+</p>
+</div>
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<h3>05 — Refinement</h3>
+<p>
+Improve details, consistency and presentation before considering the work complete.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECT FILTER -->
+
+<section id="projects">
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Selected Work</div>
+
+<h2>Explore My Projects</h2>
+
+<p>
+Browse different categories of work and creative experiments.
+</p>
+
+</div>
+
+
+<div class="filters">
+
+<button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
+
+<button class="filter-btn" onclick="filterProjects('web',this)">Web</button>
+
+<button class="filter-btn" onclick="filterProjects('design',this)">Design</button>
+
+<button class="filter-btn" onclick="filterProjects('marketing',this)">Marketing</button>
+
+<button class="filter-btn" onclick="filterProjects('personal',this)">Personal</button>
+
+</div>
+
+
+<div class="project-grid">
+
+
+<div class="project-card" data-category="web personal">
+
+<div class="project-image">🌐</div>
+
+<div class="project-content">
+
+<div class="project-tag">Web • Personal</div>
+
+<h3>Personal Portfolio Website</h3>
+
+<p>
+A multi-section personal website designed to present professional identity,
+skills, services, experience and projects.
+</p>
+
+<div class="tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">Responsive</span>
+<span class="tag">Personal Branding</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-card" data-category="design marketing">
+
+<div class="project-image">🎨</div>
+
+<div class="project-content">
+
+<div class="project-tag">Design • Promotional</div>
+
+<h3>Promotional Creative</h3>
+
+<p>
+Creative visual concepts designed around product presentation, promotional
+communication and social media use.
+</p>
+
+<div class="tags">
+<span class="tag">Graphic Design</span>
+<span class="tag">Visual Content</span>
+<span class="tag">Promotion</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-card" data-category="marketing">
+
+<div class="project-image">📢</div>
+
+<div class="project-content">
+
+<div class="project-tag">Marketing</div>
+
+<h3>Product Promotion</h3>
+
+<p>
+Product-focused promotional work developed with attention to visual
+presentation and digital communication.
+</p>
+
+<div class="tags">
+<span class="tag">Marketing</span>
+<span class="tag">Product Content</span>
+<span class="tag">Social Media</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-card" data-category="design marketing">
+
+<div class="project-image">📱</div>
+
+<div class="project-content">
+
+<div class="project-tag">Social Media</div>
+
+<h3>Social Media Creative</h3>
+
+<p>
+Social-media-oriented creative concepts focused on clear communication,
+visual consistency and engaging presentation.
+</p>
+
+<div class="tags">
+<span class="tag">Social Media</span>
+<span class="tag">Creative Design</span>
+<span class="tag">Content</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-card" data-category="web">
+
+<div class="project-image">💻</div>
+
+<div class="project-content">
+
+<div class="project-tag">Web • Practice</div>
+
+<h3>Responsive Web Page</h3>
+
+<p>
+Practice-based responsive web layouts created to improve understanding of
+structure, spacing, typography and mobile presentation.
+</p>
+
+<div class="tags">
+<span class="tag">HTML</span>
+<span class="tag">CSS</span>
+<span class="tag">Mobile UI</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-card" data-category="design personal">
+
+<div class="project-image">✨</div>
+
+<div class="project-content">
+
+<div class="project-tag">Experimental</div>
+
+<h3>Creative Design Experiments</h3>
+
+<p>
+Personal experiments exploring layouts, visual styles, AI-assisted creative
+work and modern digital presentation.
+</p>
+
+<div class="tags">
+<span class="tag">Creative</span>
+<span class="tag">AI Tools</span>
+<span class="tag">Experiment</span>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CASE STUDY -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Case Study</div>
+
+<h2>How I Approach a Project</h2>
+
+<p>
+A professional project is not only about the final design. The process behind
+the work is equally important.
+</p>
+
+</div>
+
+
+<div class="case-study">
+
+<div class="case-box">
+
+<div class="case-number">01 — CHALLENGE</div>
+
+<h3>Understanding the Need</h3>
+
+<p>
+Identify the purpose of the project, understand the target audience and
+determine what the final output needs to communicate.
+</p>
+
+</div>
+
+
+<div class="case-box">
+
+<div class="case-number">02 — APPROACH</div>
+
+<h3>Building the Solution</h3>
+
+<p>
+Organize the content, choose an appropriate visual direction and develop
+the project step by step with attention to usability and presentation.
+</p>
+
+</div>
+
+
+<div class="case-box">
+
+<div class="case-number">03 — OUTCOME</div>
+
+<h3>Refined Digital Work</h3>
+
+<p>
+The goal is to deliver a clear, organized and visually professional result
+that communicates the intended message effectively.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- BARAKA FARMYARD -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Real-World Exposure</div>
 
 <h2>Baraka Farmyard</h2>
 
 <p>
-Worked on daily outlet operations, customer service,
-sales support, product management and business activities.
+Practical business and promotional exposure through my work as an Outlet Manager.
 </p>
-
-<div class="tag">Business Support</div>
 
 </div>
 
 
-<div class="card">
+<div class="baraka">
 
-<div class="number">05 — ONLINE</div>
+<div class="baraka-grid">
 
-<h2>Online Projects</h2>
+<div>
+
+<div class="featured-label">Professional Experience Project</div>
+
+<h3>Business & Promotional Work</h3>
 
 <p>
-Various online projects involving digital services,
-creative work and client-focused tasks.
+My experience at Baraka Farmyard has provided practical exposure to business
+operations, customer interaction, product presentation and promotional
+activities. It also helped me understand how digital communication connects
+with real-world business environments.
 </p>
 
-<div class="tag">Online Projects</div>
+<br>
+
+<p>
+This experience contributes to my understanding of product-focused communication,
+organized workflow and customer-oriented thinking.
+</p>
 
 </div>
 
 
-<div class="card">
+<div class="baraka-list">
 
-<div class="number">06 — FUTURE</div>
+<div class="baraka-item">
+<strong>Product Presentation</strong>
+<span>Understanding how products can be organized and presented clearly.</span>
+</div>
 
-<h2>Upcoming Projects</h2>
+<div class="baraka-item">
+<strong>Promotional Content</strong>
+<span>Exposure to product-focused promotional and social media-oriented creative work.</span>
+</div>
 
-<p>
-More creative digital projects and professional work
-will be added here as my portfolio continues to grow.
-</p>
+<div class="baraka-item">
+<strong>Customer Perspective</strong>
+<span>Practical understanding of customer interaction and communication.</span>
+</div>
 
-<div class="tag">Coming Soon</div>
+<div class="baraka-item">
+<strong>Business Environment</strong>
+<span>Hands-on exposure to daily outlet operations and workflow.</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
+
+<!-- TOOLS -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Tools & Technology</div>
+
+<h2>My Project Toolkit</h2>
+
+<p>
+A combination of creative, web, digital marketing and productivity tools used
+through different stages of my work.
+</p>
+
+</div>
+
+
+<div class="tools">
+
+<div class="tool">HTML</div>
+<div class="tool">CSS</div>
+<div class="tool">Canva</div>
+<div class="tool">Adobe Photoshop</div>
+<div class="tool">AI Creative Tools</div>
+<div class="tool">Facebook</div>
+<div class="tool">Instagram</div>
+<div class="tool">Meta Ecosystem</div>
+<div class="tool">GitHub</div>
+<div class="tool">Cloudflare</div>
+<div class="tool">DNS</div>
+<div class="tool">Google Workspace</div>
+<div class="tool">Digital Research</div>
+<div class="tool">Online Collaboration</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VISUAL SHOWCASE -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Visual Showcase</div>
+
+<h2>Project Gallery</h2>
+
+<p>
+This section can be used to display real screenshots, design previews and
+selected project visuals as the portfolio grows.
+</p>
+
+</div>
+
+
+<div class="showcase-grid">
+
+<div class="showcase">
+<div>
+<strong>Website Preview</strong>
+<span>Add a screenshot of the portfolio website here.</span>
+</div>
+</div>
+
+<div class="showcase">
+<div>
+<strong>Graphic Design</strong>
+<span>Add a real promotional or creative design here.</span>
+</div>
+</div>
+
+<div class="showcase">
+<div>
+<strong>Social Media Creative</strong>
+<span>Add a real social media creative here.</span>
+</div>
+</div>
+
+<div class="showcase">
+<div>
+<strong>Product Promotion</strong>
+<span>Add a product promotional visual here.</span>
+</div>
+</div>
+
+<div class="showcase">
+<div>
+<strong>Web Experiment</strong>
+<span>Add a screenshot of a web experiment here.</span>
+</div>
+</div>
+
+<div class="showcase">
+<div>
+<strong>Creative Experiment</strong>
+<span>Add an AI-assisted or personal creative project here.</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRACTICE -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Practice & Experiments</div>
+
+<h2>Learning Through Building</h2>
+
+<p>
+Not every project needs to be client work. Personal experiments are an important
+part of improving practical skills.
+</p>
+
+</div>
+
+
+<div class="building">
+
+<div class="build-card">
+
+<div class="featured-label">01</div>
+
+<h3>Web Experiments</h3>
+
+<p>
+Testing different layouts, navigation systems, responsive structures and
+modern website presentation techniques.
+</p>
+
+</div>
+
+
+<div class="build-card">
+
+<div class="featured-label">02</div>
+
+<h3>Design Experiments</h3>
+
+<p>
+Exploring typography, composition, visual hierarchy, branding concepts and
+creative layouts.
+</p>
+
+</div>
+
+
+<div class="build-card">
+
+<div class="featured-label">03</div>
+
+<h3>AI Creative Work</h3>
+
+<p>
+Exploring AI-assisted workflows for creative concepts, visual development,
+content ideas and productivity.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CURRENTLY BUILDING -->
+
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">Currently Building</div>
+
+<h2>What I'm Working Toward</h2>
+
+<p>
+My project journey is continuously evolving as I learn new technologies,
+creative techniques and digital strategies.
+</p>
+
+</div>
+
+
+<div class="building">
+
+<div class="build-card">
+
+<div class="featured-label">WEB</div>
+
+<h3>Modern Web Design</h3>
+
+<p>
+Developing stronger skills in responsive layouts, modern UI structure,
+HTML/CSS and future JavaScript fundamentals.
+</p>
+
+</div>
+
+
+<div class="build-card">
+
+<div class="featured-label">MARKETING</div>
+
+<h3>Digital Marketing</h3>
+
+<p>
+Building deeper knowledge around Meta Ads, SEO, analytics, content strategy
+and social media marketing.
+</p>
+
+</div>
+
+
+<div class="build-card">
+
+<div class="featured-label">CREATIVE</div>
+
+<h3>Personal Brand</h3>
+
+<p>
+Continuously improving my online presence, portfolio, visual identity and
+professional digital communication.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PHILOSOPHY -->
+
+<section>
+
+<div class="container">
+
+<div class="philosophy">
+
+<div class="featured-label">Project Philosophy</div>
+
+<div class="quote">
+“Don't just <span>create.</span><br>
+Understand. Build. Improve. <span>Grow.</span>”
+</div>
+
+<p>
+Every project is a chance to turn an idea into something useful, learn from
+the process and become better at the next one.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
 
 <section class="cta">
 
-<h2>Have a project in mind?</h2>
+<div class="container">
 
-<p>Let's create something meaningful together.</p>
+<h2>Have a Project in Mind?</h2>
 
-<a href="contact.html" class="btn">Get In Touch</a>
+<p>
+If you are looking for someone who is willing to learn, communicate clearly
+and approach digital work with creativity and responsibility, let's connect.
+</p>
+
+<div class="cta-buttons">
+
+<a href="contact.html" class="btn btn-primary">Let's Work Together</a>
+
+<a href="services.html" class="btn btn-outline">View My Services</a>
+
+</div>
+
+</div>
 
 </section>
 
 
+<!-- FOOTER -->
+
 <footer>
-© 2026 MD Abdul Al Mamun. All Rights Reserved.
+
+<div class="container">
+
+<p>
+© 2026 <strong>MD Abdul Al Mamun</strong> — Digital Service.
+</p>
+
+</div>
+
 </footer>
 
 
@@ -424,13 +1741,33 @@ will be added here as my portfolio continues to grow.
 
 function toggleMenu(){
 
-const menu = document.getElementById("mobileMenu");
+    document.getElementById("navLinks").classList.toggle("show");
 
-if(menu.style.display === "block"){
-    menu.style.display = "none";
-}else{
-    menu.style.display = "block";
 }
+
+
+function filterProjects(category,button){
+
+    const cards=document.querySelectorAll(".project-card");
+    const buttons=document.querySelectorAll(".filter-btn");
+
+    buttons.forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    cards.forEach(card=>{
+
+        const categories=card.dataset.category;
+
+        if(category==="all" || categories.includes(category)){
+            card.style.display="block";
+        }else{
+            card.style.display="none";
+        }
+
+    });
 
 }
 
