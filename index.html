@@ -17,6 +17,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <style>
 
+/* ================= RESET ================= */
+
 *{
     margin:0;
     padding:0;
@@ -40,11 +42,16 @@ a{
     color:inherit;
 }
 
+button{
+    font-family:inherit;
+}
+
 .container{
     width:90%;
     max-width:1200px;
     margin:auto;
 }
+
 
 /* ================= NAVBAR ================= */
 
@@ -124,6 +131,7 @@ nav{
     box-shadow:0 0 15px rgba(212,175,55,.15);
 }
 
+
 /* ================= HERO ================= */
 
 .hero{
@@ -177,13 +185,18 @@ nav{
     display:inline-flex;
     align-items:center;
     gap:9px;
+
     border:1px solid rgba(212,175,55,.28);
     background:rgba(212,175,55,.05);
+
     color:#d4af37;
+
     padding:8px 14px;
     border-radius:30px;
+
     font-size:11px;
     letter-spacing:1.5px;
+
     margin-bottom:22px;
 }
 
@@ -193,6 +206,7 @@ nav{
     background:#d4af37;
     border-radius:50%;
     box-shadow:0 0 10px #d4af37;
+    flex-shrink:0;
 }
 
 .hero h1{
@@ -235,10 +249,14 @@ nav{
     display:inline-flex;
     align-items:center;
     gap:9px;
+
     padding:13px 20px;
+
     border-radius:8px;
+
     font-size:13px;
     font-weight:600;
+
     transition:.3s;
 }
 
@@ -264,54 +282,76 @@ nav{
     transform:translateY(-3px);
 }
 
-/* ================= HERO IMAGE ================= */
+
+/* ================= PROFILE ================= */
 
 .hero-image{
     display:flex;
     justify-content:center;
+    align-items:center;
     position:relative;
 }
 
 .profile-orbit{
     width:330px;
     height:330px;
+
     border:1px solid rgba(212,175,55,.28);
     border-radius:50%;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     position:relative;
 }
 
 .profile-orbit::before{
     content:"";
+
     position:absolute;
+
     width:365px;
     height:365px;
+
     border:1px dashed rgba(212,175,55,.18);
+
     border-radius:50%;
+
     animation:spin 25s linear infinite;
 }
 
 .profile-orbit::after{
     content:"";
+
     position:absolute;
+
     width:420px;
     height:420px;
+
     border:1px solid rgba(212,175,55,.06);
+
     border-radius:50%;
 }
 
 @keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
 }
 
 .profile-frame{
     width:270px;
     height:270px;
+
     border-radius:50%;
+
     padding:5px;
+
     background:linear-gradient(
         135deg,
         #d4af37,
@@ -319,8 +359,10 @@ nav{
         #8d6d13,
         #d4af37
     );
+
     box-shadow:
         0 0 50px rgba(212,175,55,.15);
+
     position:relative;
     z-index:2;
 }
@@ -328,30 +370,93 @@ nav{
 .profile-frame img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     border-radius:50%;
+
     display:block;
+
     border:5px solid #080808;
 }
 
+
+/* ================= SMALL PROFILE BADGES ================= */
+
+/* IMPORTANT:
+   These badges are intentionally compact.
+*/
+
 .orbit-label{
     position:absolute;
+
     right:-25px;
     top:35px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width:max-content !important;
+    min-width:0 !important;
+    max-width:max-content !important;
+
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+
+    gap:6px;
+
+    padding:8px 11px;
+
     background:#101010;
-    border:1px solid rgba(212,175,55,.3);
-    padding:7px 10px;
-    border-radius:7px;
-    font-size:9px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:8px;
+
     color:#d4af37;
-    z-index:4;
+
+    font-size:9px;
+    line-height:1;
+
+    font-weight:500;
+
+    white-space:nowrap;
+
+    z-index:10;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.35);
+}
+
+.orbit-label i{
+    display:inline-block;
+    width:auto;
+    height:auto;
+    margin:0;
+    padding:0;
+
+    font-size:9px;
 }
 
 .orbit-label.two{
-    left:-32px;
-    bottom:35px;
+    left:-25px;
     right:auto;
+
+    top:auto;
+    bottom:35px;
+
+    width:max-content !important;
+    min-width:0 !important;
+    max-width:max-content !important;
+
+    height:auto !important;
+
+    padding:7px 9px;
+
+    font-size:8px;
 }
+
 
 /* ================= QUICK BAR ================= */
 
@@ -392,6 +497,7 @@ nav{
     font-size:11px;
 }
 
+
 /* ================= SECTION ================= */
 
 section{
@@ -423,6 +529,7 @@ section{
     font-size:14px;
 }
 
+
 /* ================= IDENTITY ================= */
 
 .identity{
@@ -437,9 +544,13 @@ section{
 
 .identity-card{
     background:#0d0d0d;
+
     border:1px solid #1d1d1d;
+
     border-radius:14px;
+
     padding:30px;
+
     transition:.3s;
 }
 
@@ -464,9 +575,6 @@ section{
     font-size:13px;
 }
 
-.identity-highlight{
-    color:#d4af37;
-}
 
 /* ================= DIGITAL FLOW ================= */
 
@@ -482,11 +590,17 @@ section{
 
 .flow-card{
     background:#0b0b0b;
+
     border:1px solid #1b1b1b;
+
     padding:27px 20px;
+
     border-radius:12px;
+
     text-align:center;
+
     position:relative;
+
     transition:.3s;
 }
 
@@ -517,6 +631,7 @@ section{
     font-size:11px;
 }
 
+
 /* ================= FEATURED WORK ================= */
 
 .work{
@@ -531,22 +646,34 @@ section{
 
 .work-card{
     background:#0d0d0d;
+
     border:1px solid #1c1c1c;
+
     border-radius:14px;
+
     padding:28px;
+
     min-height:260px;
+
     position:relative;
+
     overflow:hidden;
+
     transition:.3s;
 }
 
 .work-card::before{
     content:"";
+
     position:absolute;
+
     width:120px;
     height:120px;
+
     background:rgba(212,175,55,.08);
+
     border-radius:50%;
+
     right:-50px;
     top:-50px;
 }
@@ -559,12 +686,17 @@ section{
 .work-icon{
     width:48px;
     height:48px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     border:1px solid rgba(212,175,55,.3);
+
     color:#d4af37;
+
     border-radius:10px;
+
     margin-bottom:22px;
 }
 
@@ -587,11 +719,16 @@ section{
 .work-link{
     display:inline-flex;
     align-items:center;
+
     gap:7px;
+
     color:#d4af37;
+
     font-size:12px;
+
     margin-top:20px;
 }
+
 
 /* ================= MINDSET ================= */
 
@@ -625,7 +762,9 @@ section{
     display:flex;
     align-items:center;
     gap:12px;
+
     color:#bbb;
+
     font-size:13px;
 }
 
@@ -636,8 +775,11 @@ section{
 
 .mindset-box{
     background:#0d0d0d;
+
     border:1px solid #1d1d1d;
+
     border-radius:15px;
+
     padding:35px;
 }
 
@@ -658,11 +800,14 @@ section{
     color:#d4af37;
 }
 
+
 /* ================= CTA ================= */
 
 .cta{
     padding:85px 20px;
+
     text-align:center;
+
     background:
         linear-gradient(
             rgba(6,6,6,.9),
@@ -673,6 +818,7 @@ section{
             rgba(212,175,55,.12),
             transparent 60%
         );
+
     border-top:1px solid #1a1a1a;
     border-bottom:1px solid #1a1a1a;
 }
@@ -692,11 +838,14 @@ section{
     margin-bottom:27px;
 }
 
+
 /* ================= FOOTER ================= */
 
 footer{
     padding:35px 20px;
+
     background:#050505;
+
     text-align:center;
 }
 
@@ -716,20 +865,28 @@ footer{
 .socials{
     display:flex;
     justify-content:center;
+
     gap:10px;
+
     margin-bottom:20px;
 }
 
 .socials a{
     width:38px;
     height:38px;
+
     border:1px solid #242424;
+
     border-radius:50%;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     color:#aaa;
+
     font-size:14px;
+
     transition:.3s;
 }
 
@@ -744,7 +901,8 @@ footer{
     font-size:10px;
 }
 
-/* ================= MOBILE ================= */
+
+/* ================= TABLET / MOBILE ================= */
 
 @media(max-width:850px){
 
@@ -759,10 +917,14 @@ footer{
 
     .nav-links{
         display:none;
+
         width:100%;
+
         flex-direction:column;
         align-items:stretch;
+
         gap:0;
+
         padding:8px 0 4px;
     }
 
@@ -772,8 +934,11 @@ footer{
 
     .nav-links a{
         width:100%;
+
         padding:12px 10px;
+
         border-bottom:1px solid #1d1d1d;
+
         font-size:13px;
     }
 
@@ -790,6 +955,9 @@ footer{
         border-radius:6px;
     }
 
+
+    /* HERO */
+
     .hero{
         min-height:auto;
         padding:75px 0 90px;
@@ -797,7 +965,9 @@ footer{
 
     .hero-grid{
         grid-template-columns:1fr;
+
         gap:65px;
+
         text-align:center;
     }
 
@@ -813,6 +983,9 @@ footer{
     .hero-image{
         order:-1;
     }
+
+
+    /* PROFILE MOBILE */
 
     .profile-orbit{
         width:245px;
@@ -834,15 +1007,53 @@ footer{
         height:200px;
     }
 
+
+    /* FIXED MOBILE BADGES */
+
     .orbit-label{
-        right:-25px;
-        top:15px;
+        right:-18px;
+
+        top:18px;
+
+        width:max-content !important;
+        min-width:0 !important;
+        max-width:max-content !important;
+
+        height:auto !important;
+
+        padding:7px 9px;
+
+        font-size:8px;
+    }
+
+    .orbit-label i{
+        font-size:8px;
     }
 
     .orbit-label.two{
-        left:-35px;
-        bottom:15px;
+        left:-18px;
+
+        bottom:18px;
+
+        top:auto;
+
+        width:max-content !important;
+        min-width:0 !important;
+        max-width:max-content !important;
+
+        height:auto !important;
+
+        padding:6px 8px;
+
+        font-size:7px;
     }
+
+    .orbit-label.two i{
+        font-size:7px;
+    }
+
+
+    /* QUICK BAR */
 
     .quick-grid{
         grid-template-columns:1fr 1fr;
@@ -860,6 +1071,7 @@ footer{
     .quick-item:nth-child(4){
         border-bottom:none;
     }
+
 
     section{
         padding:75px 0;
@@ -887,7 +1099,18 @@ footer{
     }
 }
 
+
+/* ================= SMALL MOBILE ================= */
+
 @media(max-width:500px){
+
+    .logo{
+        font-size:16px;
+    }
+
+    .hero{
+        padding-top:65px;
+    }
 
     .hero h1{
         font-size:43px;
@@ -925,12 +1148,97 @@ footer{
     .mindset-box .quote{
         font-size:20px;
     }
+
+
+    /* EXTRA SMALL PROFILE */
+
+    .profile-orbit{
+        width:225px;
+        height:225px;
+    }
+
+    .profile-orbit::before{
+        width:255px;
+        height:255px;
+    }
+
+    .profile-orbit::after{
+        width:290px;
+        height:290px;
+    }
+
+    .profile-frame{
+        width:185px;
+        height:185px;
+    }
+
+    .orbit-label{
+        right:-10px;
+        top:12px;
+
+        padding:6px 8px;
+
+        font-size:7px;
+    }
+
+    .orbit-label.two{
+        left:-10px;
+        bottom:12px;
+
+        padding:5px 7px;
+
+        font-size:6.5px;
+    }
+
+}
+
+
+/* ================= VERY SMALL SCREEN ================= */
+
+@media(max-width:360px){
+
+    .profile-orbit{
+        width:205px;
+        height:205px;
+    }
+
+    .profile-orbit::before{
+        width:230px;
+        height:230px;
+    }
+
+    .profile-orbit::after{
+        width:260px;
+        height:260px;
+    }
+
+    .profile-frame{
+        width:170px;
+        height:170px;
+    }
+
+    .orbit-label{
+        right:-5px;
+        top:8px;
+        font-size:6.5px;
+        padding:5px 7px;
+    }
+
+    .orbit-label.two{
+        left:-5px;
+        bottom:8px;
+        font-size:6px;
+        padding:5px 6px;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= NAVBAR ================= -->
 
@@ -942,26 +1250,55 @@ footer{
 MD ABDUL AL MAMUN
 </a>
 
-<button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+<button class="menu-toggle"
+id="menuToggle"
+aria-label="Open Menu">
+
 <i class="fa-solid fa-bars"></i>
+
 </button>
+
 
 <div class="nav-links" id="navLinks">
 
-<a href="index.html" class="active">Home</a>
-<a href="about.html">About</a>
-<a href="skills.html">Skills</a>
-<a href="services.html">Services</a>
-<a href="projects.html">Projects</a>
-<a href="experience.html">Experience</a>
-<a href="resume.html">Resume</a>
-<a href="contact.html">Contact</a>
+<a href="index.html" class="active">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="skills.html">
+Skills
+</a>
+
+<a href="services.html">
+Services
+</a>
+
+<a href="projects.html">
+Projects
+</a>
+
+<a href="experience.html">
+Experience
+</a>
+
+<a href="resume.html">
+Resume
+</a>
+
+<a href="contact.html">
+Contact
+</a>
 
 </div>
 
 </div>
 
 </nav>
+
 
 
 <!-- ================= HERO ================= -->
@@ -972,73 +1309,126 @@ MD ABDUL AL MAMUN
 
 <div class="hero-grid">
 
+
+<!-- LEFT CONTENT -->
+
 <div>
 
 <div class="hero-tag">
+
 <span></span>
-DIGITAL SERVICE • CHITTAGONG, BANGLADESH
+
+DIGITAL SERVICE • CHATTOGRAM, BANGLADESH
+
 </div>
+
 
 <h1>
+
 MD Abdul<br>
+
 <span>Al Mamun</span>
+
 </h1>
 
+
 <div class="hero-subtitle">
-Creative <span>Digital Service</span> Professional
+
+Creative
+
+<span>Digital Service</span>
+
+Professional
+
 </div>
 
+
 <p class="hero-text">
+
 I work across Graphic Design, Digital Marketing, Web Design,
 Social Media, Video Editing and other digital projects —
 combining creativity, practical experience and modern digital tools
 to turn ideas into meaningful work.
+
 </p>
+
 
 <div class="hero-buttons">
 
-<a href="projects.html" class="btn btn-gold">
+<a href="projects.html"
+class="btn btn-gold">
+
 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
 Explore My Work
+
 </a>
 
-<a href="contact.html" class="btn btn-dark">
+
+<a href="contact.html"
+class="btn btn-dark">
+
 <i class="fa-regular fa-paper-plane"></i>
+
 Let's Connect
+
 </a>
 
 </div>
 
 </div>
 
+
+
+<!-- PROFILE -->
 
 <div class="hero-image">
 
 <div class="profile-orbit">
 
+
 <div class="profile-frame">
-<img src="mamun1.jpg" alt="MD Abdul Al Mamun">
+
+<img
+src="mamun1.jpg"
+alt="MD Abdul Al Mamun">
+
 </div>
+
+
+<!-- MAMUN BADGE -->
 
 <div class="orbit-label">
+
 <i class="fa-solid fa-circle-check"></i>
- MAMUN
+
+MAMUN
+
 </div>
+
+
+<!-- CHITTAGONG BADGE -->
 
 <div class="orbit-label two">
+
 <i class="fa-solid fa-location-dot"></i>
- CHATTOGRAM
+
+CHATTOGRAM
+
 </div>
+
 
 </div>
 
 </div>
+
 
 </div>
 
 </div>
 
 </section>
+
 
 
 <!-- ================= QUICK INFO ================= -->
@@ -1049,13 +1439,18 @@ Let's Connect
 
 <div class="quick-grid">
 
+
 <div class="quick-item">
 
 <i class="fa-solid fa-layer-group"></i>
 
-<h4>100+ Projects</h4>
+<h4>
+100+ Projects
+</h4>
 
-<p>Digital & Creative Work</p>
+<p>
+Digital & Creative Work
+</p>
 
 </div>
 
@@ -1064,9 +1459,13 @@ Let's Connect
 
 <i class="fa-solid fa-pen-ruler"></i>
 
-<h4>Creative Design</h4>
+<h4>
+Creative Design
+</h4>
 
-<p>Visual & Digital Content</p>
+<p>
+Visual & Digital Content
+</p>
 
 </div>
 
@@ -1075,9 +1474,13 @@ Let's Connect
 
 <i class="fa-solid fa-globe"></i>
 
-<h4>Digital Focus</h4>
+<h4>
+Digital Focus
+</h4>
 
-<p>Web & Online Presence</p>
+<p>
+Web & Online Presence
+</p>
 
 </div>
 
@@ -1086,9 +1489,16 @@ Let's Connect
 
 <i class="fa-solid fa-graduation-cap"></i>
 
-<h4>2023 – Present</h4>
+<h4>
+2023 – Present
+</h4>
 
-<p>Honours in History</p>
+<p>
+Honours in History
+</p>
+
+</div>
+
 
 </div>
 
@@ -1096,7 +1506,6 @@ Let's Connect
 
 </div>
 
-</div>
 
 
 <!-- ================= IDENTITY ================= -->
@@ -1105,13 +1514,16 @@ Let's Connect
 
 <div class="container">
 
+
 <div class="section-heading">
 
 <div class="section-label">
 WHO I AM
 </div>
 
-<h2>More Than Just Digital Work</h2>
+<h2>
+More Than Just Digital Work
+</h2>
 
 <p>
 A personal space where creativity, learning and digital skills come together.
@@ -1120,42 +1532,55 @@ A personal space where creativity, learning and digital skills come together.
 </div>
 
 
+
 <div class="identity-grid">
+
 
 <div class="identity-card">
 
 <i class="fa-solid fa-user-astronaut"></i>
 
-<h3>A Creative Digital Mind</h3>
+<h3>
+A Creative Digital Mind
+</h3>
 
 <p>
+
 I enjoy working with visual content, digital platforms and creative ideas.
 From a simple design concept to a complete online presence,
 I like turning ideas into something clear, useful and visually engaging.
+
 </p>
 
 </div>
+
 
 
 <div class="identity-card">
 
 <i class="fa-solid fa-compass-drafting"></i>
 
-<h3>Always Learning</h3>
+<h3>
+Always Learning
+</h3>
 
 <p>
+
 The digital world keeps changing. That's why I continue exploring
 new tools, technologies, creative workflows and practical ways
 to improve my work.
+
 </p>
 
 </div>
+
 
 </div>
 
 </div>
 
 </section>
+
 
 
 <!-- ================= DIGITAL FLOW ================= -->
@@ -1164,13 +1589,16 @@ to improve my work.
 
 <div class="container">
 
+
 <div class="section-heading">
 
 <div class="section-label">
 MY DIGITAL FLOW
 </div>
 
-<h2>Idea → Creation → Impact</h2>
+<h2>
+Idea → Creation → Impact
+</h2>
 
 <p>
 A simple way I approach digital projects.
@@ -1179,15 +1607,21 @@ A simple way I approach digital projects.
 </div>
 
 
+
 <div class="flow-grid">
+
 
 <div class="flow-card">
 
-<div class="flow-number">01</div>
+<div class="flow-number">
+01
+</div>
 
 <i class="fa-regular fa-lightbulb"></i>
 
-<h3>Understand</h3>
+<h3>
+Understand
+</h3>
 
 <p>
 Understand the idea, purpose and audience before starting.
@@ -1196,13 +1630,18 @@ Understand the idea, purpose and audience before starting.
 </div>
 
 
+
 <div class="flow-card">
 
-<div class="flow-number">02</div>
+<div class="flow-number">
+02
+</div>
 
 <i class="fa-solid fa-pen-nib"></i>
 
-<h3>Create</h3>
+<h3>
+Create
+</h3>
 
 <p>
 Turn the concept into clean and engaging digital content.
@@ -1211,13 +1650,18 @@ Turn the concept into clean and engaging digital content.
 </div>
 
 
+
 <div class="flow-card">
 
-<div class="flow-number">03</div>
+<div class="flow-number">
+03
+</div>
 
 <i class="fa-solid fa-gears"></i>
 
-<h3>Refine</h3>
+<h3>
+Refine
+</h3>
 
 <p>
 Improve the details, presentation and overall experience.
@@ -1226,13 +1670,18 @@ Improve the details, presentation and overall experience.
 </div>
 
 
+
 <div class="flow-card">
 
-<div class="flow-number">04</div>
+<div class="flow-number">
+04
+</div>
 
 <i class="fa-solid fa-rocket"></i>
 
-<h3>Deliver</h3>
+<h3>
+Deliver
+</h3>
 
 <p>
 Create a practical result that is ready to use.
@@ -1240,11 +1689,13 @@ Create a practical result that is ready to use.
 
 </div>
 
+
 </div>
 
 </div>
 
 </section>
+
 
 
 <!-- ================= FEATURED WORK ================= -->
@@ -1253,13 +1704,16 @@ Create a practical result that is ready to use.
 
 <div class="container">
 
+
 <div class="section-heading">
 
 <div class="section-label">
 SELECTED WORK
 </div>
 
-<h2>Things I've Worked On</h2>
+<h2>
+Things I've Worked On
+</h2>
 
 <p>
 A glimpse into my digital, creative and practical projects.
@@ -1268,70 +1722,112 @@ A glimpse into my digital, creative and practical projects.
 </div>
 
 
+
 <div class="work-grid">
 
 
 <div class="work-card">
 
 <div class="work-icon">
+
 <i class="fa-solid fa-globe"></i>
+
 </div>
 
-<small>PERSONAL PROJECT</small>
+<small>
+PERSONAL PROJECT
+</small>
 
-<h3>Personal Portfolio Website</h3>
+<h3>
+Personal Portfolio Website
+</h3>
 
 <p>
+
 A personal digital space designed to showcase my skills,
 services, projects, experience and professional identity.
+
 </p>
 
-<a href="projects.html" class="work-link">
-View Project <i class="fa-solid fa-arrow-right"></i>
+<a href="projects.html"
+class="work-link">
+
+View Project
+
+<i class="fa-solid fa-arrow-right"></i>
+
 </a>
 
 </div>
 
 
+
 <div class="work-card">
 
 <div class="work-icon">
+
 <i class="fa-solid fa-store"></i>
+
 </div>
 
-<small>REAL-WORLD EXPERIENCE</small>
+<small>
+REAL-WORLD EXPERIENCE
+</small>
 
-<h3>Baraka Farmyard</h3>
+<h3>
+Baraka Farmyard
+</h3>
 
 <p>
+
 Practical experience involving outlet operations,
 customer service, product management and digital promotional work.
+
 </p>
 
-<a href="experience.html" class="work-link">
-View Experience <i class="fa-solid fa-arrow-right"></i>
+<a href="experience.html"
+class="work-link">
+
+View Experience
+
+<i class="fa-solid fa-arrow-right"></i>
+
 </a>
 
 </div>
 
 
+
 <div class="work-card">
 
 <div class="work-icon">
+
 <i class="fa-solid fa-wand-magic-sparkles"></i>
+
 </div>
 
-<small>CREATIVE EXPLORATION</small>
+<small>
+CREATIVE EXPLORATION
+</small>
 
-<h3>Digital Experiments</h3>
+<h3>
+Digital Experiments
+</h3>
 
 <p>
+
 Practice projects and experiments across design, web,
 social media, video and modern digital tools.
+
 </p>
 
-<a href="projects.html" class="work-link">
-Explore More <i class="fa-solid fa-arrow-right"></i>
+<a href="projects.html"
+class="work-link">
+
+Explore More
+
+<i class="fa-solid fa-arrow-right"></i>
+
 </a>
 
 </div>
@@ -1344,11 +1840,13 @@ Explore More <i class="fa-solid fa-arrow-right"></i>
 </section>
 
 
+
 <!-- ================= MINDSET ================= -->
 
 <section>
 
 <div class="container">
+
 
 <div class="mindset-grid">
 
@@ -1364,36 +1862,57 @@ Create with <span>Purpose.</span>
 </h2>
 
 <p>
+
 For me, digital work isn't only about making something look good.
 It's about understanding the purpose behind the work and presenting
 it in a way that people can understand and connect with.
+
 </p>
+
 
 <div class="mindset-list">
 
+
 <div class="mindset-item">
+
 <i class="fa-solid fa-check"></i>
+
 Clear and purposeful design
+
 </div>
 
+
 <div class="mindset-item">
+
 <i class="fa-solid fa-check"></i>
+
 Practical digital solutions
+
 </div>
 
+
 <div class="mindset-item">
+
 <i class="fa-solid fa-check"></i>
+
 Continuous learning
+
 </div>
+
 
 <div class="mindset-item">
+
 <i class="fa-solid fa-check"></i>
+
 Attention to detail
+
 </div>
+
 
 </div>
 
 </div>
+
 
 
 <div class="mindset-box">
@@ -1403,8 +1922,12 @@ DIGITAL PHILOSOPHY
 </h3>
 
 <div class="quote">
-“Learn. <span>Create.</span> Improve.
+
+“Learn.
+<span>Create.</span>
+Improve.
 Then create something better.”
+
 </div>
 
 </div>
@@ -1415,6 +1938,7 @@ Then create something better.”
 </div>
 
 </section>
+
 
 
 <!-- ================= CTA ================= -->
@@ -1422,83 +1946,131 @@ Then create something better.”
 <section class="cta">
 
 <h2>
+
 Have an idea in <span>mind?</span>
+
 </h2>
 
 <p>
+
 Let's turn your idea into something meaningful.
+
 </p>
 
-<a href="contact.html" class="btn btn-gold">
+<a href="contact.html"
+class="btn btn-gold">
+
 <i class="fa-regular fa-paper-plane"></i>
+
 Get In Touch
+
 </a>
 
 </section>
+
 
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
+
 <div class="footer-name">
+
 MD Abdul Al Mamun
+
 </div>
 
+
 <div class="footer-role">
+
 Digital Service
+
 </div>
+
 
 
 <div class="socials">
 
-<a href="https://wa.me/8801679606860" target="_blank" aria-label="WhatsApp">
+
+<a href="https://wa.me/8801679606860"
+target="_blank"
+aria-label="WhatsApp">
+
 <i class="fa-brands fa-whatsapp"></i>
+
 </a>
 
-<a href="https://www.facebook.com/sajjadhossain9865" target="_blank" aria-label="Facebook">
+
+<a href="https://www.facebook.com/sajjadhossain9865"
+target="_blank"
+aria-label="Facebook">
+
 <i class="fa-brands fa-facebook-f"></i>
+
 </a>
 
-<a href="https://www.linkedin.com/in/md-abdullah-al-mamun-453a39363" target="_blank" aria-label="LinkedIn">
+
+<a href="https://www.linkedin.com/in/md-abdullah-al-mamun-453a39363"
+target="_blank"
+aria-label="LinkedIn">
+
 <i class="fa-brands fa-linkedin-in"></i>
+
 </a>
 
-<a href="mailto:sajjadorigin446@gmail.com" aria-label="Email">
+
+<a href="mailto:sajjadorigin446@gmail.com"
+aria-label="Email">
+
 <i class="fa-regular fa-envelope"></i>
+
 </a>
+
 
 </div>
 
 
 <div class="copyright">
+
 © 2026 MD Abdul Al Mamun. All Rights Reserved.
+
 </div>
 
+
 </footer>
+
 
 
 <!-- ================= MENU SCRIPT ================= -->
 
 <script>
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
 
 menuToggle.addEventListener("click", function(){
 
     navLinks.classList.toggle("show");
 
-    const icon = menuToggle.querySelector("i");
+    const icon =
+    menuToggle.querySelector("i");
+
 
     if(navLinks.classList.contains("show")){
 
         icon.classList.remove("fa-bars");
+
         icon.classList.add("fa-xmark");
 
     }else{
 
         icon.classList.remove("fa-xmark");
+
         icon.classList.add("fa-bars");
 
     }
@@ -1506,15 +2078,18 @@ menuToggle.addEventListener("click", function(){
 });
 
 
-document.querySelectorAll(".nav-links a").forEach(function(link){
+document.querySelectorAll(".nav-links a")
+.forEach(function(link){
 
     link.addEventListener("click", function(){
 
         navLinks.classList.remove("show");
 
-        const icon = menuToggle.querySelector("i");
+        const icon =
+        menuToggle.querySelector("i");
 
         icon.classList.remove("fa-xmark");
+
         icon.classList.add("fa-bars");
 
     });
@@ -1522,6 +2097,7 @@ document.querySelectorAll(".nav-links a").forEach(function(link){
 });
 
 </script>
+
 
 </body>
 </html>
