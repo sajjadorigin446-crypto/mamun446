@@ -11,12 +11,16 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#080808;
-    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#050505;
+    color:#f5f5f5;
     line-height:1.7;
 }
 
@@ -25,257 +29,580 @@ a{
     color:inherit;
 }
 
-/* HEADER */
+.container{
+    width:90%;
+    max-width:1150px;
+    margin:auto;
+}
 
-header{
-    height:72px;
-    padding:0 5%;
-    border-bottom:1px solid #222;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#090909;
-    position:relative;
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
     z-index:1000;
+    background:rgba(5,5,5,.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(212,175,55,.18);
+}
+
+.nav-inner{
+    min-height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
+    font-size:20px;
+    font-weight:800;
     color:#d4af37;
-    font-size:22px;
-    font-weight:bold;
+    letter-spacing:.5px;
 }
 
-nav{
+.nav-links{
     display:flex;
-    align-items:center;
-    gap:22px;
+    gap:24px;
 }
 
-nav a{
-    color:#aaa;
+.nav-links a{
+    color:#ccc;
     font-size:14px;
     transition:.3s;
 }
 
-nav a:hover,
-nav a.active{
+.nav-links a:hover,
+.nav-links .active{
     color:#d4af37;
 }
 
-/* MOBILE BUTTON */
-
-.menu-btn{
+.menu{
     display:none;
-    background:none;
-    border:none;
+    font-size:26px;
     color:#d4af37;
-    font-size:27px;
     cursor:pointer;
 }
 
-/* MOBILE MENU */
-
-.mobile-menu{
-    display:none;
-    position:absolute;
-    top:72px;
-    left:0;
-    width:100%;
-    background:#0b0b0b;
-    border-bottom:1px solid #222;
-    padding:15px 6%;
-    z-index:999;
-}
-
-.mobile-menu a{
-    display:block;
-    padding:13px 0;
-    color:#aaa;
-    border-bottom:1px solid #1d1d1d;
-    font-size:15px;
-}
-
-.mobile-menu a:hover,
-.mobile-menu a.active{
-    color:#d4af37;
-}
-
 /* HERO */
-
 .hero{
+    min-height:70vh;
+    display:flex;
+    align-items:center;
     text-align:center;
-    padding:80px 20px 50px;
+    background:
+    radial-gradient(circle at top, rgba(212,175,55,.12), transparent 45%);
 }
 
-.hero span{
+.hero-content{
+    width:100%;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 16px;
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:50px;
     color:#d4af37;
-    letter-spacing:3px;
-    font-size:13px;
+    font-size:12px;
+    letter-spacing:2px;
     text-transform:uppercase;
+    margin-bottom:22px;
 }
 
 .hero h1{
-    font-size:48px;
-    margin:12px 0;
+    font-size:clamp(42px,7vw,76px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#d4af37;
 }
 
 .hero p{
+    max-width:720px;
+    margin:auto;
+    color:#aaa;
+    font-size:17px;
+}
+
+/* SECTIONS */
+section{
+    padding:90px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-heading small{
+    color:#d4af37;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:11px;
+}
+
+.section-heading h2{
+    font-size:38px;
+    margin:12px 0;
+}
+
+.section-heading p{
+    color:#999;
     max-width:650px;
     margin:auto;
+}
+
+/* OVERVIEW */
+.overview{
+    background:#080808;
+}
+
+.overview-box{
+    border:1px solid rgba(212,175,55,.18);
+    background:linear-gradient(145deg,#0d0d0d,#070707);
+    padding:40px;
+    border-radius:20px;
+}
+
+.overview-box p{
+    color:#bdbdbd;
+    font-size:16px;
+}
+
+.highlight-line{
+    margin-top:25px;
+    padding-left:18px;
+    border-left:3px solid #d4af37;
+    color:#eee;
+    font-size:18px;
+}
+
+/* CAREER JOURNEY */
+.journey{
+    position:relative;
+}
+
+.journey-line{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.journey-line:before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:rgba(212,175,55,.3);
+}
+
+.journey-item{
+    position:relative;
+    padding-left:65px;
+    margin-bottom:55px;
+}
+
+.journey-dot{
+    position:absolute;
+    left:11px;
+    top:5px;
+    width:20px;
+    height:20px;
+    border:3px solid #d4af37;
+    border-radius:50%;
+    background:#050505;
+}
+
+.journey-number{
+    color:#d4af37;
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:7px;
+}
+
+.journey-item h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.journey-item p{
     color:#999;
 }
 
-/* EXPERIENCE */
-
-.experience{
-    max-width:900px;
-    margin:auto;
-    padding:20px 20px 80px;
-}
-
-.item{
-    position:relative;
-    padding:30px;
-    margin-bottom:25px;
-    background:#111;
-    border:1px solid #292929;
-    border-radius:16px;
+/* EXPERIENCE CARD */
+.experience-card{
+    border:1px solid rgba(212,175,55,.2);
+    background:#090909;
+    border-radius:22px;
+    padding:42px;
+    margin-bottom:30px;
     transition:.3s;
 }
 
-.item:hover{
-    border-color:#d4af37;
+.experience-card:hover{
     transform:translateY(-5px);
+    border-color:rgba(212,175,55,.55);
 }
 
-.date{
+.experience-top{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:flex-start;
+    margin-bottom:25px;
+}
+
+.experience-label{
     color:#d4af37;
-    font-size:13px;
-    letter-spacing:1px;
+    font-size:12px;
     text-transform:uppercase;
+    letter-spacing:2px;
 }
 
-.item h2{
-    font-size:25px;
-    margin:8px 0 3px;
+.experience-card h3{
+    font-size:30px;
+    margin:7px 0;
 }
 
 .company{
     color:#aaa;
-    margin-bottom:18px;
 }
 
-.item p{
+.status{
+    border:1px solid rgba(212,175,55,.3);
+    padding:7px 13px;
+    border-radius:30px;
+    color:#d4af37;
+    font-size:11px;
+    white-space:nowrap;
+}
+
+.experience-card > p{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.responsibilities{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.responsibility{
+    padding:14px 16px;
+    background:#0e0e0e;
+    border-left:2px solid #d4af37;
+    color:#bbb;
+    font-size:14px;
+}
+
+/* REAL WORLD */
+.real-world{
+    background:#080808;
+}
+
+.exposure-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.exposure-card{
+    padding:32px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    background:#0c0c0c;
+}
+
+.exposure-icon{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.exposure-card h3{
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.exposure-card p{
     color:#999;
     font-size:14px;
 }
 
-.item ul{
-    margin-top:15px;
-    padding-left:20px;
-    color:#aaa;
+/* CONTRIBUTION */
+.contribution-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
-.item li{
-    margin-bottom:8px;
+.contribution{
+    padding:30px;
+    border-top:2px solid #d4af37;
+    background:#0b0b0b;
+    border-radius:15px;
 }
 
-/* EDUCATION */
-
-.education-title{
-    text-align:center;
-    margin:20px 0 35px;
+.contribution h3{
+    font-size:19px;
+    margin-bottom:10px;
 }
 
-.education-title span{
-    color:#d4af37;
-    font-size:13px;
-    letter-spacing:3px;
-}
-
-.education-title h2{
-    font-size:32px;
-    margin-top:8px;
-}
-
-.edu{
-    max-width:900px;
-    margin:auto;
-    padding:0 20px 80px;
-}
-
-.edu-card{
-    background:#111;
-    border:1px solid #292929;
-    border-radius:16px;
-    padding:25px;
-    margin-bottom:18px;
-    transition:.3s;
-}
-
-.edu-card:hover{
-    border-color:#d4af37;
-}
-
-.edu-card h3{
-    font-size:20px;
-    margin-bottom:5px;
-}
-
-.edu-card .place{
-    color:#d4af37;
-}
-
-.edu-card p{
-    color:#888;
-    margin-top:8px;
+.contribution p{
+    color:#999;
     font-size:14px;
 }
 
-/* FOOTER */
+/* LESSONS */
+.lessons{
+    background:#080808;
+}
 
-footer{
-    border-top:1px solid #222;
+.lessons-list{
+    max-width:850px;
+    margin:auto;
+}
+
+.lesson{
+    display:flex;
+    gap:20px;
+    padding:22px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.lesson-number{
+    color:#d4af37;
+    font-weight:bold;
+    min-width:35px;
+}
+
+.lesson h3{
+    font-size:18px;
+    margin-bottom:4px;
+}
+
+.lesson p{
+    color:#999;
+    font-size:14px;
+}
+
+/* DIGITAL JOURNEY */
+.digital-box{
+    padding:45px;
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:22px;
+    background:
+    linear-gradient(145deg,#111,#080808);
     text-align:center;
-    padding:25px;
-    color:#666;
+}
+
+.digital-box h3{
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.digital-box p{
+    color:#999;
+    max-width:760px;
+    margin:auto;
+}
+
+.digital-path{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:30px;
+}
+
+.path-item{
+    padding:10px 16px;
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:30px;
+    color:#ccc;
     font-size:13px;
 }
 
-/* MOBILE */
+.arrow{
+    color:#d4af37;
+    display:flex;
+    align-items:center;
+}
 
+/* DEVELOPMENT */
+.development{
+    background:#080808;
+}
+
+.development-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.dev-card{
+    padding:30px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:18px;
+}
+
+.dev-card span{
+    color:#d4af37;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.dev-card h3{
+    margin:10px 0;
+    font-size:20px;
+}
+
+.dev-card p{
+    color:#999;
+    font-size:14px;
+}
+
+/* PHILOSOPHY */
+.philosophy{
+    text-align:center;
+}
+
+.quote{
+    font-size:clamp(28px,5vw,48px);
+    font-weight:700;
+    max-width:850px;
+    margin:auto;
+}
+
+.quote span{
+    color:#d4af37;
+}
+
+.philosophy p{
+    color:#888;
+    max-width:600px;
+    margin:20px auto 0;
+}
+
+/* CTA */
+.cta{
+    padding:100px 20px;
+    text-align:center;
+    background:
+    radial-gradient(circle at center,rgba(212,175,55,.13),transparent 55%);
+}
+
+.cta h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#999;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#d4af37;
+    color:#050505;
+    font-weight:bold;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(212,175,55,.18);
+}
+
+/* FOOTER */
+footer{
+    border-top:1px solid rgba(212,175,55,.15);
+    padding:30px 0;
+    text-align:center;
+    color:#777;
+    font-size:13px;
+}
+
+footer span{
+    color:#d4af37;
+}
+
+/* MOBILE */
 @media(max-width:800px){
 
-    header{
-        padding:0 20px;
-    }
-
-    nav{
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+        background:#070707;
         display:none;
+        flex-direction:column;
+        padding:25px;
+        border-bottom:1px solid rgba(212,175,55,.2);
     }
 
-    .menu-btn{
+    .nav-links.show{
+        display:flex;
+    }
+
+    .menu{
         display:block;
     }
 
     .hero{
-        padding-top:60px;
+        min-height:60vh;
     }
 
-    .hero h1{
-        font-size:36px;
+    section{
+        padding:70px 0;
     }
 
-    .item{
-        padding:24px;
+    .experience-top{
+        flex-direction:column;
     }
 
-    .experience{
-        padding-bottom:60px;
+    .responsibilities{
+        grid-template-columns:1fr;
     }
 
-    .edu{
-        padding-bottom:60px;
+    .exposure-grid,
+    .contribution-grid,
+    .development-grid{
+        grid-template-columns:1fr;
+    }
+
+    .experience-card,
+    .overview-box,
+    .digital-box{
+        padding:28px 22px;
+    }
+
+    .section-heading h2{
+        font-size:31px;
+    }
+
+    .journey-line:before{
+        left:13px;
+    }
+
+    .journey-dot{
+        left:4px;
+    }
+
+    .journey-item{
+        padding-left:45px;
+    }
+
+    .cta h2{
+        font-size:32px;
     }
 }
 </style>
@@ -283,11 +610,15 @@ footer{
 
 <body>
 
-<header>
-
-<a href="index.html" class="logo">MAMUN.</a>
-
+<!-- NAVBAR -->
 <nav>
+<div class="container nav-inner">
+
+<a href="index.html" class="logo">MD ABDUL AL MAMUN</a>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+<div class="nav-links" id="navLinks">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="skills.html">Skills</a>
@@ -296,168 +627,594 @@ footer{
 <a href="experience.html" class="active">Experience</a>
 <a href="resume.html">Resume</a>
 <a href="contact.html">Contact</a>
+</div>
+
+</div>
 </nav>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-</header>
-
-
-<div class="mobile-menu" id="mobileMenu">
-
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="skills.html">Skills</a>
-<a href="services.html">Services</a>
-<a href="projects.html">Projects</a>
-<a href="experience.html" class="active">Experience</a>
-<a href="resume.html">Resume</a>
-<a href="contact.html">Contact</a>
-
-</div>
-
-
+<!-- HERO -->
 <section class="hero">
+<div class="container hero-content">
 
-<span>My Journey</span>
+<div class="badge">Professional Experience</div>
 
-<h1>Experience</h1>
+<h1>My <span>Experience.</span></h1>
 
 <p>
-My professional experience, responsibilities and educational journey
-that shaped my digital skills and working approach.
+A journey built through workplace responsibility, real-world exposure,
+digital projects, continuous learning and a growing passion for the digital industry.
 </p>
 
+</div>
 </section>
 
 
-<section class="experience">
+<!-- OVERVIEW -->
+<section class="overview">
+<div class="container">
 
-<div class="item">
+<div class="section-heading">
+<small>Overview</small>
+<h2>Experience That Builds Perspective</h2>
+<p>
+Every working environment teaches something different.
+My experience has helped me understand responsibility, people,
+business workflow and practical problem-solving.
+</p>
+</div>
 
-<div class="date">Professional Experience</div>
+<div class="overview-box">
 
-<h2>Outlet Manager</h2>
+<p>
+My professional journey combines hands-on workplace experience with
+independent digital project work. Working in a real business environment
+has given me practical exposure to daily operations, customer interaction,
+product coordination and workplace responsibility.
+</p>
 
+<br>
+
+<p>
+Alongside my professional work, I have continued exploring digital
+projects involving design, web development, online platforms and
+digital workflows. This combination has helped me build a broader
+understanding of both business and digital work.
+</p>
+
+<div class="highlight-line">
+I believe meaningful experience is not only about job titles —
+it is about responsibility, consistency, learning and growth.
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- CAREER JOURNEY -->
+<section class="journey">
+<div class="container">
+
+<div class="section-heading">
+<small>My Journey</small>
+<h2>A Growing Professional Journey</h2>
+<p>
+A continuous process of gaining practical exposure and developing a
+clearer direction for my professional future.
+</p>
+</div>
+
+<div class="journey-line">
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<div class="journey-number">01 — FOUNDATION</div>
+<h3>Academic Foundation</h3>
+<p>
+Building an academic foundation while developing personal discipline,
+communication and a broader understanding of society and people.
+</p>
+</div>
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<div class="journey-number">02 — WORKPLACE</div>
+<h3>Real-World Work Experience</h3>
+<p>
+Gaining hands-on experience through an active business environment,
+customer interaction, daily operations and practical workplace responsibilities.
+</p>
+</div>
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<div class="journey-number">03 — DIGITAL EXPLORATION</div>
+<h3>Exploring Digital Work</h3>
+<p>
+Developing practical experience through online projects, design work,
+web experimentation and digital platforms.
+</p>
+</div>
+
+<div class="journey-item">
+<div class="journey-dot"></div>
+<div class="journey-number">04 — DEVELOPMENT</div>
+<h3>Building a Digital Career</h3>
+<p>
+Continuing to improve digital knowledge and building a professional
+direction around creative and digital services.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- PROFESSIONAL EXPERIENCE -->
+<section>
+<div class="container">
+
+<div class="section-heading">
+<small>Work Experience</small>
+<h2>Professional Experience</h2>
+<p>
+Practical responsibilities that shaped my understanding of business,
+customers and day-to-day workplace operations.
+</p>
+</div>
+
+
+<div class="experience-card">
+
+<div class="experience-top">
+
+<div>
+<div class="experience-label">Professional Experience</div>
+<h3>Outlet Manager</h3>
 <div class="company">Baraka Farmyard</div>
+</div>
+
+<div class="status">Hands-on Experience</div>
+
+</div>
 
 <p>
-Responsible for supporting daily outlet operations and ensuring
-smooth business activities while maintaining good customer service.
+Working in an active outlet environment with responsibility for
+supporting daily operations, customer service, sales activities,
+product coordination and overall workflow.
 </p>
 
-<ul>
-<li>Managed daily outlet operations and workflow.</li>
-<li>Handled customer service and sales support.</li>
-<li>Coordinated product management and inventory.</li>
-<li>Supported day-to-day business activities.</li>
-<li>Helped maintain a smooth and organized working environment.</li>
-</ul>
+<div class="responsibilities">
+
+<div class="responsibility">
+Managing day-to-day outlet operations
+</div>
+
+<div class="responsibility">
+Supporting regular business activities
+</div>
+
+<div class="responsibility">
+Providing customer service and sales support
+</div>
+
+<div class="responsibility">
+Managing product arrangement and presentation
+</div>
+
+<div class="responsibility">
+Coordinating product availability and inventory
+</div>
+
+<div class="responsibility">
+Monitoring daily operational workflow
+</div>
+
+<div class="responsibility">
+Helping maintain an organized working environment
+</div>
+
+<div class="responsibility">
+Supporting smooth communication during daily activities
+</div>
+
+</div>
 
 </div>
 
 
-<div class="item">
+<div class="experience-card">
 
-<div class="date">Freelance & Online Work</div>
+<div class="experience-top">
 
-<h2>Various Online Projects</h2>
+<div>
+<div class="experience-label">Digital Experience</div>
+<h3>Various Online Projects</h3>
+<div class="company">Freelance & Personal Digital Projects</div>
+</div>
 
-<div class="company">Digital Services</div>
+<div class="status">Ongoing Development</div>
+
+</div>
 
 <p>
-Worked on various online projects involving creative digital services,
-design-related tasks and online activities.
+Independent practical work and experimentation across digital platforms,
+creative projects, website development and online workflows.
 </p>
 
-<ul>
-<li>Graphic design related projects.</li>
-<li>Digital marketing activities.</li>
-<li>Online project management.</li>
-<li>Client-focused digital tasks.</li>
-</ul>
+<div class="responsibilities">
+
+<div class="responsibility">
+Working on personal digital projects
+</div>
+
+<div class="responsibility">
+Creating and organizing digital content
+</div>
+
+<div class="responsibility">
+Developing personal web pages
+</div>
+
+<div class="responsibility">
+Working with HTML and CSS
+</div>
+
+<div class="responsibility">
+Exploring online promotional workflows
+</div>
+
+<div class="responsibility">
+Practicing graphic and visual design
+</div>
+
+<div class="responsibility">
+Exploring social media platforms
+</div>
+
+<div class="responsibility">
+Using modern digital and AI-assisted tools
+</div>
 
 </div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- REAL WORLD EXPOSURE -->
+<section class="real-world">
+<div class="container">
+
+<div class="section-heading">
+<small>Practical Exposure</small>
+<h2>Experience Beyond a Job Title</h2>
+<p>
+Professional growth also comes from the situations, responsibilities
+and environments experienced along the way.
+</p>
+</div>
+
+<div class="exposure-grid">
+
+<div class="exposure-card">
+<div class="exposure-icon">◈</div>
+<h3>Business Environment</h3>
+<p>
+Experience working within an active business environment and understanding
+how daily activities contribute to overall operations.
+</p>
+</div>
+
+<div class="exposure-card">
+<div class="exposure-icon">◈</div>
+<h3>Customer Interaction</h3>
+<p>
+Regular exposure to customer-facing situations helped develop a practical
+understanding of customer expectations and communication.
+</p>
+</div>
+
+<div class="exposure-card">
+<div class="exposure-icon">◈</div>
+<h3>Operational Responsibility</h3>
+<p>
+Handling day-to-day responsibilities created a stronger sense of
+accountability, organization and consistency.
+</p>
+</div>
+
+<div class="exposure-card">
+<div class="exposure-icon">◈</div>
+<h3>Digital Project Environment</h3>
+<p>
+Independent online projects provided practical exposure to digital
+platforms, creative work and web-based experimentation.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- CONTRIBUTIONS -->
+<section>
+<div class="container">
+
+<div class="section-heading">
+<small>Contribution</small>
+<h2>How I Contribute</h2>
+<p>
+My approach is focused on being useful, responsible and consistent
+within whatever environment I am working in.
+</p>
+</div>
+
+<div class="contribution-grid">
+
+<div class="contribution">
+<h3>Responsible Execution</h3>
+<p>
+Taking assigned responsibilities seriously and maintaining consistency
+in everyday work.
+</p>
+</div>
+
+<div class="contribution">
+<h3>Practical Thinking</h3>
+<p>
+Looking at situations from a practical perspective and trying to find
+simple and workable solutions.
+</p>
+</div>
+
+<div class="contribution">
+<h3>Adaptability</h3>
+<p>
+Adjusting to changing situations, new tasks and different working
+requirements.
+</p>
+</div>
+
+<div class="contribution">
+<h3>Attention to Work</h3>
+<p>
+Trying to maintain organized, presentable and properly completed work.
+</p>
+</div>
+
+<div class="contribution">
+<h3>Continuous Improvement</h3>
+<p>
+Using experience and feedback as opportunities to improve future work.
+</p>
+</div>
+
+<div class="contribution">
+<h3>Learning Mindset</h3>
+<p>
+Remaining open to new tools, new environments and new ways of working.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- LESSONS -->
+<section class="lessons">
+<div class="container">
+
+<div class="section-heading">
+<small>Professional Growth</small>
+<h2>What Experience Has Taught Me</h2>
+</div>
+
+<div class="lessons-list">
+
+<div class="lesson">
+<div class="lesson-number">01</div>
+<div>
+<h3>Responsibility Matters</h3>
+<p>
+Professional work requires consistency and accountability, even in small daily tasks.
+</p>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">02</div>
+<div>
+<h3>People Matter</h3>
+<p>
+Understanding people and communicating respectfully is an important part of every workplace.
+</p>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">03</div>
+<div>
+<h3>Details Matter</h3>
+<p>
+Small details can influence presentation, organization and the overall quality of work.
+</p>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">04</div>
+<div>
+<h3>Learning Never Stops</h3>
+<p>
+Every project and working environment can provide an opportunity to learn something new.
+</p>
+</div>
+</div>
+
+<div class="lesson">
+<div class="lesson-number">05</div>
+<div>
+<h3>Experience Creates Confidence</h3>
+<p>
+Practical exposure gradually builds confidence in handling responsibilities and new challenges.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- DIGITAL JOURNEY -->
+<section>
+<div class="container">
+
+<div class="section-heading">
+<small>Digital Career</small>
+<h2>From Practical Work to Digital Growth</h2>
+</div>
+
+<div class="digital-box">
+
+<h3>A Journey Still in Progress.</h3>
+
+<p>
+My digital career is developing through continuous practice, personal
+projects and practical exploration. Rather than seeing learning as a
+one-time process, I consider it part of my long-term professional journey.
+</p>
+
+<div class="digital-path">
+
+<div class="path-item">Explore</div>
+<div class="arrow">→</div>
+
+<div class="path-item">Practice</div>
+<div class="arrow">→</div>
+
+<div class="path-item">Build</div>
+<div class="arrow">→</div>
+
+<div class="path-item">Improve</div>
+<div class="arrow">→</div>
+
+<div class="path-item">Grow</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- DEVELOPMENT -->
+<section class="development">
+<div class="container">
+
+<div class="section-heading">
+<small>Professional Development</small>
+<h2>Where I Am Heading</h2>
+<p>
+The next stage of my journey is focused on turning practical knowledge
+into stronger professional capabilities.
+</p>
+</div>
+
+<div class="development-grid">
+
+<div class="dev-card">
+<span>01 — FOUNDATION</span>
+<h3>Strengthen Practical Experience</h3>
+<p>
+Continue learning from real-world work environments and practical projects.
+</p>
+</div>
+
+<div class="dev-card">
+<span>02 — DIGITAL</span>
+<h3>Build Digital Expertise</h3>
+<p>
+Continue developing knowledge around design, websites, digital marketing
+and online platforms.
+</p>
+</div>
+
+<div class="dev-card">
+<span>03 — CAREER</span>
+<h3>Develop Professionally</h3>
+<p>
+Build a sustainable career by combining practical experience with
+continuous digital learning.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+<div class="container">
+
+<div class="section-heading">
+<small>My Work Philosophy</small>
+</div>
+
+<div class="quote">
+“Learn from every experience.<br>
+<span>Improve with every opportunity.</span>”
+</div>
+
+<p>
+I believe professional growth is a continuous process built through
+responsibility, curiosity, practical experience and consistent improvement.
+</p>
+
+</div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+
+<h2>Let's Build Something Meaningful.</h2>
+
+<p>
+Have a project, opportunity or collaboration in mind?
+Let's connect and explore what we can create together.
+</p>
+
+<a href="contact.html" class="btn">Get In Touch →</a>
 
 </section>
 
 
-<section class="education-title">
-
-<span>EDUCATION</span>
-
-<h2>Academic Background</h2>
-
-</section>
-
-
-<section class="edu">
-
-<div class="edu-card">
-
-<h3>Honours — 3rd Year</h3>
-
-<div class="place">Rangamati Government College</div>
-
-<p>Subject: History</p>
-
-</div>
-
-
-<div class="edu-card">
-
-<h3>Higher Secondary Certificate (HSC)</h3>
-
-<div class="place">Govt. Ashekane Aulia College</div>
-
-<p>Completed in 2022</p>
-
-</div>
-
-
-<div class="edu-card">
-
-<h3>Secondary School Certificate (SSC)</h3>
-
-<div class="place">Rahmania High School</div>
-
-<p>Completed in 2020</p>
-
-</div>
-
-
-<div class="edu-card">
-
-<h3>Freelancing Course</h3>
-
-<div class="place">E-Learning & Earning Ltd.</div>
-
-<p>Professional freelancing training completed.</p>
-
-</div>
-
-</section>
-
-
+<!-- FOOTER -->
 <footer>
-© 2026 MD Abdul Al Mamun. All Rights Reserved.
+<div class="container">
+MD Abdul Al Mamun — <span>Digital Service</span><br>
+© 2026 All Rights Reserved.
+</div>
 </footer>
 
 
 <script>
-
 function toggleMenu(){
-
-const menu = document.getElementById("mobileMenu");
-
-if(menu.style.display === "block"){
-    menu.style.display = "none";
-}else{
-    menu.style.display = "block";
+    document.getElementById("navLinks").classList.toggle("show");
 }
-
-}
-
 </script>
 
 </body>
