@@ -1,6 +1,21 @@
-<!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Services | MD Abdul Al Mamun</title><style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Services | MD Abdul Al Mamun</title>
+
+<meta name="description"
+content="Professional digital services by MD Abdul Al Mamun — Graphic Design, Digital Marketing, Web Design, Social Media Management, Product Promotion and Freelance Digital Services.">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -17,6 +32,7 @@ body{
     background:#070707;
     color:#fff;
     line-height:1.6;
+    overflow-x:hidden;
 }
 
 a{
@@ -30,16 +46,25 @@ a{
     margin:auto;
 }
 
-/* ================= NAVBAR ================= */
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 nav{
     position:sticky;
     top:0;
     z-index:1000;
+
     height:72px;
+
     background:rgba(8,8,8,.95);
+
     backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
     border-bottom:1px solid #222;
+
     display:flex;
     align-items:center;
 }
@@ -48,6 +73,7 @@ nav{
     width:90%;
     max-width:1120px;
     margin:auto;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -57,6 +83,7 @@ nav{
     font-size:20px;
     font-weight:bold;
     letter-spacing:.5px;
+    white-space:nowrap;
 }
 
 .logo span{
@@ -73,11 +100,28 @@ nav{
     color:#999;
     font-size:13px;
     transition:.3s;
+    position:relative;
+}
+
+.links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:#d4af37;
+    transition:.3s;
 }
 
 .links a:hover,
 .links a.active{
     color:#d4af37;
+}
+
+.links a:hover::after,
+.links a.active::after{
+    width:100%;
 }
 
 .menu-btn{
@@ -89,34 +133,71 @@ nav{
     cursor:pointer;
 }
 
-/* MOBILE MENU */
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 .mobile-menu{
     display:none;
+
     position:fixed;
     top:72px;
     left:0;
+
     width:100%;
-    background:#0b0b0b;
+
+    background:rgba(10,10,10,.98);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
     border-bottom:1px solid #222;
+
     padding:15px 5%;
+
     z-index:999;
+
+    animation:menuDown .3s ease;
+}
+
+@keyframes menuDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 .mobile-menu a{
     display:block;
     padding:13px 0;
+
     color:#aaa;
+
     border-bottom:1px solid #1d1d1d;
+
     font-size:15px;
+
+    transition:.3s;
 }
 
 .mobile-menu a:hover,
 .mobile-menu a.active{
     color:#d4af37;
+    padding-left:7px;
 }
 
-/* ================= HERO ================= */
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .page{
     padding:105px 0 100px;
@@ -128,33 +209,72 @@ nav{
 }
 
 .hero:before{
+
     content:"";
+
     position:absolute;
+
     width:500px;
     height:500px;
+
     border-radius:50%;
+
     background:#d4af37;
+
     opacity:.035;
+
     filter:blur(110px);
+
     top:-240px;
     right:-140px;
+
     pointer-events:none;
+
+    animation:heroGlow 7s ease-in-out infinite;
+}
+
+@keyframes heroGlow{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:.03;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:.06;
+    }
+
 }
 
 .label{
+
     position:relative;
+
     color:#d4af37;
+
     font-size:11px;
+
     letter-spacing:4px;
+
     margin-bottom:18px;
+
+    animation:fadeUp .8s ease both;
 }
 
 h1{
+
     position:relative;
+
     font-size:clamp(48px,7vw,78px);
+
     line-height:1;
+
     letter-spacing:-2px;
+
     margin-bottom:23px;
+
+    animation:fadeUp .9s ease .1s both;
 }
 
 h1 span{
@@ -162,62 +282,109 @@ h1 span{
 }
 
 .intro{
+
     position:relative;
+
     max-width:700px;
+
     color:#888;
+
     font-size:16px;
+
     margin-bottom:35px;
+
+    animation:fadeUp .9s ease .2s both;
 }
 
 .hero-buttons{
+
     display:flex;
+
     gap:12px;
+
     flex-wrap:wrap;
+
     margin-bottom:80px;
+
+    animation:fadeUp .9s ease .3s both;
 }
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .primary-btn,
 .secondary-btn{
+
     display:inline-block;
+
     padding:13px 21px;
+
     border-radius:30px;
+
     font-size:13px;
-    transition:.3s;
+
+    transition:.35s;
 }
 
 .primary-btn{
+
     background:#d4af37;
+
     color:#050505;
+
     border:1px solid #d4af37;
+
     font-weight:bold;
 }
 
 .primary-btn:hover{
+
     background:transparent;
+
     color:#d4af37;
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,.12);
 }
 
 .secondary-btn{
+
     border:1px solid #333;
+
     color:#aaa;
 }
 
 .secondary-btn:hover{
+
     color:#d4af37;
+
     border-color:#d4af37;
+
+    box-shadow:
+        0 0 20px rgba(212,175,55,.08);
 }
 
-/* ================= SECTION ================= */
+
+/* =========================================================
+   SECTION
+========================================================= */
 
 .section-head{
     margin-bottom:28px;
 }
 
 .section-label{
+
     color:#777;
+
     font-size:10px;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
+
     margin-bottom:7px;
 }
 
@@ -225,332 +392,939 @@ h1 span{
     font-size:32px;
 }
 
-/* ================= SERVICE GRID ================= */
+
+/* =========================================================
+   SERVICE GRID
+========================================================= */
 
 .services{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:22px;
 }
 
+
+/* =========================================================
+   SERVICE CARD
+========================================================= */
+
 .service{
+
     position:relative;
-    background:linear-gradient(145deg,#121212,#0b0b0b);
-    border:1px solid #292929;
+
+    background:#0b0b0b;
+
+    border:1px solid #252525;
+
     border-radius:22px;
+
     padding:32px;
+
     overflow:hidden;
-    transition:.4s;
+
+    transition:
+        transform .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease;
 }
 
-.service:before{
-    content:"";
-    position:absolute;
-    width:190px;
-    height:190px;
-    border-radius:50%;
-    background:#d4af37;
-    opacity:.035;
-    right:-80px;
-    top:-80px;
-    transition:.4s;
+
+/* =========================================================
+   ONLY BORDER LINE ANIMATION
+   NO INNER BOX GLOW
+========================================================= */
+
+.animated-border{
+    position:relative;
 }
+
+
+/* Moving light */
+
+.animated-border .border-light{
+    position:absolute;
+
+    width:70px;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #35d9ff,
+        #e5fbff,
+        #35d9ff,
+        transparent
+    );
+
+    box-shadow:
+        0 0 6px #35d9ff,
+        0 0 12px rgba(53,217,255,.65);
+
+    z-index:30;
+
+    pointer-events:none;
+
+    border-radius:10px;
+}
+
+
+/* =========================================================
+   TOP BORDER
+========================================================= */
+
+.animated-border .border-light.top{
+
+    top:-1px;
+    left:-70px;
+
+    animation:
+        moveTop 4s linear infinite;
+}
+
+@keyframes moveTop{
+
+    0%{
+        left:-70px;
+    }
+
+    100%{
+        left:100%;
+    }
+
+}
+
+
+/* =========================================================
+   RIGHT BORDER
+========================================================= */
+
+.animated-border .border-light.right{
+
+    top:-70px;
+    right:-1px;
+
+    width:2px;
+    height:70px;
+
+    animation:
+        moveRight 4s linear infinite;
+}
+
+@keyframes moveRight{
+
+    0%{
+        top:-70px;
+    }
+
+    100%{
+        top:100%;
+    }
+
+}
+
+
+/* =========================================================
+   BOTTOM BORDER
+========================================================= */
+
+.animated-border .border-light.bottom{
+
+    bottom:-1px;
+    right:-70px;
+
+    animation:
+        moveBottom 4s linear infinite;
+
+    animation-delay:1s;
+}
+
+@keyframes moveBottom{
+
+    0%{
+        right:-70px;
+    }
+
+    100%{
+        right:100%;
+    }
+
+}
+
+
+/* =========================================================
+   LEFT BORDER
+========================================================= */
+
+.animated-border .border-light.left{
+
+    bottom:-70px;
+    left:-1px;
+
+    width:2px;
+    height:70px;
+
+    animation:
+        moveLeft 4s linear infinite;
+
+    animation-delay:1s;
+}
+
+@keyframes moveLeft{
+
+    0%{
+        bottom:-70px;
+    }
+
+    100%{
+        bottom:100%;
+    }
+
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
 
 .service:hover{
+
     transform:translateY(-7px);
-    border-color:#d4af37;
-    box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+    border-color:#303030;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.55);
 }
 
-.service:hover:before{
-    opacity:.07;
-}
+
+/* =========================================================
+   SERVICE TOP
+========================================================= */
 
 .service-top{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:28px;
 }
 
 .number{
+
     color:#d4af37;
+
     font-size:11px;
+
     letter-spacing:2px;
 }
 
 .service-icon{
+
     width:47px;
     height:47px;
+
     border:1px solid #333;
+
     border-radius:13px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     color:#d4af37;
+
+    transition:.4s;
+}
+
+.service:hover .service-icon{
+
+    border-color:#d4af37;
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.08);
 }
 
 .service-icon svg{
+
     width:22px;
     height:22px;
 }
 
+
+/* =========================================================
+   SERVICE CONTENT
+========================================================= */
+
 .service h3{
+
     font-size:25px;
+
     margin-bottom:10px;
 }
 
 .service-intro{
+
     color:#888;
+
     font-size:14px;
+
     margin-bottom:25px;
 }
 
 .service-title{
+
     color:#d4af37;
+
     font-size:10px;
+
     letter-spacing:2px;
+
     text-transform:uppercase;
+
     margin-bottom:10px;
 }
 
 .service-list{
+
     list-style:none;
+
     margin-bottom:23px;
 }
 
 .service-list li{
+
     color:#aaa;
+
     font-size:13px;
+
     padding:7px 0;
+
     border-bottom:1px solid #1e1e1e;
+
+    transition:.25s;
+}
+
+.service-list li:hover{
+
+    color:#ddd;
+
+    padding-left:4px;
 }
 
 .service-list li:before{
+
     content:"✓";
+
     color:#d4af37;
+
     margin-right:9px;
 }
 
+
+/* =========================================================
+   TAGS
+========================================================= */
+
 .tags{
+
     display:flex;
+
     flex-wrap:wrap;
+
     gap:7px;
+
     margin-bottom:25px;
 }
 
 .tags span{
-    color:#888;
-    border:1px solid #2e2e2e;
-    padding:5px 10px;
-    border-radius:20px;
-    font-size:10px;
-}
 
-.service-btn{
-    display:block;
-    text-align:center;
-    padding:12px;
-    border:1px solid #333;
-    border-radius:30px;
-    color:#d4af37;
-    font-size:12px;
+    color:#888;
+
+    border:1px solid #2e2e2e;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
     transition:.3s;
 }
 
+.tags span:hover{
+
+    color:#35d9ff;
+
+    border-color:#35d9ff;
+
+    background:transparent;
+}
+
+
+/* =========================================================
+   SERVICE BUTTON
+========================================================= */
+
+.service-btn{
+
+    display:block;
+
+    text-align:center;
+
+    padding:12px;
+
+    border:1px solid #333;
+
+    border-radius:30px;
+
+    color:#d4af37;
+
+    font-size:12px;
+
+    transition:.35s;
+}
+
 .service-btn:hover{
+
     background:#d4af37;
+
     color:#050505;
+
     border-color:#d4af37;
 }
 
-/* ================= FEATURE STRIP ================= */
+
+/* =========================================================
+   FEATURE STRIP
+========================================================= */
 
 .feature-strip{
+
     margin-top:25px;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:15px;
 }
 
 .feature{
+
     padding:22px;
+
     background:#0d0d0d;
+
     border:1px solid #242424;
+
     border-radius:15px;
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.feature::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:0;
+    height:1px;
+
+    background:#35d9ff;
+
+    transition:.5s;
+}
+
+.feature:hover::before{
+    width:100%;
+}
+
+.feature:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#444;
 }
 
 .feature span{
+
     color:#d4af37;
+
     font-size:11px;
 }
 
 .feature h4{
+
     margin:7px 0;
+
     font-size:15px;
 }
 
 .feature p{
+
     color:#777;
+
     font-size:12px;
 }
 
-/* ================= PROCESS ================= */
+
+/* =========================================================
+   PROCESS
+========================================================= */
 
 .process{
+
     margin-top:100px;
 }
 
 .process-grid{
+
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     margin-top:30px;
+
     border-top:1px solid #292929;
+
     border-bottom:1px solid #292929;
 }
 
 .process-item{
+
     padding:30px 23px;
+
     border-right:1px solid #292929;
+
+    position:relative;
+
+    transition:.35s;
 }
 
 .process-item:last-child{
     border-right:none;
 }
 
+.process-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-1px;
+    left:0;
+
+    width:0;
+    height:1px;
+
+    background:#35d9ff;
+
+    transition:.5s;
+}
+
+.process-item:hover::before{
+    width:100%;
+}
+
 .process-number{
+
     color:#d4af37;
+
     font-size:11px;
+
     letter-spacing:2px;
 }
 
 .process-item h3{
+
     margin:12px 0 8px;
+
     font-size:18px;
 }
 
 .process-item p{
+
     color:#777;
+
     font-size:13px;
 }
 
-/* ================= WHO I WORK WITH ================= */
+
+/* =========================================================
+   AUDIENCE
+========================================================= */
 
 .audience{
+
     margin-top:100px;
 }
 
 .audience-grid{
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:15px;
+
     margin-top:30px;
 }
 
 .audience-card{
+
     padding:25px;
+
     border:1px solid #292929;
+
     border-radius:17px;
+
     background:#0d0d0d;
-    transition:.3s;
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.audience-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:0;
+    height:1px;
+
+    background:#35d9ff;
+
+    transition:.5s;
 }
 
 .audience-card:hover{
-    transform:translateY(-4px);
+
+    transform:translateY(-5px);
+
     border-color:#555;
 }
 
+.audience-card:hover::after{
+    width:100%;
+}
+
 .audience-card h3{
+
     font-size:17px;
+
     margin-bottom:7px;
 }
 
 .audience-card p{
+
     color:#777;
+
     font-size:13px;
 }
 
-/* ================= WHY ME ================= */
+
+/* =========================================================
+   WHY
+========================================================= */
 
 .why{
+
     margin-top:100px;
 }
 
 .why-grid{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:15px;
+
     margin-top:30px;
 }
 
 .why-card{
+
     padding:25px;
+
     border:1px solid #292929;
+
     background:#0d0d0d;
+
     border-radius:17px;
+
+    transition:.4s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.why-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:0;
+    height:1px;
+
+    background:#35d9ff;
+
+    transition:.5s;
+}
+
+.why-card:hover::before{
+    width:100%;
+}
+
+.why-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#444;
 }
 
 .why-card span{
+
     color:#d4af37;
+
     font-size:11px;
 }
 
 .why-card h3{
+
     margin:8px 0;
+
     font-size:17px;
 }
 
 .why-card p{
+
     color:#777;
+
     font-size:13px;
 }
 
-/* ================= CTA ================= */
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
 
 .final-cta{
+
     position:relative;
+
     overflow:hidden;
+
     margin-top:100px;
+
     padding:60px 35px;
+
     text-align:center;
-    border:1px solid #332d1b;
+
+    border:1px solid #333;
+
     border-radius:23px;
-    background:
-        radial-gradient(circle at center,rgba(212,175,55,.09),transparent 58%),
-        #0c0c0c;
+
+    background:#0c0c0c;
+}
+
+.final-cta::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:0;
+    height:1px;
+
+    background:#d4af37;
+
+    animation:ctaLine 5s linear infinite;
+}
+
+@keyframes ctaLine{
+
+    0%{
+        left:-20%;
+        width:20%;
+    }
+
+    100%{
+        left:100%;
+        width:20%;
+    }
+
 }
 
 .final-cta h2{
+
+    position:relative;
+
+    z-index:2;
+
     font-size:35px;
+
     margin-bottom:10px;
 }
 
 .final-cta p{
+
+    position:relative;
+
+    z-index:2;
+
     max-width:620px;
+
     margin:auto;
+
     color:#888;
+
     font-size:14px;
+
     margin-bottom:27px;
 }
 
 .cta-buttons{
+
+    position:relative;
+
+    z-index:2;
+
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:10px;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
+
     border-top:1px solid #222;
+
     padding:25px;
+
     text-align:center;
+
     color:#666;
+
     font-size:13px;
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   HERO ANIMATION
+========================================================= */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP COMPACT NAV
+========================================================= */
+
+@media(min-width:901px) and (max-width:1150px){
+
+    .nav{
+        width:94%;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .links{
+        gap:11px;
+    }
+
+    .links a{
+        font-size:11px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media(max-width:900px){
 
@@ -580,10 +1354,15 @@ footer{
     }
 
     .audience-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
     }
 
 }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:600px){
 
@@ -611,6 +1390,10 @@ footer{
         padding:27px;
     }
 
+    .service h3{
+        font-size:23px;
+    }
+
     .feature-strip{
         grid-template-columns:1fr;
     }
@@ -620,7 +1403,9 @@ footer{
     }
 
     .process-item{
+
         border-right:none;
+
         border-bottom:1px solid #292929;
     }
 
@@ -633,12 +1418,18 @@ footer{
         border-top:none;
     }
 
+    .audience-grid{
+        grid-template-columns:1fr;
+    }
+
     .why-grid{
         grid-template-columns:1fr;
     }
 
     .final-cta{
+
         margin-top:75px;
+
         padding:42px 22px;
     }
 
@@ -648,354 +1439,1317 @@ footer{
 
 }
 
-</style></head><body><!-- ================= NAVBAR ================= --><nav><div class="nav"><div class="logo">
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+
+        transition-duration:.01ms !important;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
+
+<nav>
+
+<div class="nav">
+
+<div class="logo">
 MD <span>Abdul Al Mamun</span>
-</div><ul class="links"><li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="skills.html">Skills</a></li>
-<li><a href="services.html" class="active">Services</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="experience.html">Experience</a></li>
-<li><a href="resume.html">Resume</a></li>
-<li><a href="contact.html">Contact</a></li></ul><button class="menu-btn" onclick="toggleMenu()">☰</button>
+</div>
 
-</div></nav><!-- ================= MOBILE MENU ================= --><div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="skills.html">Skills</a>
-<a href="services.html" class="active">Services</a>
-<a href="projects.html">Projects</a>
-<a href="experience.html">Experience</a>
-<a href="resume.html">Resume</a>
-<a href="contact.html">Contact</a>
+<ul class="links">
 
-</div><main class="page"><div class="container"><!-- ================= HERO ================= --><section class="hero"><div class="label">
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="about.html">
+About
+</a>
+</li>
+
+<li>
+<a href="skills.html">
+Skills
+</a>
+</li>
+
+<li>
+<a href="services.html" class="active">
+Services
+</a>
+</li>
+
+<li>
+<a href="projects.html">
+Projects
+</a>
+</li>
+
+<li>
+<a href="experience.html">
+Experience
+</a>
+</li>
+
+<li>
+<a href="resume.html">
+Resume
+</a>
+</li>
+
+<li>
+<a href="contact.html">
+Contact
+</a>
+</li>
+
+</ul>
+
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+aria-label="Open Menu">
+
+☰
+
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- =======================================================
+     MOBILE MENU
+======================================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="skills.html">
+Skills
+</a>
+
+<a href="services.html" class="active">
+Services
+</a>
+
+<a href="projects.html">
+Projects
+</a>
+
+<a href="experience.html">
+Experience
+</a>
+
+<a href="resume.html">
+Resume
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main class="page">
+
+<div class="container">
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero">
+
+<div class="label">
 DIGITAL SERVICES
-</div><h1>
+</div>
+
+<h1>
 Creative <span>Solutions.</span>
-</h1><p class="intro">
+</h1>
+
+<p class="intro">
+
 I provide creative and digital solutions designed to help
 individuals, personal brands and businesses build a stronger,
 more professional and effective online presence.
-</p><div class="hero-buttons"><a href="contact.html" class="primary-btn">
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="contact.html"
+class="primary-btn">
+
 Start a Project →
-</a><a href="#services" class="secondary-btn">
+
+</a>
+
+<a
+href="#services"
+class="secondary-btn">
+
 Explore Services
-</a></div></section><!-- ================= SERVICES ================= --><section id="services"><div class="section-head"><div class="section-label">
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section id="services">
+
+<div class="section-head reveal">
+
+<div class="section-label">
 WHAT I OFFER
-</div><h2>
+</div>
+
+<h2>
 Services & Solutions
-</h2></div><div class="services"><!-- 01 GRAPHIC DESIGN --><div class="service"><div class="service-top"><div class="number">
+</h2>
+
+</div>
+
+
+<div class="services">
+
+
+<!-- ===================================================
+     GRAPHIC DESIGN
+=================================================== -->
+
+<div class="service animated-border reveal">
+
+<span class="border-light top"></span>
+<span class="border-light right"></span>
+<span class="border-light bottom"></span>
+<span class="border-light left"></span>
+
+<div class="service-top">
+
+<div class="number">
 01 / DESIGN
-</div><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20l4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20z"/>
-<path d="m14 7 3 3"/></svg></div></div><h3>
+</div>
+
+<div class="service-icon">
+
+<svg
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="1.7">
+
+<path d="M4 20l4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20z"/>
+
+<path d="m14 7 3 3"/>
+
+</svg>
+
+</div>
+
+</div>
+
+<h3>
 Graphic Design
-</h3><p class="service-intro">
+</h3>
+
+<p class="service-intro">
+
 Professional visual content designed to make your
 brand, products and social media presence look polished.
-</p><div class="service-title">
+
+</p>
+
+<div class="service-title">
 What I Do
-</div><ul class="service-list"><li>Social Media Post Design</li>
+</div>
+
+<ul class="service-list">
+
+<li>Social Media Post Design</li>
 <li>Facebook & Instagram Ad Creative</li>
 <li>Poster & Banner Design</li>
 <li>Logo & Brand Identity</li>
 <li>Product Promotional Design</li>
 <li>YouTube Thumbnail Design</li>
 <li>Business Card & Marketing Materials</li>
-<li>Event & Campaign Graphics</li></ul><div class="service-title">
+<li>Event & Campaign Graphics</li>
+
+</ul>
+
+<div class="service-title">
 Ideal For
-</div><div class="tags"><span>Businesses</span>
+</div>
+
+<div class="tags">
+
+<span>Businesses</span>
 <span>Brands</span>
 <span>Creators</span>
 <span>Startups</span>
 
-</div><a href="contact.html" class="service-btn">
+</div>
+
+<a
+href="contact.html"
+class="service-btn">
+
 Discuss a Design Project →
-</a></div><!-- 02 DIGITAL MARKETING --><div class="service"><div class="service-top"><div class="number">
+
+</a>
+
+</div>
+
+
+<!-- ===================================================
+     DIGITAL MARKETING
+=================================================== -->
+
+<div class="service animated-border reveal">
+
+<span class="border-light top"></span>
+<span class="border-light right"></span>
+<span class="border-light bottom"></span>
+<span class="border-light left"></span>
+
+<div class="service-top">
+
+<div class="number">
 02 / MARKETING
-</div><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5"/>
+</div>
+
+<div class="service-icon">
+
+<svg
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="1.7">
+
+<path d="M4 19V5"/>
+
 <path d="M4 19h16"/>
+
 <path d="m7 15 4-4 3 2 5-6"/>
-<path d="M16 7h3v3"/></svg></div></div><h3>
+
+<path d="M16 7h3v3"/>
+
+</svg>
+
+</div>
+
+</div>
+
+<h3>
 Digital Marketing
-</h3><p class="service-intro">
+</h3>
+
+<p class="service-intro">
+
 Digital marketing support focused on improving
 visibility, engagement and communication with your audience.
-</p><div class="service-title">
+
+</p>
+
+<div class="service-title">
 What I Do
-</div><ul class="service-list"><li>Facebook & Instagram Marketing</li>
+</div>
+
+<ul class="service-list">
+
+<li>Facebook & Instagram Marketing</li>
 <li>Meta Ads Campaign Setup</li>
 <li>Audience Research</li>
 <li>Content Planning</li>
 <li>Social Media Strategy</li>
 <li>Campaign Monitoring</li>
 <li>Basic Performance Analysis</li>
-<li>Promotional Campaign Planning</li></ul><div class="service-title">
+<li>Promotional Campaign Planning</li>
+
+</ul>
+
+<div class="service-title">
 Focus
-</div><div class="tags"><span>Visibility</span>
+</div>
+
+<div class="tags">
+
+<span>Visibility</span>
 <span>Reach</span>
 <span>Engagement</span>
 <span>Growth</span>
 
-</div><a href="contact.html" class="service-btn">
+</div>
+
+<a
+href="contact.html"
+class="service-btn">
+
 Start a Marketing Project →
-</a></div><!-- 03 WEB DESIGN --><div class="service"><div class="service-top"><div class="number">
+
+</a>
+
+</div>
+
+
+<!-- ===================================================
+     WEB DESIGN
+=================================================== -->
+
+<div class="service animated-border reveal">
+
+<span class="border-light top"></span>
+<span class="border-light right"></span>
+<span class="border-light bottom"></span>
+<span class="border-light left"></span>
+
+<div class="service-top">
+
+<div class="number">
 03 / WEB
-</div><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/>
+</div>
+
+<div class="service-icon">
+
+<svg
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="1.7">
+
+<rect
+x="3"
+y="4"
+width="18"
+height="16"
+rx="2"/>
+
 <path d="M3 9h18"/>
+
 <path d="M8 13l-2 2 2 2"/>
+
 <path d="m12 17 2-4"/>
-<path d="m16 13 2 2-2 2"/></svg></div></div><h3>
+
+<path d="m16 13 2 2-2 2"/>
+
+</svg>
+
+</div>
+
+</div>
+
+<h3>
 Web Design
-</h3><p class="service-intro">
+</h3>
+
+<p class="service-intro">
+
 Clean, modern and responsive websites designed to
 create a credible and professional digital presence.
-</p><div class="service-title">
+
+</p>
+
+<div class="service-title">
 What I Do
-</div><ul class="service-list"><li>Personal Portfolio Websites</li>
+</div>
+
+<ul class="service-list">
+
+<li>Personal Portfolio Websites</li>
 <li>Business Websites</li>
 <li>Landing Pages</li>
 <li>Responsive Mobile Design</li>
 <li>HTML & CSS Website Development</li>
 <li>Website Content Structure</li>
 <li>Basic SEO Structure</li>
-<li>Domain & Deployment Guidance</li></ul><div class="service-title">
+<li>Domain & Deployment Guidance</li>
+
+</ul>
+
+<div class="service-title">
 Focus
-</div><div class="tags"><span>Modern</span>
+</div>
+
+<div class="tags">
+
+<span>Modern</span>
 <span>Responsive</span>
 <span>Clean</span>
 <span>Professional</span>
 
-</div><a href="contact.html" class="service-btn">
+</div>
+
+<a
+href="contact.html"
+class="service-btn">
+
 Build My Website →
-</a></div><!-- 04 SOCIAL MEDIA --><div class="service"><div class="service-top"><div class="number">
+
+</a>
+
+</div>
+
+
+<!-- ===================================================
+     SOCIAL MEDIA MANAGEMENT
+=================================================== -->
+
+<div class="service animated-border reveal">
+
+<span class="border-light top"></span>
+<span class="border-light right"></span>
+<span class="border-light bottom"></span>
+<span class="border-light left"></span>
+
+<div class="service-top">
+
+<div class="number">
 04 / SOCIAL
-</div><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="3"/>
-<circle cx="8.5" cy="9" r="1.5"/>
-<path d="M6 16l3.5-4 2.5 3 2-2 4 3"/></svg></div></div><h3>
+</div>
+
+<div class="service-icon">
+
+<svg
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="1.7">
+
+<rect
+x="3"
+y="4"
+width="18"
+height="16"
+rx="3"/>
+
+<circle
+cx="8.5"
+cy="9"
+r="1.5"/>
+
+<path d="M6 16l3.5-4 2.5 3 2-2 4 3"/>
+
+</svg>
+
+</div>
+
+</div>
+
+<h3>
 Social Media Management
-</h3><p class="service-intro">
+</h3>
+
+<p class="service-intro">
+
 Structured social media support to help maintain
 a consistent, organized and professional online presence.
-</p><div class="service-title">
+
+</p>
+
+<div class="service-title">
 What I Do
-</div><ul class="service-list"><li>Facebook Page Management</li>
+</div>
+
+<ul class="service-list">
+
+<li>Facebook Page Management</li>
 <li>Instagram Content Management</li>
 <li>Content Calendar Planning</li>
 <li>Post Scheduling</li>
 <li>Caption Writing</li>
 <li>Creative Content Planning</li>
 <li>Audience Engagement</li>
-<li>Profile & Page Optimization</li></ul><div class="service-title">
+<li>Profile & Page Optimization</li>
+
+</ul>
+
+<div class="service-title">
 Focus
-</div><div class="tags"><span>Consistency</span>
+</div>
+
+<div class="tags">
+
+<span>Consistency</span>
 <span>Content</span>
 <span>Engagement</span>
 <span>Branding</span>
 
-</div><a href="contact.html" class="service-btn">
+</div>
+
+<a
+href="contact.html"
+class="service-btn">
+
 Manage My Social Media →
-</a></div><!-- 05 PRODUCT PROMOTION --><div class="service"><div class="service-top"><div class="number">
+
+</a>
+
+</div>
+
+
+<!-- ===================================================
+     PRODUCT PROMOTION
+=================================================== -->
+
+<div class="service animated-border reveal">
+
+<span class="border-light top"></span>
+<span class="border-light right"></span>
+<span class="border-light bottom"></span>
+<span class="border-light left"></span>
+
+<div class="service-top">
+
+<div class="number">
 05 / PROMOTION
-</div><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m4 7 8-3 8 3-8 3-8-3z"/>
+</div>
+
+<div class="service-icon">
+
+<svg
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="1.7">
+
+<path d="m4 7 8-3 8 3-8 3-8-3z"/>
+
 <path d="M4 7v6l8 3 8-3V7"/>
-<path d="M8 14v4l4 2 4-2v-4"/></svg></div></div><h3>
+
+<path d="M8 14v4l4 2 4-2v-4"/>
+
+</svg>
+
+</div>
+
+</div>
+
+<h3>
 Product Promotion
-</h3><p class="service-intro">
+</h3>
+
+<p class="service-intro">
+
 Promotional creative and digital campaign support
 to present products clearly and attractively online.
-</p><div class="service-title">
+
+</p>
+
+<div class="service-title">
 What I Do
-</div><ul class="service-list"><li>Product Promotional Posts</li>
+</div>
+
+<ul class="service-list">
+
+<li>Product Promotional Posts</li>
 <li>Offer & Discount Campaign Design</li>
 <li>Product Ad Creatives</li>
 <li>Social Media Promotions</li>
 <li>Seasonal Campaign Graphics</li>
 <li>Product Content Planning</li>
 <li>Promotional Banner Design</li>
-<li>Campaign Visual Direction</li></ul><div class="service-title">
+<li>Campaign Visual Direction</li>
+
+</ul>
+
+<div class="service-title">
 Ideal For
-</div><div class="tags"><span>Retail</span>
+</div>
+
+<div class="tags">
+
+<span>Retail</span>
 <span>Products</span>
 <span>Brands</span>
 <span>Businesses</span>
 
-</div><a href="contact.html" class="service-btn">
+</div>
+
+<a
+href="contact.html"
+class="service-btn">
+
 Promote My Product →
-</a></div><!-- 06 FREELANCE DIGITAL SERVICES --><div class="service"><div class="service-top"><div class="number">
+
+</a>
+
+</div>
+
+
+<!-- ===================================================
+     FREELANCE DIGITAL SERVICES
+=================================================== -->
+
+<div class="service animated-border reveal">
+
+<span class="border-light top"></span>
+<span class="border-light right"></span>
+<span class="border-light bottom"></span>
+<span class="border-light left"></span>
+
+<div class="service-top">
+
+<div class="number">
 06 / DIGITAL
-</div><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16"/>
+</div>
+
+<div class="service-icon">
+
+<svg
+viewBox="0 0 24 24"
+fill="none"
+stroke="currentColor"
+stroke-width="1.7">
+
+<path d="M4 6h16"/>
+
 <path d="M4 12h10"/>
+
 <path d="M4 18h7"/>
-<circle cx="18" cy="12" r="3"/>
-<path d="M18 9v6"/></svg></div></div><h3>
+
+<circle
+cx="18"
+cy="12"
+r="3"/>
+
+<path d="M18 9v6"/>
+
+</svg>
+
+</div>
+
+</div>
+
+<h3>
 Freelance Digital Services
-</h3><p class="service-intro">
+</h3>
+
+<p class="service-intro">
+
 Flexible digital support for projects that need
 a combination of creative, marketing and web solutions.
-</p><div class="service-title">
+
+</p>
+
+<div class="service-title">
 What I Can Help With
-</div><ul class="service-list"><li>Custom Digital Projects</li>
+</div>
+
+<ul class="service-list">
+
+<li>Custom Digital Projects</li>
 <li>Online Business Support</li>
 <li>Creative Content Solutions</li>
 <li>Website Content Assistance</li>
 <li>Social Media Creative Support</li>
 <li>Digital Project Consultation</li>
 <li>Online Presence Improvement</li>
-<li>Custom Project Requirements</li></ul><div class="service-title">
+<li>Custom Project Requirements</li>
+
+</ul>
+
+<div class="service-title">
 Suitable For
-</div><div class="tags"><span>Freelancers</span>
+</div>
+
+<div class="tags">
+
+<span>Freelancers</span>
 <span>Businesses</span>
 <span>Creators</span>
 <span>Individuals</span>
 
-</div><a href="contact.html" class="service-btn">
-Discuss Your Project →
-</a></div></div><!-- ================= FEATURE STRIP ================= --><div class="feature-strip"><div class="feature"><span>01</span>
+</div>
 
-<h4>Creative Approach</h4><p>
+<a
+href="contact.html"
+class="service-btn">
+
+Discuss Your Project →
+
+</a>
+
+</div>
+
+
+</div>
+
+
+<!-- =======================================================
+     FEATURE STRIP
+======================================================= -->
+
+<div class="feature-strip">
+
+
+<div class="feature reveal">
+
+<span>01</span>
+
+<h4>
+Creative Approach
+</h4>
+
+<p>
 Every project starts with understanding
 the purpose and audience.
-</p></div><div class="feature"><span>02</span>
+</p>
 
-<h4>Professional Presentation</h4><p>
-Clean and organized work designed
-to create a strong first impression.
-</p></div><div class="feature"><span>03</span>
+</div>
 
-<h4>Project Focused</h4><p>
+
+<div class="feature reveal">
+
+<span>02</span>
+
+<h4>
+Professional Presentation
+</h4>
+
+<p>
+Clean and organized work designed to
+create a strong first impression.
+</p>
+
+</div>
+
+
+<div class="feature reveal">
+
+<span>03</span>
+
+<h4>
+Project Focused
+</h4>
+
+<p>
 Solutions are structured around the
 specific needs of each project.
-</p></div></div></section><!-- ================= PROCESS ================= --><section class="process"><div class="section-head"><div class="section-label">
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     PROCESS
+======================================================= -->
+
+<section class="process">
+
+<div class="section-head reveal">
+
+<div class="section-label">
 MY PROCESS
-</div><h2>
+</div>
+
+<h2>
 How I Work
-</h2></div><div class="process-grid"><div class="process-item"><div class="process-number">
+</h2>
+
+</div>
+
+
+<div class="process-grid">
+
+
+<div class="process-item reveal">
+
+<div class="process-number">
 01
-</div><h3>
+</div>
+
+<h3>
 Discover
-</h3><p>
+</h3>
+
+<p>
 I first understand your goals,
 requirements, audience and project idea.
-</p></div><div class="process-item"><div class="process-number">
+</p>
+
+</div>
+
+
+<div class="process-item reveal">
+
+<div class="process-number">
 02
-</div><h3>
+</div>
+
+<h3>
 Plan
-</h3><p>
+</h3>
+
+<p>
 I create a clear direction and structure
 before starting the actual work.
-</p></div><div class="process-item"><div class="process-number">
+</p>
+
+</div>
+
+
+<div class="process-item reveal">
+
+<div class="process-number">
 03
-</div><h3>
+</div>
+
+<h3>
 Create
-</h3><p>
+</h3>
+
+<p>
 The idea is transformed into a polished
 and professional digital solution.
-</p></div><div class="process-item"><div class="process-number">
+</p>
+
+</div>
+
+
+<div class="process-item reveal">
+
+<div class="process-number">
 04
-</div><h3>
+</div>
+
+<h3>
 Deliver
-</h3><p>
+</h3>
+
+<p>
 The final work is reviewed, refined
 and prepared for delivery.
-</p></div></div></section><!-- ================= WHO I WORK WITH ================= --><section class="audience"><div class="section-head"><div class="section-label">
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     WHO I WORK WITH
+======================================================= -->
+
+<section class="audience">
+
+<div class="section-head reveal">
+
+<div class="section-label">
 COLLABORATION
-</div><h2>
+</div>
+
+<h2>
 Who I Work With
-</h2></div><div class="audience-grid"><div class="audience-card"><h3>
+</h2>
+
+</div>
+
+
+<div class="audience-grid">
+
+
+<div class="audience-card reveal">
+
+<h3>
 Small Businesses
-</h3><p>
+</h3>
+
+<p>
 Helping businesses improve their digital
 presence through design, promotion and web solutions.
-</p></div><div class="audience-card"><h3>
+</p>
+
+</div>
+
+
+<div class="audience-card reveal">
+
+<h3>
 Personal Brands
-</h3><p>
+</h3>
+
+<p>
 Portfolio websites, visual content and
 digital presence for professionals and individuals.
-</p></div><div class="audience-card"><h3>
+</p>
+
+</div>
+
+
+<div class="audience-card reveal">
+
+<h3>
 Content Creators
-</h3><p>
+</h3>
+
+<p>
 Creative graphics, thumbnails, promotional
 content and social media support.
-</p></div><div class="audience-card"><h3>
+</p>
+
+</div>
+
+
+<div class="audience-card reveal">
+
+<h3>
 Startups & New Projects
-</h3><p>
+</h3>
+
+<p>
 Digital design and online presence support
 for new ideas, projects and emerging brands.
-</p></div><div class="audience-card"><h3>
-Online Businesses</h3><p>
+</p>
+
+</div>
+
+
+<div class="audience-card reveal">
+
+<h3>
+Online Businesses
+</h3>
+
+<p>
 Product promotion, social media content
 and digital marketing support.
-</p></div><div class="audience-card"><h3>
+</p>
+
+</div>
+
+
+<div class="audience-card reveal">
+
+<h3>
 Freelancers & Professionals
-</h3><p>
+</h3>
+
+<p>
 Professional websites, personal branding
 and digital presentation solutions.
-</p></div></div></section><!-- ================= WHY WORK WITH ME ================= --><section class="why"><div class="section-head"><div class="section-label">
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     WHAT YOU CAN EXPECT
+======================================================= -->
+
+<section class="why">
+
+<div class="section-head reveal">
+
+<div class="section-label">
 WORKING TOGETHER
-</div><h2>
+</div>
+
+<h2>
 What You Can Expect
-</h2></div><div class="why-grid"><div class="why-card"><span>01 / CLARITY</span>
+</h2>
+
+</div>
+
+
+<div class="why-grid">
+
+
+<div class="why-card reveal">
+
+<span>
+01 / CLARITY
+</span>
 
 <h3>
 Clear Communication
-</h3><p>
+</h3>
+
+<p>
 A clear understanding of your requirements
 before the project moves forward.
-</p></div><div class="why-card"><span>02 / QUALITY</span>
+</p>
+
+</div>
+
+
+<div class="why-card reveal">
+
+<span>
+02 / QUALITY
+</span>
 
 <h3>
 Attention to Detail
-</h3><p>
+</h3>
+
+<p>
 Focus on clean presentation, structure
 and professional visual quality.
-</p></div><div class="why-card"><span>03 / FLEXIBILITY</span>
+</p>
+
+</div>
+
+
+<div class="why-card reveal">
+
+<span>
+03 / FLEXIBILITY
+</span>
 
 <h3>
 Project-Based Support
-</h3><p>
+</h3>
+
+<p>
 Services can be selected individually
 or combined according to project needs.
-</p></div><div class="why-card"><span>04 / COLLABORATION</span>
+</p>
+
+</div>
+
+
+<div class="why-card reveal">
+
+<span>
+04 / COLLABORATION
+</span>
 
 <h3>
 Your Vision Matters
-</h3><p>
+</h3>
+
+<p>
 Your ideas and requirements remain
 central throughout the project.
-</p></div></div></section><!-- ================= FINAL CTA ================= --><section class="final-cta"><h2>
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FINAL CTA
+======================================================= -->
+
+<section class="final-cta reveal">
+
+<h2>
 Have a project in mind?
-</h2><p>
+</h2>
+
+<p>
 Whether you need a design, website, marketing support
 or a complete digital solution, let's discuss your idea.
-</p><div class="cta-buttons"><a href="contact.html" class="primary-btn">
+</p>
+
+<div class="cta-buttons">
+
+<a
+href="contact.html"
+class="primary-btn">
+
 Let's Work Together →
-</a><a
+
+</a>
+
+<a
 href="https://wa.me/8801679606860"
 target="_blank"
+rel="noopener noreferrer"
 class="secondary-btn">
 
 Chat on WhatsApp
 
-</a></div></section></div></main><footer>© 2026 MD Abdul Al Mamun — Digital Service
+</a>
 
-</footer><script>
+</div>
+
+</section>
+
+
+</div>
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+© 2026 MD Abdul Al Mamun — Digital Service
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* MOBILE MENU */
 
 function toggleMenu(){
 
-const menu =
-document.getElementById("mobileMenu");
+    const menu =
+    document.getElementById("mobileMenu");
 
-if(menu.style.display === "block"){
+    if(menu.style.display === "block"){
 
-menu.style.display = "none";
+        menu.style.display = "none";
 
-}else{
+    }else{
 
-menu.style.display = "block";
+        menu.style.display = "block";
+
+    }
 
 }
 
+
+/* CLOSE MOBILE MENU */
+
+document
+.querySelectorAll(".mobile-menu a")
+.forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        document
+        .getElementById("mobileMenu")
+        .style.display = "none";
+
+    });
+
+});
+
+
+/* SCROLL REVEAL */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+const observer =
+new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach((entry)=>{
+
+        if(entry.isIntersecting){
+
+            entry.target
+            .classList
+            .add("show");
+
+            observer
+            .unobserve(entry.target);
+
+        }
+
+    });
+
+},
+
+{
+    threshold:0.12
 }
 
-</script></body>
+);
+
+
+revealElements.forEach((element)=>{
+
+    observer.observe(element);
+
+});
+
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Escape"){
+
+        document
+        .getElementById("mobileMenu")
+        .style.display = "none";
+
+    }
+
+});
+
+</script>
+
+
+</body>
 </html>
