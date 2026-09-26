@@ -225,6 +225,7 @@ nav{
     color:var(--gold);
     letter-spacing:.5px;
     transition:.4s ease;
+    white-space:nowrap;
 }
 
 .logo:hover{
@@ -236,6 +237,7 @@ nav{
     display:flex;
     gap:25px;
     list-style:none;
+    align-items:center;
 }
 
 .nav-links a{
@@ -243,6 +245,7 @@ nav{
     font-size:14px;
     transition:.3s;
     position:relative;
+    white-space:nowrap;
 }
 
 .nav-links a::after{
@@ -272,6 +275,28 @@ nav{
     font-size:26px;
     color:var(--gold);
     cursor:pointer;
+}
+
+/* DESKTOP NAVBAR FIX */
+
+@media(min-width:901px) and (max-width:1150px){
+
+    .nav-container{
+        min-height:68px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .nav-links{
+        gap:13px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+
 }
 
 /* =========================================================
@@ -335,7 +360,6 @@ nav{
     letter-spacing:1.5px;
     text-transform:uppercase;
     margin-bottom:20px;
-
     opacity:0;
     transform:translateY(15px);
     animation:revealUp .9s ease .8s forwards;
@@ -345,7 +369,6 @@ nav{
     font-size:clamp(42px,7vw,78px);
     line-height:1.05;
     margin-bottom:20px;
-
     opacity:0;
     transform:translateY(25px);
     animation:revealUp 1s ease 1s forwards;
@@ -379,7 +402,6 @@ nav{
     margin:auto;
     color:#aaa;
     font-size:17px;
-
     opacity:0;
     transform:translateY(18px);
     animation:revealUp .9s ease 1.25s forwards;
@@ -391,7 +413,6 @@ nav{
     justify-content:center;
     gap:15px;
     flex-wrap:wrap;
-
     opacity:0;
     transform:translateY(18px);
     animation:revealUp .9s ease 1.5s forwards;
@@ -1172,19 +1193,18 @@ section{
 .showcase-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:22px;
+    gap:24px;
 }
 
 .showcase{
     position:relative;
-    height:260px;
-    min-height:260px;
+    background:#080808;
     border:1px solid rgba(212,175,55,.12);
     border-radius:18px;
-    background:#080808;
     overflow:hidden;
     padding:0;
-    display:block;
+    display:flex;
+    flex-direction:column;
     isolation:isolate;
 
     box-shadow:
@@ -1197,51 +1217,18 @@ section{
         box-shadow .5s ease;
 }
 
-/* CINEMATIC OVERLAY */
+/* IMAGE AREA */
 
-.showcase::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:2;
-    pointer-events:none;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,0) 30%,
-            rgba(0,0,0,.10) 48%,
-            rgba(0,0,0,.40) 68%,
-            rgba(0,0,0,.95) 100%
-        );
+.showcase-image{
+    position:relative;
+    height:245px;
+    overflow:hidden;
+    background:#090909;
 }
-
-/* GOLD CORNER */
-
-.showcase::after{
-    content:"";
-    position:absolute;
-    top:15px;
-    right:15px;
-    width:27px;
-    height:27px;
-
-    z-index:5;
-    pointer-events:none;
-
-    border-top:1px solid rgba(212,175,55,.75);
-    border-right:1px solid rgba(212,175,55,.75);
-
-    transition:.5s ease;
-}
-
-/* IMAGE */
 
 .showcase-image img{
     width:100%;
     height:100%;
-    min-height:260px;
-
     object-fit:cover;
     display:block;
 
@@ -1251,8 +1238,47 @@ section{
         brightness(.90);
 
     transition:
-        transform .7s cubic-bezier(.2,.7,.2,1),
+        transform .8s cubic-bezier(.2,.7,.2,1),
         filter .6s ease;
+}
+
+/* IMAGE OVERLAY */
+
+.showcase-image::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0) 55%,
+            rgba(0,0,0,.16) 100%
+        );
+
+    transition:.5s ease;
+}
+
+/* GOLD CORNER */
+
+.showcase::after{
+    content:"";
+    position:absolute;
+    top:15px;
+    right:15px;
+
+    width:27px;
+    height:27px;
+
+    z-index:8;
+    pointer-events:none;
+
+    border-top:1px solid rgba(212,175,55,.75);
+    border-right:1px solid rgba(212,175,55,.75);
+
+    transition:.5s ease;
 }
 
 /* HOVER */
@@ -1273,7 +1299,16 @@ section{
     filter:
         saturate(1)
         contrast(1.06)
-        brightness(.82);
+        brightness(.86);
+}
+
+.showcase:hover::before{
+    background:
+        linear-gradient(
+            180deg,
+            rgba(212,175,55,.015),
+            rgba(0,0,0,.08)
+        );
 }
 
 .showcase:hover::after{
@@ -1307,6 +1342,9 @@ section{
     );
 
     animation:borderOrbit 5.5s linear infinite;
+
+    filter:
+        drop-shadow(0 0 4px rgba(114,247,255,.75));
 }
 
 .border-spark:nth-child(2){
@@ -1363,24 +1401,38 @@ section{
 }
 
 /* =========================================================
-   TEXT OVERLAY
+   BOTTOM PROJECT CAPTION
 ========================================================= */
 
 .showcase-overlay{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
+    position:relative;
 
-    z-index:4;
+    left:auto;
+    right:auto;
+    bottom:auto;
 
-    padding:60px 20px 19px;
+    z-index:6;
+
+    min-height:88px;
+
+    padding:17px 20px 19px;
 
     background:
         linear-gradient(
-            transparent,
-            rgba(0,0,0,.88)
+            180deg,
+            #0b0b0b,
+            #080808
         );
+
+    border-top:1px solid rgba(212,175,55,.10);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    transition:
+        background .4s ease,
+        border-color .4s ease;
 }
 
 .showcase-overlay strong{
@@ -1388,29 +1440,29 @@ section{
 
     color:#e1c45b;
 
-    font-size:18px;
+    font-size:17px;
     font-weight:600;
 
-    line-height:1.2;
+    line-height:1.25;
 
     letter-spacing:.2px;
 
     margin-bottom:5px;
 
-    opacity:.9;
+    opacity:.95;
 
-    transform:translateY(7px);
+    transform:none;
 
     transition:
         color .35s ease,
-        transform .45s ease,
-        letter-spacing .45s ease;
+        letter-spacing .45s ease,
+        transform .45s ease;
 }
 
 .showcase-overlay span{
     display:block;
 
-    color:#c4c4c4;
+    color:#888;
 
     font-size:10px;
 
@@ -1420,24 +1472,36 @@ section{
 
     line-height:1.4;
 
-    opacity:.7;
+    opacity:.8;
 
-    transform:translateY(5px);
+    transform:none;
 
     transition:
+        color .4s ease,
         opacity .4s ease,
-        transform .45s ease;
+        letter-spacing .4s ease;
+}
+
+.showcase:hover .showcase-overlay{
+    background:
+        linear-gradient(
+            180deg,
+            #0d0d0d,
+            #090909
+        );
+
+    border-top-color:rgba(212,175,55,.25);
 }
 
 .showcase:hover .showcase-overlay strong{
     color:#f0d76b;
-    transform:translateY(0);
     letter-spacing:.7px;
 }
 
 .showcase:hover .showcase-overlay span{
+    color:#aaa;
     opacity:1;
-    transform:translateY(0);
+    letter-spacing:1.7px;
 }
 
 /* =========================================================
@@ -1468,6 +1532,7 @@ section{
     0%{
         background-position:200% center;
     }
+
     100%{
         background-position:-50% center;
     }
@@ -1599,6 +1664,7 @@ footer strong{
         flex-direction:column;
         padding:20px;
         border-bottom:1px solid #222;
+        gap:18px;
     }
 
     .nav-links.show{
@@ -1620,9 +1686,6 @@ footer strong{
         grid-template-columns:1fr;
     }
 
-    .project-stats{
-        grid-template-columns:repeat(2,1fr);
-    }
 }
 
 @media(max-width:650px){
@@ -1694,18 +1757,23 @@ footer strong{
         letter-spacing:1px;
     }
 
+    /* MOBILE SHOWCASE */
+
     .showcase{
-        height:230px;
-        min-height:230px;
         border-radius:16px;
     }
 
+    .showcase-image{
+        height:230px;
+    }
+
     .showcase-image img{
-        min-height:230px;
+        height:230px;
     }
 
     .showcase-overlay{
-        padding:55px 17px 16px;
+        min-height:82px;
+        padding:15px 17px 17px;
     }
 
     .showcase-overlay strong{
@@ -1728,9 +1796,12 @@ footer strong{
         width:100%;
         max-width:280px;
     }
+
 }
 
-/* REDUCED MOTION */
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1750,7 +1821,9 @@ footer strong{
 
 <body>
 
-<!-- PAGE LOADER -->
+<!-- =========================================================
+     PAGE LOADER
+========================================================= -->
 
 <div class="page-loader" id="pageLoader">
 
@@ -1771,7 +1844,9 @@ footer strong{
 </div>
 
 
-<!-- AMBIENT PARTICLES -->
+<!-- =========================================================
+     AMBIENT PARTICLES
+========================================================= -->
 
 <div class="ambient">
 
@@ -1787,12 +1862,16 @@ footer strong{
 </div>
 
 
-<!-- CURSOR -->
+<!-- =========================================================
+     CURSOR
+========================================================= -->
 
 <div class="cursor-glow" id="cursorGlow"></div>
 
 
-<!-- NAVBAR -->
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <nav>
 
@@ -1829,7 +1908,9 @@ MD ABDUL AL MAMUN
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
@@ -1865,7 +1946,9 @@ View All Projects
 </section>
 
 
-<!-- PROJECT OVERVIEW -->
+<!-- =========================================================
+     PROJECT OVERVIEW
+========================================================= -->
 
 <section>
 
@@ -1873,7 +1956,9 @@ View All Projects
 
 <div class="section-heading">
 
-<div class="small">Project Overview</div>
+<div class="small">
+Project Overview
+</div>
 
 <h2 class="text-shine">
 Built With Purpose
@@ -1893,7 +1978,9 @@ the way ideas are transformed into digital experiences.
 
 <div class="overview-icon">💻</div>
 
-<h3>Web Projects</h3>
+<h3>
+Web Projects
+</h3>
 
 <p>
 Responsive pages, personal website development and web experiments.
@@ -1906,7 +1993,9 @@ Responsive pages, personal website development and web experiments.
 
 <div class="overview-icon">🎨</div>
 
-<h3>Creative Work</h3>
+<h3>
+Creative Work
+</h3>
 
 <p>
 Visual concepts, promotional creatives and graphic design experiments.
@@ -1919,7 +2008,9 @@ Visual concepts, promotional creatives and graphic design experiments.
 
 <div class="overview-icon">📈</div>
 
-<h3>Digital Marketing</h3>
+<h3>
+Digital Marketing
+</h3>
 
 <p>
 Product promotion, social media content and digital communication concepts.
@@ -1934,7 +2025,9 @@ Product promotion, social media content and digital communication concepts.
 </section>
 
 
-<!-- FEATURED PROJECT -->
+<!-- =========================================================
+     FEATURED PROJECT
+========================================================= -->
 
 <section id="featured">
 
@@ -1942,7 +2035,9 @@ Product promotion, social media content and digital communication concepts.
 
 <div class="section-heading">
 
-<div class="small">Featured Project</div>
+<div class="small">
+Featured Project
+</div>
 
 <h2 class="text-shine">
 Personal Portfolio Website
@@ -1972,7 +2067,6 @@ MD Abdul Al Mamun — Personal Portfolio
 A responsive personal portfolio website focused on personal branding,
 professional presentation and creating a central online presence.
 </p>
-
 
 <div class="project-meta">
 
@@ -2009,7 +2103,9 @@ professional presentation and creating a central online presence.
 
 <div class="featured-box">
 
-<h4>Project Objective</h4>
+<h4>
+Project Objective
+</h4>
 
 <p>
 The objective is to create a professional online presence where visitors
@@ -2022,7 +2118,9 @@ and digital services.
 
 <div class="featured-box">
 
-<h4>My Role</h4>
+<h4>
+My Role
+</h4>
 
 <p>
 I am responsible for planning the structure, preparing content,
@@ -2035,7 +2133,9 @@ continuously improving the overall presentation.
 
 <div class="featured-box">
 
-<h4>Key Features</h4>
+<h4>
+Key Features
+</h4>
 
 <ul>
 
@@ -2054,7 +2154,9 @@ continuously improving the overall presentation.
 
 <div class="featured-box">
 
-<h4>Project Journey</h4>
+<h4>
+Project Journey
+</h4>
 
 <ul>
 
@@ -2080,7 +2182,9 @@ continuously improving the overall presentation.
 
 <div class="stat-box reveal-card">
 
-<span class="stat-number" data-target="100">0+</span>
+<span class="stat-number" data-target="100">
+0+
+</span>
 
 <span class="stat-label">
 Projects
@@ -2091,7 +2195,9 @@ Projects
 
 <div class="stat-box reveal-card">
 
-<span class="stat-number" data-target="3">0</span>
+<span class="stat-number" data-target="3">
+0
+</span>
 
 <span class="stat-label">
 Creative Areas
@@ -2102,7 +2208,9 @@ Creative Areas
 
 <div class="stat-box reveal-card">
 
-<span class="stat-number" data-target="1">0</span>
+<span class="stat-number" data-target="1">
+0
+</span>
 
 <span class="stat-label">
 Personal Brand
@@ -2130,7 +2238,9 @@ Learning & Experiments
 </section>
 
 
-<!-- PROJECT JOURNEY -->
+<!-- =========================================================
+     PROJECT JOURNEY
+========================================================= -->
 
 <section>
 
@@ -2138,7 +2248,9 @@ Learning & Experiments
 
 <div class="section-heading">
 
-<div class="small">Project Journey</div>
+<div class="small">
+Project Journey
+</div>
 
 <h2>
 From Idea to Execution
@@ -2158,7 +2270,9 @@ the final result through structured steps.
 
 <div class="journey-dot"></div>
 
-<h3>01 — Research</h3>
+<h3>
+01 — Research
+</h3>
 
 <p>
 Understand the purpose, audience, requirements and visual direction of the project.
@@ -2171,7 +2285,9 @@ Understand the purpose, audience, requirements and visual direction of the proje
 
 <div class="journey-dot"></div>
 
-<h3>02 — Planning</h3>
+<h3>
+02 — Planning
+</h3>
 
 <p>
 Organize the structure, content, sections and overall project direction.
@@ -2184,7 +2300,9 @@ Organize the structure, content, sections and overall project direction.
 
 <div class="journey-dot"></div>
 
-<h3>03 — Creation</h3>
+<h3>
+03 — Creation
+</h3>
 
 <p>
 Turn the concept into visual designs, web layouts or digital content.
@@ -2197,7 +2315,9 @@ Turn the concept into visual designs, web layouts or digital content.
 
 <div class="journey-dot"></div>
 
-<h3>04 — Testing</h3>
+<h3>
+04 — Testing
+</h3>
 
 <p>
 Review layouts, readability, responsiveness and overall user experience.
@@ -2210,7 +2330,9 @@ Review layouts, readability, responsiveness and overall user experience.
 
 <div class="journey-dot"></div>
 
-<h3>05 — Refinement</h3>
+<h3>
+05 — Refinement
+</h3>
 
 <p>
 Improve details, consistency and presentation before considering the work complete.
@@ -2225,7 +2347,9 @@ Improve details, consistency and presentation before considering the work comple
 </section>
 
 
-<!-- PROJECT FILTER -->
+<!-- =========================================================
+     PROJECT FILTER
+========================================================= -->
 
 <section id="projects">
 
@@ -2233,7 +2357,9 @@ Improve details, consistency and presentation before considering the work comple
 
 <div class="section-heading">
 
-<div class="small">Selected Work</div>
+<div class="small">
+Selected Work
+</div>
 
 <h2 class="text-shine">
 Explore My Projects
@@ -2486,7 +2612,9 @@ work and modern digital presentation.
 </section>
 
 
-<!-- CASE STUDY -->
+<!-- =========================================================
+     CASE STUDY
+========================================================= -->
 
 <section>
 
@@ -2494,7 +2622,9 @@ work and modern digital presentation.
 
 <div class="section-heading">
 
-<div class="small">Case Study</div>
+<div class="small">
+Case Study
+</div>
 
 <h2>
 How I Approach a Project
@@ -2570,7 +2700,9 @@ that communicates the intended message effectively.
 </section>
 
 
-<!-- BARAKA FARMYARD -->
+<!-- =========================================================
+     BARAKA FARMYARD
+========================================================= -->
 
 <section>
 
@@ -2688,7 +2820,9 @@ Hands-on exposure to daily outlet operations and workflow.
 </section>
 
 
-<!-- TOOLS -->
+<!-- =========================================================
+     TOOLS
+========================================================= -->
 
 <section>
 
@@ -2736,7 +2870,9 @@ through different stages of my work.
 </section>
 
 
-<!-- VISUAL SHOWCASE -->
+<!-- =========================================================
+     VISUAL SHOWCASE
+========================================================= -->
 
 <section>
 
@@ -2943,7 +3079,9 @@ Creative Exploration
 </section>
 
 
-<!-- PRACTICE -->
+<!-- =========================================================
+     PRACTICE
+========================================================= -->
 
 <section>
 
@@ -3029,7 +3167,9 @@ content ideas and productivity.
 </section>
 
 
-<!-- CURRENTLY BUILDING -->
+<!-- =========================================================
+     CURRENTLY BUILDING
+========================================================= -->
 
 <section>
 
@@ -3115,7 +3255,9 @@ professional digital communication.
 </section>
 
 
-<!-- PHILOSOPHY -->
+<!-- =========================================================
+     PHILOSOPHY
+========================================================= -->
 
 <section>
 
@@ -3144,7 +3286,9 @@ the process and become better at the next one.
 </section>
 
 
-<!-- CTA -->
+<!-- =========================================================
+     CTA
+========================================================= -->
 
 <section class="cta">
 
@@ -3176,7 +3320,9 @@ View My Services
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -3372,7 +3518,8 @@ function animateStats(){
 
                 current=Math.floor(target*eased);
 
-                stat.textContent=current+(target===100 ? "+" : "");
+                stat.textContent=
+                    current+(target===100 ? "+" : "");
 
                 if(progress<1){
 
@@ -3380,7 +3527,8 @@ function animateStats(){
 
                 }else{
 
-                    stat.textContent=target+(target===100 ? "+" : "");
+                    stat.textContent=
+                        target+(target===100 ? "+" : "");
 
                 }
 
