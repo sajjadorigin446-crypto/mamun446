@@ -8,7 +8,6 @@
 
 <meta name="description" content="Professional Resume of MD Abdul Al Mamun — Digital Service, Graphic Design, Digital Marketing, Web Design and Video Editing.">
 
-<!-- Font Awesome Icons -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -29,12 +28,36 @@ body{
     background:#060606;
     color:#f4f4f4;
     line-height:1.7;
+    overflow-x:hidden;
 }
 
 a{
     text-decoration:none;
     color:inherit;
 }
+
+
+/* =========================
+   PREMIUM ANIMATION SYSTEM
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.reveal-delay-1{transition-delay:.08s;}
+.reveal-delay-2{transition-delay:.16s;}
+.reveal-delay-3{transition-delay:.24s;}
+.reveal-delay-4{transition-delay:.32s;}
 
 
 /* =========================
@@ -245,22 +268,46 @@ nav{
 
     z-index:2;
 
-    transition:.4s;
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
 }
+
+
+/* SLOW OUTER GOLD RING */
 
 .photo-frame::before{
     content:"";
 
     position:absolute;
 
-    inset:-8px;
+    inset:-9px;
 
-    border:1px solid rgba(212,175,55,.30);
+    border:1px solid rgba(212,175,55,.32);
 
     border-radius:50%;
 
     z-index:-1;
+
+    animation:
+        photoRingRotate 18s linear infinite;
+
+    box-shadow:
+        0 0 15px rgba(212,175,55,.08);
 }
+
+@keyframes photoRingRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
 
 .photo-inner{
     width:100%;
@@ -290,6 +337,11 @@ nav{
 
 .photo-frame:hover{
     transform:rotate(0deg) scale(1.03);
+
+    box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 20px 45px rgba(0,0,0,.55),
+    0 0 48px rgba(212,175,55,.32);
 }
 
 .photo-frame:hover img{
@@ -477,6 +529,8 @@ nav{
 }
 
 .stat{
+    position:relative;
+
     padding:20px;
     text-align:center;
 
@@ -487,6 +541,8 @@ nav{
     border:1px solid #252525;
 
     transition:.3s;
+
+    overflow:hidden;
 }
 
 .stat:hover{
@@ -511,6 +567,82 @@ nav{
 
 
 /* =========================
+   SLOW BORDER STARS
+========================= */
+
+.border-stars{
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:4;
+}
+
+.border-star{
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    background:#d4af37;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 7px rgba(212,175,55,.75);
+
+    animation:
+        borderStarMove 18s linear infinite;
+}
+
+.border-star:nth-child(1){
+    animation-delay:0s;
+}
+
+.border-star:nth-child(2){
+    animation-delay:-4.5s;
+}
+
+.border-star:nth-child(3){
+    animation-delay:-9s;
+}
+
+.border-star:nth-child(4){
+    animation-delay:-13.5s;
+}
+
+@keyframes borderStarMove{
+
+    0%{
+        left:0%;
+        top:0%;
+    }
+
+    25%{
+        left:calc(100% - 4px);
+        top:0%;
+    }
+
+    50%{
+        left:calc(100% - 4px);
+        top:calc(100% - 4px);
+    }
+
+    75%{
+        left:0%;
+        top:calc(100% - 4px);
+    }
+
+    100%{
+        left:0%;
+        top:0%;
+    }
+
+}
+
+
+/* =========================
    CONTENT GRID
 ========================= */
 
@@ -526,6 +658,8 @@ nav{
 ========================= */
 
 .card{
+    position:relative;
+
     background:
     linear-gradient(
         145deg,
@@ -541,7 +675,12 @@ nav{
 
     margin-bottom:25px;
 
-    transition:.3s;
+    transition:
+        border-color .3s,
+        transform .3s,
+        box-shadow .3s;
+
+    overflow:hidden;
 }
 
 .card:hover{
@@ -651,6 +790,8 @@ nav{
 ========================= */
 
 .project-highlight{
+    position:relative;
+
     display:grid;
     grid-template-columns:110px 1fr;
     gap:20px;
@@ -667,6 +808,8 @@ nav{
         rgba(212,175,55,.09),
         rgba(0,0,0,.15)
     );
+
+    overflow:hidden;
 }
 
 .project-number{
@@ -716,6 +859,14 @@ nav{
     border-radius:6px;
 
     font-size:11px;
+
+    transition:.3s;
+}
+
+.tag:hover{
+    color:#d4af37;
+    border-color:rgba(212,175,55,.35);
+    transform:translateY(-1px);
 }
 
 
@@ -790,8 +941,18 @@ nav{
 .skill-bar span{
     display:block;
     height:100%;
+    width:0 !important;
+
     background:#d4af37;
+
     border-radius:10px;
+
+    transition:
+        width 1.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.skill-bar span.fill{
+    width:var(--skill-width) !important;
 }
 
 
@@ -832,6 +993,8 @@ nav{
 ========================= */
 
 .career-box{
+    position:relative;
+
     padding:20px;
 
     border-radius:13px;
@@ -845,6 +1008,8 @@ nav{
     #0c0c0c;
 
     border:1px solid rgba(212,175,55,.22);
+
+    overflow:hidden;
 }
 
 .career-box h3{
@@ -1028,6 +1193,29 @@ footer strong{
         font-size:11px;
         padding:8px 10px;
     }
+
+    .border-star{
+        width:3px;
+        height:3px;
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+    }
+
 }
 
 
@@ -1044,7 +1232,8 @@ footer strong{
 
     nav,
     .actions,
-    footer{
+    footer,
+    .border-stars{
         display:none !important;
     }
 
@@ -1083,6 +1272,15 @@ footer strong{
     .stat strong,
     .career-box h3{
         color:#8a6b00;
+    }
+
+    .photo-frame::before{
+        animation:none !important;
+    }
+
+    .reveal{
+        opacity:1 !important;
+        transform:none !important;
     }
 }
 
@@ -1163,10 +1361,10 @@ Contact
      PROFILE HEADER
 ========================= -->
 
-<section class="profile-header">
+<section class="profile-header reveal">
 
 
-<div class="photo-area">
+<div class="photo-area reveal reveal-delay-1">
 
 <div class="photo-frame">
 
@@ -1191,19 +1389,19 @@ DIGITAL SERVICE
 
 <div class="profile-content">
 
-<div class="small-title">
+<div class="small-title reveal reveal-delay-1">
 Professional Resume
 </div>
 
-<h1>
+<h1 class="reveal reveal-delay-2">
 MD Abdul <span>Al Mamun</span>
 </h1>
 
-<div class="profile-role">
+<div class="profile-role reveal reveal-delay-3">
 Digital Service • Graphic Design • Digital Marketing • Web Design • Video Editing
 </div>
 
-<p class="profile-description">
+<p class="profile-description reveal reveal-delay-4">
 
 Creative and digitally focused professional with practical experience
 in business operations, customer service, graphic design, digital
@@ -1214,7 +1412,7 @@ modern creative and technical skills.
 </p>
 
 
-<div class="contact-row">
+<div class="contact-row reveal reveal-delay-4">
 
 
 <a class="contact-pill"
@@ -1272,7 +1470,7 @@ target="_blank">
      BUTTONS
 ========================= -->
 
-<div class="actions">
+<div class="actions reveal">
 
 <button
 class="btn"
@@ -1306,9 +1504,21 @@ class="btn btn-outline">
 <section class="stats">
 
 
-<div class="stat">
+<div class="stat reveal">
 
-<strong>100+</strong>
+<div class="border-stars">
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+</div>
+
+<strong
+class="counter"
+data-target="100"
+data-suffix="+">
+0
+</strong>
 
 <span>
 Projects Completed
@@ -1317,9 +1527,21 @@ Projects Completed
 </div>
 
 
-<div class="stat">
+<div class="stat reveal reveal-delay-1">
 
-<strong>4+</strong>
+<div class="border-stars">
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+</div>
+
+<strong
+class="counter"
+data-target="4"
+data-suffix="+">
+0
+</strong>
 
 <span>
 Core Digital Skills
@@ -1328,9 +1550,21 @@ Core Digital Skills
 </div>
 
 
-<div class="stat">
+<div class="stat reveal reveal-delay-2">
 
-<strong>5+</strong>
+<div class="border-stars">
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+</div>
+
+<strong
+class="counter"
+data-target="5"
+data-suffix="+">
+0
+</strong>
 
 <span>
 Creative Areas
@@ -1339,9 +1573,21 @@ Creative Areas
 </div>
 
 
-<div class="stat">
+<div class="stat reveal reveal-delay-3">
 
-<strong>2023</strong>
+<div class="border-stars">
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+</div>
+
+<strong
+class="counter"
+data-target="2023"
+data-suffix="">
+0
+</strong>
 
 <span>
 Honours Started
@@ -1368,7 +1614,7 @@ Honours Started
 
 <!-- PROFILE -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Professional Profile
@@ -1398,7 +1644,7 @@ and a strong willingness to learn and improve.
 
 <!-- EXPERIENCE -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Professional Experience
@@ -1526,7 +1772,7 @@ AI-assisted creative and digital workflows.
 
 <!-- PROJECTS -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Project Experience
@@ -1534,6 +1780,13 @@ Project Experience
 
 
 <div class="project-highlight">
+
+<div class="border-stars">
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+</div>
 
 <div class="project-number">
 100+
@@ -1591,7 +1844,7 @@ Creative Content
 
 <!-- EDUCATION -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Education
@@ -1654,7 +1907,7 @@ Rahmania High School
 
 <!-- TRAINING -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Training & Development
@@ -1682,7 +1935,7 @@ Professional development in freelancing and online digital work.
 
 <!-- CAREER -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Career Direction
@@ -1719,7 +1972,7 @@ learning modern digital technologies and creative workflows.
 
 <!-- CONTACT -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Contact
@@ -1747,7 +2000,7 @@ sajjadorigin446@gmail.com
 
 <!-- CORE SKILLS -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Core Skills
@@ -1769,7 +2022,9 @@ Advanced
 </div>
 
 <div class="skill-bar">
-<span style="width:88%"></span>
+<span
+style="--skill-width:88%">
+</span>
 </div>
 
 </div>
@@ -1790,7 +2045,9 @@ Strong
 </div>
 
 <div class="skill-bar">
-<span style="width:82%"></span>
+<span
+style="--skill-width:82%">
+</span>
 </div>
 
 </div>
@@ -1811,7 +2068,9 @@ Developing
 </div>
 
 <div class="skill-bar">
-<span style="width:78%"></span>
+<span
+style="--skill-width:78%">
+</span>
 </div>
 
 </div>
@@ -1832,7 +2091,9 @@ Strong
 </div>
 
 <div class="skill-bar">
-<span style="width:82%"></span>
+<span
+style="--skill-width:82%">
+</span>
 </div>
 
 </div>
@@ -1853,7 +2114,9 @@ Strong
 </div>
 
 <div class="skill-bar">
-<span style="width:82%"></span>
+<span
+style="--skill-width:82%">
+</span>
 </div>
 
 </div>
@@ -1864,7 +2127,7 @@ Strong
 
 <!-- TOOLS -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Tools & Platforms
@@ -1936,7 +2199,7 @@ Digital Research
 
 <!-- STRENGTHS -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Professional Strengths
@@ -1984,7 +2247,7 @@ Continuous Learning
 
 <!-- LANGUAGES -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Languages
@@ -2012,7 +2275,7 @@ Hindi — Working Knowledge
 
 <!-- CURRENTLY DEVELOPING -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Currently Developing
@@ -2067,13 +2330,20 @@ Website Optimization
      PHILOSOPHY
 ========================= -->
 
-<section class="card">
+<section class="card reveal">
 
 <h2 class="section-title">
 Professional Philosophy
 </h2>
 
 <div class="career-box">
+
+<div class="border-stars">
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+<span class="border-star"></span>
+</div>
 
 <h3>
 Learn • Create • Improve • Grow
@@ -2112,11 +2382,12 @@ Chattogram, Bangladesh
 </footer>
 
 
-<!-- =========================
-     MOBILE MENU SCRIPT
-========================= -->
 
 <script>
+
+/* =========================
+   MOBILE MENU
+========================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
@@ -2142,8 +2413,6 @@ menuToggle.addEventListener("click", function(){
 });
 
 
-/* Close menu after clicking a link */
-
 document.querySelectorAll(".nav-links a").forEach(function(link){
 
     link.addEventListener("click", function(){
@@ -2156,6 +2425,161 @@ document.querySelectorAll(".nav-links a").forEach(function(link){
         icon.classList.add("fa-bars");
 
     });
+
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+const revealObserver =
+new IntersectionObserver(
+
+(entries, observer) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            observer.unobserve(entry.target);
+
+        }
+
+    });
+
+},
+
+{
+    threshold:0.12
+}
+
+);
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================
+   NUMBER COUNTER
+========================= */
+
+const counters =
+document.querySelectorAll(".counter");
+
+const counterObserver =
+new IntersectionObserver(
+
+(entries, observer) => {
+
+    entries.forEach(entry => {
+
+        if(!entry.isIntersecting) return;
+
+        const counter = entry.target;
+
+        const target =
+        Number(counter.dataset.target);
+
+        const suffix =
+        counter.dataset.suffix || "";
+
+        const duration = 1500;
+
+        const startTime = performance.now();
+
+        function updateCounter(currentTime){
+
+            const progress =
+            Math.min(
+                (currentTime - startTime) / duration,
+                1
+            );
+
+            const eased =
+            1 - Math.pow(1 - progress, 3);
+
+            const current =
+            Math.floor(target * eased);
+
+            counter.textContent =
+            current + suffix;
+
+            if(progress < 1){
+
+                requestAnimationFrame(updateCounter);
+
+            }else{
+
+                counter.textContent =
+                target + suffix;
+
+            }
+
+        }
+
+        requestAnimationFrame(updateCounter);
+
+        observer.unobserve(counter);
+
+    });
+
+},
+
+{
+    threshold:0.7
+}
+
+);
+
+counters.forEach(counter => {
+
+    counterObserver.observe(counter);
+
+});
+
+
+/* =========================
+   SKILL BAR ANIMATION
+========================= */
+
+const skillBars =
+document.querySelectorAll(".skill-bar span");
+
+const skillObserver =
+new IntersectionObserver(
+
+(entries, observer) => {
+
+    entries.forEach(entry => {
+
+        if(!entry.isIntersecting) return;
+
+        entry.target.classList.add("fill");
+
+        observer.unobserve(entry.target);
+
+    });
+
+},
+
+{
+    threshold:0.4
+}
+
+);
+
+skillBars.forEach(bar => {
+
+    skillObserver.observe(bar);
 
 });
 
