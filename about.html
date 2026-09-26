@@ -27,6 +27,7 @@ body{
     background:#060606;
     color:#f5f5f5;
     line-height:1.7;
+    overflow-x:hidden;
 }
 
 a{
@@ -41,19 +42,30 @@ a{
 }
 
 
-/* ================= HEADER ================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
+
     background:rgba(6,6,6,.94);
     backdrop-filter:blur(18px);
+
     border-bottom:1px solid rgba(212,175,55,.18);
+
+    transition:.4s ease;
+}
+
+header.scrolled{
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
 }
 
 .nav{
     min-height:70px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -63,7 +75,17 @@ header{
     font-size:22px;
     font-weight:800;
     letter-spacing:2px;
+
     color:#d4af37;
+
+    transition:.35s ease;
+}
+
+.logo:hover{
+    transform:translateY(-2px);
+
+    text-shadow:
+    0 0 18px rgba(212,175,55,.55);
 }
 
 .menu{
@@ -74,7 +96,26 @@ header{
 .menu a{
     color:#ccc;
     font-size:14px;
-    transition:.3s;
+
+    position:relative;
+
+    transition:.3s ease;
+}
+
+.menu a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:#d4af37;
+
+    transition:.3s ease;
 }
 
 .menu a:hover,
@@ -82,36 +123,59 @@ header{
     color:#d4af37;
 }
 
+.menu a:hover::after,
+.menu a.active::after{
+    width:100%;
+}
+
 .hamburger{
     display:none;
+
     font-size:27px;
+
     color:#d4af37;
+
     cursor:pointer;
 }
 
 
-/* ================= HERO ================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     padding:105px 0 70px;
+
     background:
-    radial-gradient(circle at 70% 20%,
-    rgba(212,175,55,.12),
-    transparent 35%);
+    radial-gradient(
+        circle at 70% 20%,
+        rgba(212,175,55,.12),
+        transparent 35%
+    );
 }
 
 .hero .small-title{
     color:#d4af37;
+
     font-size:12px;
     letter-spacing:4px;
     font-weight:bold;
+
     margin-bottom:15px;
+
+    animation:
+    heroFade .9s ease both;
 }
 
 .hero h1{
     font-size:clamp(45px,7vw,80px);
+
     line-height:1;
+
     margin-bottom:25px;
+
+    animation:
+    heroFade 1s .1s ease both;
 }
 
 .hero h1 span{
@@ -120,18 +184,43 @@ header{
 
 .hero-text{
     max-width:720px;
+
     color:#999;
+
     font-size:17px;
+
+    animation:
+    heroFade 1s .2s ease both;
+}
+
+@keyframes heroFade{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 
-/* ================= PROFILE ================= */
+/* =========================================================
+   PROFILE
+========================================================= */
 
 .profile-section{
     display:grid;
+
     grid-template-columns:360px 1fr;
+
     gap:75px;
+
     align-items:center;
+
     padding:45px 0 110px;
 }
 
@@ -140,42 +229,133 @@ header{
 
 .photo-wrapper{
     display:flex;
+
     justify-content:center;
+
+    position:relative;
 }
 
 .photo-frame{
     width:300px;
     height:370px;
+
     padding:6px;
+
     border:1px solid #d4af37;
+
     border-radius:20px;
-    background:linear-gradient(
+
+    background:
+    linear-gradient(
         145deg,
         #d4af37,
         #665214,
         #d4af37
     );
+
     box-shadow:
     0 0 50px rgba(212,175,55,.12);
+
     position:relative;
+
+    z-index:2;
+
+    transition:
+    transform .55s cubic-bezier(.2,.8,.2,1),
+    box-shadow .55s ease;
 }
 
 .photo-frame::after{
     content:"";
+
     position:absolute;
-    inset:-12px;
-    border:1px solid rgba(212,175,55,.12);
-    border-radius:25px;
+
+    inset:-18px;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    border-radius:32px;
+
     pointer-events:none;
+
+    animation:
+    photoRingRotate 12s linear infinite;
+}
+
+.photo-frame::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-30px;
+
+    border:1px dashed rgba(212,175,55,.18);
+
+    border-radius:38px;
+
+    pointer-events:none;
+
+    animation:
+    photoRingRotateReverse 18s linear infinite;
 }
 
 .photo-frame img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     border-radius:14px;
+
     display:block;
+
     background:#111;
+
+    position:relative;
+
+    z-index:2;
+
+    transition:
+    transform .6s ease;
+}
+
+.photo-frame:hover{
+
+    transform:
+    translateY(-9px)
+    scale(1.015);
+
+    box-shadow:
+    0 20px 60px rgba(212,175,55,.18),
+    0 0 35px rgba(212,175,55,.15);
+}
+
+.photo-frame:hover img{
+    transform:scale(1.025);
+}
+
+@keyframes photoRingRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes photoRingRotateReverse{
+
+    from{
+        transform:rotate(360deg);
+    }
+
+    to{
+        transform:rotate(0deg);
+    }
+
 }
 
 
@@ -183,73 +363,194 @@ header{
 
 .profile-info .tag{
     display:inline-block;
+
     color:#d4af37;
+
     border:1px solid rgba(212,175,55,.35);
+
     padding:7px 15px;
+
     border-radius:30px;
+
     font-size:10px;
+
     letter-spacing:2px;
+
     margin-bottom:18px;
+
+    transition:.35s ease;
+}
+
+.profile-info .tag:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#d4af37;
+
+    box-shadow:
+    0 8px 25px rgba(212,175,55,.12);
 }
 
 .profile-info h2{
     font-size:42px;
+
     line-height:1.2;
+
     margin-bottom:7px;
 }
 
 .profile-info h3{
+
     color:#d4af37;
+
     font-size:12px;
+
     letter-spacing:2px;
+
     margin-bottom:25px;
 }
 
 .profile-info p{
+
     color:#999;
+
     max-width:720px;
+
     margin-bottom:18px;
 }
 
 
-/* INFO */
+/* =========================================================
+   INFO BOX
+========================================================= */
 
 .info-grid{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:12px;
+
     margin-top:28px;
 }
 
 .info-box{
+
+    position:relative;
+
+    overflow:hidden;
+
     background:#0d0d0d;
+
     border:1px solid #202020;
+
     padding:17px;
+
     border-radius:10px;
-    transition:.3s;
+
+    animation:
+    premiumBorderGlow 4.8s ease-in-out infinite;
+
+    transition:
+    transform .4s cubic-bezier(.2,.8,.2,1),
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+
+.info-box:nth-child(2){
+    animation-delay:.8s;
+}
+
+.info-box:nth-child(3){
+    animation-delay:1.6s;
+}
+
+.info-box:nth-child(4){
+    animation-delay:2.4s;
+}
+
+.info-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-80%;
+
+    width:45%;
+    height:160%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,.02) 25%,
+        rgba(212,175,55,.12) 48%,
+        rgba(255,240,180,.20) 50%,
+        rgba(212,175,55,.08) 54%,
+        rgba(255,255,255,.02) 75%,
+        transparent 100%
+    );
+
+    transform:skewX(-20deg);
+
+    pointer-events:none;
+
+    z-index:3;
+
+    animation:
+    luxuryLightSweep 5.5s ease-in-out infinite;
 }
 
 .info-box:hover{
-    border-color:rgba(212,175,55,.4);
-    transform:translateY(-3px);
+
+    animation-play-state:paused;
+
+    transform:
+    translateY(-7px)
+    scale(1.01);
+
+    border-color:
+    rgba(212,175,55,.65);
+
+    box-shadow:
+    0 14px 35px rgba(0,0,0,.4),
+    0 0 25px rgba(212,175,55,.10);
+}
+
+.info-box > *{
+    position:relative;
+    z-index:4;
 }
 
 .info-box small{
+
     display:block;
+
     color:#666;
+
     font-size:10px;
+
     letter-spacing:1.5px;
+
     text-transform:uppercase;
+
     margin-bottom:5px;
 }
 
 .info-box strong{
+
     font-size:13px;
+
     color:#eee;
 }
 
 
-/* ================= COMMON SECTION ================= */
+/* =========================================================
+   COMMON
+========================================================= */
 
 section{
     padding:90px 0;
@@ -260,320 +561,1222 @@ section{
 }
 
 .section-label{
+
     color:#d4af37;
+
     font-size:11px;
+
     letter-spacing:3px;
+
     font-weight:bold;
 }
 
 .section-header h2{
+
     font-size:38px;
+
     margin-top:8px;
 }
 
 .section-header p{
+
     color:#888;
+
     max-width:700px;
+
     margin-top:10px;
 }
 
 
-/* ================= WHO I AM ================= */
+/* =========================================================
+   WHO I AM
+========================================================= */
 
 .about-grid{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:22px;
 }
 
 .about-card{
+
+    position:relative;
+
+    overflow:hidden;
+
     padding:32px;
+
     background:#0c0c0c;
+
     border:1px solid #1d1d1d;
+
     border-radius:15px;
-    transition:.3s;
+
+    animation:
+    premiumBorderGlow 5s ease-in-out infinite;
+
+    transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+
+.about-card:nth-child(2){
+    animation-delay:.8s;
+}
+
+.about-card:nth-child(3){
+    animation-delay:1.6s;
+}
+
+.about-card:nth-child(4){
+    animation-delay:2.4s;
+}
+
+
+/* LIGHT SWEEP */
+
+.about-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-75%;
+
+    width:45%;
+    height:160%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,.02) 25%,
+        rgba(212,175,55,.12) 48%,
+        rgba(255,240,180,.20) 50%,
+        rgba(212,175,55,.08) 54%,
+        rgba(255,255,255,.02) 75%,
+        transparent 100%
+    );
+
+    transform:skewX(-20deg);
+
+    pointer-events:none;
+
+    z-index:3;
+
+    animation:
+    luxuryLightSweep 5.5s ease-in-out infinite;
+}
+
+.about-card:nth-child(2)::before{
+    animation-delay:1.2s;
+}
+
+.about-card:nth-child(3)::before{
+    animation-delay:2.4s;
+}
+
+.about-card:nth-child(4)::before{
+    animation-delay:3.6s;
+}
+
+.about-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    right:-70px;
+    bottom:-70px;
+
+    border-radius:50%;
+
+    background:
+    rgba(212,175,55,.04);
+
+    transition:.5s ease;
 }
 
 .about-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(212,175,55,.4);
+
+    animation-play-state:paused;
+
+    transform:
+    translateY(-8px)
+    scale(1.012);
+
+    border-color:
+    rgba(212,175,55,.65);
+
+    box-shadow:
+    0 18px 40px rgba(0,0,0,.4),
+    0 0 30px rgba(212,175,55,.12);
+}
+
+.about-card:hover::after{
+
+    width:180px;
+    height:180px;
+}
+
+.about-card > *{
+
+    position:relative;
+
+    z-index:4;
 }
 
 .about-icon{
+
     font-size:27px;
+
     margin-bottom:15px;
+
+    transition:.4s ease;
+}
+
+.about-card:hover .about-icon{
+
+    transform:
+    translateY(-4px)
+    scale(1.08);
 }
 
 .about-card h3{
+
     font-size:20px;
+
     margin-bottom:10px;
 }
 
 .about-card p{
+
     color:#999;
+
     font-size:14px;
 }
 
 
-/* ================= DIGITAL JOURNEY ================= */
+/* =========================================================
+   DIGITAL JOURNEY
+========================================================= */
 
 .journey{
+
     max-width:900px;
+
     margin:auto;
+
     position:relative;
 }
 
 .journey::before{
+
     content:"";
+
     position:absolute;
+
     left:18px;
+
     top:0;
     bottom:0;
+
     width:1px;
+
     background:#292929;
 }
 
 .journey-item{
+
     position:relative;
+
     padding-left:60px;
+
     margin-bottom:35px;
+
+    transition:
+    transform .4s ease;
+}
+
+.journey-item:hover{
+
+    transform:
+    translateX(7px);
 }
 
 .journey-dot{
+
     position:absolute;
+
     left:10px;
     top:5px;
+
     width:17px;
     height:17px;
+
     border-radius:50%;
+
     background:#d4af37;
-    box-shadow:0 0 0 5px rgba(212,175,55,.08);
+
+    box-shadow:
+    0 0 0 5px rgba(212,175,55,.08);
+
+    transition:.4s ease;
+}
+
+.journey-item:hover .journey-dot{
+
+    transform:scale(1.3);
+
+    box-shadow:
+    0 0 0 8px rgba(212,175,55,.08),
+    0 0 20px rgba(212,175,55,.35);
 }
 
 .journey-item h3{
+
     font-size:19px;
+
     margin-bottom:5px;
 }
 
 .journey-item p{
+
     color:#888;
+
     font-size:14px;
 }
 
 
-/* ================= MINDSET ================= */
+/* =========================================================
+   PROFESSIONAL MINDSET
+========================================================= */
 
 .mindset-grid{
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:20px;
 }
 
 .mindset-card{
+
+    position:relative;
+
+    overflow:hidden;
+
     padding:28px;
+
     background:#0c0c0c;
+
     border:1px solid #1d1d1d;
+
     border-radius:14px;
+
+    animation:
+    premiumBorderGlow 5.2s ease-in-out infinite;
+
+    transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+
+.mindset-card:nth-child(2){
+    animation-delay:.7s;
+}
+
+.mindset-card:nth-child(3){
+    animation-delay:1.4s;
+}
+
+.mindset-card:nth-child(4){
+    animation-delay:2.1s;
+}
+
+.mindset-card:nth-child(5){
+    animation-delay:2.8s;
+}
+
+.mindset-card:nth-child(6){
+    animation-delay:3.5s;
+}
+
+
+/* LIGHT */
+
+.mindset-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-75%;
+
+    width:45%;
+    height:160%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.02),
+        rgba(212,175,55,.14),
+        rgba(255,240,180,.20),
+        rgba(212,175,55,.06),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    pointer-events:none;
+
+    z-index:3;
+
+    animation:
+    luxuryLightSweep 5.5s ease-in-out infinite;
+}
+
+.mindset-card:nth-child(2)::before{
+    animation-delay:1.2s;
+}
+
+.mindset-card:nth-child(3)::before{
+    animation-delay:2.4s;
+}
+
+.mindset-card:nth-child(4)::before{
+    animation-delay:3.6s;
+}
+
+.mindset-card:nth-child(5)::before{
+    animation-delay:1.8s;
+}
+
+.mindset-card:nth-child(6)::before{
+    animation-delay:3s;
+}
+
+.mindset-card:hover{
+
+    animation-play-state:paused;
+
+    transform:
+    translateY(-7px)
+    scale(1.012);
+
+    border-color:
+    rgba(212,175,55,.65);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.4),
+    0 0 28px rgba(212,175,55,.11);
+}
+
+.mindset-card > *{
+
+    position:relative;
+
+    z-index:4;
 }
 
 .mindset-number{
+
     color:#d4af37;
+
     font-size:12px;
+
     letter-spacing:2px;
 }
 
 .mindset-card h3{
+
     margin:10px 0 7px;
 }
 
 .mindset-card p{
+
     color:#888;
+
     font-size:14px;
 }
 
 
-/* ================= EDUCATION ================= */
+/* =========================================================
+   EDUCATION
+========================================================= */
 
 .education-grid{
+
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:18px;
 }
 
 .edu-card{
+
+    position:relative;
+
+    overflow:hidden;
+
     background:#0d0d0d;
+
     border:1px solid #202020;
+
     border-radius:15px;
+
     padding:28px;
-    transition:.3s;
+
+    animation:
+    premiumBorderGlow 5s ease-in-out infinite;
+
+    transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+
+.edu-card:nth-child(2){
+    animation-delay:.8s;
+}
+
+.edu-card:nth-child(3){
+    animation-delay:1.6s;
+}
+
+.edu-card:nth-child(4){
+    animation-delay:2.4s;
+}
+
+.edu-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-75%;
+
+    width:45%;
+    height:160%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.02),
+        rgba(212,175,55,.13),
+        rgba(255,240,180,.20),
+        rgba(212,175,55,.07),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    pointer-events:none;
+
+    z-index:3;
+
+    animation:
+    luxuryLightSweep 5.5s ease-in-out infinite;
+}
+
+.edu-card:nth-child(2)::before{
+    animation-delay:1.2s;
+}
+
+.edu-card:nth-child(3)::before{
+    animation-delay:2.4s;
+}
+
+.edu-card:nth-child(4)::before{
+    animation-delay:3.6s;
 }
 
 .edu-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(212,175,55,.45);
+
+    animation-play-state:paused;
+
+    transform:
+    translateY(-7px)
+    scale(1.012);
+
+    border-color:
+    rgba(212,175,55,.65);
+
+    box-shadow:
+    0 16px 35px rgba(0,0,0,.4),
+    0 0 28px rgba(212,175,55,.11);
+}
+
+.edu-card > *{
+
+    position:relative;
+
+    z-index:4;
 }
 
 .edu-year{
+
     color:#d4af37;
+
     font-size:11px;
+
     letter-spacing:2px;
+
     font-weight:bold;
 }
 
 .edu-card h3{
+
     margin:9px 0 5px;
+
     font-size:19px;
 }
 
 .edu-card p{
+
     color:#888;
+
     font-size:14px;
 }
 
 
-/* ================= CAREER ================= */
-
-.career{
-    background:
-    radial-gradient(circle at 50% 0,
-    rgba(212,175,55,.08),
-    transparent 50%);
-    border-top:1px solid #161616;
-    border-bottom:1px solid #161616;
-}
-
-.career-box{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-}
-
-.career-box h2{
-    font-size:35px;
-    margin:12px 0;
-}
-
-.career-box p{
-    color:#999;
-    max-width:720px;
-    margin:auto;
-}
-
-.career-points{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:28px;
-}
-
-.career-point{
-    padding:9px 15px;
-    border:1px solid #292929;
-    border-radius:30px;
-    color:#bbb;
-    font-size:12px;
-}
-
-
-/* ================= QUICK OVERVIEW ================= */
+/* =========================================================
+   QUICK OVERVIEW
+========================================================= */
 
 .quick-grid{
+
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:15px;
 }
 
 .quick-card{
+
+    position:relative;
+
+    overflow:hidden;
+
     background:#0c0c0c;
+
     border:1px solid #1d1d1d;
+
     border-radius:12px;
+
     padding:24px;
+
     text-align:center;
+
+    animation:
+    premiumBorderGlow 4.8s ease-in-out infinite;
+
+    transition:
+    transform .45s cubic-bezier(.2,.8,.2,1),
+    border-color .4s ease,
+    box-shadow .4s ease;
+}
+
+.quick-card:nth-child(2){
+    animation-delay:.8s;
+}
+
+.quick-card:nth-child(3){
+    animation-delay:1.6s;
+}
+
+.quick-card:nth-child(4){
+    animation-delay:2.4s;
+}
+
+.quick-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-75%;
+
+    width:45%;
+    height:160%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.02),
+        rgba(212,175,55,.14),
+        rgba(255,240,180,.21),
+        rgba(212,175,55,.07),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    pointer-events:none;
+
+    z-index:3;
+
+    animation:
+    luxuryLightSweep 5.5s ease-in-out infinite;
+}
+
+.quick-card:nth-child(2)::before{
+    animation-delay:1.2s;
+}
+
+.quick-card:nth-child(3)::before{
+    animation-delay:2.4s;
+}
+
+.quick-card:nth-child(4)::before{
+    animation-delay:3.6s;
+}
+
+.quick-card:hover{
+
+    animation-play-state:paused;
+
+    transform:
+    translateY(-8px)
+    scale(1.015);
+
+    border-color:
+    rgba(212,175,55,.65);
+
+    box-shadow:
+    0 18px 40px rgba(0,0,0,.4),
+    0 0 30px rgba(212,175,55,.12);
+}
+
+.quick-card > *{
+
+    position:relative;
+
+    z-index:4;
 }
 
 .quick-card strong{
+
     display:block;
+
     color:#d4af37;
+
     font-size:22px;
+
     margin-bottom:5px;
+
+    min-height:34px;
+
+    text-shadow:
+    0 0 15px rgba(212,175,55,.15);
+
+    transition:.35s ease;
+}
+
+.quick-card:hover strong{
+
+    transform:scale(1.1);
+
+    text-shadow:
+    0 0 20px rgba(212,175,55,.35);
 }
 
 .quick-card span{
+
     color:#888;
+
     font-size:12px;
 }
 
 
-/* ================= CTA ================= */
+/* =========================================================
+   CAREER
+========================================================= */
+
+.career{
+
+    background:
+    radial-gradient(
+        circle at 50% 0,
+        rgba(212,175,55,.08),
+        transparent 50%
+    );
+
+    border-top:1px solid #161616;
+
+    border-bottom:1px solid #161616;
+}
+
+.career-box{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+}
+
+.career-box h2{
+
+    font-size:35px;
+
+    margin:12px 0;
+}
+
+.career-box p{
+
+    color:#999;
+
+    max-width:720px;
+
+    margin:auto;
+}
+
+.career-points{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:28px;
+}
+
+.career-point{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:9px 15px;
+
+    border:1px solid #292929;
+
+    border-radius:30px;
+
+    color:#bbb;
+
+    font-size:12px;
+
+    transition:
+    transform .35s ease,
+    color .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.career-point::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(212,175,55,.18),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    animation:
+    pillLightSweep 4s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+.career-point:nth-child(2)::before{
+    animation-delay:.6s;
+}
+
+.career-point:nth-child(3)::before{
+    animation-delay:1.2s;
+}
+
+.career-point:nth-child(4)::before{
+    animation-delay:1.8s;
+}
+
+.career-point:nth-child(5)::before{
+    animation-delay:2.4s;
+}
+
+.career-point:nth-child(6)::before{
+    animation-delay:3s;
+}
+
+.career-point:hover{
+
+    color:#d4af37;
+
+    border-color:
+    rgba(212,175,55,.5);
+
+    transform:
+    translateY(-4px)
+    scale(1.02);
+
+    box-shadow:
+    0 8px 22px rgba(212,175,55,.08);
+}
+
+.career-point > *{
+    position:relative;
+    z-index:2;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
 
 .cta{
+
+    position:relative;
+
+    overflow:hidden;
+
     text-align:center;
+
     padding:70px 25px;
+
     border:1px solid rgba(212,175,55,.2);
+
     border-radius:20px;
+
     background:
     linear-gradient(
         145deg,
         rgba(212,175,55,.08),
         rgba(255,255,255,.01)
     );
+
+    transition:
+    transform .5s ease,
+    border-color .5s ease,
+    box-shadow .5s ease;
+}
+
+.cta::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+    left:-80%;
+
+    width:45%;
+    height:160%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(212,175,55,.05),
+        rgba(255,240,180,.18),
+        rgba(212,175,55,.05),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    animation:
+    luxuryLightSweep 6s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+.cta:hover{
+
+    transform:translateY(-5px);
+
+    border-color:
+    rgba(212,175,55,.45);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.4),
+    0 0 35px rgba(212,175,55,.08);
+}
+
+.cta > *{
+
+    position:relative;
+
+    z-index:4;
 }
 
 .cta h2{
+
     font-size:38px;
+
     margin-bottom:10px;
 }
 
 .cta p{
+
     color:#888;
+
     margin-bottom:25px;
 }
 
 .btn{
+
     display:inline-block;
+
     padding:13px 26px;
+
     background:#d4af37;
+
     color:#050505;
+
     border-radius:30px;
+
     font-weight:bold;
+
     font-size:13px;
-    transition:.3s;
+
+    transition:
+    transform .35s ease,
+    box-shadow .35s ease;
 }
 
 .btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(212,175,55,.2);
+
+    transform:
+    translateY(-4px)
+    scale(1.03);
+
+    box-shadow:
+    0 12px 35px rgba(212,175,55,.25);
 }
 
 
-/* ================= WHATSAPP ================= */
+/* =========================================================
+   WHATSAPP
+========================================================= */
 
 .whatsapp{
+
     position:fixed;
+
     right:20px;
     bottom:20px;
+
     width:54px;
     height:54px;
+
     border-radius:50%;
+
     background:#25D366;
+
     color:#fff;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     font-size:22px;
+
     z-index:999;
-    box-shadow:0 8px 25px rgba(0,0,0,.4);
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.4);
+
+    transition:.35s ease;
+
+    animation:
+    whatsappPulse 2.5s ease-in-out infinite;
+}
+
+.whatsapp:hover{
+
+    transform:
+    translateY(-5px)
+    scale(1.08);
+}
+
+@keyframes whatsappPulse{
+
+    0%,100%{
+
+        box-shadow:
+        0 8px 25px rgba(0,0,0,.4);
+    }
+
+    50%{
+
+        box-shadow:
+        0 8px 25px rgba(0,0,0,.4),
+        0 0 0 8px rgba(37,211,102,.08);
+    }
+
 }
 
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   PREMIUM LIGHT ANIMATIONS
+========================================================= */
+
+@keyframes luxuryLightSweep{
+
+    0%{
+
+        left:-80%;
+
+        opacity:0;
+    }
+
+    10%{
+
+        opacity:.15;
+    }
+
+    35%{
+
+        opacity:1;
+    }
+
+    55%{
+
+        opacity:.7;
+    }
+
+    75%{
+
+        opacity:.15;
+    }
+
+    100%{
+
+        left:145%;
+
+        opacity:0;
+    }
+
+}
+
+
+@keyframes premiumBorderGlow{
+
+    0%,100%{
+
+        border-color:
+        rgba(255,255,255,.07);
+
+        box-shadow:
+        0 0 0 rgba(212,175,55,0);
+    }
+
+    50%{
+
+        border-color:
+        rgba(212,175,55,.34);
+
+        box-shadow:
+        0 0 28px
+        rgba(212,175,55,.07);
+    }
+
+}
+
+
+@keyframes pillLightSweep{
+
+    0%{
+
+        left:-120%;
+
+        opacity:0;
+    }
+
+    20%{
+
+        opacity:1;
+    }
+
+    60%{
+
+        opacity:.5;
+    }
+
+    100%{
+
+        left:150%;
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(35px);
+
+    transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
+
     text-align:center;
+
     padding:32px 20px;
+
     color:#666;
+
     font-size:13px;
+
     border-top:1px solid #181818;
 }
 
@@ -582,19 +1785,29 @@ footer span{
 }
 
 
-/* ================= MOBILE ================= */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:900px){
 
     .menu{
+
         display:none;
+
         position:absolute;
+
         top:70px;
         left:0;
+
         width:100%;
+
         background:#080808;
+
         flex-direction:column;
+
         padding:20px;
+
         border-bottom:1px solid #222;
     }
 
@@ -607,8 +1820,11 @@ footer span{
     }
 
     .profile-section{
+
         grid-template-columns:1fr;
+
         gap:50px;
+
         text-align:center;
     }
 
@@ -617,16 +1833,19 @@ footer span{
     }
 
     .profile-info p{
+
         margin-left:auto;
         margin-right:auto;
     }
 
     .about-grid,
     .mindset-grid{
+
         grid-template-columns:1fr 1fr;
     }
 
     .quick-grid{
+
         grid-template-columns:1fr 1fr;
     }
 
@@ -656,8 +1875,17 @@ footer span{
     }
 
     .photo-frame{
+
         width:250px;
         height:310px;
+    }
+
+    .photo-frame::after{
+        inset:-14px;
+    }
+
+    .photo-frame::before{
+        inset:-24px;
     }
 
     .profile-info h2{
@@ -669,17 +1897,21 @@ footer span{
     }
 
     .info-grid{
+
         grid-template-columns:1fr;
+
         text-align:left;
     }
 
     .about-grid,
     .mindset-grid,
     .education-grid{
+
         grid-template-columns:1fr;
     }
 
     .quick-grid{
+
         grid-template-columns:1fr 1fr;
     }
 
@@ -706,6 +1938,28 @@ footer span{
 
 }
 
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        transition-duration:.01ms !important;
+
+        scroll-behavior:auto !important;
+    }
+
+}
+
 </style>
 
 </head>
@@ -714,9 +1968,11 @@ footer span{
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
-<header>
+<header id="siteHeader">
 
 <div class="container nav">
 
@@ -730,7 +1986,9 @@ MAMUN.
 
 <nav class="menu" id="menu">
 
-<a href="index.html">Home</a>
+<a href="index.html">
+Home
+</a>
 
 <a href="about.html" class="active">
 About
@@ -768,7 +2026,9 @@ Contact
 
 
 
-<!-- ================= HERO ================= -->
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <section class="hero">
 
@@ -793,11 +2053,13 @@ design, digital marketing and modern web experiences.
 
 
 
-<!-- ================= PROFILE ================= -->
+<!-- =======================================================
+     PROFILE
+======================================================= -->
 
 <main class="container">
 
-<section class="profile-section">
+<section class="profile-section reveal">
 
 
 <div class="photo-wrapper">
@@ -910,7 +2172,9 @@ Current Academic Level
 
 
 
-<!-- ================= WHO I AM ================= -->
+<!-- =======================================================
+     WHO I AM
+======================================================= -->
 
 <section>
 
@@ -935,7 +2199,7 @@ continuous learning and practical experience.
 <div class="about-grid">
 
 
-<div class="about-card">
+<div class="about-card reveal">
 
 <div class="about-icon">
 🎨
@@ -954,7 +2218,7 @@ different ways of presenting information clearly and effectively.
 
 
 
-<div class="about-card">
+<div class="about-card reveal">
 
 <div class="about-icon">
 💻
@@ -973,7 +2237,7 @@ marketing, social media and other areas of the digital ecosystem.
 
 
 
-<div class="about-card">
+<div class="about-card reveal">
 
 <div class="about-icon">
 📚
@@ -992,7 +2256,7 @@ continuous learning is an important part of professional growth.
 
 
 
-<div class="about-card">
+<div class="about-card reveal">
 
 <div class="about-icon">
 🚀
@@ -1016,7 +2280,9 @@ skilled, more organized and more confident in my work.
 
 
 
-<!-- ================= DIGITAL JOURNEY ================= -->
+<!-- =======================================================
+     DIGITAL JOURNEY
+======================================================= -->
 
 <section>
 
@@ -1041,7 +2307,7 @@ practice, real-world exposure and personal projects.
 <div class="journey">
 
 
-<div class="journey-item">
+<div class="journey-item reveal">
 
 <div class="journey-dot"></div>
 
@@ -1058,7 +2324,7 @@ and online opportunities.
 
 
 
-<div class="journey-item">
+<div class="journey-item reveal">
 
 <div class="journey-dot"></div>
 
@@ -1075,7 +2341,7 @@ freelancing and online work.
 
 
 
-<div class="journey-item">
+<div class="journey-item reveal">
 
 <div class="journey-dot"></div>
 
@@ -1092,7 +2358,7 @@ and practical digital activities.
 
 
 
-<div class="journey-item">
+<div class="journey-item reveal">
 
 <div class="journey-dot"></div>
 
@@ -1109,7 +2375,7 @@ digital presence.
 
 
 
-<div class="journey-item">
+<div class="journey-item reveal">
 
 <div class="journey-dot"></div>
 
@@ -1131,7 +2397,9 @@ with the goal of building a sustainable digital career.
 
 
 
-<!-- ================= PROFESSIONAL MINDSET ================= -->
+<!-- =======================================================
+     PROFESSIONAL MINDSET
+======================================================= -->
 
 <section>
 
@@ -1156,7 +2424,7 @@ stay focused and keep improving.
 <div class="mindset-grid">
 
 
-<div class="mindset-card">
+<div class="mindset-card reveal">
 
 <div class="mindset-number">
 01 — RESPONSIBILITY
@@ -1175,7 +2443,7 @@ genuine effort to produce a useful result.
 
 
 
-<div class="mindset-card">
+<div class="mindset-card reveal">
 
 <div class="mindset-number">
 02 — QUALITY
@@ -1194,7 +2462,7 @@ website or digital presentation.
 
 
 
-<div class="mindset-card">
+<div class="mindset-card reveal">
 
 <div class="mindset-number">
 03 — ADAPTABILITY
@@ -1213,7 +2481,7 @@ tools, ideas and better approaches.
 
 
 
-<div class="mindset-card">
+<div class="mindset-card reveal">
 
 <div class="mindset-number">
 04 — LEARNING
@@ -1232,7 +2500,7 @@ opportunity to improve future work.
 
 
 
-<div class="mindset-card">
+<div class="mindset-card reveal">
 
 <div class="mindset-number">
 05 — COMMUNICATION
@@ -1251,7 +2519,7 @@ are important before starting any project.
 
 
 
-<div class="mindset-card">
+<div class="mindset-card reveal">
 
 <div class="mindset-number">
 06 — CONSISTENCY
@@ -1275,7 +2543,9 @@ and practice create stronger long-term results.
 
 
 
-<!-- ================= EDUCATION ================= -->
+<!-- =======================================================
+     EDUCATION
+======================================================= -->
 
 <section>
 
@@ -1300,7 +2570,7 @@ to the way I approach digital work.
 <div class="education-grid">
 
 
-<div class="edu-card">
+<div class="edu-card reveal">
 
 <div class="edu-year">
 CURRENT
@@ -1318,7 +2588,7 @@ Rangamati Government College
 
 
 
-<div class="edu-card">
+<div class="edu-card reveal">
 
 <div class="edu-year">
 2022
@@ -1336,7 +2606,7 @@ Govt. Ashekane Aulia College
 
 
 
-<div class="edu-card">
+<div class="edu-card reveal">
 
 <div class="edu-year">
 2020
@@ -1354,7 +2624,7 @@ Rahmania High School
 
 
 
-<div class="edu-card">
+<div class="edu-card reveal">
 
 <div class="edu-year">
 COMPLETED
@@ -1377,7 +2647,9 @@ E-Learning & Earning Ltd.
 
 
 
-<!-- ================= QUICK OVERVIEW ================= -->
+<!-- =======================================================
+     QUICK OVERVIEW
+======================================================= -->
 
 <section>
 
@@ -1397,10 +2669,12 @@ At a Glance.
 <div class="quick-grid">
 
 
-<div class="quick-card">
+<div class="quick-card reveal">
 
-<strong>
-01
+<strong
+class="counter"
+data-target="1">
+00
 </strong>
 
 <span>
@@ -1411,10 +2685,13 @@ Professional Focus
 
 
 
-<div class="quick-card">
+<div class="quick-card reveal">
 
-<strong>
-03+
+<strong
+class="counter"
+data-target="3"
+data-suffix="+">
+00
 </strong>
 
 <span>
@@ -1425,10 +2702,12 @@ Core Digital Areas
 
 
 
-<div class="quick-card">
+<div class="quick-card reveal">
 
-<strong>
-01
+<strong
+class="counter"
+data-target="1">
+00
 </strong>
 
 <span>
@@ -1439,7 +2718,7 @@ Portfolio Journey
 
 
 
-<div class="quick-card">
+<div class="quick-card reveal">
 
 <strong>
 ∞
@@ -1462,13 +2741,15 @@ Learning Mindset
 
 
 
-<!-- ================= CAREER ================= -->
+<!-- =======================================================
+     CAREER
+======================================================= -->
 
 <section class="career">
 
 <div class="container">
 
-<div class="career-box">
+<div class="career-box reveal">
 
 <div class="section-label">
 CAREER DIRECTION
@@ -1521,13 +2802,15 @@ Digital Projects
 
 
 
-<!-- ================= CTA ================= -->
+<!-- =======================================================
+     CTA
+======================================================= -->
 
 <section>
 
 <div class="container">
 
-<div class="cta">
+<div class="cta reveal">
 
 <h2>
 Let’s Create Something Meaningful.
@@ -1538,8 +2821,12 @@ Have an idea, project or opportunity? I’d be happy to connect
 and explore how we can work together.
 </p>
 
-<a href="contact.html" class="btn">
+<a
+href="contact.html"
+class="btn">
+
 Contact Me
+
 </a>
 
 </div>
@@ -1550,7 +2837,9 @@ Contact Me
 
 
 
-<!-- ================= WHATSAPP ================= -->
+<!-- =======================================================
+     WHATSAPP
+======================================================= -->
 
 <a
 href="https://wa.me/8801679606860"
@@ -1564,7 +2853,9 @@ aria-label="WhatsApp">
 
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer>
 
@@ -1578,6 +2869,11 @@ All Rights Reserved.
 
 <script>
 
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
 function toggleMenu(){
 
     document
@@ -1586,6 +2882,263 @@ function toggleMenu(){
     .toggle("show");
 
 }
+
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const header =
+        document.getElementById(
+            "siteHeader"
+        );
+
+        if(window.scrollY > 30){
+
+            header.classList.add(
+                "scrolled"
+            );
+
+        }else{
+
+            header.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+document.querySelectorAll(
+    ".reveal"
+);
+
+const revealObserver =
+new IntersectionObserver(
+
+    function(entries){
+
+        entries.forEach(
+            entry => {
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target
+                    .classList
+                    .add("active");
+
+                    revealObserver
+                    .unobserve(
+                        entry.target
+                    );
+
+                }
+
+            }
+        );
+
+    },
+
+    {
+        threshold:0.12
+    }
+
+);
+
+
+revealElements.forEach(
+    element => {
+
+        revealObserver.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================================================
+   NUMBER COUNTER
+========================================================= */
+
+const counters =
+document.querySelectorAll(
+    ".counter"
+);
+
+let counterStarted = false;
+
+
+function startCounters(){
+
+    if(counterStarted)
+        return;
+
+    counterStarted = true;
+
+
+    counters.forEach(
+        counter => {
+
+            const target =
+            parseInt(
+                counter.dataset.target
+            );
+
+            const suffix =
+            counter.dataset.suffix || "";
+
+            const duration = 1500;
+
+            const start =
+            performance.now();
+
+
+            function animate(time){
+
+                const progress =
+                Math.min(
+                    (time - start) /
+                    duration,
+                    1
+                );
+
+
+                const ease =
+                1 -
+                Math.pow(
+                    1 - progress,
+                    3
+                );
+
+
+                const value =
+                Math.floor(
+                    ease * target
+                );
+
+
+                counter.textContent =
+                String(value)
+                .padStart(2,"0")
+                + suffix;
+
+
+                if(progress < 1){
+
+                    requestAnimationFrame(
+                        animate
+                    );
+
+                }else{
+
+                    counter.textContent =
+                    String(target)
+                    .padStart(2,"0")
+                    + suffix;
+
+                }
+
+            }
+
+
+            requestAnimationFrame(
+                animate
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   COUNTER OBSERVER
+========================================================= */
+
+const quickGrid =
+document.querySelector(
+    ".quick-grid"
+);
+
+const counterObserver =
+new IntersectionObserver(
+
+    function(entries){
+
+        entries.forEach(
+            entry => {
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    startCounters();
+
+                    counterObserver
+                    .unobserve(
+                        entry.target
+                    );
+
+                }
+
+            }
+        );
+
+    },
+
+    {
+        threshold:0.3
+    }
+
+);
+
+
+if(quickGrid){
+
+    counterObserver.observe(
+        quickGrid
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE MOBILE MENU
+========================================================= */
+
+document
+.querySelectorAll(".menu a")
+.forEach(
+    link => {
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                document
+                .getElementById("menu")
+                .classList
+                .remove("show");
+
+            }
+        );
+
+    }
+);
 
 </script>
 
