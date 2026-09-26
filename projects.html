@@ -237,7 +237,6 @@ nav{
     display:flex;
     gap:25px;
     list-style:none;
-    align-items:center;
 }
 
 .nav-links a{
@@ -275,28 +274,6 @@ nav{
     font-size:26px;
     color:var(--gold);
     cursor:pointer;
-}
-
-/* DESKTOP NAVBAR FIX */
-
-@media(min-width:901px) and (max-width:1150px){
-
-    .nav-container{
-        min-height:68px;
-    }
-
-    .logo{
-        font-size:17px;
-    }
-
-    .nav-links{
-        gap:13px;
-    }
-
-    .nav-links a{
-        font-size:12px;
-    }
-
 }
 
 /* =========================================================
@@ -1193,18 +1170,25 @@ section{
 .showcase-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:24px;
+    gap:22px;
 }
 
 .showcase{
     position:relative;
-    background:#080808;
+    width:100%;
+    height:auto;
+    min-height:0;
+
     border:1px solid rgba(212,175,55,.12);
     border-radius:18px;
+    background:#080808;
+
     overflow:hidden;
     padding:0;
+
     display:flex;
     flex-direction:column;
+
     isolation:isolate;
 
     box-shadow:
@@ -1221,14 +1205,18 @@ section{
 
 .showcase-image{
     position:relative;
+    width:100%;
     height:245px;
+    flex:0 0 245px;
+
     overflow:hidden;
-    background:#090909;
+    background:#080808;
 }
 
 .showcase-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
     display:block;
 
@@ -1238,27 +1226,25 @@ section{
         brightness(.90);
 
     transition:
-        transform .8s cubic-bezier(.2,.7,.2,1),
+        transform .7s cubic-bezier(.2,.7,.2,1),
         filter .6s ease;
 }
 
-/* IMAGE OVERLAY */
+/* CINEMATIC IMAGE OVERLAY */
 
-.showcase-image::before{
+.showcase-image::after{
     content:"";
     position:absolute;
     inset:0;
-    z-index:2;
     pointer-events:none;
 
     background:
         linear-gradient(
             180deg,
-            rgba(0,0,0,0) 55%,
-            rgba(0,0,0,.16) 100%
+            rgba(0,0,0,0) 40%,
+            rgba(0,0,0,.08) 65%,
+            rgba(0,0,0,.28) 100%
         );
-
-    transition:.5s ease;
 }
 
 /* GOLD CORNER */
@@ -1266,13 +1252,14 @@ section{
 .showcase::after{
     content:"";
     position:absolute;
+
     top:15px;
     right:15px;
 
     width:27px;
     height:27px;
 
-    z-index:8;
+    z-index:5;
     pointer-events:none;
 
     border-top:1px solid rgba(212,175,55,.75);
@@ -1299,16 +1286,7 @@ section{
     filter:
         saturate(1)
         contrast(1.06)
-        brightness(.86);
-}
-
-.showcase:hover::before{
-    background:
-        linear-gradient(
-            180deg,
-            rgba(212,175,55,.015),
-            rgba(0,0,0,.08)
-        );
+        brightness(.84);
 }
 
 .showcase:hover::after{
@@ -1323,8 +1301,10 @@ section{
 
 .border-spark{
     position:absolute;
+
     width:5px;
     height:5px;
+
     z-index:20;
     pointer-events:none;
 
@@ -1341,19 +1321,20 @@ section{
         38% 38%
     );
 
-    animation:borderOrbit 5.5s linear infinite;
+    animation:borderOrbit 8s linear infinite;
 
     filter:
-        drop-shadow(0 0 4px rgba(114,247,255,.75));
+        drop-shadow(0 0 4px rgba(114,247,255,.75))
+        drop-shadow(0 0 8px rgba(114,247,255,.35));
 }
 
 .border-spark:nth-child(2){
-    animation-delay:-1.8s;
+    animation-delay:-2.66s;
     opacity:.8;
 }
 
 .border-spark:nth-child(3){
-    animation-delay:-3.6s;
+    animation-delay:-5.33s;
     opacity:.65;
 }
 
@@ -1401,7 +1382,7 @@ section{
 }
 
 /* =========================================================
-   BOTTOM PROJECT CAPTION
+   TEXT BELOW IMAGE
 ========================================================= */
 
 .showcase-overlay{
@@ -1411,28 +1392,28 @@ section{
     right:auto;
     bottom:auto;
 
-    z-index:6;
+    width:100%;
+    min-height:86px;
 
-    min-height:88px;
+    padding:16px 20px 18px;
 
-    padding:17px 20px 19px;
+    z-index:10;
 
     background:
         linear-gradient(
             180deg,
-            #0b0b0b,
-            #080808
+            #0d0d0d 0%,
+            #080808 100%
         );
 
-    border-top:1px solid rgba(212,175,55,.10);
+    border-top:1px solid rgba(212,175,55,.13);
 
     display:flex;
     flex-direction:column;
     justify-content:center;
+    align-items:flex-start;
 
-    transition:
-        background .4s ease,
-        border-color .4s ease;
+    text-align:left;
 }
 
 .showcase-overlay strong{
@@ -1443,11 +1424,11 @@ section{
     font-size:17px;
     font-weight:600;
 
-    line-height:1.25;
+    line-height:1.3;
 
     letter-spacing:.2px;
 
-    margin-bottom:5px;
+    margin-bottom:4px;
 
     opacity:.95;
 
@@ -1455,8 +1436,7 @@ section{
 
     transition:
         color .35s ease,
-        letter-spacing .45s ease,
-        transform .45s ease;
+        letter-spacing .45s ease;
 }
 
 .showcase-overlay span{
@@ -1477,20 +1457,7 @@ section{
     transform:none;
 
     transition:
-        color .4s ease,
-        opacity .4s ease,
-        letter-spacing .4s ease;
-}
-
-.showcase:hover .showcase-overlay{
-    background:
-        linear-gradient(
-            180deg,
-            #0d0d0d,
-            #090909
-        );
-
-    border-top-color:rgba(212,175,55,.25);
+        opacity .4s ease;
 }
 
 .showcase:hover .showcase-overlay strong{
@@ -1499,9 +1466,7 @@ section{
 }
 
 .showcase:hover .showcase-overlay span{
-    color:#aaa;
     opacity:1;
-    letter-spacing:1.7px;
 }
 
 /* =========================================================
@@ -1602,9 +1567,15 @@ section{
 
 .cta{
     text-align:center;
+
     background:
-    radial-gradient(circle at center,rgba(212,175,55,.13),transparent 55%),
-    #080808;
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,.13),
+            transparent 55%
+        ),
+        #080808;
+
     border-top:1px solid #191919;
     border-bottom:1px solid #191919;
 }
@@ -1649,22 +1620,25 @@ footer strong{
 }
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
 ========================================================= */
 
-@media(max-width:900px){
+@media(min-width:651px) and (max-width:900px){
 
     .nav-links{
         position:absolute;
         top:70px;
         left:0;
         right:0;
+
         background:#070707;
+
         display:none;
         flex-direction:column;
+
         padding:20px;
+
         border-bottom:1px solid #222;
-        gap:18px;
     }
 
     .nav-links.show{
@@ -1682,11 +1656,41 @@ footer strong{
         grid-template-columns:1fr 1fr;
     }
 
+    .showcase-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
     .baraka-grid{
         grid-template-columns:1fr;
     }
 
+    .project-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
+
+/* =========================================================
+   COMPACT DESKTOP NAV
+========================================================= */
+
+@media(min-width:901px) and (max-width:1150px){
+
+    .logo{
+        font-size:16px;
+    }
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:650px){
 
@@ -1696,6 +1700,30 @@ footer strong{
 
     .container{
         width:92%;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+
+        background:#070707;
+
+        display:none;
+        flex-direction:column;
+
+        padding:20px;
+
+        border-bottom:1px solid #222;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
     }
 
     .hero{
@@ -1725,6 +1753,14 @@ footer strong{
 
     .featured-box{
         border-right:none;
+    }
+
+    .featured-top{
+        padding:28px;
+    }
+
+    .featured-top h3{
+        font-size:26px;
     }
 
     .baraka{
@@ -1757,7 +1793,7 @@ footer strong{
         letter-spacing:1px;
     }
 
-    /* MOBILE SHOWCASE */
+    /* SHOWCASE MOBILE */
 
     .showcase{
         border-radius:16px;
@@ -1765,15 +1801,12 @@ footer strong{
 
     .showcase-image{
         height:230px;
-    }
-
-    .showcase-image img{
-        height:230px;
+        flex:0 0 230px;
     }
 
     .showcase-overlay{
         min-height:82px;
-        padding:15px 17px 17px;
+        padding:15px 17px 16px;
     }
 
     .showcase-overlay strong{
@@ -1821,9 +1854,9 @@ footer strong{
 
 <body>
 
-<!-- =========================================================
+<!-- =======================================================
      PAGE LOADER
-========================================================= -->
+======================================================= -->
 
 <div class="page-loader" id="pageLoader">
 
@@ -1844,9 +1877,9 @@ footer strong{
 </div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      AMBIENT PARTICLES
-========================================================= -->
+======================================================= -->
 
 <div class="ambient">
 
@@ -1862,16 +1895,16 @@ footer strong{
 </div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      CURSOR
-========================================================= -->
+======================================================= -->
 
 <div class="cursor-glow" id="cursorGlow"></div>
 
 
-<!-- =========================================================
+<!-- =======================================================
      NAVBAR
-========================================================= -->
+======================================================= -->
 
 <nav>
 
@@ -1908,9 +1941,9 @@ MD ABDUL AL MAMUN
 </nav>
 
 
-<!-- =========================================================
+<!-- =======================================================
      HERO
-========================================================= -->
+======================================================= -->
 
 <section class="hero">
 
@@ -1946,9 +1979,9 @@ View All Projects
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      PROJECT OVERVIEW
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -2025,9 +2058,9 @@ Product promotion, social media content and digital communication concepts.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      FEATURED PROJECT
-========================================================= -->
+======================================================= -->
 
 <section id="featured">
 
@@ -2067,6 +2100,7 @@ MD Abdul Al Mamun — Personal Portfolio
 A responsive personal portfolio website focused on personal branding,
 professional presentation and creating a central online presence.
 </p>
+
 
 <div class="project-meta">
 
@@ -2238,9 +2272,9 @@ Learning & Experiments
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      PROJECT JOURNEY
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -2347,9 +2381,9 @@ Improve details, consistency and presentation before considering the work comple
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      PROJECT FILTER
-========================================================= -->
+======================================================= -->
 
 <section id="projects">
 
@@ -2612,9 +2646,9 @@ work and modern digital presentation.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      CASE STUDY
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -2700,9 +2734,9 @@ that communicates the intended message effectively.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      BARAKA FARMYARD
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -2820,9 +2854,9 @@ Hands-on exposure to daily outlet operations and workflow.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      TOOLS
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -2870,9 +2904,9 @@ through different stages of my work.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      VISUAL SHOWCASE
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -2900,17 +2934,21 @@ Selected visual work, website previews and creative projects.
 
 <!-- WEBSITE PREVIEW -->
 
-<div class="showcase showcase-image">
+<div class="showcase">
 
 <span class="border-spark"></span>
 <span class="border-spark"></span>
 <span class="border-spark"></span>
+
+<div class="showcase-image">
 
 <img
 src="website.png"
 alt="Website Preview"
 loading="lazy"
 >
+
+</div>
 
 <div class="showcase-overlay">
 
@@ -2929,17 +2967,21 @@ Web Design
 
 <!-- GRAPHIC DESIGN -->
 
-<div class="showcase showcase-image">
+<div class="showcase">
 
 <span class="border-spark"></span>
 <span class="border-spark"></span>
 <span class="border-spark"></span>
+
+<div class="showcase-image">
 
 <img
 src="design.png"
 alt="Graphic Design"
 loading="lazy"
 >
+
+</div>
 
 <div class="showcase-overlay">
 
@@ -2958,17 +3000,21 @@ Creative Design
 
 <!-- SOCIAL MEDIA -->
 
-<div class="showcase showcase-image">
+<div class="showcase">
 
 <span class="border-spark"></span>
 <span class="border-spark"></span>
 <span class="border-spark"></span>
+
+<div class="showcase-image">
 
 <img
 src="social-media.jpg"
 alt="Social Media Creative"
 loading="lazy"
 >
+
+</div>
 
 <div class="showcase-overlay">
 
@@ -2987,17 +3033,21 @@ Social Media Design
 
 <!-- PRODUCT PROMOTION -->
 
-<div class="showcase showcase-image">
+<div class="showcase">
 
 <span class="border-spark"></span>
 <span class="border-spark"></span>
 <span class="border-spark"></span>
+
+<div class="showcase-image">
 
 <img
 src="product-promotion.jpg"
 alt="Product Promotion"
 loading="lazy"
 >
+
+</div>
 
 <div class="showcase-overlay">
 
@@ -3016,17 +3066,21 @@ Marketing Creative
 
 <!-- WEB EXPERIMENT -->
 
-<div class="showcase showcase-image">
+<div class="showcase">
 
 <span class="border-spark"></span>
 <span class="border-spark"></span>
 <span class="border-spark"></span>
+
+<div class="showcase-image">
 
 <img
 src="web-experiment.jpg"
 alt="Web Experiment"
 loading="lazy"
 >
+
+</div>
 
 <div class="showcase-overlay">
 
@@ -3045,17 +3099,21 @@ Web Development
 
 <!-- CREATIVE EXPERIMENT -->
 
-<div class="showcase showcase-image">
+<div class="showcase">
 
 <span class="border-spark"></span>
 <span class="border-spark"></span>
 <span class="border-spark"></span>
+
+<div class="showcase-image">
 
 <img
 src="creative-experiment.jpg"
 alt="Creative Experiment"
 loading="lazy"
 >
+
+</div>
 
 <div class="showcase-overlay">
 
@@ -3079,9 +3137,9 @@ Creative Exploration
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      PRACTICE
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -3167,9 +3225,9 @@ content ideas and productivity.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      CURRENTLY BUILDING
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -3255,9 +3313,9 @@ professional digital communication.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      PHILOSOPHY
-========================================================= -->
+======================================================= -->
 
 <section>
 
@@ -3270,8 +3328,11 @@ Project Philosophy
 </div>
 
 <div class="quote">
+
 “Don't just <span>create.</span><br>
+
 Understand. Build. Improve. <span>Grow.</span>”
+
 </div>
 
 <p>
@@ -3286,9 +3347,9 @@ the process and become better at the next one.
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      CTA
-========================================================= -->
+======================================================= -->
 
 <section class="cta">
 
@@ -3320,9 +3381,9 @@ View My Services
 </section>
 
 
-<!-- =========================================================
+<!-- =======================================================
      FOOTER
-========================================================= -->
+======================================================= -->
 
 <footer>
 
@@ -3393,8 +3454,10 @@ function filterProjects(category,button){
             card.style.display="block";
 
             setTimeout(()=>{
+
                 card.style.opacity="1";
                 card.style.transform="translateY(0)";
+
             },20);
 
         }else{
@@ -3403,7 +3466,9 @@ function filterProjects(category,button){
             card.style.transform="translateY(12px)";
 
             setTimeout(()=>{
+
                 card.style.display="none";
+
             },250);
 
         }
@@ -3485,7 +3550,9 @@ function animateStats(){
 
     if(statsStarted) return;
 
-    const stats=document.querySelectorAll(".stat-number[data-target]");
+    const stats=document.querySelectorAll(
+        ".stat-number[data-target]"
+    );
 
     if(!stats.length) return;
 
@@ -3573,7 +3640,9 @@ document.querySelectorAll(".nav-links a").forEach(link=>{
 
     link.addEventListener("click",function(){
 
-        document.getElementById("navLinks").classList.remove("show");
+        document
+            .getElementById("navLinks")
+            .classList.remove("show");
 
     });
 
@@ -3590,21 +3659,23 @@ document.querySelectorAll(".filter-btn").forEach(button=>{
 
         window.requestAnimationFrame(()=>{
 
-            document.querySelectorAll(".project-card").forEach(card=>{
+            document
+                .querySelectorAll(".project-card")
+                .forEach(card=>{
 
-                if(card.style.display!=="none"){
+                    if(card.style.display!=="none"){
 
-                    card.classList.remove("reveal");
+                        card.classList.remove("reveal");
 
-                    setTimeout(()=>{
+                        setTimeout(()=>{
 
-                        card.classList.add("reveal");
+                            card.classList.add("reveal");
 
-                    },30);
+                        },30);
 
-                }
+                    }
 
-            });
+                });
 
         });
 
