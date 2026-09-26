@@ -37,6 +37,7 @@ a{
     margin:auto;
 }
 
+
 /* ================= NAVBAR ================= */
 
 nav{
@@ -96,6 +97,7 @@ nav{
     cursor:pointer;
 }
 
+
 /* ================= MOBILE MENU ================= */
 
 .mobile-menu{
@@ -122,6 +124,7 @@ nav{
 .mobile-menu a.active{
     color:#d4af37;
 }
+
 
 /* ================= HERO ================= */
 
@@ -214,6 +217,7 @@ h1 span{
     border-color:#d4af37;
 }
 
+
 /* ================= SECTION ================= */
 
 .section-head{
@@ -231,6 +235,7 @@ h1 span{
 .section-head h2{
     font-size:32px;
 }
+
 
 /* ================= CORE SKILLS ================= */
 
@@ -334,6 +339,7 @@ h1 span{
     margin-right:9px;
 }
 
+
 /* ================= SKILL KNOWLEDGE ================= */
 
 .knowledge{
@@ -352,6 +358,8 @@ h1 span{
     border:1px solid #292929;
     border-radius:17px;
     transition:.3s;
+    position:relative;
+    overflow:hidden;
 }
 
 .knowledge-card:hover{
@@ -390,6 +398,7 @@ h1 span{
     font-size:10px;
 }
 
+
 /* ================= CREATIVE SKILLS ================= */
 
 .creative{
@@ -407,6 +416,8 @@ h1 span{
     border:1px solid #292929;
     background:linear-gradient(145deg,#101010,#0b0b0b);
     border-radius:19px;
+    position:relative;
+    overflow:hidden;
 }
 
 .creative-card span{
@@ -425,6 +436,7 @@ h1 span{
     font-size:13px;
 }
 
+
 /* ================= PROFESSIONAL SKILLS ================= */
 
 .professional{
@@ -442,6 +454,8 @@ h1 span{
     border:1px solid #292929;
     border-radius:17px;
     background:#0d0d0d;
+    position:relative;
+    overflow:hidden;
 }
 
 .professional-card span{
@@ -460,6 +474,7 @@ h1 span{
     font-size:13px;
 }
 
+
 /* ================= TOOLS ================= */
 
 .tools{
@@ -467,6 +482,8 @@ h1 span{
 }
 
 .tools-box{
+    position:relative;
+    overflow:hidden;
     padding:32px;
     background:
         radial-gradient(circle at top right,rgba(212,175,55,.07),transparent 40%),
@@ -503,6 +520,7 @@ h1 span{
     font-size:11px;
 }
 
+
 /* ================= LEARNING ================= */
 
 .learning{
@@ -520,6 +538,8 @@ h1 span{
     border:1px solid #292929;
     border-radius:20px;
     background:#0d0d0d;
+    position:relative;
+    overflow:hidden;
 }
 
 .learning-card h3{
@@ -550,6 +570,7 @@ h1 span{
     margin-right:9px;
 }
 
+
 /* ================= APPROACH ================= */
 
 .approach{
@@ -566,6 +587,8 @@ h1 span{
 .approach-card{
     padding:30px 22px;
     border-right:1px solid #292929;
+    position:relative;
+    overflow:hidden;
 }
 
 .approach-card:last-child{
@@ -588,6 +611,7 @@ h1 span{
     font-size:12px;
 }
 
+
 /* ================= SUMMARY ================= */
 
 .summary{
@@ -605,6 +629,8 @@ h1 span{
     border:1px solid #292929;
     border-radius:18px;
     background:#0d0d0d;
+    position:relative;
+    overflow:hidden;
 }
 
 .summary-card h3{
@@ -616,6 +642,226 @@ h1 span{
     color:#777;
     font-size:13px;
 }
+
+
+/* =========================================================
+   PREMIUM MOVING GOLD STAR LIGHTING
+   ========================================================= */
+
+.gold-particles{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
+}
+
+.gold-particle{
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#f3d46b;
+
+    box-shadow:
+        0 0 4px #d4af37,
+        0 0 9px rgba(212,175,55,.95),
+        0 0 16px rgba(212,175,55,.55);
+
+    opacity:0;
+
+    animation:
+        goldenStarMove
+        var(--duration)
+        ease-in-out
+        var(--delay)
+        infinite;
+}
+
+.gold-particle.small{
+    width:2px;
+    height:2px;
+}
+
+.gold-particle.medium{
+    width:3px;
+    height:3px;
+}
+
+.gold-particle.large{
+    width:4px;
+    height:4px;
+
+    box-shadow:
+        0 0 5px #d4af37,
+        0 0 12px rgba(212,175,55,1),
+        0 0 20px rgba(212,175,55,.55);
+}
+
+
+@keyframes goldenStarMove{
+
+    0%{
+        transform:
+            translate3d(0,0,0)
+            scale(.25);
+
+        opacity:0;
+    }
+
+    12%{
+        opacity:.85;
+    }
+
+    30%{
+        transform:
+            translate3d(
+                var(--moveX1),
+                var(--moveY1),
+                0
+            )
+            scale(1);
+
+        opacity:.95;
+    }
+
+    50%{
+        transform:
+            translate3d(
+                var(--moveX2),
+                var(--moveY2),
+                0
+            )
+            scale(1.15);
+
+        opacity:1;
+    }
+
+    72%{
+        transform:
+            translate3d(
+                var(--moveX3),
+                var(--moveY3),
+                0
+            )
+            scale(.7);
+
+        opacity:.6;
+    }
+
+    88%{
+        opacity:.2;
+    }
+
+    100%{
+        transform:
+            translate3d(
+                var(--moveX4),
+                var(--moveY4),
+                0
+            )
+            scale(.15);
+
+        opacity:0;
+    }
+
+}
+
+
+/* Content stays above lighting */
+
+.skill-card > *:not(.gold-particles),
+.knowledge-card > *:not(.gold-particles),
+.creative-card > *:not(.gold-particles),
+.professional-card > *:not(.gold-particles),
+.learning-card > *:not(.gold-particles),
+.summary-card > *:not(.gold-particles),
+.approach-card > *:not(.gold-particles),
+.tools-box > *:not(.gold-particles),
+.final-cta > *:not(.gold-particles){
+    position:relative;
+    z-index:3;
+}
+
+
+/* =========================================================
+   MOVING AMBIENT GOLD GLOW
+   ========================================================= */
+
+.skill-card::after,
+.knowledge-card::after,
+.creative-card::after,
+.professional-card::after,
+.learning-card::after,
+.summary-card::after,
+.approach-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.08),
+            transparent 68%
+        );
+
+    filter:blur(22px);
+
+    left:-100px;
+    top:-100px;
+
+    pointer-events:none;
+
+    animation:
+        ambientGold
+        9s
+        ease-in-out
+        infinite;
+}
+
+@keyframes ambientGold{
+
+    0%,100%{
+        transform:translate(0,0);
+        opacity:.25;
+    }
+
+    50%{
+        transform:translate(260px,150px);
+        opacity:.65;
+    }
+
+}
+
+
+/* =========================================================
+   HOVER LIGHT
+   ========================================================= */
+
+.skill-card:hover .gold-particle,
+.knowledge-card:hover .gold-particle,
+.creative-card:hover .gold-particle,
+.professional-card:hover .gold-particle,
+.learning-card:hover .gold-particle,
+.summary-card:hover .gold-particle,
+.approach-card:hover .gold-particle{
+
+    box-shadow:
+        0 0 5px #d4af37,
+        0 0 12px rgba(212,175,55,1),
+        0 0 23px rgba(212,175,55,.6);
+}
+
 
 /* ================= CTA ================= */
 
@@ -652,6 +898,7 @@ h1 span{
     gap:10px;
 }
 
+
 /* ================= FOOTER ================= */
 
 footer{
@@ -661,6 +908,7 @@ footer{
     color:#666;
     font-size:13px;
 }
+
 
 /* ================= MOBILE ================= */
 
@@ -700,6 +948,7 @@ footer{
     }
 
 }
+
 
 @media(max-width:600px){
 
@@ -759,6 +1008,31 @@ footer{
 
     .final-cta h2{
         font-size:28px;
+    }
+
+    .gold-particle{
+        width:2.5px;
+        height:2.5px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    .gold-particle,
+    .skill-card::after,
+    .knowledge-card::after,
+    .creative-card::after,
+    .professional-card::after,
+    .learning-card::after,
+    .summary-card::after,
+    .approach-card::after{
+        animation:none;
     }
 
 }
@@ -1814,7 +2088,6 @@ Explore Services →
 
 <a href="contact.html" class="secondary-btn">
 Contact Me
-
 </a>
 
 </div>
@@ -1836,20 +2109,168 @@ Contact Me
 
 <script>
 
+/* =========================================================
+   GOLD STAR PARTICLE SYSTEM
+   ========================================================= */
+
+const particleCards = document.querySelectorAll(
+    ".skill-card, .knowledge-card, .creative-card, .professional-card, .learning-card, .summary-card, .approach-card, .tools-box, .final-cta"
+);
+
+particleCards.forEach((card) => {
+
+    const particleContainer =
+        document.createElement("div");
+
+    particleContainer.className =
+        "gold-particles";
+
+    const particleCount =
+        window.innerWidth <= 600 ? 9 : 14;
+
+
+    for(let i = 0; i < particleCount; i++){
+
+        const particle =
+            document.createElement("span");
+
+        particle.classList.add("gold-particle");
+
+
+        /* Random particle size */
+
+        const randomSize =
+            Math.random();
+
+        if(randomSize < .35){
+
+            particle.classList.add("small");
+
+        }else if(randomSize < .85){
+
+            particle.classList.add("medium");
+
+        }else{
+
+            particle.classList.add("large");
+
+        }
+
+
+        /* Random starting position */
+
+        particle.style.left =
+            (5 + Math.random() * 90) + "%";
+
+        particle.style.top =
+            (5 + Math.random() * 90) + "%";
+
+
+        /* Movement 1 */
+
+        particle.style.setProperty(
+            "--moveX1",
+            (Math.random() * 70 - 35) + "px"
+        );
+
+        particle.style.setProperty(
+            "--moveY1",
+            (Math.random() * 70 - 35) + "px"
+        );
+
+
+        /* Movement 2 */
+
+        particle.style.setProperty(
+            "--moveX2",
+            (Math.random() * 120 - 60) + "px"
+        );
+
+        particle.style.setProperty(
+            "--moveY2",
+            (Math.random() * 120 - 60) + "px"
+        );
+
+
+        /* Movement 3 */
+
+        particle.style.setProperty(
+            "--moveX3",
+            (Math.random() * 150 - 75) + "px"
+        );
+
+        particle.style.setProperty(
+            "--moveY3",
+            (Math.random() * 150 - 75) + "px"
+        );
+
+
+        /* Movement 4 */
+
+        particle.style.setProperty(
+            "--moveX4",
+            (Math.random() * 190 - 95) + "px"
+        );
+
+        particle.style.setProperty(
+            "--moveY4",
+            (Math.random() * 190 - 95) + "px"
+        );
+
+
+        /* Animation duration */
+
+        const duration =
+            5 + Math.random() * 6;
+
+        particle.style.setProperty(
+            "--duration",
+            duration + "s"
+        );
+
+
+        /* Negative delay makes particles
+           already active when page loads */
+
+        particle.style.setProperty(
+            "--delay",
+            -(Math.random() * 9) + "s"
+        );
+
+
+        particleContainer.appendChild(
+            particle
+        );
+
+    }
+
+
+    card.insertBefore(
+        particleContainer,
+        card.firstChild
+    );
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
 function toggleMenu(){
 
-const menu =
-document.getElementById("mobileMenu");
+    const menu =
+        document.getElementById("mobileMenu");
 
-if(menu.style.display === "block"){
+    if(menu.style.display === "block"){
 
-menu.style.display = "none";
+        menu.style.display = "none";
 
-}else{
+    }else{
 
-menu.style.display = "block";
+        menu.style.display = "block";
 
-}
+    }
 
 }
 
