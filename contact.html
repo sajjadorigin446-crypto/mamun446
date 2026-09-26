@@ -1,7 +1,21 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact | MD Abdul Al Mamun</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | MD Abdul Al Mamun</title>
+
+<meta name="description"
+content="Contact MD Abdul Al Mamun for Graphic Design, Digital Marketing, Web Design and professional collaborations.">
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
 
 *{
     margin:0;
@@ -15,26 +29,95 @@ html{
 }
 
 body{
-    background:#070707;
+    background:#050505;
     color:#fff;
     line-height:1.6;
+    overflow-x:hidden;
 }
 
-/* HEADER */
+
+/* =====================================================
+   AMBIENT MOVING LIGHT
+===================================================== */
+
+.ambient-light{
+    position:fixed;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:rgba(212,175,55,.055);
+    filter:blur(110px);
+    pointer-events:none;
+    z-index:-1;
+}
+
+.light-one{
+    top:-150px;
+    left:-180px;
+    animation:ambientOne 14s ease-in-out infinite alternate;
+}
+
+.light-two{
+    right:-180px;
+    bottom:-180px;
+    animation:ambientTwo 17s ease-in-out infinite alternate;
+}
+
+@keyframes ambientOne{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(280px,180px);
+    }
+
+    100%{
+        transform:translate(80px,430px);
+    }
+
+}
+
+@keyframes ambientTwo{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-250px,-180px);
+    }
+
+    100%{
+        transform:translate(-80px,-400px);
+    }
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
+
     height:72px;
+
     padding:0 5%;
-    background:rgba(7,7,7,.94);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid #222;
+
+    background:rgba(5,5,5,.90);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(212,175,55,.14);
 
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
@@ -52,9 +135,29 @@ nav{
 }
 
 nav a{
+    position:relative;
+
     color:#aaa;
     text-decoration:none;
+
     font-size:14px;
+
+    transition:.3s;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:#d4af37;
+
     transition:.3s;
 }
 
@@ -63,38 +166,64 @@ nav a.active{
     color:#d4af37;
 }
 
-/* MOBILE BUTTON */
+nav a:hover::after,
+nav a.active::after{
+    width:100%;
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
 .menu-btn{
     display:none;
+
     background:none;
     border:none;
+
     color:#d4af37;
+
     font-size:28px;
+
     cursor:pointer;
 }
 
-/* MOBILE MENU */
-
 .mobile-menu{
     display:none;
+
     position:absolute;
+
     top:72px;
     left:0;
+
     width:100%;
-    background:#0b0b0b;
+
+    background:rgba(7,7,7,.98);
+
+    backdrop-filter:blur(18px);
+
     border-bottom:1px solid #292929;
+
     padding:15px 20px;
+
     z-index:999;
 }
 
 .mobile-menu a{
     display:block;
+
     color:#aaa;
+
     text-decoration:none;
+
     padding:13px 5px;
+
     border-bottom:1px solid #1d1d1d;
+
     font-size:15px;
+
+    transition:.3s;
 }
 
 .mobile-menu a:last-child{
@@ -106,149 +235,446 @@ nav a.active{
     color:#d4af37;
 }
 
-/* HERO */
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
     position:relative;
+
     text-align:center;
-    padding:95px 20px 60px;
+
+    padding:100px 20px 65px;
+
     overflow:hidden;
 }
 
 .hero::before{
     content:"";
+
     position:absolute;
-    width:420px;
-    height:420px;
+
+    width:500px;
+    height:500px;
+
     background:#d4af37;
-    opacity:.035;
-    filter:blur(100px);
+
+    opacity:.045;
+
+    filter:blur(120px);
+
     border-radius:50%;
-    top:-180px;
+
+    top:-260px;
     left:50%;
+
     transform:translateX(-50%);
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:650px;
+
+    top:-180px;
+    left:-300px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,.04),
+            rgba(255,225,130,.30),
+            rgba(212,175,55,.05),
+            transparent
+        );
+
+    filter:blur(8px);
+
+    transform:rotate(25deg);
+
+    animation:heroLight 7s linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes heroLight{
+
+    0%{
+        left:-320px;
+    }
+
+    100%{
+        left:115%;
+    }
+
 }
 
 .hero span{
     position:relative;
+
     color:#d4af37;
+
     font-size:12px;
+
     letter-spacing:4px;
+
     text-transform:uppercase;
 }
 
 .hero h1{
     position:relative;
+
     font-size:52px;
+
     margin:12px 0;
+
     letter-spacing:-1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d4af37,
+            #fff0a8,
+            #ffffff
+        );
+
+    background-size:250% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:titleShine 6s linear infinite;
+}
+
+@keyframes titleShine{
+
+    0%{
+        background-position:0% center;
+    }
+
+    100%{
+        background-position:250% center;
+    }
+
 }
 
 .hero p{
     position:relative;
+
     max-width:650px;
+
     margin:auto;
+
     color:#999;
+
     font-size:15px;
 }
 
-/* CONTAINER */
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container{
     max-width:1050px;
+
     margin:auto;
+
     padding:20px 20px 90px;
 }
 
-/* AVAILABILITY */
+
+/* =====================================================
+   AVAILABILITY
+===================================================== */
 
 .availability{
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     gap:9px;
+
     margin:0 auto 35px;
+
     color:#aaa;
+
     font-size:13px;
 }
 
 .status-dot{
     width:8px;
     height:8px;
+
     background:#35d07f;
+
     border-radius:50%;
-    box-shadow:0 0 12px rgba(53,208,127,.7);
+
+    box-shadow:
+        0 0 8px #35d07f,
+        0 0 18px rgba(53,208,127,.6);
+
+    animation:statusPulse 2s ease-in-out infinite;
 }
 
-/* CONTACT GRID */
+@keyframes statusPulse{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    50%{
+        transform:scale(1.5);
+        opacity:.65;
+    }
+
+}
+
+
+/* =====================================================
+   CONTACT GRID
+===================================================== */
 
 .contact-grid{
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:20px;
 }
 
+
+/* =====================================================
+   CONTACT CARD
+===================================================== */
+
 .card{
     position:relative;
-    background:linear-gradient(145deg,#121212,#0c0c0c);
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(212,175,55,.07),
+            transparent 32%
+        ),
+        linear-gradient(
+            145deg,
+            #151515,
+            #090909
+        );
+
     border:1px solid #292929;
+
     border-radius:18px;
+
     padding:30px;
-    transition:.35s;
+
     overflow:hidden;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
 }
+
+
+/* ROTATING BORDER */
 
 .card::before{
     content:"";
+
     position:absolute;
-    width:120px;
-    height:120px;
-    background:#d4af37;
-    opacity:.035;
-    border-radius:50%;
-    right:-35px;
-    top:-35px;
+
+    inset:-1px;
+
+    border-radius:19px;
+
+    padding:1px;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            transparent 65deg,
+            rgba(212,175,55,.04) 90deg,
+            #8e701d 120deg,
+            #f8df8a 145deg,
+            #d4af37 165deg,
+            transparent 200deg,
+            transparent 360deg
+        );
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    animation:borderRotate 5s linear infinite;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+@keyframes borderRotate{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* MOVING LIGHT BEAM */
+
+.card::after{
+    content:"";
+
+    position:absolute;
+
+    top:-70%;
+    left:-130%;
+
+    width:55%;
+    height:240%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,.04),
+            rgba(255,225,130,.40),
+            rgba(212,175,55,.07),
+            transparent
+        );
+
+    transform:rotate(20deg);
+
+    filter:blur(3px);
+
+    animation:cardBeam 6s linear infinite;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+@keyframes cardBeam{
+
+    0%{
+        left:-130%;
+    }
+
+    45%,
+    100%{
+        left:155%;
+    }
+
+}
+
+.card > *{
+    position:relative;
+    z-index:3;
 }
 
 .card:hover{
-    transform:translateY(-6px);
-    border-color:#d4af37;
-    box-shadow:0 18px 45px rgba(0,0,0,.45);
+    transform:translateY(-7px);
+
+    border-color:#a08430;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.60),
+        0 0 35px rgba(212,175,55,.08);
 }
 
+
+/* =====================================================
+   ICON
+===================================================== */
+
 .icon{
-    width:50px;
-    height:50px;
+    width:52px;
+    height:52px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border:1px solid #333;
-    border-radius:13px;
+
+    border:1px solid #393939;
+
+    border-radius:14px;
+
     color:#d4af37;
+
     margin-bottom:19px;
+
+    background:rgba(212,175,55,.025);
+
+    transition:.4s;
+
+    box-shadow:
+        inset 0 0 20px rgba(212,175,55,.02);
 }
 
 .icon svg{
-    width:23px;
-    height:23px;
+    width:25px;
+    height:25px;
+
+    fill:currentColor;
+
+    transition:.4s;
 }
+
+.card:hover .icon{
+    border-color:#d4af37;
+
+    transform:translateY(-2px) scale(1.06);
+
+    box-shadow:
+        0 0 15px rgba(212,175,55,.25),
+        0 0 30px rgba(212,175,55,.08);
+}
+
+
+/* =====================================================
+   CARD TEXT
+===================================================== */
 
 .card h2{
     font-size:20px;
+
     margin-bottom:7px;
 }
 
 .card p{
     color:#999;
+
     font-size:14px;
 }
 
 .card a{
     display:inline-block;
+
     margin-top:17px;
+
     color:#d4af37;
+
     text-decoration:none;
+
     font-size:14px;
+
     transition:.3s;
 }
 
@@ -256,138 +682,358 @@ nav a.active{
     letter-spacing:.5px;
 }
 
-/* COPY ROW */
+
+/* =====================================================
+   COPY
+===================================================== */
 
 .copy-row{
     display:flex;
+
     align-items:center;
+
     gap:8px;
+
     margin-top:15px;
 }
 
 .copy-text{
     color:#ddd;
+
     font-size:14px;
+
     word-break:break-word;
 }
 
 .copy-btn{
     background:#181818;
+
     color:#aaa;
+
     border:1px solid #333;
+
     padding:6px 10px;
+
     border-radius:7px;
+
     cursor:pointer;
+
     font-size:11px;
+
     transition:.3s;
 }
 
 .copy-btn:hover{
     color:#d4af37;
+
     border-color:#d4af37;
+
+    box-shadow:
+        0 0 12px rgba(212,175,55,.08);
 }
 
-/* LOCATION + AVAILABILITY */
+
+/* =====================================================
+   INFO STRIP
+===================================================== */
 
 .info-strip{
     margin-top:22px;
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:15px;
 }
 
 .info-box{
+    position:relative;
+
     background:#0d0d0d;
+
     border:1px solid #252525;
+
     border-radius:14px;
+
     padding:18px 20px;
+
+    overflow:hidden;
+}
+
+.info-box::after{
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d4af37,
+            transparent
+        );
+
+    top:0;
+    left:-130px;
+
+    animation:infoLight 5s linear infinite;
+}
+
+@keyframes infoLight{
+
+    0%{
+        left:-130px;
+    }
+
+    100%{
+        left:110%;
+    }
+
 }
 
 .info-box small{
     display:block;
+
     color:#777;
+
     font-size:11px;
+
     text-transform:uppercase;
+
     letter-spacing:1.5px;
+
     margin-bottom:5px;
 }
 
 .info-box strong{
     color:#ddd;
+
     font-size:14px;
 }
 
-/* WORK TOGETHER */
+
+/* =====================================================
+   WORK TOGETHER
+===================================================== */
 
 .work-box{
+    position:relative;
+
     margin-top:25px;
+
     padding:35px;
+
     border-radius:18px;
+
     border:1px solid #292929;
+
     background:
-        radial-gradient(circle at top right,rgba(212,175,55,.08),transparent 35%),
-        linear-gradient(145deg,#121212,#0b0b0b);
+        radial-gradient(
+            circle at top right,
+            rgba(212,175,55,.09),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #121212,
+            #0b0b0b
+        );
+
+    overflow:hidden;
+}
+
+.work-box::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,.08),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:workLight 8s linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes workLight{
+
+    0%{
+        left:-100%;
+    }
+
+    50%,
+    100%{
+        left:150%;
+    }
+
+}
+
+.work-box h2,
+.work-box p,
+.service-tags{
+    position:relative;
+
+    z-index:2;
 }
 
 .work-box h2{
     font-size:27px;
+
     margin-bottom:7px;
 }
 
 .work-box p{
     color:#888;
+
     font-size:14px;
+
     max-width:650px;
 }
 
 .service-tags{
     display:flex;
+
     flex-wrap:wrap;
+
     gap:9px;
+
     margin-top:20px;
 }
 
 .service-tags span{
     border:1px solid #333;
+
     color:#aaa;
+
     padding:7px 12px;
+
     border-radius:30px;
+
     font-size:12px;
+
+    transition:.3s;
 }
 
-/* MESSAGE */
+.service-tags span:hover{
+    color:#d4af37;
+
+    border-color:#d4af37;
+
+    box-shadow:
+        0 0 15px rgba(212,175,55,.08);
+}
+
+
+/* =====================================================
+   MESSAGE BOX
+===================================================== */
 
 .message-box{
+    position:relative;
+
     margin-top:25px;
+
     padding:35px;
-    background:linear-gradient(145deg,#121212,#0c0c0c);
+
+    background:
+        linear-gradient(
+            145deg,
+            #121212,
+            #0c0c0c
+        );
+
     border:1px solid #292929;
+
     border-radius:18px;
+
+    overflow:hidden;
+}
+
+.message-box::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    right:-170px;
+    top:-170px;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    opacity:.025;
+
+    filter:blur(70px);
+}
+
+.message-box h2,
+.message-box .subtitle,
+.message-box form{
+    position:relative;
+
+    z-index:2;
 }
 
 .message-box h2{
     font-size:27px;
+
     margin-bottom:7px;
 }
 
 .message-box .subtitle{
     color:#888;
+
     font-size:14px;
+
     margin-bottom:25px;
 }
+
+
+/* =====================================================
+   FORM
+===================================================== */
 
 input,
 select,
 textarea{
     width:100%;
+
     background:#080808;
+
     border:1px solid #303030;
+
     color:#fff;
+
     padding:15px;
+
     border-radius:10px;
+
     margin-bottom:15px;
+
     outline:none;
+
     font-size:14px;
+
     transition:.3s;
 }
 
@@ -395,119 +1041,314 @@ select{
     appearance:auto;
 }
 
+input::placeholder,
+textarea::placeholder{
+    color:#666;
+}
+
 input:focus,
 select:focus,
 textarea:focus{
     border-color:#d4af37;
-    box-shadow:0 0 0 2px rgba(212,175,55,.05);
+
+    box-shadow:
+        0 0 0 2px rgba(212,175,55,.05),
+        0 0 20px rgba(212,175,55,.04);
 }
 
 textarea{
     height:140px;
+
     resize:none;
 }
 
+
+/* =====================================================
+   SEND BUTTON
+===================================================== */
+
 .send-btn{
+    position:relative;
+
+    overflow:hidden;
+
     width:100%;
+
     padding:14px;
+
     background:#d4af37;
+
     color:#050505;
+
     border:1px solid #d4af37;
+
     border-radius:30px;
+
     cursor:pointer;
+
     font-size:15px;
+
     font-weight:bold;
+
     transition:.3s;
+}
+
+.send-btn::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.45),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:buttonLight 4s linear infinite;
+}
+
+@keyframes buttonLight{
+
+    0%{
+        left:-100%;
+    }
+
+    55%,
+    100%{
+        left:150%;
+    }
+
 }
 
 .send-btn:hover{
     background:transparent;
+
     color:#d4af37;
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,.15);
 }
 
-/* SOCIAL */
+
+/* =====================================================
+   SOCIAL
+===================================================== */
 
 .social{
     text-align:center;
+
     margin-top:45px;
 }
 
 .social h2{
     font-size:22px;
+
     margin-bottom:18px;
 }
 
 .social-links{
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:12px;
 }
 
 .social-links a{
+    position:relative;
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
+
     color:#aaa;
+
     border:1px solid #333;
-    padding:9px 18px;
+
+    padding:10px 18px;
+
     border-radius:30px;
+
     text-decoration:none;
+
     font-size:13px;
-    transition:.3s;
+
+    transition:.35s;
+
+    overflow:hidden;
+}
+
+.social-links a::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,.15),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:socialLight 5s linear infinite;
+}
+
+@keyframes socialLight{
+
+    0%{
+        left:-120%;
+    }
+
+    55%,
+    100%{
+        left:150%;
+    }
+
 }
 
 .social-links a:hover{
     color:#d4af37;
+
     border-color:#d4af37;
-    transform:translateY(-2px);
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 20px rgba(212,175,55,.08);
 }
 
 .social-links svg{
-    width:16px;
-    height:16px;
+    width:17px;
+    height:17px;
+
+    fill:currentColor;
+
+    position:relative;
+
+    z-index:2;
 }
 
-/* FOOTER */
+.social-links span{
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
     border-top:1px solid #222;
+
     text-align:center;
+
     padding:25px 20px;
+
     color:#666;
+
     font-size:13px;
 }
 
-/* WHATSAPP */
+
+/* =====================================================
+   FLOATING WHATSAPP
+===================================================== */
 
 .whatsapp{
     position:fixed;
+
     right:20px;
     bottom:20px;
-    width:54px;
-    height:54px;
+
+    width:56px;
+    height:56px;
+
     border-radius:50%;
+
     background:#25D366;
+
     color:white;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     text-decoration:none;
+
     z-index:999;
-    box-shadow:0 8px 25px rgba(0,0,0,.5);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.5),
+        0 0 0 0 rgba(37,211,102,.45);
+
+    animation:whatsappPulse 2.3s infinite;
+
     transition:.3s;
 }
 
 .whatsapp svg{
-    width:25px;
-    height:25px;
+    width:29px;
+    height:29px;
+
+    fill:currentColor;
+}
+
+@keyframes whatsappPulse{
+
+    0%{
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.5),
+            0 0 0 0 rgba(37,211,102,.45);
+    }
+
+    70%{
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.5),
+            0 0 0 14px rgba(37,211,102,0);
+    }
+
+    100%{
+        box-shadow:
+            0 8px 25px rgba(0,0,0,.5),
+            0 0 0 0 rgba(37,211,102,0);
+    }
+
 }
 
 .whatsapp:hover{
     transform:scale(1.08);
 }
 
-/* MOBILE */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:850px){
 
@@ -552,213 +1393,710 @@ footer{
         flex-wrap:wrap;
     }
 
+    .card{
+        padding:25px;
+    }
+
+    .social-links{
+        gap:8px;
+    }
+
 }
 
-</style></head><body><header><a href="index.html" class="logo">MAMUN.</a>
+@media(max-width:480px){
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero span{
+        font-size:10px;
+        letter-spacing:3px;
+    }
+
+    .copy-text{
+        max-width:230px;
+    }
+
+    .whatsapp{
+        right:15px;
+        bottom:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- AMBIENT LIGHT -->
+
+<div class="ambient-light light-one"></div>
+<div class="ambient-light light-two"></div>
+
+
+<!-- HEADER -->
+
+<header>
+
+<a href="index.html" class="logo">MAMUN.</a>
 
 <nav>
+
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="skills.html">Skills</a>
-<a href="services.html">Services</a>
-<a href="projects.html">Projects</a>
-<a href="experience.html">Experience</a>
-<a href="resume.html">Resume</a>
-<a href="contact.html" class="active">Contact</a>
-</nav><button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-</header><div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a>
 <a href="about.html">About</a>
+
 <a href="skills.html">Skills</a>
+
 <a href="services.html">Services</a>
+
 <a href="projects.html">Projects</a>
+
 <a href="experience.html">Experience</a>
+
 <a href="resume.html">Resume</a>
+
 <a href="contact.html" class="active">Contact</a>
 
-</div><section class="hero"><span>LET'S CONNECT</span>
+</nav>
 
-<h1>Contact Me</h1><p>
+<button
+class="menu-btn"
+onclick="toggleMenu()">
+
+☰
+
+</button>
+
+</header>
+
+
+<!-- MOBILE MENU -->
+
+<div
+class="mobile-menu"
+id="mobileMenu">
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="skills.html">Skills</a>
+
+<a href="services.html">Services</a>
+
+<a href="projects.html">Projects</a>
+
+<a href="experience.html">Experience</a>
+
+<a href="resume.html">Resume</a>
+
+<a href="contact.html" class="active">Contact</a>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<span>LET'S CONNECT</span>
+
+<h1>Contact Me</h1>
+
+<p>
 Have a project, opportunity or idea?
 Let's connect and create something meaningful together.
-</p></section><div class="container"><div class="availability">
+</p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- AVAILABILITY -->
+
+<div class="availability">
+
 <span class="status-dot"></span>
+
 Available for freelance projects & collaborations
-</div><div class="contact-grid"><!-- WHATSAPP --><div class="card"><div class="icon">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-<path d="M20 11.5a8.4 8.4 0 0 1-8.5 8.5 8.3 8.3 0 0 1-4-.98L4 20l.98-3.4A8.3 8.3 0 0 1 4 12a8.5 8.5 0 1 1 16 0"/>
-<path d="M8.7 8.3c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c.7 1.2 1.6 2 2.8 2.7l.6-.5c.2-.2.4-.2.6-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1.1.4-1.5.3-1-.2-2.1-.7-3.1-1.5-1.4-1.1-2.5-2.5-3.1-3.7-.5-1-.6-1.8-.4-2.1z"/>
+
+</div>
+
+
+<!-- CONTACT GRID -->
+
+<div class="contact-grid">
+
+
+<!-- WHATSAPP -->
+
+<div class="card">
+
+<div class="icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.4L2.5 21.5l4.8-1.2A9.5 9.5 0 1 0 12 2.5zm0 17.1c-1.4 0-2.8-.4-4-1.1l-.3-.2-2.8.7.7-2.7-.2-.3A7.1 7.1 0 1 1 12 19.6zm3.9-5.3c-.2-.1-.4-.2-.6-.3-.2-.1-1.3-.7-1.5-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.4-2.9-.2-.3.2-.3.5-1 .1-.2.1-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.2.5 1.6.6.6.2 1.2.2 1.6.1.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z"/>
+
 </svg>
-</div><h2>WhatsApp</h2><p>
+
+</div>
+
+<h2>WhatsApp</h2>
+
+<p>
 For quick communication, project discussions
 and professional inquiries.
-</p><div class="copy-row">
-<span class="copy-text">01679606860</span>
-<button class="copy-btn" onclick="copyText('01679606860',this)">Copy</button>
-</div><a href="https://wa.me/8801679606860" target="_blank">
+</p>
+
+<div class="copy-row">
+
+<span class="copy-text">
+01679606860
+</span>
+
+<button
+class="copy-btn"
+onclick="copyText('01679606860',this)">
+
+Copy
+
+</button>
+
+</div>
+
+<a
+href="https://wa.me/8801679606860"
+target="_blank"
+rel="noopener noreferrer">
+
 Chat on WhatsApp →
-</a></div><!-- EMAIL --><div class="card"><div class="icon">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-<rect x="3" y="5" width="18" height="14" rx="2"/>
-<path d="m4 7 8 6 8-6"/>
+
+</a>
+
+</div>
+
+
+<!-- GMAIL -->
+
+<div class="card">
+
+<div class="icon">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M3 6.5A3.5 3.5 0 0 1 6.5 3h11A3.5 3.5 0 0 1 21 6.5v11a3.5 3.5 0 0 1-3.5 3.5h-11A3.5 3.5 0 0 1 3 17.5v-11z"
+fill="none"
+stroke="currentColor"
+stroke-width="1.5"/>
+
+<path
+d="M5 7l7 5.5L19 7"
+fill="none"
+stroke="currentColor"
+stroke-width="1.8"
+stroke-linecap="round"
+stroke-linejoin="round"/>
+
 </svg>
-</div><h2>Email</h2><p>
+
+</div>
+
+<h2>Gmail</h2>
+
+<p>
 For professional inquiries, opportunities
 and detailed project discussions.
-</p><div class="copy-row">
-<span class="copy-text">sajjadorigin446@gmail.com</span>
-<button class="copy-btn" onclick="copyText('sajjadorigin446@gmail.com',this)">Copy</button>
-</div><a href="mailto:sajjadorigin446@gmail.com">
+</p>
+
+<div class="copy-row">
+
+<span class="copy-text">
+sajjadorigin446@gmail.com
+</span>
+
+<button
+class="copy-btn"
+onclick="copyText('sajjadorigin446@gmail.com',this)">
+
+Copy
+
+</button>
+
+</div>
+
+<a href="mailto:sajjadorigin446@gmail.com">
+
 Send an Email →
-</a></div><!-- FACEBOOK --><div class="card"><div class="icon">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-<path d="M14 8h2V4h-2c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z"/>
+
+</a>
+
+</div>
+
+
+<!-- FACEBOOK -->
+
+<div class="card">
+
+<div class="icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M13.5 21v-7h2.5l.4-3h-2.9V9.1c0-.9.3-1.5 1.6-1.5h1.5V4.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.5v3h2.7v7h3.3z"/>
+
 </svg>
-</div><h2>Facebook</h2><p>
+
+</div>
+
+<h2>Facebook</h2>
+
+<p>
 Connect with me on Facebook for updates,
 social networking and communication.
-</p><a href="https://www.facebook.com/sajjadhossain9865" target="_blank">
+</p>
+
+<a
+href="https://www.facebook.com/sajjadhossain9865"
+target="_blank"
+rel="noopener noreferrer">
+
 Visit Facebook Profile →
-</a></div><!-- LINKEDIN --><div class="card"><div class="icon">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-<rect x="4" y="4" width="16" height="16" rx="2"/>
-<path d="M8 10v6"/>
-<path d="M8 7.5v.01"/>
-<path d="M12 16v-3.2a2.8 2.8 0 0 1 5.6 0V16"/>
-<path d="M12 10v6"/>
+
+</a>
+
+</div>
+
+
+<!-- LINKEDIN -->
+
+<div class="card">
+
+<div class="icon">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M5 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 10h4v11H3V10zm6 0h3.8v1.5h.1c.5-.9 1.7-1.9 3.6-1.9 3.8 0 4.5 2.5 4.5 5.8V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21H9V10z"/>
+
 </svg>
-</div><h2>LinkedIn</h2><p>
+
+</div>
+
+<h2>LinkedIn</h2>
+
+<p>
 For professional networking, career opportunities
 and collaborations.
-</p><a href="https://www.linkedin.com/in/md-abdul-al-mamun-453a39363" target="_blank">
+</p>
+
+<a
+href="https://www.linkedin.com/in/md-abdul-al-mamun-453a39363"
+target="_blank"
+rel="noopener noreferrer">
+
 View LinkedIn Profile →
-</a></div></div><!-- INFO --><div class="info-strip"><div class="info-box">
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- INFO -->
+
+<div class="info-strip">
+
+<div class="info-box">
+
 <small>Location</small>
-<strong>Chattogram, Bangladesh</strong>
-</div><div class="info-box">
+
+<strong>
+Chattogram, Bangladesh
+</strong>
+
+</div>
+
+<div class="info-box">
+
 <small>Availability</small>
-<strong>Open for Freelance & Professional Projects</strong>
-</div></div><!-- WORK TOGETHER --><div class="work-box"><h2>Let's Work Together</h2><p>
+
+<strong>
+Open for Freelance & Professional Projects
+</strong>
+
+</div>
+
+</div>
+
+
+<!-- WORK TOGETHER -->
+
+<div class="work-box">
+
+<h2>Let's Work Together</h2>
+
+<p>
 Have a project, business idea or creative opportunity?
 I'm open to professional collaborations and selected freelance projects.
-</p><div class="service-tags">
+</p>
+
+<div class="service-tags">
+
 <span>Graphic Design</span>
+
 <span>Digital Marketing</span>
+
 <span>Web Design</span>
-</div></div><!-- MESSAGE --><div class="message-box"><h2>Send Me a Message</h2><p class="subtitle">
-Tell me a little about your project. Your email app will open with the message ready to send.
-</p><form onsubmit="sendMessage(); return false;"><input
+
+</div>
+
+</div>
+
+
+<!-- MESSAGE -->
+
+<div class="message-box">
+
+<h2>Send Me a Message</h2>
+
+<p class="subtitle">
+
+Tell me a little about your project.
+Your email app will open with the message ready to send.
+
+</p>
+
+
+<form
+onsubmit="sendMessage(); return false;">
+
+
+<input
 type="text"
 id="name"
 placeholder="Your Name"
 required
+>
 
-«»
 
 <input
 type="email"
 id="email"
 placeholder="Your Email"
 required
+>
 
-«»
 
-<select id="service" required>
-<option value="" disabled selected>Select a Service</option>
-<option>Graphic Design</option>
-<option>Digital Marketing</option>
-<option>Web Design</option>
-<option>Other</option>
-</select><textarea
+<select
+id="service"
+required>
+
+<option
+value=""
+disabled
+selected>
+
+Select a Service
+
+</option>
+
+<option>
+Graphic Design
+</option>
+
+<option>
+Digital Marketing
+</option>
+
+<option>
+Web Design
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+
+<textarea
 id="message"
 placeholder="Tell me about your project..."
-required
-></textarea><button type="submit" class="send-btn">
-Send Message →
-</button></form></div><!-- SOCIAL --><div class="social"><h2>Let's Connect</h2><div class="social-links"><a href="https://www.facebook.com/sajjadhossain9865" target="_blank">
-Facebook
-</a><a href="https://www.linkedin.com/in/md-abdullah-al-mamun-453a39363/" target="_blank">
-LinkedIn
-</a><a href="https://wa.me/8801679606860" target="_blank">
-WhatsApp
-</a><a href="mailto:sajjadorigin446@gmail.com">
-Email
-</a></div></div></div><footer>© 2026 MD Abdul Al Mamun. All Rights Reserved.
+required>
+</textarea>
 
-</footer><!-- FLOATING WHATSAPP --><a
+
+<button
+type="submit"
+class="send-btn">
+
+Send Message →
+
+</button>
+
+</form>
+
+</div>
+
+
+<!-- SOCIAL -->
+
+<div class="social">
+
+<h2>Let's Connect</h2>
+
+<div class="social-links">
+
+
+<!-- FACEBOOK -->
+
+<a
+href="https://www.facebook.com/sajjadhossain9865"
+target="_blank"
+rel="noopener noreferrer">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M13.5 21v-7h2.5l.4-3h-2.9V9.1c0-.9.3-1.5 1.6-1.5h1.5V4.9c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H7.5v3h2.7v7h3.3z"/>
+
+</svg>
+
+<span>Facebook</span>
+
+</a>
+
+
+<!-- LINKEDIN -->
+
+<a
+href="https://www.linkedin.com/in/md-abdul-al-mamun-453a39363"
+target="_blank"
+rel="noopener noreferrer">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M5 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 10h4v11H3V10zm6 0h3.8v1.5h.1c.5-.9 1.7-1.9 3.6-1.9 3.8 0 4.5 2.5 4.5 5.8V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21H9V10z"/>
+
+</svg>
+
+<span>LinkedIn</span>
+
+</a>
+
+
+<!-- WHATSAPP -->
+
+<a
 href="https://wa.me/8801679606860"
 target="_blank"
+rel="noopener noreferrer">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.4L2.5 21.5l4.8-1.2A9.5 9.5 0 1 0 12 2.5zm0 17.1c-1.4 0-2.8-.4-4-1.1l-.3-.2-2.8.7.7-2.7-.2-.3A7.1 7.1 0 1 1 12 19.6zm3.9-5.3c-.2-.1-.4-.2-.6-.3-.2-.1-.4-.2-.6-.3-.2-.1-1.3-.7-1.5-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.4-2.9-.2-.3.2-.3.5-1 .1-.2.1-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.2.5 1.6.6.6.2 1.2.2 1.6.1.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z"/>
+
+</svg>
+
+<span>WhatsApp</span>
+
+</a>
+
+
+<!-- GMAIL -->
+
+<a href="mailto:sajjadorigin446@gmail.com">
+
+<svg viewBox="0 0 24 24">
+
+<path
+d="M3 6.5A3.5 3.5 0 0 1 6.5 3h11A3.5 3.5 0 0 1 21 6.5v11a3.5 3.5 0 0 1-3.5 3.5h-11A3.5 3.5 0 0 1 3 17.5v-11z"
+fill="none"
+stroke="currentColor"
+stroke-width="1.5"/>
+
+<path
+d="M5 7l7 5.5L19 7"
+fill="none"
+stroke="currentColor"
+stroke-width="1.8"
+stroke-linecap="round"
+stroke-linejoin="round"/>
+
+</svg>
+
+<span>Gmail</span>
+
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 MD Abdul Al Mamun. All Rights Reserved.
+
+</footer>
+
+
+<!-- FLOATING WHATSAPP -->
+
+<a
+href="https://wa.me/8801679606860"
+target="_blank"
+rel="noopener noreferrer"
 class="whatsapp"
 aria-label="Chat on WhatsApp">
 
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-<path d="M20 11.5a8.4 8.4 0 0 1-8.5 8.5 8.3 8.3 0 0 1-4-.98L4 20l.98-3.4A8.3 8.3 0 0 1 4 12a8.5 8.5 0 1 1 16 0"/>
-<path d="M8.7 8.3c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c.7 1.2 1.6 2 2.8 2.7l.6-.5c.2-.2.4-.2.6-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.4.2-1.1.4-1.5.3-1-.2-2.1-.7-3.1-1.5-1.4-1.1-2.5-2.5-3.1-3.7-.5-1-.6-1.8-.4-2.1z"/>
-</svg></a><script>
+<svg viewBox="0 0 24 24">
+
+<path d="M12 2.5a9.5 9.5 0 0 0-8.2 14.4L2.5 21.5l4.8-1.2A9.5 9.5 0 1 0 12 2.5zm0 17.1c-1.4 0-2.8-.4-4-1.1l-.3-.2-2.8.7.7-2.7-.2-.3A7.1 7.1 0 1 1 12 19.6zm3.9-5.3c-.2-.1-.4-.2-.6-.3-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.4-2.9-.2-.3.2-.3.5-1 .1-.2.1-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.2 1.2.5 1.6.6.6.2 1.2.2 1.6.1.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3z"/>
+
+</svg>
+
+</a>
+
+
+<script>
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
 function toggleMenu(){
 
-    const menu = document.getElementById("mobileMenu");
+    const menu =
+    document.getElementById("mobileMenu");
 
     if(menu.style.display === "block"){
+
         menu.style.display = "none";
+
     }else{
+
         menu.style.display = "block";
+
     }
 
 }
 
 
+/* =====================================================
+   COPY BUTTON
+===================================================== */
+
 function copyText(text,button){
 
-    navigator.clipboard.writeText(text).then(function(){
+    navigator.clipboard
+    .writeText(text)
+    .then(function(){
 
-        const oldText = button.innerText;
+        const oldText =
+        button.innerText;
 
-        button.innerText = "Copied!";
+        button.innerText =
+        "Copied!";
 
         setTimeout(function(){
-            button.innerText = oldText;
+
+            button.innerText =
+            oldText;
+
         },1500);
+
+    })
+    .catch(function(){
+
+        alert("Unable to copy. Please copy manually.");
 
     });
 
 }
 
 
+/* =====================================================
+   EMAIL MESSAGE
+===================================================== */
+
 function sendMessage(){
 
-    let name =
-    document.getElementById("name").value;
+    const name =
+    document.getElementById("name").value.trim();
 
-    let email =
-    document.getElementById("email").value;
+    const email =
+    document.getElementById("email").value.trim();
 
-    let service =
+    const service =
     document.getElementById("service").value;
 
-    let message =
-    document.getElementById("message").value;
+    const message =
+    document.getElementById("message").value.trim();
 
-    let subject =
+
+    if(
+        !name ||
+        !email ||
+        !service ||
+        !message
+    ){
+
+        alert("Please fill in all fields.");
+
+        return;
+
+    }
+
+
+    const subject =
     encodeURIComponent(
         "Website Inquiry - " + service
     );
 
-    let body =
+
+    const body =
     encodeURIComponent(
+
         "Name: " + name +
+
         "\nEmail: " + email +
+
         "\nService: " + service +
+
         "\n\nMessage:\n" + message
+
     );
 
+
     window.location.href =
-    "mailto:sajjadorigin446@gmail.com?subject="
-    + subject +
-    "&body=" + body;
+    "mailto:sajjadorigin446@gmail.com" +
+
+    "?subject=" +
+
+    subject +
+
+    "&body=" +
+
+    body;
 
 }
 
-</script></body>
+</script>
+
+</body>
+
 </html>
