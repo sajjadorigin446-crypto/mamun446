@@ -560,81 +560,252 @@ section{
     color:#d4af37;
 }
 
-/* SHOWCASE */
+
+/* =========================================================
+   PREMIUM VISUAL SHOWCASE
+========================================================= */
 
 .showcase-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    gap:22px;
 }
 
 .showcase{
-    min-height:180px;
-    border:1px dashed #303030;
-    border-radius:12px;
-    background:#0a0a0a;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:20px;
-}
-
-.showcase span{
-    color:#777;
-    font-size:13px;
-}
-
-.showcase strong{
-    display:block;
-    color:#d4af37;
-    margin-bottom:5px;
-}
-
-/* SHOWCASE IMAGES */
-
-.showcase-image{
     position:relative;
+    height:260px;
+    min-height:260px;
+    border:1px solid rgba(212,175,55,.12);
+    border-radius:18px;
+    background:#080808;
     overflow:hidden;
     padding:0;
-    min-height:180px;
+    display:block;
+    isolation:isolate;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.45),
+        inset 0 0 0 1px rgba(255,255,255,.015);
+
+    transition:
+        transform .6s cubic-bezier(.2,.7,.2,1),
+        border-color .5s ease,
+        box-shadow .5s ease;
 }
+
+
+/* CINEMATIC OVERLAY */
+
+.showcase::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0) 30%,
+            rgba(0,0,0,.10) 48%,
+            rgba(0,0,0,.40) 68%,
+            rgba(0,0,0,.95) 100%
+        );
+}
+
+
+/* GOLD CORNER DETAIL */
+
+.showcase::after{
+    content:"";
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:27px;
+    height:27px;
+
+    z-index:5;
+    pointer-events:none;
+
+    border-top:1px solid rgba(212,175,55,.75);
+    border-right:1px solid rgba(212,175,55,.75);
+
+    transition:.5s ease;
+}
+
+
+/* IMAGE */
 
 .showcase-image img{
     width:100%;
     height:100%;
-    min-height:180px;
+    min-height:260px;
+
     object-fit:cover;
     display:block;
-    transition:.5s ease;
+
+    filter:
+        saturate(.90)
+        contrast(1.03)
+        brightness(.90);
+
+    transition:
+        transform .7s cubic-bezier(.2,.7,.2,1),
+        filter .6s ease;
 }
 
-.showcase-image:hover img{
-    transform:scale(1.05);
+
+/* HOVER */
+
+.showcase:hover{
+    transform:translateY(-8px);
+
+    border-color:rgba(212,175,55,.58);
+
+    box-shadow:
+        0 28px 60px rgba(0,0,0,.65),
+        0 0 30px rgba(212,175,55,.055);
 }
+
+.showcase:hover img{
+    transform:scale(1.07);
+
+    filter:
+        saturate(1)
+        contrast(1.06)
+        brightness(.82);
+}
+
+.showcase:hover::after{
+    width:42px;
+    height:42px;
+    border-color:rgba(212,175,55,.95);
+}
+
+
+/* TEXT OVERLAY */
 
 .showcase-overlay{
     position:absolute;
     left:0;
     right:0;
     bottom:0;
-    padding:45px 20px 18px;
-    background:linear-gradient(
-        transparent,
-        rgba(0,0,0,.92)
-    );
+
+    z-index:4;
+
+    padding:60px 20px 19px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.88)
+        );
 }
+
+
+/* PROJECT TITLE */
 
 .showcase-overlay strong{
     display:block;
-    color:#d4af37;
+
+    color:#e1c45b;
+
+    font-size:18px;
+    font-weight:600;
+
+    line-height:1.2;
+
+    letter-spacing:.2px;
+
     margin-bottom:5px;
+
+    transition:.3s ease;
 }
 
+
+/* CATEGORY */
+
 .showcase-overlay span{
-    color:#ddd;
-    font-size:13px;
+    display:block;
+
+    color:#c4c4c4;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    line-height:1.4;
 }
+
+
+/* TITLE HOVER */
+
+.showcase:hover .showcase-overlay strong{
+    color:#f0d76b;
+}
+
+
+/* RESPONSIVE SHOWCASE */
+
+@media(max-width:900px){
+
+    .showcase-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .showcase{
+        height:240px;
+        min-height:240px;
+    }
+
+    .showcase-image img{
+        min-height:240px;
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    .showcase-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .showcase{
+        height:230px;
+        min-height:230px;
+        border-radius:16px;
+    }
+
+    .showcase-image img{
+        min-height:230px;
+    }
+
+    .showcase-overlay{
+        padding:55px 17px 16px;
+    }
+
+    .showcase-overlay strong{
+        font-size:17px;
+    }
+
+    .showcase-overlay span{
+        font-size:10px;
+        letter-spacing:1.3px;
+    }
+
+    .showcase::after{
+        top:12px;
+        right:12px;
+        width:24px;
+        height:24px;
+    }
+
+}
+
 
 /* CURRENTLY BUILDING */
 
@@ -1516,8 +1687,7 @@ through different stages of my work.
 <h2>Project Gallery</h2>
 
 <p>
-This section can be used to display real screenshots, design previews and
-selected project visuals as the portfolio grows.
+Selected visual work, website previews and creative projects.
 </p>
 
 </div>
@@ -1525,15 +1695,23 @@ selected project visuals as the portfolio grows.
 
 <div class="showcase-grid">
 
-<!-- WEBSITE -->
+
+<!-- WEBSITE PREVIEW -->
 
 <div class="showcase showcase-image">
 
-<img src="website.png" alt="Website Preview">
+<img
+src="website.png"
+alt="Website Preview"
+loading="lazy"
+>
 
 <div class="showcase-overlay">
+
 <strong>Website Preview</strong>
-<span>Add a screenshot of the portfolio website here.</span>
+
+<span>Web Design</span>
+
 </div>
 
 </div>
@@ -1543,11 +1721,18 @@ selected project visuals as the portfolio grows.
 
 <div class="showcase showcase-image">
 
-<img src="design.png" alt="Graphic Design">
+<img
+src="design.png"
+alt="Graphic Design"
+loading="lazy"
+>
 
 <div class="showcase-overlay">
+
 <strong>Graphic Design</strong>
-<span>Add a real promotional or creative design here.</span>
+
+<span>Creative Design</span>
+
 </div>
 
 </div>
@@ -1557,11 +1742,18 @@ selected project visuals as the portfolio grows.
 
 <div class="showcase showcase-image">
 
-<img src="social-media.png" alt="Social Media Creative">
+<img
+src="social-media.png"
+alt="Social Media Creative"
+loading="lazy"
+>
 
 <div class="showcase-overlay">
+
 <strong>Social Media Creative</strong>
-<span>Add a real social media creative here.</span>
+
+<span>Social Media Design</span>
+
 </div>
 
 </div>
@@ -1571,11 +1763,18 @@ selected project visuals as the portfolio grows.
 
 <div class="showcase showcase-image">
 
-<img src="product-promotion.png" alt="Product Promotion">
+<img
+src="product-promotion.png"
+alt="Product Promotion"
+loading="lazy"
+>
 
 <div class="showcase-overlay">
+
 <strong>Product Promotion</strong>
-<span>Add a product promotional visual here.</span>
+
+<span>Marketing Creative</span>
+
 </div>
 
 </div>
@@ -1585,11 +1784,18 @@ selected project visuals as the portfolio grows.
 
 <div class="showcase showcase-image">
 
-<img src="web-experiment.png" alt="Web Experiment">
+<img
+src="web-experiment.png"
+alt="Web Experiment"
+loading="lazy"
+>
 
 <div class="showcase-overlay">
+
 <strong>Web Experiment</strong>
-<span>Add a screenshot of a web experiment here.</span>
+
+<span>Web Development</span>
+
 </div>
 
 </div>
@@ -1599,14 +1805,22 @@ selected project visuals as the portfolio grows.
 
 <div class="showcase showcase-image">
 
-<img src="creative-experiment.png" alt="Creative Experiment">
+<img
+src="creative-experiment.png"
+alt="Creative Experiment"
+loading="lazy"
+>
 
 <div class="showcase-overlay">
+
 <strong>Creative Experiment</strong>
-<span>Add an AI-assisted or personal creative project here.</span>
+
+<span>Creative Exploration</span>
+
 </div>
 
 </div>
+
 
 </div>
 
