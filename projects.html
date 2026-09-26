@@ -9,6 +9,7 @@
 <meta name="description" content="Explore selected digital, web, graphic design, marketing and personal projects by MD Abdul Al Mamun.">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -16,16 +17,36 @@
     scroll-behavior:smooth;
 }
 
+:root{
+    --gold:#d4af37;
+    --gold-light:#f0d76b;
+    --ice:#72f7ff;
+    --bg:#050505;
+    --card:#0b0b0b;
+    --text:#f5f5f5;
+    --muted:#999;
+}
+
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#050505;
     color:#f5f5f5;
     line-height:1.7;
+    overflow-x:hidden;
+}
+
+body::selection{
+    background:var(--gold);
+    color:#050505;
 }
 
 a{
     text-decoration:none;
     color:inherit;
+}
+
+button{
+    font-family:inherit;
 }
 
 .container{
@@ -34,7 +55,153 @@ a{
     margin:auto;
 }
 
-/* NAVBAR */
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+.page-loader{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:#030303;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+.page-loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-content{
+    text-align:center;
+}
+
+.loader-name{
+    color:#f1f1f1;
+    font-size:clamp(20px,5vw,34px);
+    font-weight:700;
+    letter-spacing:4px;
+    animation:loaderText 1.2s ease forwards;
+}
+
+.loader-role{
+    margin-top:8px;
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    opacity:0;
+    animation:loaderRole 1s ease .4s forwards;
+}
+
+.loader-line{
+    width:0;
+    height:1px;
+    background:var(--gold);
+    margin:18px auto 0;
+    animation:loaderLine 1.2s ease .5s forwards;
+    box-shadow:0 0 10px rgba(212,175,55,.4);
+}
+
+@keyframes loaderText{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+        letter-spacing:10px;
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+        letter-spacing:4px;
+    }
+}
+
+@keyframes loaderRole{
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes loaderLine{
+    to{
+        width:150px;
+    }
+}
+
+/* =========================================================
+   AMBIENT BACKGROUND
+========================================================= */
+
+.ambient{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.ambient-dot{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:rgba(212,175,55,.35);
+    border-radius:50%;
+    animation:floatDot linear infinite;
+}
+
+.ambient-dot:nth-child(1){left:8%;top:20%;animation-duration:13s;}
+.ambient-dot:nth-child(2){left:18%;top:75%;animation-duration:17s;}
+.ambient-dot:nth-child(3){left:31%;top:35%;animation-duration:15s;}
+.ambient-dot:nth-child(4){left:48%;top:80%;animation-duration:19s;}
+.ambient-dot:nth-child(5){left:63%;top:25%;animation-duration:14s;}
+.ambient-dot:nth-child(6){left:77%;top:65%;animation-duration:18s;}
+.ambient-dot:nth-child(7){left:88%;top:32%;animation-duration:16s;}
+.ambient-dot:nth-child(8){left:94%;top:82%;animation-duration:20s;}
+
+@keyframes floatDot{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.15;
+    }
+    50%{
+        transform:translateY(-35px);
+        opacity:.6;
+    }
+}
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+.cursor-glow{
+    position:fixed;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    background:radial-gradient(
+        circle,
+        rgba(212,175,55,.07),
+        transparent 65%
+    );
+    transform:translate(-50%,-50%);
+    opacity:0;
+    transition:opacity .3s ease;
+}
+
+@media(min-width:901px){
+    .cursor-glow{
+        opacity:1;
+    }
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 nav{
     position:sticky;
@@ -55,8 +222,14 @@ nav{
 .logo{
     font-size:20px;
     font-weight:bold;
-    color:#d4af37;
+    color:var(--gold);
     letter-spacing:.5px;
+    transition:.4s ease;
+}
+
+.logo:hover{
+    letter-spacing:1.5px;
+    text-shadow:0 0 15px rgba(212,175,55,.3);
 }
 
 .nav-links{
@@ -69,21 +242,41 @@ nav{
     color:#ddd;
     font-size:14px;
     transition:.3s;
+    position:relative;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:var(--gold);
+    transform:translateX(-50%);
+    transition:.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links .active{
-    color:#d4af37;
+    color:var(--gold);
+}
+
+.nav-links a:hover::after,
+.nav-links .active::after{
+    width:100%;
 }
 
 .menu-btn{
     display:none;
     font-size:26px;
-    color:#d4af37;
+    color:var(--gold);
     cursor:pointer;
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     min-height:72vh;
@@ -97,8 +290,39 @@ nav{
     #050505;
 }
 
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    left:50%;
+    top:45%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(212,175,55,.045),
+        transparent 68%
+    );
+    animation:heroPulse 6s ease-in-out infinite;
+    pointer-events:none;
+}
+
+@keyframes heroPulse{
+    0%,100%{
+        transform:translate(-50%,-50%) scale(.9);
+        opacity:.5;
+    }
+    50%{
+        transform:translate(-50%,-50%) scale(1.12);
+        opacity:1;
+    }
+}
+
 .hero-content{
     width:100%;
+    position:relative;
+    z-index:2;
 }
 
 .badge{
@@ -106,21 +330,48 @@ nav{
     padding:8px 17px;
     border:1px solid rgba(212,175,55,.45);
     border-radius:30px;
-    color:#d4af37;
+    color:var(--gold);
     font-size:12px;
     letter-spacing:1.5px;
     text-transform:uppercase;
     margin-bottom:20px;
+
+    opacity:0;
+    transform:translateY(15px);
+    animation:revealUp .9s ease .8s forwards;
 }
 
 .hero h1{
     font-size:clamp(42px,7vw,78px);
     line-height:1.05;
     margin-bottom:20px;
+
+    opacity:0;
+    transform:translateY(25px);
+    animation:revealUp 1s ease 1s forwards;
 }
 
 .hero h1 span{
-    color:#d4af37;
+    color:var(--gold);
+    position:relative;
+}
+
+.hero h1 span::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:100%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+    transform:scaleX(0);
+    transform-origin:center;
+    animation:goldSweep 1.2s ease 1.8s forwards;
 }
 
 .hero p{
@@ -128,6 +379,10 @@ nav{
     margin:auto;
     color:#aaa;
     font-size:17px;
+
+    opacity:0;
+    transform:translateY(18px);
+    animation:revealUp .9s ease 1.25s forwards;
 }
 
 .hero-buttons{
@@ -136,6 +391,23 @@ nav{
     justify-content:center;
     gap:15px;
     flex-wrap:wrap;
+
+    opacity:0;
+    transform:translateY(18px);
+    animation:revealUp .9s ease 1.5s forwards;
+}
+
+@keyframes revealUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes goldSweep{
+    to{
+        transform:scaleX(1);
+    }
 }
 
 .btn{
@@ -144,10 +416,33 @@ nav{
     font-weight:bold;
     font-size:14px;
     transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:80%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.18),
+        transparent
+    );
+    transform:skewX(-20deg);
+    transition:.7s ease;
+}
+
+.btn:hover::before{
+    left:130%;
 }
 
 .btn-primary{
-    background:#d4af37;
+    background:var(--gold);
     color:#050505;
 }
 
@@ -162,11 +457,14 @@ nav{
 }
 
 .btn-outline:hover{
-    border-color:#d4af37;
-    color:#d4af37;
+    border-color:var(--gold);
+    color:var(--gold);
+    transform:translateY(-3px);
 }
 
-/* SECTION */
+/* =========================================================
+   SECTION
+========================================================= */
 
 section{
     padding:90px 0;
@@ -175,18 +473,68 @@ section{
 .section-heading{
     text-align:center;
     margin-bottom:50px;
+    opacity:0;
+    transform:translateY(30px);
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.section-heading.reveal{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .section-heading .small{
-    color:#d4af37;
+    color:var(--gold);
     font-size:12px;
     letter-spacing:2px;
     text-transform:uppercase;
+    position:relative;
+    display:inline-block;
+}
+
+.section-heading .small::after{
+    content:"";
+    display:block;
+    width:35px;
+    height:1px;
+    background:var(--gold);
+    margin:7px auto 0;
+    transition:.5s ease;
+}
+
+.section-heading:hover .small::after{
+    width:70px;
 }
 
 .section-heading h2{
     font-size:38px;
     margin:10px 0;
+    position:relative;
+    display:inline-block;
+}
+
+.section-heading h2::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-5px;
+    width:0;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+    transform:translateX(-50%);
+    transition:.6s ease;
+}
+
+.section-heading.reveal h2::after{
+    width:75%;
+    transition-delay:.35s;
 }
 
 .section-heading p{
@@ -195,7 +543,26 @@ section{
     color:#999;
 }
 
-/* PROJECT OVERVIEW */
+/* =========================================================
+   UNIVERSAL REVEAL
+========================================================= */
+
+.reveal-card{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal-card.reveal{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
 
 .overview-grid{
     display:grid;
@@ -204,22 +571,52 @@ section{
 }
 
 .overview-card{
+    position:relative;
     background:#0b0b0b;
     border:1px solid #1c1c1c;
     border-radius:14px;
     padding:28px;
     text-align:center;
-    transition:.3s;
+    transition:.4s ease;
+    overflow:hidden;
+}
+
+.overview-card::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(
+        circle,
+        rgba(212,175,55,.06),
+        transparent 70%
+    );
+    opacity:0;
+    transition:.5s ease;
+    pointer-events:none;
+}
+
+.overview-card:hover::before{
+    opacity:1;
 }
 
 .overview-card:hover{
     border-color:rgba(212,175,55,.45);
-    transform:translateY(-5px);
+    transform:translateY(-7px);
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
 }
 
 .overview-icon{
     font-size:30px;
     margin-bottom:12px;
+    transition:.4s ease;
+}
+
+.overview-card:hover .overview-icon{
+    transform:translateY(-5px) scale(1.08);
 }
 
 .overview-card h3{
@@ -232,13 +629,45 @@ section{
     font-size:14px;
 }
 
-/* FEATURED PROJECT */
+/* =========================================================
+   FEATURED
+========================================================= */
 
 .featured{
+    position:relative;
     background:linear-gradient(145deg,#0d0d0d,#070707);
     border:1px solid rgba(212,175,55,.25);
     border-radius:20px;
     overflow:hidden;
+    transition:.5s ease;
+}
+
+.featured:hover{
+    border-color:rgba(212,175,55,.45);
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        0 0 35px rgba(212,175,55,.035);
+}
+
+.featured::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-30%;
+    width:25%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+    animation:featuredLine 5s linear infinite;
+}
+
+@keyframes featuredLine{
+    0%{left:-30%;}
+    100%{left:130%;}
 }
 
 .featured-top{
@@ -247,7 +676,7 @@ section{
 }
 
 .featured-label{
-    color:#d4af37;
+    color:var(--gold);
     font-size:12px;
     letter-spacing:2px;
     text-transform:uppercase;
@@ -277,10 +706,17 @@ section{
     border-radius:5px;
     color:#bbb;
     font-size:12px;
+    transition:.3s ease;
+}
+
+.meta:hover{
+    border-color:rgba(212,175,55,.55);
+    transform:translateY(-2px);
+    color:#ddd;
 }
 
 .meta strong{
-    color:#d4af37;
+    color:var(--gold);
 }
 
 .featured-grid{
@@ -292,6 +728,11 @@ section{
     padding:35px;
     border-right:1px solid #1c1c1c;
     border-bottom:1px solid #1c1c1c;
+    transition:.4s ease;
+}
+
+.featured-box:hover{
+    background:rgba(212,175,55,.018);
 }
 
 .featured-box:nth-child(even){
@@ -299,7 +740,7 @@ section{
 }
 
 .featured-box h4{
-    color:#d4af37;
+    color:var(--gold);
     margin-bottom:10px;
     font-size:18px;
 }
@@ -316,9 +757,77 @@ section{
 
 .featured-box li{
     margin:7px 0;
+    transition:.25s ease;
 }
 
-/* JOURNEY */
+.featured-box li:hover{
+    color:#ddd;
+    transform:translateX(3px);
+}
+
+/* =========================================================
+   PREMIUM STATS
+========================================================= */
+
+.project-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-top:20px;
+}
+
+.stat-box{
+    position:relative;
+    background:#090909;
+    border:1px solid #1d1d1d;
+    border-radius:12px;
+    padding:25px 15px;
+    text-align:center;
+    overflow:hidden;
+    transition:.4s ease;
+}
+
+.stat-box::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:0;
+    height:1px;
+    background:var(--gold);
+    transform:translateX(-50%);
+    transition:.4s ease;
+}
+
+.stat-box:hover{
+    transform:translateY(-5px);
+    border-color:rgba(212,175,55,.4);
+}
+
+.stat-box:hover::after{
+    width:55%;
+}
+
+.stat-number{
+    display:block;
+    color:var(--gold);
+    font-size:27px;
+    font-weight:700;
+    line-height:1.2;
+}
+
+.stat-label{
+    display:block;
+    margin-top:6px;
+    color:#888;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.3px;
+}
+
+/* =========================================================
+   JOURNEY
+========================================================= */
 
 .journey{
     position:relative;
@@ -340,6 +849,14 @@ section{
     position:relative;
     padding-left:60px;
     margin-bottom:35px;
+    opacity:0;
+    transform:translateX(-20px);
+    transition:.7s ease;
+}
+
+.journey-item.reveal{
+    opacity:1;
+    transform:translateX(0);
 }
 
 .journey-dot{
@@ -349,8 +866,16 @@ section{
     width:17px;
     height:17px;
     border-radius:50%;
-    background:#d4af37;
+    background:var(--gold);
     box-shadow:0 0 0 5px rgba(212,175,55,.08);
+    transition:.4s ease;
+}
+
+.journey-item:hover .journey-dot{
+    transform:scale(1.25);
+    box-shadow:
+        0 0 0 7px rgba(212,175,55,.06),
+        0 0 15px rgba(212,175,55,.3);
 }
 
 .journey-item h3{
@@ -363,7 +888,9 @@ section{
     font-size:14px;
 }
 
-/* FILTER */
+/* =========================================================
+   FILTER
+========================================================= */
 
 .filters{
     display:flex;
@@ -385,12 +912,15 @@ section{
 
 .filter-btn:hover,
 .filter-btn.active{
-    background:#d4af37;
+    background:var(--gold);
     color:#050505;
-    border-color:#d4af37;
+    border-color:var(--gold);
+    box-shadow:0 5px 20px rgba(212,175,55,.1);
 }
 
-/* PROJECT GRID */
+/* =========================================================
+   PROJECT GRID
+========================================================= */
 
 .project-grid{
     display:grid;
@@ -399,16 +929,18 @@ section{
 }
 
 .project-card{
+    position:relative;
     background:#0b0b0b;
     border:1px solid #1d1d1d;
     border-radius:14px;
     overflow:hidden;
-    transition:.35s;
+    transition:.4s ease;
 }
 
 .project-card:hover{
-    transform:translateY(-7px);
+    transform:translateY(-8px);
     border-color:rgba(212,175,55,.45);
+    box-shadow:0 20px 45px rgba(0,0,0,.4);
 }
 
 .project-image{
@@ -417,10 +949,17 @@ section{
     align-items:center;
     justify-content:center;
     background:
-    radial-gradient(circle,rgba(212,175,55,.15),transparent 55%),
-    #111;
+        radial-gradient(circle,rgba(212,175,55,.15),transparent 55%),
+        #111;
     font-size:45px;
-    color:#d4af37;
+    color:var(--gold);
+    transition:.5s ease;
+}
+
+.project-card:hover .project-image{
+    background:
+        radial-gradient(circle,rgba(212,175,55,.22),transparent 58%),
+        #111;
 }
 
 .project-content{
@@ -428,7 +967,7 @@ section{
 }
 
 .project-tag{
-    color:#d4af37;
+    color:var(--gold);
     font-size:11px;
     text-transform:uppercase;
     letter-spacing:1.5px;
@@ -437,6 +976,11 @@ section{
 .project-content h3{
     margin:8px 0;
     font-size:20px;
+    transition:.3s ease;
+}
+
+.project-card:hover .project-content h3{
+    color:var(--gold-light);
 }
 
 .project-content p{
@@ -457,9 +1001,17 @@ section{
     border-radius:4px;
     color:#aaa;
     font-size:11px;
+    transition:.3s ease;
 }
 
-/* CASE STUDY */
+.tag:hover{
+    border-color:rgba(212,175,55,.4);
+    color:#ddd;
+}
+
+/* =========================================================
+   CASE STUDY
+========================================================= */
 
 .case-study{
     display:grid;
@@ -468,15 +1020,38 @@ section{
 }
 
 .case-box{
+    position:relative;
     background:#0b0b0b;
     border:1px solid #1d1d1d;
     border-radius:14px;
     padding:30px;
+    transition:.4s ease;
+    overflow:hidden;
+}
+
+.case-box::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:2px;
+    height:0;
+    background:var(--gold);
+    transition:.5s ease;
+}
+
+.case-box:hover::before{
+    height:100%;
+}
+
+.case-box:hover{
+    transform:translateY(-5px);
+    border-color:rgba(212,175,55,.35);
 }
 
 .case-number{
     font-size:13px;
-    color:#d4af37;
+    color:var(--gold);
 }
 
 .case-box h3{
@@ -488,13 +1063,33 @@ section{
     font-size:14px;
 }
 
-/* BARAKA */
+/* =========================================================
+   BARAKA
+========================================================= */
 
 .baraka{
+    position:relative;
     background:linear-gradient(135deg,#0d0d0d,#080808);
     border:1px solid rgba(212,175,55,.22);
     border-radius:18px;
     padding:45px;
+    overflow:hidden;
+}
+
+.baraka::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    right:-150px;
+    top:-150px;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(212,175,55,.06),
+        transparent 70%
+    );
+    pointer-events:none;
 }
 
 .baraka-grid{
@@ -523,10 +1118,16 @@ section{
     background:#111;
     border:1px solid #222;
     border-radius:8px;
+    transition:.35s ease;
+}
+
+.baraka-item:hover{
+    transform:translateX(5px);
+    border-color:rgba(212,175,55,.4);
 }
 
 .baraka-item strong{
-    color:#d4af37;
+    color:var(--gold);
     display:block;
     margin-bottom:3px;
 }
@@ -536,7 +1137,9 @@ section{
     font-size:13px;
 }
 
-/* TOOLS */
+/* =========================================================
+   TOOLS
+========================================================= */
 
 .tools{
     display:flex;
@@ -556,13 +1159,14 @@ section{
 }
 
 .tool:hover{
-    border-color:#d4af37;
-    color:#d4af37;
+    border-color:var(--gold);
+    color:var(--gold);
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
 }
 
-
 /* =========================================================
-   PREMIUM VISUAL SHOWCASE
+   VISUAL SHOWCASE
 ========================================================= */
 
 .showcase-grid{
@@ -593,7 +1197,6 @@ section{
         box-shadow .5s ease;
 }
 
-
 /* CINEMATIC OVERLAY */
 
 .showcase::before{
@@ -613,8 +1216,7 @@ section{
         );
 }
 
-
-/* GOLD CORNER DETAIL */
+/* GOLD CORNER */
 
 .showcase::after{
     content:"";
@@ -632,7 +1234,6 @@ section{
 
     transition:.5s ease;
 }
-
 
 /* IMAGE */
 
@@ -653,7 +1254,6 @@ section{
         transform .7s cubic-bezier(.2,.7,.2,1),
         filter .6s ease;
 }
-
 
 /* HOVER */
 
@@ -682,8 +1282,89 @@ section{
     border-color:rgba(212,175,55,.95);
 }
 
+/* =========================================================
+   BORDER STAR PARTICLES
+========================================================= */
 
-/* TEXT OVERLAY */
+.border-spark{
+    position:absolute;
+    width:5px;
+    height:5px;
+    z-index:20;
+    pointer-events:none;
+
+    background:var(--ice);
+
+    clip-path:polygon(
+        50% 0%,
+        62% 38%,
+        100% 50%,
+        62% 62%,
+        50% 100%,
+        38% 62%,
+        0% 50%,
+        38% 38%
+    );
+
+    animation:borderOrbit 5.5s linear infinite;
+}
+
+.border-spark:nth-child(2){
+    animation-delay:-1.8s;
+    opacity:.8;
+}
+
+.border-spark:nth-child(3){
+    animation-delay:-3.6s;
+    opacity:.65;
+}
+
+@keyframes borderOrbit{
+
+    0%{
+        left:0;
+        top:-2px;
+    }
+
+    24.9%{
+        left:calc(100% - 5px);
+        top:-2px;
+    }
+
+    25%{
+        left:calc(100% - 5px);
+        top:0;
+    }
+
+    49.9%{
+        left:calc(100% - 5px);
+        top:calc(100% - 5px);
+    }
+
+    50%{
+        left:calc(100% - 5px);
+        top:calc(100% - 3px);
+    }
+
+    74.9%{
+        left:0;
+        top:calc(100% - 3px);
+    }
+
+    75%{
+        left:0;
+        top:calc(100% - 5px);
+    }
+
+    100%{
+        left:0;
+        top:-2px;
+    }
+}
+
+/* =========================================================
+   TEXT OVERLAY
+========================================================= */
 
 .showcase-overlay{
     position:absolute;
@@ -702,9 +1383,6 @@ section{
         );
 }
 
-
-/* PROJECT TITLE */
-
 .showcase-overlay strong{
     display:block;
 
@@ -719,11 +1397,15 @@ section{
 
     margin-bottom:5px;
 
-    transition:.3s ease;
+    opacity:.9;
+
+    transform:translateY(7px);
+
+    transition:
+        color .35s ease,
+        transform .45s ease,
+        letter-spacing .45s ease;
 }
-
-
-/* CATEGORY */
 
 .showcase-overlay span{
     display:block;
@@ -737,77 +1419,63 @@ section{
     letter-spacing:1.5px;
 
     line-height:1.4;
+
+    opacity:.7;
+
+    transform:translateY(5px);
+
+    transition:
+        opacity .4s ease,
+        transform .45s ease;
 }
-
-
-/* TITLE HOVER */
 
 .showcase:hover .showcase-overlay strong{
     color:#f0d76b;
+    transform:translateY(0);
+    letter-spacing:.7px;
 }
 
-
-/* RESPONSIVE SHOWCASE */
-
-@media(max-width:900px){
-
-    .showcase-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .showcase{
-        height:240px;
-        min-height:240px;
-    }
-
-    .showcase-image img{
-        min-height:240px;
-    }
-
+.showcase:hover .showcase-overlay span{
+    opacity:1;
+    transform:translateY(0);
 }
 
+/* =========================================================
+   PREMIUM TEXT SHINE
+========================================================= */
 
-@media(max-width:650px){
+.text-shine{
+    background:linear-gradient(
+        110deg,
+        #eee 20%,
+        #fff 35%,
+        var(--gold-light) 50%,
+        #eee 65%,
+        #eee 80%
+    );
 
-    .showcase-grid{
-        grid-template-columns:1fr;
-        gap:18px;
-    }
+    background-size:250% auto;
 
-    .showcase{
-        height:230px;
-        min-height:230px;
-        border-radius:16px;
-    }
+    -webkit-background-clip:text;
+    background-clip:text;
 
-    .showcase-image img{
-        min-height:230px;
-    }
+    -webkit-text-fill-color:transparent;
 
-    .showcase-overlay{
-        padding:55px 17px 16px;
-    }
-
-    .showcase-overlay strong{
-        font-size:17px;
-    }
-
-    .showcase-overlay span{
-        font-size:10px;
-        letter-spacing:1.3px;
-    }
-
-    .showcase::after{
-        top:12px;
-        right:12px;
-        width:24px;
-        height:24px;
-    }
-
+    animation:textShine 6s linear infinite;
 }
 
+@keyframes textShine{
+    0%{
+        background-position:200% center;
+    }
+    100%{
+        background-position:-50% center;
+    }
+}
 
-/* CURRENTLY BUILDING */
+/* =========================================================
+   BUILDING
+========================================================= */
 
 .building{
     display:grid;
@@ -820,6 +1488,13 @@ section{
     background:#0b0b0b;
     border:1px solid #1e1e1e;
     border-radius:14px;
+    transition:.4s ease;
+}
+
+.build-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(212,175,55,.35);
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
 }
 
 .build-card h3{
@@ -831,7 +1506,9 @@ section{
     font-size:14px;
 }
 
-/* PHILOSOPHY */
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
 
 .philosophy{
     text-align:center;
@@ -846,7 +1523,7 @@ section{
 }
 
 .quote span{
-    color:#d4af37;
+    color:var(--gold);
 }
 
 .philosophy p{
@@ -854,7 +1531,9 @@ section{
     color:#888;
 }
 
-/* CTA */
+/* =========================================================
+   CTA
+========================================================= */
 
 .cta{
     text-align:center;
@@ -884,7 +1563,9 @@ section{
     flex-wrap:wrap;
 }
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
     padding:35px 0;
@@ -899,10 +1580,12 @@ footer p{
 }
 
 footer strong{
-    color:#d4af37;
+    color:var(--gold);
 }
 
-/* RESPONSIVE */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:900px){
 
@@ -935,6 +1618,10 @@ footer strong{
 
     .baraka-grid{
         grid-template-columns:1fr;
+    }
+
+    .project-stats{
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
@@ -988,33 +1675,157 @@ footer strong{
     .quote{
         font-size:22px;
     }
+
+    .project-stats{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .stat-box{
+        padding:20px 10px;
+    }
+
+    .stat-number{
+        font-size:23px;
+    }
+
+    .stat-label{
+        font-size:9px;
+        letter-spacing:1px;
+    }
+
+    .showcase{
+        height:230px;
+        min-height:230px;
+        border-radius:16px;
+    }
+
+    .showcase-image img{
+        min-height:230px;
+    }
+
+    .showcase-overlay{
+        padding:55px 17px 16px;
+    }
+
+    .showcase-overlay strong{
+        font-size:17px;
+    }
+
+    .showcase-overlay span{
+        font-size:10px;
+        letter-spacing:1.3px;
+    }
+
+    .showcase::after{
+        top:12px;
+        right:12px;
+        width:24px;
+        height:24px;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+        max-width:280px;
+    }
 }
+
+/* REDUCED MOTION */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- PAGE LOADER -->
+
+<div class="page-loader" id="pageLoader">
+
+    <div class="loader-content">
+
+        <div class="loader-name">
+            MD ABDUL AL MAMUN
+        </div>
+
+        <div class="loader-role">
+            Digital Service
+        </div>
+
+        <div class="loader-line"></div>
+
+    </div>
+
+</div>
+
+
+<!-- AMBIENT PARTICLES -->
+
+<div class="ambient">
+
+    <span class="ambient-dot"></span>
+    <span class="ambient-dot"></span>
+    <span class="ambient-dot"></span>
+    <span class="ambient-dot"></span>
+    <span class="ambient-dot"></span>
+    <span class="ambient-dot"></span>
+    <span class="ambient-dot"></span>
+    <span class="ambient-dot"></span>
+
+</div>
+
+
+<!-- CURSOR -->
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+
 <!-- NAVBAR -->
 
 <nav>
+
 <div class="container nav-container">
 
-<a href="index.html" class="logo">MD ABDUL AL MAMUN</a>
+<a href="index.html" class="logo">
+MD ABDUL AL MAMUN
+</a>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
 <ul class="nav-links" id="navLinks">
+
 <li><a href="index.html">Home</a></li>
+
 <li><a href="about.html">About</a></li>
+
 <li><a href="skills.html">Skills</a></li>
+
 <li><a href="services.html">Services</a></li>
+
 <li><a href="projects.html" class="active">Projects</a></li>
+
 <li><a href="experience.html">Experience</a></li>
+
 <li><a href="resume.html">Resume</a></li>
+
 <li><a href="contact.html">Contact</a></li>
+
 </ul>
 
 </div>
+
 </nav>
 
 
@@ -1024,9 +1835,13 @@ footer strong{
 
 <div class="container hero-content">
 
-<div class="badge">Selected Work & Digital Projects</div>
+<div class="badge">
+Selected Work & Digital Projects
+</div>
 
-<h1>My <span>Projects.</span></h1>
+<h1>
+My <span>Projects.</span>
+</h1>
 
 <p>
 A collection of personal, creative, web, marketing and real-world digital work
@@ -1034,8 +1849,15 @@ that represents my learning journey, practical experience and continuous growth.
 </p>
 
 <div class="hero-buttons">
-<a href="#featured" class="btn btn-primary">Explore Featured Project</a>
-<a href="#projects" class="btn btn-outline">View All Projects</a>
+
+<a href="#featured" class="btn btn-primary">
+Explore Featured Project
+</a>
+
+<a href="#projects" class="btn btn-outline">
+View All Projects
+</a>
+
 </div>
 
 </div>
@@ -1053,7 +1875,9 @@ that represents my learning journey, practical experience and continuous growth.
 
 <div class="small">Project Overview</div>
 
-<h2>Built With Purpose</h2>
+<h2 class="text-shine">
+Built With Purpose
+</h2>
 
 <p>
 Every project is an opportunity to learn, experiment, solve problems and improve
@@ -1065,22 +1889,42 @@ the way ideas are transformed into digital experiences.
 
 <div class="overview-grid">
 
-<div class="overview-card">
+<div class="overview-card reveal-card">
+
 <div class="overview-icon">💻</div>
+
 <h3>Web Projects</h3>
-<p>Responsive pages, personal website development and web experiments.</p>
+
+<p>
+Responsive pages, personal website development and web experiments.
+</p>
+
 </div>
 
-<div class="overview-card">
+
+<div class="overview-card reveal-card">
+
 <div class="overview-icon">🎨</div>
+
 <h3>Creative Work</h3>
-<p>Visual concepts, promotional creatives and graphic design experiments.</p>
+
+<p>
+Visual concepts, promotional creatives and graphic design experiments.
+</p>
+
 </div>
 
-<div class="overview-card">
+
+<div class="overview-card reveal-card">
+
 <div class="overview-icon">📈</div>
+
 <h3>Digital Marketing</h3>
-<p>Product promotion, social media content and digital communication concepts.</p>
+
+<p>
+Product promotion, social media content and digital communication concepts.
+</p>
+
 </div>
 
 </div>
@@ -1100,7 +1944,9 @@ the way ideas are transformed into digital experiences.
 
 <div class="small">Featured Project</div>
 
-<h2>Personal Portfolio Website</h2>
+<h2 class="text-shine">
+Personal Portfolio Website
+</h2>
 
 <p>
 A personal digital platform created to present my professional identity,
@@ -1110,32 +1956,49 @@ skills, services, experience and selected work.
 </div>
 
 
-<div class="featured">
+<div class="featured reveal-card">
 
 <div class="featured-top">
 
-<div class="featured-label">Featured • Personal Project • Ongoing</div>
+<div class="featured-label">
+Featured • Personal Project • Ongoing
+</div>
 
-<h3>MD Abdul Al Mamun — Personal Portfolio</h3>
+<h3>
+MD Abdul Al Mamun — Personal Portfolio
+</h3>
 
 <p>
 A responsive personal portfolio website focused on personal branding,
 professional presentation and creating a central online presence.
 </p>
 
+
 <div class="project-meta">
 
-<div class="meta"><strong>Type:</strong> Personal Website</div>
+<div class="meta">
+<strong>Type:</strong> Personal Website
+</div>
 
-<div class="meta"><strong>Role:</strong> Designer & Developer</div>
+<div class="meta">
+<strong>Role:</strong> Designer & Developer
+</div>
 
-<div class="meta"><strong>Status:</strong> Ongoing</div>
+<div class="meta">
+<strong>Status:</strong> Ongoing
+</div>
 
-<div class="meta"><strong>Focus:</strong> Personal Branding</div>
+<div class="meta">
+<strong>Focus:</strong> Personal Branding
+</div>
 
-<div class="meta"><strong>Platform:</strong> Web</div>
+<div class="meta">
+<strong>Platform:</strong> Web
+</div>
 
-<div class="meta"><strong>Technology:</strong> HTML & CSS</div>
+<div class="meta">
+<strong>Technology:</strong> HTML & CSS
+</div>
 
 </div>
 
@@ -1175,6 +2038,7 @@ continuously improving the overall presentation.
 <h4>Key Features</h4>
 
 <ul>
+
 <li>Responsive layout</li>
 <li>Premium dark visual style</li>
 <li>Professional navigation</li>
@@ -1182,6 +2046,7 @@ continuously improving the overall presentation.
 <li>Project showcase</li>
 <li>Experience & resume sections</li>
 <li>Contact and social links</li>
+
 </ul>
 
 </div>
@@ -1192,15 +2057,69 @@ continuously improving the overall presentation.
 <h4>Project Journey</h4>
 
 <ul>
+
 <li>Define personal goals</li>
 <li>Plan website structure</li>
 <li>Create page content</li>
 <li>Develop HTML/CSS layout</li>
 <li>Review mobile responsiveness</li>
 <li>Refine visual presentation</li>
+
 </ul>
 
 </div>
+
+</div>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="project-stats">
+
+<div class="stat-box reveal-card">
+
+<span class="stat-number" data-target="100">0+</span>
+
+<span class="stat-label">
+Projects
+</span>
+
+</div>
+
+
+<div class="stat-box reveal-card">
+
+<span class="stat-number" data-target="3">0</span>
+
+<span class="stat-label">
+Creative Areas
+</span>
+
+</div>
+
+
+<div class="stat-box reveal-card">
+
+<span class="stat-number" data-target="1">0</span>
+
+<span class="stat-label">
+Personal Brand
+</span>
+
+</div>
+
+
+<div class="stat-box reveal-card">
+
+<span class="stat-number infinity">
+∞
+</span>
+
+<span class="stat-label">
+Learning & Experiments
+</span>
 
 </div>
 
@@ -1221,7 +2140,9 @@ continuously improving the overall presentation.
 
 <div class="small">Project Journey</div>
 
-<h2>From Idea to Execution</h2>
+<h2>
+From Idea to Execution
+</h2>
 
 <p>
 My project workflow focuses on understanding the objective first and improving
@@ -1234,43 +2155,67 @@ the final result through structured steps.
 <div class="journey">
 
 <div class="journey-item">
+
 <div class="journey-dot"></div>
+
 <h3>01 — Research</h3>
+
 <p>
 Understand the purpose, audience, requirements and visual direction of the project.
 </p>
+
 </div>
 
+
 <div class="journey-item">
+
 <div class="journey-dot"></div>
+
 <h3>02 — Planning</h3>
+
 <p>
 Organize the structure, content, sections and overall project direction.
 </p>
+
 </div>
 
+
 <div class="journey-item">
+
 <div class="journey-dot"></div>
+
 <h3>03 — Creation</h3>
+
 <p>
 Turn the concept into visual designs, web layouts or digital content.
 </p>
+
 </div>
 
+
 <div class="journey-item">
+
 <div class="journey-dot"></div>
+
 <h3>04 — Testing</h3>
+
 <p>
 Review layouts, readability, responsiveness and overall user experience.
 </p>
+
 </div>
 
+
 <div class="journey-item">
+
 <div class="journey-dot"></div>
+
 <h3>05 — Refinement</h3>
+
 <p>
 Improve details, consistency and presentation before considering the work complete.
 </p>
+
 </div>
 
 </div>
@@ -1290,7 +2235,9 @@ Improve details, consistency and presentation before considering the work comple
 
 <div class="small">Selected Work</div>
 
-<h2>Explore My Projects</h2>
+<h2 class="text-shine">
+Explore My Projects
+</h2>
 
 <p>
 Browse different categories of work and creative experiments.
@@ -1301,15 +2248,25 @@ Browse different categories of work and creative experiments.
 
 <div class="filters">
 
-<button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
+<button class="filter-btn active" onclick="filterProjects('all',this)">
+All
+</button>
 
-<button class="filter-btn" onclick="filterProjects('web',this)">Web</button>
+<button class="filter-btn" onclick="filterProjects('web',this)">
+Web
+</button>
 
-<button class="filter-btn" onclick="filterProjects('design',this)">Design</button>
+<button class="filter-btn" onclick="filterProjects('design',this)">
+Design
+</button>
 
-<button class="filter-btn" onclick="filterProjects('marketing',this)">Marketing</button>
+<button class="filter-btn" onclick="filterProjects('marketing',this)">
+Marketing
+</button>
 
-<button class="filter-btn" onclick="filterProjects('personal',this)">Personal</button>
+<button class="filter-btn" onclick="filterProjects('personal',this)">
+Personal
+</button>
 
 </div>
 
@@ -1317,15 +2274,21 @@ Browse different categories of work and creative experiments.
 <div class="project-grid">
 
 
-<div class="project-card" data-category="web personal">
+<div class="project-card reveal-card" data-category="web personal">
 
-<div class="project-image">🌐</div>
+<div class="project-image">
+🌐
+</div>
 
 <div class="project-content">
 
-<div class="project-tag">Web • Personal</div>
+<div class="project-tag">
+Web • Personal
+</div>
 
-<h3>Personal Portfolio Website</h3>
+<h3>
+Personal Portfolio Website
+</h3>
 
 <p>
 A multi-section personal website designed to present professional identity,
@@ -1333,26 +2296,34 @@ skills, services, experience and projects.
 </p>
 
 <div class="tags">
+
 <span class="tag">HTML</span>
 <span class="tag">CSS</span>
 <span class="tag">Responsive</span>
 <span class="tag">Personal Branding</span>
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<div class="project-card" data-category="design marketing">
 
-<div class="project-image">🎨</div>
+<div class="project-card reveal-card" data-category="design marketing">
+
+<div class="project-image">
+🎨
+</div>
 
 <div class="project-content">
 
-<div class="project-tag">Design • Promotional</div>
+<div class="project-tag">
+Design • Promotional
+</div>
 
-<h3>Promotional Creative</h3>
+<h3>
+Promotional Creative
+</h3>
 
 <p>
 Creative visual concepts designed around product presentation, promotional
@@ -1360,25 +2331,33 @@ communication and social media use.
 </p>
 
 <div class="tags">
+
 <span class="tag">Graphic Design</span>
 <span class="tag">Visual Content</span>
 <span class="tag">Promotion</span>
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<div class="project-card" data-category="marketing">
 
-<div class="project-image">📢</div>
+<div class="project-card reveal-card" data-category="marketing">
+
+<div class="project-image">
+📢
+</div>
 
 <div class="project-content">
 
-<div class="project-tag">Marketing</div>
+<div class="project-tag">
+Marketing
+</div>
 
-<h3>Product Promotion</h3>
+<h3>
+Product Promotion
+</h3>
 
 <p>
 Product-focused promotional work developed with attention to visual
@@ -1386,25 +2365,33 @@ presentation and digital communication.
 </p>
 
 <div class="tags">
+
 <span class="tag">Marketing</span>
 <span class="tag">Product Content</span>
 <span class="tag">Social Media</span>
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<div class="project-card" data-category="design marketing">
 
-<div class="project-image">📱</div>
+<div class="project-card reveal-card" data-category="design marketing">
+
+<div class="project-image">
+📱
+</div>
 
 <div class="project-content">
 
-<div class="project-tag">Social Media</div>
+<div class="project-tag">
+Social Media
+</div>
 
-<h3>Social Media Creative</h3>
+<h3>
+Social Media Creative
+</h3>
 
 <p>
 Social-media-oriented creative concepts focused on clear communication,
@@ -1412,25 +2399,33 @@ visual consistency and engaging presentation.
 </p>
 
 <div class="tags">
+
 <span class="tag">Social Media</span>
 <span class="tag">Creative Design</span>
 <span class="tag">Content</span>
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<div class="project-card" data-category="web">
 
-<div class="project-image">💻</div>
+<div class="project-card reveal-card" data-category="web">
+
+<div class="project-image">
+💻
+</div>
 
 <div class="project-content">
 
-<div class="project-tag">Web • Practice</div>
+<div class="project-tag">
+Web • Practice
+</div>
 
-<h3>Responsive Web Page</h3>
+<h3>
+Responsive Web Page
+</h3>
 
 <p>
 Practice-based responsive web layouts created to improve understanding of
@@ -1438,25 +2433,33 @@ structure, spacing, typography and mobile presentation.
 </p>
 
 <div class="tags">
+
 <span class="tag">HTML</span>
 <span class="tag">CSS</span>
 <span class="tag">Mobile UI</span>
-</div>
 
 </div>
 
 </div>
 
+</div>
 
-<div class="project-card" data-category="design personal">
 
-<div class="project-image">✨</div>
+<div class="project-card reveal-card" data-category="design personal">
+
+<div class="project-image">
+✨
+</div>
 
 <div class="project-content">
 
-<div class="project-tag">Experimental</div>
+<div class="project-tag">
+Experimental
+</div>
 
-<h3>Creative Design Experiments</h3>
+<h3>
+Creative Design Experiments
+</h3>
 
 <p>
 Personal experiments exploring layouts, visual styles, AI-assisted creative
@@ -1464,9 +2467,11 @@ work and modern digital presentation.
 </p>
 
 <div class="tags">
+
 <span class="tag">Creative</span>
 <span class="tag">AI Tools</span>
 <span class="tag">Experiment</span>
+
 </div>
 
 </div>
@@ -1491,7 +2496,9 @@ work and modern digital presentation.
 
 <div class="small">Case Study</div>
 
-<h2>How I Approach a Project</h2>
+<h2>
+How I Approach a Project
+</h2>
 
 <p>
 A professional project is not only about the final design. The process behind
@@ -1503,11 +2510,15 @@ the work is equally important.
 
 <div class="case-study">
 
-<div class="case-box">
+<div class="case-box reveal-card">
 
-<div class="case-number">01 — CHALLENGE</div>
+<div class="case-number">
+01 — CHALLENGE
+</div>
 
-<h3>Understanding the Need</h3>
+<h3>
+Understanding the Need
+</h3>
 
 <p>
 Identify the purpose of the project, understand the target audience and
@@ -1517,11 +2528,15 @@ determine what the final output needs to communicate.
 </div>
 
 
-<div class="case-box">
+<div class="case-box reveal-card">
 
-<div class="case-number">02 — APPROACH</div>
+<div class="case-number">
+02 — APPROACH
+</div>
 
-<h3>Building the Solution</h3>
+<h3>
+Building the Solution
+</h3>
 
 <p>
 Organize the content, choose an appropriate visual direction and develop
@@ -1531,11 +2546,15 @@ the project step by step with attention to usability and presentation.
 </div>
 
 
-<div class="case-box">
+<div class="case-box reveal-card">
 
-<div class="case-number">03 — OUTCOME</div>
+<div class="case-number">
+03 — OUTCOME
+</div>
 
-<h3>Refined Digital Work</h3>
+<h3>
+Refined Digital Work
+</h3>
 
 <p>
 The goal is to deliver a clear, organized and visually professional result
@@ -1559,9 +2578,13 @@ that communicates the intended message effectively.
 
 <div class="section-heading">
 
-<div class="small">Real-World Exposure</div>
+<div class="small">
+Real-World Exposure
+</div>
 
-<h2>Baraka Farmyard</h2>
+<h2>
+Baraka Farmyard
+</h2>
 
 <p>
 Practical business and promotional exposure through my work as an Outlet Manager.
@@ -1570,15 +2593,19 @@ Practical business and promotional exposure through my work as an Outlet Manager
 </div>
 
 
-<div class="baraka">
+<div class="baraka reveal-card">
 
 <div class="baraka-grid">
 
 <div>
 
-<div class="featured-label">Professional Experience Project</div>
+<div class="featured-label">
+Professional Experience Project
+</div>
 
-<h3>Business & Promotional Work</h3>
+<h3>
+Business & Promotional Work
+</h3>
 
 <p>
 My experience at Baraka Farmyard has provided practical exposure to business
@@ -1600,23 +2627,54 @@ organized workflow and customer-oriented thinking.
 <div class="baraka-list">
 
 <div class="baraka-item">
-<strong>Product Presentation</strong>
-<span>Understanding how products can be organized and presented clearly.</span>
+
+<strong>
+Product Presentation
+</strong>
+
+<span>
+Understanding how products can be organized and presented clearly.
+</span>
+
 </div>
 
-<div class="baraka-item">
-<strong>Promotional Content</strong>
-<span>Exposure to product-focused promotional and social media-oriented creative work.</span>
-</div>
 
 <div class="baraka-item">
-<strong>Customer Perspective</strong>
-<span>Practical understanding of customer interaction and communication.</span>
+
+<strong>
+Promotional Content
+</strong>
+
+<span>
+Exposure to product-focused promotional and social media-oriented creative work.
+</span>
+
 </div>
 
+
 <div class="baraka-item">
-<strong>Business Environment</strong>
-<span>Hands-on exposure to daily outlet operations and workflow.</span>
+
+<strong>
+Customer Perspective
+</strong>
+
+<span>
+Practical understanding of customer interaction and communication.
+</span>
+
+</div>
+
+
+<div class="baraka-item">
+
+<strong>
+Business Environment
+</strong>
+
+<span>
+Hands-on exposure to daily outlet operations and workflow.
+</span>
+
 </div>
 
 </div>
@@ -1638,9 +2696,13 @@ organized workflow and customer-oriented thinking.
 
 <div class="section-heading">
 
-<div class="small">Tools & Technology</div>
+<div class="small">
+Tools & Technology
+</div>
 
-<h2>My Project Toolkit</h2>
+<h2>
+My Project Toolkit
+</h2>
 
 <p>
 A combination of creative, web, digital marketing and productivity tools used
@@ -1682,9 +2744,13 @@ through different stages of my work.
 
 <div class="section-heading">
 
-<div class="small">Visual Showcase</div>
+<div class="small">
+Visual Showcase
+</div>
 
-<h2>Project Gallery</h2>
+<h2 class="text-shine">
+Project Gallery
+</h2>
 
 <p>
 Selected visual work, website previews and creative projects.
@@ -1700,6 +2766,10 @@ Selected visual work, website previews and creative projects.
 
 <div class="showcase showcase-image">
 
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+
 <img
 src="website.png"
 alt="Website Preview"
@@ -1708,9 +2778,13 @@ loading="lazy"
 
 <div class="showcase-overlay">
 
-<strong>Website Preview</strong>
+<strong>
+Website Preview
+</strong>
 
-<span>Web Design</span>
+<span>
+Web Design
+</span>
 
 </div>
 
@@ -1721,6 +2795,10 @@ loading="lazy"
 
 <div class="showcase showcase-image">
 
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+
 <img
 src="design.png"
 alt="Graphic Design"
@@ -1729,9 +2807,13 @@ loading="lazy"
 
 <div class="showcase-overlay">
 
-<strong>Graphic Design</strong>
+<strong>
+Graphic Design
+</strong>
 
-<span>Creative Design</span>
+<span>
+Creative Design
+</span>
 
 </div>
 
@@ -1742,6 +2824,10 @@ loading="lazy"
 
 <div class="showcase showcase-image">
 
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+
 <img
 src="social-media.jpg"
 alt="Social Media Creative"
@@ -1750,9 +2836,13 @@ loading="lazy"
 
 <div class="showcase-overlay">
 
-<strong>Social Media Creative</strong>
+<strong>
+Social Media Creative
+</strong>
 
-<span>Social Media Design</span>
+<span>
+Social Media Design
+</span>
 
 </div>
 
@@ -1763,6 +2853,10 @@ loading="lazy"
 
 <div class="showcase showcase-image">
 
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+
 <img
 src="product-promotion.jpg"
 alt="Product Promotion"
@@ -1771,9 +2865,13 @@ loading="lazy"
 
 <div class="showcase-overlay">
 
-<strong>Product Promotion</strong>
+<strong>
+Product Promotion
+</strong>
 
-<span>Marketing Creative</span>
+<span>
+Marketing Creative
+</span>
 
 </div>
 
@@ -1784,6 +2882,10 @@ loading="lazy"
 
 <div class="showcase showcase-image">
 
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+
 <img
 src="web-experiment.jpg"
 alt="Web Experiment"
@@ -1792,9 +2894,13 @@ loading="lazy"
 
 <div class="showcase-overlay">
 
-<strong>Web Experiment</strong>
+<strong>
+Web Experiment
+</strong>
 
-<span>Web Development</span>
+<span>
+Web Development
+</span>
 
 </div>
 
@@ -1805,6 +2911,10 @@ loading="lazy"
 
 <div class="showcase showcase-image">
 
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+<span class="border-spark"></span>
+
 <img
 src="creative-experiment.jpg"
 alt="Creative Experiment"
@@ -1813,9 +2923,13 @@ loading="lazy"
 
 <div class="showcase-overlay">
 
-<strong>Creative Experiment</strong>
+<strong>
+Creative Experiment
+</strong>
 
-<span>Creative Exploration</span>
+<span>
+Creative Exploration
+</span>
 
 </div>
 
@@ -1837,9 +2951,13 @@ loading="lazy"
 
 <div class="section-heading">
 
-<div class="small">Practice & Experiments</div>
+<div class="small">
+Practice & Experiments
+</div>
 
-<h2>Learning Through Building</h2>
+<h2>
+Learning Through Building
+</h2>
 
 <p>
 Not every project needs to be client work. Personal experiments are an important
@@ -1851,11 +2969,15 @@ part of improving practical skills.
 
 <div class="building">
 
-<div class="build-card">
+<div class="build-card reveal-card">
 
-<div class="featured-label">01</div>
+<div class="featured-label">
+01
+</div>
 
-<h3>Web Experiments</h3>
+<h3>
+Web Experiments
+</h3>
 
 <p>
 Testing different layouts, navigation systems, responsive structures and
@@ -1865,11 +2987,15 @@ modern website presentation techniques.
 </div>
 
 
-<div class="build-card">
+<div class="build-card reveal-card">
 
-<div class="featured-label">02</div>
+<div class="featured-label">
+02
+</div>
 
-<h3>Design Experiments</h3>
+<h3>
+Design Experiments
+</h3>
 
 <p>
 Exploring typography, composition, visual hierarchy, branding concepts and
@@ -1879,11 +3005,15 @@ creative layouts.
 </div>
 
 
-<div class="build-card">
+<div class="build-card reveal-card">
 
-<div class="featured-label">03</div>
+<div class="featured-label">
+03
+</div>
 
-<h3>AI Creative Work</h3>
+<h3>
+AI Creative Work
+</h3>
 
 <p>
 Exploring AI-assisted workflows for creative concepts, visual development,
@@ -1907,9 +3037,13 @@ content ideas and productivity.
 
 <div class="section-heading">
 
-<div class="small">Currently Building</div>
+<div class="small">
+Currently Building
+</div>
 
-<h2>What I'm Working Toward</h2>
+<h2>
+What I'm Working Toward
+</h2>
 
 <p>
 My project journey is continuously evolving as I learn new technologies,
@@ -1921,11 +3055,15 @@ creative techniques and digital strategies.
 
 <div class="building">
 
-<div class="build-card">
+<div class="build-card reveal-card">
 
-<div class="featured-label">WEB</div>
+<div class="featured-label">
+WEB
+</div>
 
-<h3>Modern Web Design</h3>
+<h3>
+Modern Web Design
+</h3>
 
 <p>
 Developing stronger skills in responsive layouts, modern UI structure,
@@ -1935,11 +3073,15 @@ HTML/CSS and future JavaScript fundamentals.
 </div>
 
 
-<div class="build-card">
+<div class="build-card reveal-card">
 
-<div class="featured-label">MARKETING</div>
+<div class="featured-label">
+MARKETING
+</div>
 
-<h3>Digital Marketing</h3>
+<h3>
+Digital Marketing
+</h3>
 
 <p>
 Building deeper knowledge around Meta Ads, SEO, analytics, content strategy
@@ -1949,11 +3091,15 @@ and social media marketing.
 </div>
 
 
-<div class="build-card">
+<div class="build-card reveal-card">
 
-<div class="featured-label">CREATIVE</div>
+<div class="featured-label">
+CREATIVE
+</div>
 
-<h3>Personal Brand</h3>
+<h3>
+Personal Brand
+</h3>
 
 <p>
 Continuously improving my online presence, portfolio, visual identity and
@@ -1975,9 +3121,11 @@ professional digital communication.
 
 <div class="container">
 
-<div class="philosophy">
+<div class="philosophy reveal-card">
 
-<div class="featured-label">Project Philosophy</div>
+<div class="featured-label">
+Project Philosophy
+</div>
 
 <div class="quote">
 “Don't just <span>create.</span><br>
@@ -2002,7 +3150,9 @@ the process and become better at the next one.
 
 <div class="container">
 
-<h2>Have a Project in Mind?</h2>
+<h2 class="text-shine">
+Have a Project in Mind?
+</h2>
 
 <p>
 If you are looking for someone who is willing to learn, communicate clearly
@@ -2011,9 +3161,13 @@ and approach digital work with creativity and responsibility, let's connect.
 
 <div class="cta-buttons">
 
-<a href="contact.html" class="btn btn-primary">Let's Work Together</a>
+<a href="contact.html" class="btn btn-primary">
+Let's Work Together
+</a>
 
-<a href="services.html" class="btn btn-outline">View My Services</a>
+<a href="services.html" class="btn btn-outline">
+View My Services
+</a>
 
 </div>
 
@@ -2039,12 +3193,39 @@ and approach digital work with creativity and responsibility, let's connect.
 
 <script>
 
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        const loader=document.getElementById("pageLoader");
+
+        if(loader){
+            loader.classList.add("hide");
+        }
+
+    },1200);
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
 function toggleMenu(){
 
     document.getElementById("navLinks").classList.toggle("show");
 
 }
 
+
+/* =========================================================
+   PROJECT FILTER
+========================================================= */
 
 function filterProjects(category,button){
 
@@ -2062,14 +3243,226 @@ function filterProjects(category,button){
         const categories=card.dataset.category;
 
         if(category==="all" || categories.includes(category)){
+
             card.style.display="block";
+
+            setTimeout(()=>{
+                card.style.opacity="1";
+                card.style.transform="translateY(0)";
+            },20);
+
         }else{
-            card.style.display="none";
+
+            card.style.opacity="0";
+            card.style.transform="translateY(12px)";
+
+            setTimeout(()=>{
+                card.style.display="none";
+            },250);
+
         }
 
     });
 
 }
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements=document.querySelectorAll(
+    ".section-heading, .reveal-card, .journey-item"
+);
+
+const revealObserver=new IntersectionObserver(
+
+    function(entries,observer){
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("reveal");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.12
+    }
+
+);
+
+revealElements.forEach(element=>{
+    revealObserver.observe(element);
+});
+
+
+/* =========================================================
+   STAGGER CARD REVEAL
+========================================================= */
+
+const revealGroups=[
+    ".overview-card",
+    ".project-card",
+    ".case-box",
+    ".build-card",
+    ".stat-box"
+];
+
+revealGroups.forEach(selector=>{
+
+    const elements=document.querySelectorAll(selector);
+
+    elements.forEach((element,index)=>{
+
+        element.style.transitionDelay=(index * .08)+"s";
+
+    });
+
+});
+
+
+/* =========================================================
+   STATS COUNT UP
+========================================================= */
+
+let statsStarted=false;
+
+function animateStats(){
+
+    if(statsStarted) return;
+
+    const stats=document.querySelectorAll(".stat-number[data-target]");
+
+    if(!stats.length) return;
+
+    const first=stats[0];
+
+    const rect=first.getBoundingClientRect();
+
+    if(rect.top < window.innerHeight * .85){
+
+        statsStarted=true;
+
+        stats.forEach(stat=>{
+
+            const target=parseInt(stat.dataset.target);
+
+            let current=0;
+
+            const duration=1300;
+
+            const startTime=performance.now();
+
+            function update(time){
+
+                const progress=Math.min(
+                    (time-startTime)/duration,
+                    1
+                );
+
+                const eased=1-Math.pow(1-progress,3);
+
+                current=Math.floor(target*eased);
+
+                stat.textContent=current+(target===100 ? "+" : "");
+
+                if(progress<1){
+
+                    requestAnimationFrame(update);
+
+                }else{
+
+                    stat.textContent=target+(target===100 ? "+" : "");
+
+                }
+
+            }
+
+            requestAnimationFrame(update);
+
+        });
+
+    }
+
+}
+
+window.addEventListener("scroll",animateStats);
+
+animateStats();
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow=document.getElementById("cursorGlow");
+
+if(window.innerWidth>900){
+
+    document.addEventListener("mousemove",function(e){
+
+        cursorGlow.style.left=e.clientX+"px";
+        cursorGlow.style.top=e.clientY+"px";
+
+    });
+
+}
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER CLICK
+========================================================= */
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+
+    link.addEventListener("click",function(){
+
+        document.getElementById("navLinks").classList.remove("show");
+
+    });
+
+});
+
+
+/* =========================================================
+   SMOOTH FILTER RESET ANIMATION
+========================================================= */
+
+document.querySelectorAll(".filter-btn").forEach(button=>{
+
+    button.addEventListener("click",function(){
+
+        window.requestAnimationFrame(()=>{
+
+            document.querySelectorAll(".project-card").forEach(card=>{
+
+                if(card.style.display!=="none"){
+
+                    card.classList.remove("reveal");
+
+                    setTimeout(()=>{
+
+                        card.classList.add("reveal");
+
+                    },30);
+
+                }
+
+            });
+
+        });
+
+    });
+
+});
 
 </script>
 
