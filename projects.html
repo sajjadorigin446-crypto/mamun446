@@ -541,6 +541,31 @@ section{
     color:#999;
 }
 
+
+/* =========================================================
+   DESKTOP SECTION HEADING FIX
+   Keeps all design same and separates
+   small label + main heading
+========================================================= */
+
+@media(min-width:651px){
+
+    .section-heading .small{
+        display:block;
+        width:100%;
+        margin-bottom:2px;
+    }
+
+    .section-heading h2{
+        display:block;
+        width:fit-content;
+        max-width:100%;
+        margin:10px auto;
+    }
+
+}
+
+
 /* =========================================================
    UNIVERSAL REVEAL
 ========================================================= */
@@ -1201,8 +1226,6 @@ section{
         box-shadow .5s ease;
 }
 
-/* IMAGE AREA */
-
 .showcase-image{
     position:relative;
     width:100%;
@@ -1230,8 +1253,6 @@ section{
         filter .6s ease;
 }
 
-/* CINEMATIC IMAGE OVERLAY */
-
 .showcase-image::after{
     content:"";
     position:absolute;
@@ -1246,8 +1267,6 @@ section{
             rgba(0,0,0,.28) 100%
         );
 }
-
-/* GOLD CORNER */
 
 .showcase::after{
     content:"";
@@ -1267,8 +1286,6 @@ section{
 
     transition:.5s ease;
 }
-
-/* HOVER */
 
 .showcase:hover{
     transform:translateY(-8px);
