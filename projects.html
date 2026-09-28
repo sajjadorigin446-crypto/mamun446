@@ -8,6 +8,9 @@
 
 <meta name="description" content="Explore selected digital, web, graphic design, marketing and personal projects by MD Abdul Al Mamun.">
 
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
 
 *{
@@ -541,11 +544,8 @@ section{
     color:#999;
 }
 
-
 /* =========================================================
    DESKTOP SECTION HEADING FIX
-   Keeps all design same and separates
-   small label + main heading
 ========================================================= */
 
 @media(min-width:651px){
@@ -564,7 +564,6 @@ section{
     }
 
 }
-
 
 /* =========================================================
    UNIVERSAL REVEAL
@@ -1637,6 +1636,157 @@ footer strong{
 }
 
 /* =========================================================
+   FLOATING LINKEDIN
+========================================================= */
+
+.linkedin-float{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #080808
+        );
+
+    border:1px solid #d4af37;
+
+    color:#d4af37;
+
+    z-index:9998;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.65),
+        0 0 20px rgba(212,175,55,.18);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+    animation:
+        linkedinFloat 3.5s ease-in-out infinite;
+}
+
+.linkedin-float::before{
+    content:"";
+
+    position:absolute;
+    inset:-6px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    animation:
+        linkedinRingRotate 7s linear infinite;
+
+    pointer-events:none;
+}
+
+.linkedin-float::after{
+    content:"";
+
+    position:absolute;
+    inset:-10px;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            transparent 285deg,
+            rgba(212,175,55,.15) 300deg,
+            rgba(255,215,100,.95) 325deg,
+            #d4af37 345deg,
+            transparent 360deg
+        );
+
+    -webkit-mask:
+        radial-gradient(
+            farthest-side,
+            transparent calc(100% - 2px),
+            #000 calc(100% - 2px)
+        );
+
+    mask:
+        radial-gradient(
+            farthest-side,
+            transparent calc(100% - 2px),
+            #000 calc(100% - 2px)
+        );
+
+    animation:
+        linkedinRingRotate 9s linear infinite;
+
+    filter:
+        drop-shadow(0 0 5px rgba(212,175,55,.55))
+        drop-shadow(0 0 10px rgba(212,175,55,.20));
+
+    pointer-events:none;
+}
+
+.linkedin-float i{
+    position:relative;
+    z-index:3;
+
+    font-size:21px;
+
+    color:#d4af37;
+
+    transition:.3s;
+}
+
+.linkedin-float:hover{
+    transform:
+        translateY(-5px)
+        scale(1.06);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.7),
+        0 0 28px rgba(212,175,55,.30);
+}
+
+.linkedin-float:hover i{
+    transform:scale(1.1);
+}
+
+@keyframes linkedinRingRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes linkedinFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
+}
+
+/* =========================================================
    TABLET
 ========================================================= */
 
@@ -1684,6 +1834,7 @@ footer strong{
     .project-stats{
         grid-template-columns:repeat(2,1fr);
     }
+
 }
 
 /* =========================================================
@@ -1703,6 +1854,7 @@ footer strong{
     .nav-links a{
         font-size:12px;
     }
+
 }
 
 /* =========================================================
@@ -1845,6 +1997,31 @@ footer strong{
     .hero-buttons .btn{
         width:100%;
         max-width:280px;
+    }
+
+    /* FLOATING LINKEDIN MOBILE */
+
+    .linkedin-float{
+        width:52px;
+        height:52px;
+        right:16px;
+        bottom:18px;
+    }
+
+    .linkedin-float i{
+        font-size:19px;
+    }
+
+}
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print{
+
+    .linkedin-float{
+        display:none;
     }
 
 }
@@ -3413,6 +3590,23 @@ View My Services
 </div>
 
 </footer>
+
+
+<!-- =======================================================
+     FLOATING LINKEDIN BUTTON
+======================================================= -->
+
+<a
+    href="https://www.linkedin.com/in/md-abdul-al-mamun-453a39363"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="linkedin-float"
+    aria-label="Visit LinkedIn Profile"
+>
+
+    <i class="fa-brands fa-linkedin-in"></i>
+
+</a>
 
 
 <script>
