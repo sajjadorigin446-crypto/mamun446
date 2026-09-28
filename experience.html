@@ -931,6 +931,439 @@ section{
 
 
 /* =========================================
+   DIGITAL DNA — SPECIAL EXPERIENCE
+========================================= */
+
+.digital-dna-section{
+    padding:120px 20px;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(212,175,55,.075),
+            transparent 36%
+        ),
+        #050505;
+}
+
+.digital-dna-heading{
+    text-align:center;
+    margin-bottom:75px;
+}
+
+.digital-dna-heading span{
+    display:block;
+
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:14px;
+}
+
+.digital-dna-heading h2{
+    font-size:clamp(32px,5vw,55px);
+
+    line-height:1.1;
+
+    margin-bottom:18px;
+
+    letter-spacing:-1px;
+}
+
+.digital-dna-heading p{
+    color:#888;
+
+    max-width:620px;
+
+    margin:auto;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+.digital-dna-wrapper{
+    max-width:1050px;
+
+    min-height:620px;
+
+    margin:auto;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.digital-dna-line{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:1px;
+
+    height:550px;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(212,175,55,.75),
+            rgba(212,175,55,.18),
+            rgba(212,175,55,.75),
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.2);
+}
+
+
+/* ONE MOVING DOT */
+
+.dna-travel-dot{
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    width:8px;
+    height:8px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 12px var(--gold),
+        0 0 28px rgba(212,175,55,.55);
+
+    animation:
+        dnaTrain 7s ease-in-out infinite;
+}
+
+@keyframes dnaTrain{
+
+    0%{
+        top:0;
+        opacity:0;
+    }
+
+    8%{
+        opacity:1;
+    }
+
+    92%{
+        opacity:1;
+    }
+
+    100%{
+        top:100%;
+        opacity:0;
+    }
+}
+
+
+.dna-node{
+    position:absolute;
+
+    width:220px;
+
+    padding:20px 23px;
+
+    border:1px solid rgba(212,175,55,.18);
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,17,17,.96),
+            rgba(7,7,7,.98)
+        );
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.25);
+
+    transition:
+        transform .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease;
+
+    z-index:5;
+}
+
+.dna-node::before{
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 10px var(--gold),
+        0 0 25px rgba(212,175,55,.55);
+}
+
+.dna-node::after{
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    width:70px;
+
+    height:1px;
+
+    transform:translateY(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(212,175,55,.5),
+            transparent
+        );
+}
+
+.dna-node.left{
+    right:calc(50% + 90px);
+
+    text-align:right;
+}
+
+.dna-node.left::before{
+    right:-95px;
+}
+
+.dna-node.left::after{
+    right:-88px;
+}
+
+.dna-node.right{
+    left:calc(50% + 90px);
+
+    text-align:left;
+}
+
+.dna-node.right::before{
+    left:-95px;
+}
+
+.dna-node.right::after{
+    left:-88px;
+
+    transform:
+        translateY(-50%)
+        rotate(180deg);
+}
+
+.dna-node:hover{
+    transform:translateY(-7px) scale(1.025);
+
+    border-color:rgba(212,175,55,.5);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.4),
+        0 0 30px rgba(212,175,55,.06);
+}
+
+.dna-number{
+    display:block;
+
+    color:var(--gold);
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    margin-bottom:8px;
+}
+
+.dna-title{
+    display:block;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    letter-spacing:.8px;
+}
+
+.dna-description{
+    display:block;
+
+    color:#858585;
+
+    font-size:11px;
+
+    line-height:1.65;
+
+    margin-top:7px;
+}
+
+.dna-center{
+    position:absolute;
+
+    width:115px;
+    height:115px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle,
+            #111 0%,
+            #080808 65%,
+            #050505 100%
+        );
+
+    border:1px solid rgba(212,175,55,.5);
+
+    box-shadow:
+        0 0 35px rgba(212,175,55,.13),
+        inset 0 0 30px rgba(212,175,55,.045);
+
+    z-index:10;
+}
+
+.dna-center span{
+    color:var(--gold);
+
+    font-size:10px;
+
+    line-height:1.6;
+
+    letter-spacing:2px;
+
+    text-align:center;
+
+    font-weight:700;
+}
+
+.dna-ring{
+    position:absolute;
+
+    inset:-13px;
+
+    border:1px solid rgba(212,175,55,.13);
+
+    border-radius:50%;
+
+    animation:
+        dnaRotate 8s linear infinite;
+}
+
+.dna-ring::before{
+    content:"";
+
+    position:absolute;
+
+    top:-3px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 10px var(--gold),
+        0 0 20px rgba(212,175,55,.6);
+}
+
+.dna-ring::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-2px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:
+        0 0 8px #fff;
+}
+
+@keyframes dnaRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* DNA positions — SERIAL 01 → 05 */
+
+.dna-node:nth-child(3){
+    top:15px;
+}
+
+.dna-node:nth-child(4){
+    top:140px;
+}
+
+.dna-node:nth-child(5){
+    top:265px;
+}
+
+.dna-node:nth-child(6){
+    top:390px;
+}
+
+.dna-node:nth-child(7){
+    top:515px;
+}
+
+
+/* =========================================
    REAL WORLD EXPOSURE
 ========================================= */
 
@@ -1770,6 +2203,117 @@ footer span{
         font-size:12px;
     }
 
+
+    /* DIGITAL DNA MOBILE */
+
+    .digital-dna-section{
+        padding:90px 15px;
+    }
+
+    .digital-dna-heading{
+        margin-bottom:55px;
+    }
+
+    .digital-dna-heading h2{
+        font-size:34px;
+    }
+
+    .digital-dna-heading p{
+        font-size:13px;
+        max-width:330px;
+    }
+
+    .digital-dna-wrapper{
+        min-height:720px;
+    }
+
+    .digital-dna-line{
+        height:640px;
+    }
+
+    .dna-node{
+        width:145px;
+
+        padding:15px 13px;
+
+        border-radius:11px;
+    }
+
+    .dna-node.left{
+        right:calc(50% + 40px);
+    }
+
+    .dna-node.right{
+        left:calc(50% + 40px);
+    }
+
+    .dna-node.left::before{
+        right:-45px;
+    }
+
+    .dna-node.right::before{
+        left:-45px;
+    }
+
+    .dna-node.left::after{
+        right:-40px;
+        width:40px;
+    }
+
+    .dna-node.right::after{
+        left:-40px;
+        width:40px;
+    }
+
+    .dna-number{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+
+    .dna-title{
+        font-size:13px;
+    }
+
+    .dna-description{
+        font-size:9px;
+        line-height:1.55;
+    }
+
+    .dna-center{
+        width:76px;
+        height:76px;
+    }
+
+    .dna-center span{
+        font-size:7px;
+        letter-spacing:1.5px;
+    }
+
+    .dna-ring{
+        inset:-9px;
+    }
+
+    .dna-node:nth-child(3){
+        top:10px;
+    }
+
+    .dna-node:nth-child(4){
+        top:150px;
+    }
+
+    .dna-node:nth-child(5){
+        top:290px;
+    }
+
+    .dna-node:nth-child(6){
+        top:430px;
+    }
+
+    .dna-node:nth-child(7){
+        top:570px;
+    }
+
+
     .exposure-grid,
     .contribution-grid,
     .development-grid{
@@ -1884,6 +2428,59 @@ footer span{
     .arrow{
         display:none;
     }
+
+    .digital-dna-heading h2{
+        font-size:31px;
+    }
+
+    .dna-node{
+        width:128px;
+        padding:13px 11px;
+    }
+
+    .dna-node.left{
+        right:calc(50% + 35px);
+    }
+
+    .dna-node.right{
+        left:calc(50% + 35px);
+    }
+
+    .dna-node.left::before{
+        right:-40px;
+    }
+
+    .dna-node.right::before{
+        left:-40px;
+    }
+
+    .dna-node.left::after{
+        right:-35px;
+        width:33px;
+    }
+
+    .dna-node.right::after{
+        left:-35px;
+        width:33px;
+    }
+
+    .dna-title{
+        font-size:11px;
+    }
+
+    .dna-description{
+        font-size:8px;
+    }
+
+    .dna-center{
+        width:65px;
+        height:65px;
+    }
+
+    .dna-center span{
+        font-size:6px;
+    }
+
 }
 
 
@@ -2353,6 +2950,159 @@ Using modern digital and AI-assisted tools
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     DIGITAL DNA — SPECIAL
+========================================= -->
+
+<section class="digital-dna-section">
+
+<div class="container">
+
+<div class="digital-dna-heading reveal">
+
+<span>
+The Digital DNA
+</span>
+
+<h2>
+My Journey.
+</h2>
+
+<p>
+Every experience becomes part of the journey.
+Every step builds something new.
+</p>
+
+</div>
+
+
+<div class="digital-dna-wrapper">
+
+
+<!-- DNA LINE + ONE MOVING DOT -->
+
+<div class="digital-dna-line">
+
+<span class="dna-travel-dot"></span>
+
+</div>
+
+
+<!-- CENTER CIRCLE -->
+
+<div class="dna-center">
+
+<div class="dna-ring"></div>
+
+<span>
+MAMUN
+</span>
+
+</div>
+
+
+<!-- 01 -->
+
+<div class="dna-node left reveal">
+
+<span class="dna-number">
+01 — BEGIN
+</span>
+
+<span class="dna-title">
+LEARN
+</span>
+
+<span class="dna-description">
+Building knowledge through education and curiosity.
+</span>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="dna-node right reveal">
+
+<span class="dna-number">
+02 — PRACTICE
+</span>
+
+<span class="dna-title">
+PRACTICE
+</span>
+
+<span class="dna-description">
+Turning knowledge into practical skills and experience.
+</span>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="dna-node left reveal">
+
+<span class="dna-number">
+03 — CREATE
+</span>
+
+<span class="dna-title">
+CREATE
+</span>
+
+<span class="dna-description">
+Exploring design, web and digital creativity.
+</span>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="dna-node right reveal">
+
+<span class="dna-number">
+04 — EXPERIENCE
+</span>
+
+<span class="dna-title">
+EXPERIENCE
+</span>
+
+<span class="dna-description">
+Learning from real-world work and digital projects.
+</span>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="dna-node left reveal">
+
+<span class="dna-number">
+05 — GROW
+</span>
+
+<span class="dna-title">
+GROW
+</span>
+
+<span class="dna-description">
+Improving continuously through every opportunity.
+</span>
+
+</div>
+
 
 </div>
 
