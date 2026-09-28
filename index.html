@@ -1656,7 +1656,7 @@ footer{
 
 
 /* =====================================================
-   FLOATING WHATSAPP BUTTON
+   PREMIUM FLOATING WHATSAPP BUTTON
    ===================================================== */
 
 .whatsapp-float{
@@ -1665,70 +1665,341 @@ footer{
     right:22px;
     bottom:22px;
 
+    width:58px;
+    height:58px;
+
     z-index:99999;
 
     display:flex;
     align-items:center;
-    gap:10px;
+    justify-content:center;
 
-    padding:12px 17px;
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #1b1b1b,
+            #090909 70%
+        );
 
-    background:#101010;
+    border:1px solid rgba(212,175,55,.75);
 
-    border:1px solid rgba(37,211,102,.55);
-
-    border-radius:50px;
+    border-radius:50%;
 
     color:#25d366;
 
-    font-size:12px;
-    font-weight:600;
+    font-size:25px;
 
     box-shadow:
-        0 8px 30px rgba(0,0,0,.45),
-        0 0 18px rgba(37,211,102,.08);
+        0 8px 30px rgba(0,0,0,.55),
+        0 0 18px rgba(212,175,55,.10),
+        inset 0 0 12px rgba(212,175,55,.04);
 
     transition:
         transform .35s ease,
         border-color .35s ease,
-        box-shadow .35s ease,
-        background .35s ease;
+        box-shadow .35s ease;
 
     backdrop-filter:blur(12px);
+
+    overflow:visible;
 }
 
 .whatsapp-float i{
-    font-size:21px;
+    position:relative;
+    z-index:20;
+
+    transition:
+        transform .35s ease,
+        filter .35s ease;
 }
 
 .whatsapp-float:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px) scale(1.04);
 
-    background:#111;
-
-    border-color:#25d366;
+    border-color:#d4af37;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.5),
-        0 0 25px rgba(37,211,102,.18);
+        0 14px 38px rgba(0,0,0,.6),
+        0 0 30px rgba(212,175,55,.18),
+        0 0 12px rgba(37,211,102,.12),
+        inset 0 0 15px rgba(212,175,55,.06);
 
     color:#25d366;
 }
 
+.whatsapp-float:hover i{
+    transform:scale(1.08);
+    filter:drop-shadow(0 0 7px rgba(37,211,102,.35));
+}
+
+
+/* ================= OUTER GOLD RINGS ================= */
+
 .whatsapp-float::before{
+
     content:"";
 
     position:absolute;
 
-    inset:-4px;
+    width:72px;
+    height:72px;
 
-    border-radius:55px;
+    left:50%;
+    top:50%;
 
-    border:1px solid rgba(37,211,102,.10);
+    transform:translate(-50%,-50%);
 
-    animation:whatsappPulse 3s ease-in-out infinite;
+    border:1px solid rgba(212,175,55,.42);
+
+    border-top-color:#d4af37;
+    border-right-color:rgba(255,240,160,.7);
+
+    border-radius:50%;
 
     pointer-events:none;
+
+    animation:
+        whatsappRingOne 8s linear infinite;
+}
+
+.whatsapp-float::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:86px;
+    height:86px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border:1px solid rgba(212,175,55,.16);
+
+    border-bottom-color:rgba(212,175,55,.8);
+    border-left-color:rgba(255,240,160,.45);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    animation:
+        whatsappRingTwo 11s linear infinite;
+}
+
+@keyframes whatsappRingOne{
+
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+
+}
+
+@keyframes whatsappRingTwo{
+
+    from{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+
+    to{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+
+}
+
+
+/* ================= GOLD ORBIT DOTS ================= */
+
+.whatsapp-orbit-dot{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff0a0,
+            #d4af37 55%,
+            #8d6d13
+        );
+
+    box-shadow:
+        0 0 8px rgba(212,175,55,.8),
+        0 0 15px rgba(212,175,55,.25);
+
+    pointer-events:none;
+
+    z-index:10;
+}
+
+
+/* BIG ORBIT */
+
+.whatsapp-dot-one{
+
+    width:7px;
+    height:7px;
+
+    left:50%;
+    top:50%;
+
+    animation:
+        whatsappOrbitOne 7s linear infinite;
+}
+
+@keyframes whatsappOrbitOne{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            rotate(0deg)
+            translateX(43px)
+            rotate(0deg);
+    }
+
+    100%{
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg)
+            translateX(43px)
+            rotate(-360deg);
+    }
+
+}
+
+
+/* SECOND ORBIT */
+
+.whatsapp-dot-two{
+
+    width:5px;
+    height:5px;
+
+    left:50%;
+    top:50%;
+
+    animation:
+        whatsappOrbitTwo 9s linear infinite;
+}
+
+@keyframes whatsappOrbitTwo{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            rotate(180deg)
+            translateX(35px)
+            rotate(-180deg);
+    }
+
+    100%{
+        transform:
+            translate(-50%,-50%)
+            rotate(-180deg)
+            translateX(35px)
+            rotate(180deg);
+    }
+
+}
+
+
+/* THIRD GOLD DOT */
+
+.whatsapp-dot-three{
+
+    width:4px;
+    height:4px;
+
+    left:50%;
+    top:50%;
+
+    animation:
+        whatsappOrbitThree 5.5s linear infinite;
+}
+
+@keyframes whatsappOrbitThree{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            rotate(90deg)
+            translateX(51px)
+            rotate(-90deg);
+    }
+
+    100%{
+        transform:
+            translate(-50%,-50%)
+            rotate(450deg)
+            translateX(51px)
+            rotate(-450deg);
+    }
+
+}
+
+
+/* FOURTH GOLD DOT */
+
+.whatsapp-dot-four{
+
+    width:4px;
+    height:4px;
+
+    left:50%;
+    top:50%;
+
+    opacity:.75;
+
+    animation:
+        whatsappOrbitFour 10s linear infinite;
+}
+
+@keyframes whatsappOrbitFour{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            rotate(270deg)
+            translateX(40px)
+            rotate(-270deg);
+    }
+
+    100%{
+        transform:
+            translate(-50%,-50%)
+            rotate(-90deg)
+            translateX(40px)
+            rotate(90deg);
+    }
+
+}
+
+
+/* ================= WHATSAPP PULSE ================= */
+
+.whatsapp-pulse{
+
+    position:absolute;
+
+    inset:-1px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(37,211,102,.18);
+
+    pointer-events:none;
+
+    animation:whatsappPulse 3s ease-in-out infinite;
 }
 
 @keyframes whatsappPulse{
@@ -1736,14 +2007,93 @@ footer{
     0%,
     100%{
         transform:scale(1);
-        opacity:.25;
+        opacity:.15;
     }
 
     50%{
-        transform:scale(1.04);
-        opacity:.7;
+        transform:scale(1.13);
+        opacity:.6;
     }
 
+}
+
+
+/* ================= WHATSAPP TOOLTIP ================= */
+
+.whatsapp-tooltip{
+
+    position:absolute;
+
+    right:70px;
+    top:50%;
+
+    transform:
+        translateY(-50%)
+        translateX(8px);
+
+    background:#101010;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    color:#d4af37;
+
+    padding:7px 11px;
+
+    border-radius:7px;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    letter-spacing:.4px;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.45);
+}
+
+.whatsapp-tooltip::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-5px;
+    top:50%;
+
+    width:8px;
+    height:8px;
+
+    background:#101010;
+
+    border-top:1px solid rgba(212,175,55,.35);
+    border-right:1px solid rgba(212,175,55,.35);
+
+    transform:
+        translateY(-50%)
+        rotate(45deg);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translateY(-50%)
+        translateX(0);
 }
 
 
@@ -2057,30 +2407,132 @@ footer{
     }
 
 
-    /* WHATSAPP MOBILE */
+    /* PREMIUM WHATSAPP MOBILE */
 
     .whatsapp-float{
+
         right:15px;
         bottom:17px;
 
-        width:50px;
-        height:50px;
-
-        padding:0;
+        width:52px;
+        height:52px;
 
         border-radius:50%;
-
-        justify-content:center;
-
-        font-size:0;
     }
 
     .whatsapp-float i{
-        font-size:24px;
+        font-size:23px;
     }
 
     .whatsapp-float::before{
-        border-radius:50%;
+        width:65px;
+        height:65px;
+    }
+
+    .whatsapp-float::after{
+        width:77px;
+        height:77px;
+    }
+
+    .whatsapp-dot-one{
+        animation-name:whatsappOrbitOneMobile;
+    }
+
+    @keyframes whatsappOrbitOneMobile{
+
+        0%{
+            transform:
+                translate(-50%,-50%)
+                rotate(0deg)
+                translateX(38px)
+                rotate(0deg);
+        }
+
+        100%{
+            transform:
+                translate(-50%,-50%)
+                rotate(360deg)
+                translateX(38px)
+                rotate(-360deg);
+        }
+
+    }
+
+    .whatsapp-dot-two{
+        animation-name:whatsappOrbitTwoMobile;
+    }
+
+    @keyframes whatsappOrbitTwoMobile{
+
+        0%{
+            transform:
+                translate(-50%,-50%)
+                rotate(180deg)
+                translateX(31px)
+                rotate(-180deg);
+        }
+
+        100%{
+            transform:
+                translate(-50%,-50%)
+                rotate(-180deg)
+                translateX(31px)
+                rotate(180deg);
+        }
+
+    }
+
+    .whatsapp-dot-three{
+        animation-name:whatsappOrbitThreeMobile;
+    }
+
+    @keyframes whatsappOrbitThreeMobile{
+
+        0%{
+            transform:
+                translate(-50%,-50%)
+                rotate(90deg)
+                translateX(44px)
+                rotate(-90deg);
+        }
+
+        100%{
+            transform:
+                translate(-50%,-50%)
+                rotate(450deg)
+                translateX(44px)
+                rotate(-450deg);
+        }
+
+    }
+
+    .whatsapp-dot-four{
+        animation-name:whatsappOrbitFourMobile;
+    }
+
+    @keyframes whatsappOrbitFourMobile{
+
+        0%{
+            transform:
+                translate(-50%,-50%)
+                rotate(270deg)
+                translateX(34px)
+                rotate(-270deg);
+        }
+
+        100%{
+            transform:
+                translate(-50%,-50%)
+                rotate(-90deg)
+                translateX(34px)
+                rotate(90deg);
+        }
+
+    }
+
+    /* Tooltip hidden on mobile */
+    .whatsapp-tooltip{
+        display:none;
     }
 
 }
@@ -2122,6 +2574,25 @@ footer{
         bottom:8px;
         font-size:6px;
         padding:5px 6px;
+    }
+
+
+    .whatsapp-float{
+        right:13px;
+        bottom:15px;
+
+        width:49px;
+        height:49px;
+    }
+
+    .whatsapp-float::before{
+        width:61px;
+        height:61px;
+    }
+
+    .whatsapp-float::after{
+        width:72px;
+        height:72px;
     }
 
 }
@@ -2943,7 +3414,7 @@ aria-label="Email">
 
 
 
-<!-- ================= FLOATING WHATSAPP ================= -->
+<!-- ================= PREMIUM FLOATING WHATSAPP ================= -->
 
 <a
 href="https://wa.me/8801679606860"
@@ -2952,9 +3423,21 @@ rel="noopener noreferrer"
 class="whatsapp-float"
 aria-label="Contact me on WhatsApp">
 
+<div class="whatsapp-pulse"></div>
+
+<span class="whatsapp-orbit-dot whatsapp-dot-one"></span>
+
+<span class="whatsapp-orbit-dot whatsapp-dot-two"></span>
+
+<span class="whatsapp-orbit-dot whatsapp-dot-three"></span>
+
+<span class="whatsapp-orbit-dot whatsapp-dot-four"></span>
+
 <i class="fa-brands fa-whatsapp"></i>
 
-<span>WhatsApp Call</span>
+<span class="whatsapp-tooltip">
+Let's Talk on WhatsApp
+</span>
 
 </a>
 
