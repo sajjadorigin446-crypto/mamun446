@@ -2097,6 +2097,302 @@ footer{
 }
 
 
+/* =====================================================
+   HIDDEN STAR EASTER EGG
+   ===================================================== */
+
+.hidden-star{
+
+    position:fixed;
+
+    left:20px;
+    bottom:22px;
+
+    width:46px;
+    height:46px;
+
+    border:1px solid rgba(212,175,55,.65);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #1d1d1d,
+            #090909 72%
+        );
+
+    color:#d4af37;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    z-index:99998;
+
+    box-shadow:
+        0 8px 28px rgba(0,0,0,.55),
+        0 0 18px rgba(212,175,55,.10),
+        inset 0 0 12px rgba(212,175,55,.04);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        color .35s ease;
+
+    animation:hiddenStarPulse 3.5s ease-in-out infinite;
+
+}
+
+.hidden-star::before{
+
+    content:"✦";
+
+    line-height:1;
+
+}
+
+.hidden-star:hover{
+
+    transform:
+        translateY(-4px)
+        scale(1.08)
+        rotate(8deg);
+
+    border-color:#d4af37;
+
+    color:#fff0a0;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.6),
+        0 0 30px rgba(212,175,55,.22),
+        0 0 10px rgba(255,240,160,.18),
+        inset 0 0 16px rgba(212,175,55,.07);
+
+}
+
+@keyframes hiddenStarPulse{
+
+    0%,
+    100%{
+
+        box-shadow:
+            0 8px 28px rgba(0,0,0,.55),
+            0 0 14px rgba(212,175,55,.08),
+            inset 0 0 12px rgba(212,175,55,.04);
+
+    }
+
+    50%{
+
+        box-shadow:
+            0 8px 28px rgba(0,0,0,.55),
+            0 0 25px rgba(212,175,55,.18),
+            inset 0 0 15px rgba(212,175,55,.06);
+
+    }
+
+}
+
+
+/* ================= HIDDEN STAR MODAL ================= */
+
+.hidden-star-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.68);
+
+    backdrop-filter:blur(5px);
+
+    z-index:100000;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
+
+}
+
+.hidden-star-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+}
+
+
+.hidden-star-message{
+
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    width:min(380px,calc(100% - 40px));
+
+    padding:30px 25px;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.88);
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(212,175,55,.10),
+            transparent 58%
+        ),
+        #0b0b0b;
+
+    border:1px solid rgba(212,175,55,.42);
+
+    border-radius:17px;
+
+    text-align:center;
+
+    z-index:100001;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.72),
+        0 0 35px rgba(212,175,55,.08);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s ease;
+
+}
+
+.hidden-star-message.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+
+}
+
+
+.hidden-star-message .secret-star{
+
+    display:block;
+
+    color:#d4af37;
+
+    font-size:30px;
+
+    line-height:1;
+
+    margin-bottom:14px;
+
+    text-shadow:
+        0 0 15px rgba(212,175,55,.55);
+
+    animation:
+        secretStarGlow 2.5s ease-in-out infinite;
+
+}
+
+@keyframes secretStarGlow{
+
+    0%,
+    100%{
+        transform:scale(1);
+        text-shadow:
+            0 0 12px rgba(212,175,55,.35);
+    }
+
+    50%{
+        transform:scale(1.12);
+        text-shadow:
+            0 0 22px rgba(212,175,55,.65);
+    }
+
+}
+
+.hidden-star-message h3{
+
+    color:#d4af37;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    margin-bottom:13px;
+
+}
+
+.hidden-star-message p{
+
+    color:#aaa;
+
+    font-size:12px;
+
+    line-height:1.85;
+
+}
+
+.close-secret{
+
+    margin-top:19px;
+
+    padding:8px 15px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:8px;
+
+    background:#101010;
+
+    color:#d4af37;
+
+    font-size:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.close-secret:hover{
+
+    border-color:#d4af37;
+
+    color:#fff0a0;
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.12);
+
+}
+
+
 /* ================= TABLET / MOBILE ================= */
 
 @media(max-width:850px){
@@ -2535,6 +2831,29 @@ footer{
         display:none;
     }
 
+
+    /* HIDDEN STAR MOBILE */
+
+    .hidden-star{
+
+        left:14px;
+        bottom:17px;
+
+        width:46px;
+        height:46px;
+
+        font-size:21px;
+
+    }
+
+    .hidden-star-message{
+
+        width:calc(100% - 34px);
+
+        padding:27px 20px;
+
+    }
+
 }
 
 
@@ -2593,6 +2912,21 @@ footer{
     .whatsapp-float::after{
         width:72px;
         height:72px;
+    }
+
+
+    /* HIDDEN STAR VERY SMALL */
+
+    .hidden-star{
+
+        left:11px;
+        bottom:14px;
+
+        width:43px;
+        height:43px;
+
+        font-size:19px;
+
     }
 
 }
@@ -3443,6 +3777,52 @@ Let's Talk on WhatsApp
 
 
 
+<!-- ================= HIDDEN STAR EASTER EGG ================= -->
+
+<button
+class="hidden-star"
+id="hiddenStar"
+aria-label="Discover hidden feature">
+</button>
+
+
+<div
+class="hidden-star-overlay"
+id="hiddenStarOverlay">
+</div>
+
+
+<div
+class="hidden-star-message"
+id="hiddenStarMessage"
+role="dialog"
+aria-modal="true"
+aria-labelledby="hiddenStarTitle">
+
+<span class="secret-star">
+✦
+</span>
+
+<h3 id="hiddenStarTitle">
+MAMUN’S HIDDEN STAR
+</h3>
+
+<p>
+You found something hidden.<br>
+Not everything is meant to be seen.<br>
+Some things are meant to be discovered.
+</p>
+
+<button
+class="close-secret"
+id="closeSecret">
+Close
+</button>
+
+</div>
+
+
+
 <!-- ================= MENU + COUNTER SCRIPT ================= -->
 
 <script>
@@ -3602,6 +3982,73 @@ function(entries){
 
 projectObserver.observe(
     document.querySelector(".quick-bar")
+);
+
+
+/* =====================================================
+   HIDDEN STAR EASTER EGG
+   ===================================================== */
+
+const hiddenStar =
+document.getElementById("hiddenStar");
+
+const hiddenStarOverlay =
+document.getElementById("hiddenStarOverlay");
+
+const hiddenStarMessage =
+document.getElementById("hiddenStarMessage");
+
+const closeSecret =
+document.getElementById("closeSecret");
+
+
+function openHiddenStar(){
+
+    hiddenStarMessage.classList.add("show");
+
+    hiddenStarOverlay.classList.add("show");
+
+}
+
+
+function closeHiddenStar(){
+
+    hiddenStarMessage.classList.remove("show");
+
+    hiddenStarOverlay.classList.remove("show");
+
+}
+
+
+hiddenStar.addEventListener(
+    "click",
+    openHiddenStar
+);
+
+
+closeSecret.addEventListener(
+    "click",
+    closeHiddenStar
+);
+
+
+hiddenStarOverlay.addEventListener(
+    "click",
+    closeHiddenStar
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeHiddenStar();
+
+        }
+
+    }
 );
 
 </script>
