@@ -134,8 +134,11 @@ nav{
 
 /* ================= HERO ================= */
 
+/* Desktop spacing optimized */
 .hero{
-    min-height:calc(100vh - 72px);
+    min-height:620px;
+    height:calc(100vh - 72px);
+    max-height:760px;
     display:flex;
     align-items:center;
     position:relative;
@@ -208,7 +211,10 @@ nav{
     display:grid;
     grid-template-columns:1.2fr .8fr;
     align-items:center;
-    gap:70px;
+
+    /* Reduced desktop gap */
+    gap:40px;
+
     position:relative;
     z-index:2;
 }
@@ -889,7 +895,6 @@ section{
     animation-delay:1.2s;
 }
 
-
 .flow-card:nth-child(2){
     animation-delay:1s;
 }
@@ -897,7 +902,6 @@ section{
 .flow-card:nth-child(2) > *{
     animation-delay:1s;
 }
-
 
 .flow-card:nth-child(3){
     animation-delay:2s;
@@ -907,7 +911,6 @@ section{
     animation-delay:2s;
 }
 
-
 .flow-card:nth-child(4){
     animation-delay:3s;
 }
@@ -915,7 +918,6 @@ section{
 .flow-card:nth-child(4) > *{
     animation-delay:3s;
 }
-
 
 .work-card:nth-child(2){
     animation-delay:1.5s;
@@ -925,7 +927,6 @@ section{
     animation-delay:1.5s;
 }
 
-
 .work-card:nth-child(3){
     animation-delay:2.7s;
 }
@@ -933,7 +934,6 @@ section{
 .work-card:nth-child(3) > *{
     animation-delay:2.7s;
 }
-
 
 .mindset-box{
     animation-delay:1.8s;
@@ -1655,6 +1655,98 @@ footer{
 }
 
 
+/* =====================================================
+   FLOATING WHATSAPP BUTTON
+   ===================================================== */
+
+.whatsapp-float{
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 17px;
+
+    background:#101010;
+
+    border:1px solid rgba(37,211,102,.55);
+
+    border-radius:50px;
+
+    color:#25d366;
+
+    font-size:12px;
+    font-weight:600;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.45),
+        0 0 18px rgba(37,211,102,.08);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+
+    backdrop-filter:blur(12px);
+}
+
+.whatsapp-float i{
+    font-size:21px;
+}
+
+.whatsapp-float:hover{
+    transform:translateY(-4px);
+
+    background:#111;
+
+    border-color:#25d366;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.5),
+        0 0 25px rgba(37,211,102,.18);
+
+    color:#25d366;
+}
+
+.whatsapp-float::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-4px;
+
+    border-radius:55px;
+
+    border:1px solid rgba(37,211,102,.10);
+
+    animation:whatsappPulse 3s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+@keyframes whatsappPulse{
+
+    0%,
+    100%{
+        transform:scale(1);
+        opacity:.25;
+    }
+
+    50%{
+        transform:scale(1.04);
+        opacity:.7;
+    }
+
+}
+
+
 /* ================= TABLET / MOBILE ================= */
 
 @media(max-width:850px){
@@ -1713,6 +1805,9 @@ footer{
 
     .hero{
         min-height:auto;
+        height:auto;
+        max-height:none;
+
         padding:75px 0 90px;
     }
 
@@ -1959,6 +2054,33 @@ footer{
         padding:5px 7px;
 
         font-size:6.5px;
+    }
+
+
+    /* WHATSAPP MOBILE */
+
+    .whatsapp-float{
+        right:15px;
+        bottom:17px;
+
+        width:50px;
+        height:50px;
+
+        padding:0;
+
+        border-radius:50%;
+
+        justify-content:center;
+
+        font-size:0;
+    }
+
+    .whatsapp-float i{
+        font-size:24px;
+    }
+
+    .whatsapp-float::before{
+        border-radius:50%;
     }
 
 }
@@ -2818,6 +2940,23 @@ aria-label="Email">
 
 
 </footer>
+
+
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+
+<a
+href="https://wa.me/8801679606860"
+target="_blank"
+rel="noopener noreferrer"
+class="whatsapp-float"
+aria-label="Contact me on WhatsApp">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+<span>WhatsApp Call</span>
+
+</a>
 
 
 
