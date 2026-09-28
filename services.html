@@ -11,6 +11,9 @@
 <meta name="description"
 content="Professional digital services by MD Abdul Al Mamun — Graphic Design, Digital Marketing, Web Design, Social Media Management, Product Promotion and Freelance Digital Services.">
 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
 
 /* =========================================================
@@ -440,9 +443,6 @@ h1 span{
 .animated-border{
     position:relative;
 }
-
-
-/* Moving light */
 
 .animated-border .border-light{
     position:absolute;
@@ -1298,6 +1298,195 @@ footer{
 
 
 /* =========================================================
+   FLOATING EMAIL / GMAIL
+   PREMIUM GOLD ROUND ANIMATION
+========================================================= */
+
+.email-float{
+
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    width:58px;
+    height:58px;
+
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#101010;
+
+    border:1px solid rgba(212,175,55,.75);
+
+    border-radius:50%;
+
+    color:#d4af37;
+
+    font-size:21px;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.5),
+        0 0 20px rgba(212,175,55,.12);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
+
+
+/* INNER GOLD RING */
+
+.email-float::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-5px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.55);
+
+    border-top-color:#fff0a0;
+
+    border-right-color:rgba(212,175,55,.15);
+
+    animation:
+        emailRingOne 7s linear infinite;
+
+    pointer-events:none;
+}
+
+
+/* OUTER GOLD RING */
+
+.email-float::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-11px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.22);
+
+    border-bottom-color:#d4af37;
+
+    border-left-color:rgba(255,240,160,.08);
+
+    animation:
+        emailRingTwo 11s linear infinite reverse;
+
+    pointer-events:none;
+}
+
+
+/* INNER RING ROTATION */
+
+@keyframes emailRingOne{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* OUTER RING ROTATION */
+
+@keyframes emailRingTwo{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* GOLD ORBIT DOT */
+
+.email-float span{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    box-shadow:
+        0 0 8px #d4af37,
+        0 0 15px rgba(212,175,55,.6);
+
+    top:-9px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    animation:
+        emailDot 7s linear infinite;
+
+    pointer-events:none;
+}
+
+
+@keyframes emailDot{
+
+    from{
+        transform:
+            translateX(-50%)
+            rotate(0deg);
+    }
+
+    to{
+        transform:
+            translateX(-50%)
+            rotate(360deg);
+    }
+
+}
+
+
+/* EMAIL HOVER */
+
+.email-float:hover{
+
+    transform:translateY(-5px);
+
+    background:#111;
+
+    color:#fff0a0;
+
+    border-color:#d4af37;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.55),
+        0 0 30px rgba(212,175,55,.22);
+}
+
+
+/* =========================================================
    DESKTOP COMPACT NAV
 ========================================================= */
 
@@ -1435,6 +1624,38 @@ footer{
 
     .final-cta h2{
         font-size:28px;
+    }
+
+
+    /* =====================================================
+       EMAIL MOBILE
+    ===================================================== */
+
+    .email-float{
+
+        right:15px;
+        bottom:17px;
+
+        width:52px;
+        height:52px;
+
+        font-size:20px;
+    }
+
+    .email-float::before{
+        inset:-4px;
+    }
+
+    .email-float::after{
+        inset:-9px;
+    }
+
+    .email-float span{
+
+        width:5px;
+        height:5px;
+
+        top:-7px;
     }
 
 }
@@ -2648,6 +2869,22 @@ Chat on WhatsApp
 © 2026 MD Abdul Al Mamun — Digital Service
 
 </footer>
+
+
+<!-- =======================================================
+     FLOATING EMAIL / GMAIL
+======================================================= -->
+
+<a
+href="mailto:sajjadorigin446@gmail.com"
+class="email-float"
+aria-label="Send Email">
+
+<i class="fa-regular fa-envelope"></i>
+
+<span></span>
+
+</a>
 
 
 <!-- =======================================================
