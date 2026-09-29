@@ -583,6 +583,9 @@ nav{
     background:#000;
 }
 
+
+/* ================= PREMIUM VIDEO OVERLAY ================= */
+
 .video-overlay{
     position:absolute;
     inset:0;
@@ -775,6 +778,365 @@ nav{
     }
 }
 
+
+/* =====================================================
+   ULTRA PREMIUM CUSTOM VIDEO CONTROLS
+   ===================================================== */
+
+.video-controls{
+    position:absolute;
+    left:14px;
+    right:14px;
+    bottom:14px;
+    z-index:30;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    min-height:58px;
+    padding:9px 11px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,18,18,.88),
+            rgba(5,5,5,.95)
+        );
+
+    border:1px solid rgba(212,175,55,.22);
+    border-radius:15px;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.65),
+        0 0 25px rgba(212,175,55,.045),
+        inset 0 1px 0 rgba(255,255,255,.035),
+        inset 0 0 25px rgba(212,175,55,.025);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(12px);
+
+    transition:
+        opacity .35s ease,
+        visibility .35s ease,
+        transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.video-frame.controls-visible .video-controls{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.video-controls::before{
+    content:"";
+    position:absolute;
+    left:12%;
+    right:12%;
+    top:-1px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,240,160,.75),
+            #d4af37,
+            rgba(255,240,160,.75),
+            transparent
+        );
+
+    opacity:.55;
+    pointer-events:none;
+}
+
+
+/* CONTROL BUTTON */
+
+.video-control-btn{
+    width:38px;
+    height:38px;
+    flex:0 0 38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(212,175,55,.18);
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(212,175,55,.025)
+        );
+
+    color:#cfcfcf;
+
+    font-size:13px;
+    cursor:pointer;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035),
+        0 5px 15px rgba(0,0,0,.25);
+
+    transition:
+        color .3s ease,
+        border-color .3s ease,
+        background .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.video-control-btn:hover{
+    color:#fff0a0;
+    border-color:rgba(212,175,55,.65);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(212,175,55,.12),
+            rgba(212,175,55,.035)
+        );
+
+    box-shadow:
+        0 0 18px rgba(212,175,55,.10),
+        inset 0 0 12px rgba(212,175,55,.035);
+
+    transform:translateY(-1px);
+}
+
+.video-control-btn:active{
+    transform:scale(.94);
+}
+
+
+/* TIME */
+
+.video-time{
+    display:flex;
+    align-items:center;
+    gap:4px;
+
+    color:#bdbdbd;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+    min-width:73px;
+}
+
+.video-time-separator{
+    color:#555;
+}
+
+#videoDuration{
+    color:#777;
+}
+
+
+/* PROGRESS AREA */
+
+.video-progress-wrap{
+    flex:1;
+    min-width:70px;
+    display:flex;
+    align-items:center;
+}
+
+
+/* MAIN TIMELINE */
+
+.video-progress{
+    width:100%;
+    height:4px;
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.16),
+            rgba(255,255,255,.07)
+        );
+
+    border-radius:20px;
+    outline:none;
+    cursor:pointer;
+}
+
+
+/* WEBKIT TIMELINE */
+
+.video-progress::-webkit-slider-runnable-track{
+    height:4px;
+    border-radius:20px;
+    background:
+        linear-gradient(
+            90deg,
+            #d4af37 var(--progress,0%),
+            rgba(255,255,255,.10) var(--progress,0%)
+        );
+}
+
+.video-progress::-webkit-slider-thumb{
+    appearance:none;
+    -webkit-appearance:none;
+
+    width:12px;
+    height:12px;
+
+    margin-top:-4px;
+
+    border-radius:50%;
+    border:1px solid #fff0a0;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff0a0,
+            #d4af37 60%,
+            #8d6d13
+        );
+
+    box-shadow:
+        0 0 8px rgba(212,175,55,.45),
+        0 0 18px rgba(212,175,55,.18);
+
+    cursor:pointer;
+    transition:transform .2s ease;
+}
+
+.video-progress:hover::-webkit-slider-thumb{
+    transform:scale(1.25);
+}
+
+
+/* FIREFOX TIMELINE */
+
+.video-progress::-moz-range-track{
+    height:4px;
+    border-radius:20px;
+    background:rgba(255,255,255,.10);
+}
+
+.video-progress::-moz-range-progress{
+    height:4px;
+    border-radius:20px;
+    background:#d4af37;
+}
+
+.video-progress::-moz-range-thumb{
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+    border:1px solid #fff0a0;
+
+    background:#d4af37;
+
+    box-shadow:
+        0 0 8px rgba(212,175,55,.45);
+
+    cursor:pointer;
+}
+
+
+/* VOLUME */
+
+.video-volume-wrap{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.video-volume{
+    width:65px;
+    height:3px;
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    background:rgba(255,255,255,.10);
+    border-radius:20px;
+    outline:none;
+    cursor:pointer;
+}
+
+.video-volume::-webkit-slider-runnable-track{
+    height:3px;
+    border-radius:20px;
+    background:
+        linear-gradient(
+            90deg,
+            #d4af37 var(--volume,100%),
+            rgba(255,255,255,.10) var(--volume,100%)
+        );
+}
+
+.video-volume::-webkit-slider-thumb{
+    appearance:none;
+    -webkit-appearance:none;
+
+    width:9px;
+    height:9px;
+
+    margin-top:-3px;
+
+    border-radius:50%;
+    border:1px solid #fff0a0;
+    background:#d4af37;
+
+    box-shadow:0 0 7px rgba(212,175,55,.4);
+}
+
+.video-volume::-moz-range-track{
+    height:3px;
+    border-radius:20px;
+    background:rgba(255,255,255,.10);
+}
+
+.video-volume::-moz-range-progress{
+    height:3px;
+    border-radius:20px;
+    background:#d4af37;
+}
+
+.video-volume::-moz-range-thumb{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    border:1px solid #fff0a0;
+    background:#d4af37;
+}
+
+
+/* FULLSCREEN */
+
+.video-fullscreen{
+    margin-left:auto;
+}
+
+
+/* FOCUS */
+
+.video-control-btn:focus-visible,
+.video-progress:focus-visible,
+.video-volume:focus-visible{
+    outline:1px solid rgba(212,175,55,.8);
+    outline-offset:3px;
+}
+
+
+/* VIDEO CORNERS */
+
 .video-corner{
     position:absolute;
     width:45px;
@@ -813,224 +1175,6 @@ nav{
     border-right:1px solid rgba(255,240,160,.55);
     border-bottom:1px solid rgba(255,240,160,.55);
     border-radius:0 0 8px 0;
-}
-
-
-/* =====================================================
-   PREMIUM CUSTOM VIDEO CONTROLS
-   ===================================================== */
-
-.video-controls{
-    position:absolute;
-    left:12px;
-    right:12px;
-    bottom:12px;
-    height:58px;
-    padding:0 13px;
-    display:flex;
-    align-items:center;
-    gap:11px;
-    background:linear-gradient(
-        180deg,
-        rgba(10,10,10,.68),
-        rgba(3,3,3,.92)
-    );
-    border:1px solid rgba(212,175,55,.20);
-    border-radius:12px;
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        inset 0 0 20px rgba(212,175,55,.025);
-    z-index:20;
-    opacity:0;
-    transform:translateY(8px);
-    transition:
-        opacity .35s ease,
-        transform .35s ease;
-}
-
-.video-frame:hover .video-controls,
-.video-frame.controls-visible .video-controls,
-.video-frame.paused .video-controls{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.video-control-btn{
-    width:34px;
-    height:34px;
-    flex-shrink:0;
-    border:1px solid rgba(212,175,55,.20);
-    border-radius:8px;
-    background:rgba(255,255,255,.025);
-    color:#d4af37;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:
-        background .3s ease,
-        border-color .3s ease,
-        color .3s ease,
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-.video-control-btn:hover{
-    background:rgba(212,175,55,.10);
-    border-color:rgba(212,175,55,.75);
-    color:#fff0a0;
-    transform:translateY(-1px);
-    box-shadow:0 0 15px rgba(212,175,55,.10);
-}
-
-.video-control-btn i{
-    font-size:12px;
-}
-
-.video-time{
-    min-width:78px;
-    color:#aaa;
-    font-size:9px;
-    letter-spacing:.4px;
-    white-space:nowrap;
-    text-align:center;
-}
-
-.video-time span:first-child{
-    color:#eee;
-}
-
-.video-progress-wrap{
-    flex:1;
-    display:flex;
-    align-items:center;
-    min-width:50px;
-}
-
-.video-progress{
-    width:100%;
-    height:4px;
-    appearance:none;
-    -webkit-appearance:none;
-    background:rgba(255,255,255,.12);
-    border-radius:10px;
-    outline:none;
-    cursor:pointer;
-    overflow:hidden;
-}
-
-.video-progress::-webkit-slider-runnable-track{
-    height:4px;
-    background:rgba(255,255,255,.12);
-    border-radius:10px;
-}
-
-.video-progress::-webkit-slider-thumb{
-    appearance:none;
-    -webkit-appearance:none;
-    width:0;
-    height:4px;
-    background:#d4af37;
-    box-shadow:-1000px 0 0 1000px #d4af37;
-    cursor:pointer;
-}
-
-.video-progress::-moz-range-track{
-    height:4px;
-    background:rgba(255,255,255,.12);
-    border-radius:10px;
-}
-
-.video-progress::-moz-range-progress{
-    height:4px;
-    background:#d4af37;
-    border-radius:10px;
-}
-
-.video-progress::-moz-range-thumb{
-    width:9px;
-    height:9px;
-    border:none;
-    border-radius:50%;
-    background:#fff0a0;
-    box-shadow:0 0 8px rgba(212,175,55,.55);
-    cursor:pointer;
-}
-
-.video-volume-wrap{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.video-volume{
-    width:65px;
-    height:4px;
-    appearance:none;
-    -webkit-appearance:none;
-    background:rgba(255,255,255,.12);
-    border-radius:10px;
-    outline:none;
-    cursor:pointer;
-}
-
-.video-volume::-webkit-slider-runnable-track{
-    height:4px;
-    background:rgba(255,255,255,.12);
-    border-radius:10px;
-}
-
-.video-volume::-webkit-slider-thumb{
-    appearance:none;
-    -webkit-appearance:none;
-    width:9px;
-    height:9px;
-    margin-top:-2.5px;
-    border-radius:50%;
-    background:#d4af37;
-    box-shadow:0 0 8px rgba(212,175,55,.45);
-}
-
-.video-volume::-moz-range-track{
-    height:4px;
-    background:rgba(255,255,255,.12);
-}
-
-.video-volume::-moz-range-progress{
-    height:4px;
-    background:#d4af37;
-}
-
-.video-volume::-moz-range-thumb{
-    width:9px;
-    height:9px;
-    border:none;
-    border-radius:50%;
-    background:#d4af37;
-}
-
-.video-fullscreen{
-    margin-left:auto;
-}
-
-.video-controls::before{
-    content:"";
-    position:absolute;
-    left:10%;
-    right:10%;
-    top:-1px;
-    height:1px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,240,160,.65),
-        #d4af37,
-        rgba(255,240,160,.65),
-        transparent
-    );
-    opacity:.55;
 }
 
 .video-meta{
@@ -2254,7 +2398,7 @@ footer{
     }
 
 
-    /* ================= VIDEO MOBILE ================= */
+    /* VIDEO MOBILE */
 
     .video-section{
         padding:75px 0;
@@ -2295,6 +2439,58 @@ footer{
         width:118px;
         height:118px;
     }
+
+
+    /* PREMIUM CONTROLS MOBILE */
+
+    .video-controls{
+        left:8px;
+        right:8px;
+        bottom:8px;
+
+        min-height:50px;
+        padding:7px 8px;
+
+        gap:7px;
+        border-radius:12px;
+    }
+
+    .video-control-btn{
+        width:34px;
+        height:34px;
+        flex-basis:34px;
+        border-radius:9px;
+        font-size:11px;
+    }
+
+    .video-time{
+        min-width:67px;
+        font-size:9px;
+        gap:3px;
+    }
+
+    .video-volume{
+        display:none;
+    }
+
+    .video-volume-wrap{
+        gap:0;
+    }
+
+    .video-progress{
+        height:4px;
+    }
+
+    .video-progress::-webkit-slider-thumb{
+        width:11px;
+        height:11px;
+        margin-top:-3.5px;
+    }
+
+    .video-fullscreen{
+        margin-left:0;
+    }
+
 
     .video-dot-one{
         animation-name:videoOrbitOneMobile;
@@ -2347,39 +2543,9 @@ footer{
         right:10px;
     }
 
-    .video-controls{
-        left:7px;
-        right:7px;
-        bottom:7px;
-        height:52px;
-        padding:0 8px;
-        gap:7px;
-        border-radius:9px;
-        opacity:1;
-        transform:translateY(0);
-    }
-
-    .video-control-btn{
-        width:31px;
-        height:31px;
-        border-radius:7px;
-    }
-
-    .video-control-btn i{
-        font-size:11px;
-    }
-
-    .video-time{
-        min-width:65px;
+    .video-meta{
         font-size:8px;
-    }
-
-    .video-volume-wrap{
-        display:none;
-    }
-
-    .video-fullscreen{
-        margin-left:0;
+        margin-top:14px;
     }
 
 
@@ -2556,24 +2722,36 @@ footer{
         height:100px;
     }
 
+
+    /* EXTRA COMPACT CONTROLS */
+
     .video-controls{
-        height:48px;
-        padding:0 7px;
-        gap:6px;
+        left:6px;
+        right:6px;
+        bottom:6px;
+
+        min-height:45px;
+        padding:5px 6px;
+
+        gap:5px;
+        border-radius:10px;
     }
 
     .video-control-btn{
-        width:29px;
-        height:29px;
+        width:31px;
+        height:31px;
+        flex-basis:31px;
+        border-radius:8px;
+        font-size:10px;
     }
 
     .video-time{
-        min-width:61px;
-        font-size:7px;
+        min-width:62px;
+        font-size:8px;
     }
 
-    .video-progress{
-        height:4px;
+    .video-progress-wrap{
+        min-width:45px;
     }
 
     .video-meta{
@@ -2746,49 +2924,6 @@ footer{
         height:43px;
         font-size:20px;
     }
-}
-
-
-/* ================= FULLSCREEN VIDEO ================= */
-
-.video-frame:fullscreen{
-    width:100vw;
-    height:100vh;
-    aspect-ratio:auto;
-    border-radius:0;
-    background:#000;
-}
-
-.video-frame:fullscreen video{
-    width:100%;
-    height:100%;
-    border-radius:0;
-    object-fit:contain;
-}
-
-.video-frame:fullscreen .video-overlay{
-    border-radius:0;
-}
-
-.video-frame:fullscreen .video-controls{
-    left:25px;
-    right:25px;
-    bottom:20px;
-}
-
-.video-frame:-webkit-full-screen{
-    width:100vw;
-    height:100vh;
-    aspect-ratio:auto;
-    border-radius:0;
-    background:#000;
-}
-
-.video-frame:-webkit-full-screen video{
-    width:100%;
-    height:100%;
-    border-radius:0;
-    object-fit:contain;
 }
 
 
@@ -2980,12 +3115,14 @@ A short visual introduction to my creative and digital journey.
 
 <div class="video-wrapper">
 
-<div class="video-frame paused" id="videoFrame">
+<div class="video-frame"
+id="videoFrame">
 
 <video
 id="portfolioVideo"
 preload="metadata"
-playsinline>
+playsinline
+controlsList="nodownload">
 
 <source
 src="portfolio-video.mp4"
@@ -2996,7 +3133,7 @@ Your browser does not support the video element.
 </video>
 
 
-<!-- ================= PREMIUM PLAY OVERLAY ================= -->
+<!-- PREMIUM PLAY OVERLAY -->
 
 <div
 class="video-overlay"
@@ -3018,14 +3155,6 @@ tabindex="0">
 </div>
 
 
-<!-- ================= CINEMATIC CORNERS ================= -->
-
-<span class="video-corner top-left"></span>
-<span class="video-corner top-right"></span>
-<span class="video-corner bottom-left"></span>
-<span class="video-corner bottom-right"></span>
-
-
 <!-- =====================================================
      PREMIUM CUSTOM VIDEO CONTROLS
      ===================================================== -->
@@ -3033,7 +3162,6 @@ tabindex="0">
 <div
 class="video-controls"
 id="videoControls">
-
 
 <button
 type="button"
@@ -3052,7 +3180,9 @@ aria-label="Play">
 00:00
 </span>
 
-&nbsp; / &nbsp;
+<span class="video-time-separator">
+/
+</span>
 
 <span id="videoDuration">
 00:00
@@ -3112,6 +3242,14 @@ aria-label="Fullscreen">
 </button>
 
 </div>
+
+
+<!-- CINEMATIC CORNERS -->
+
+<span class="video-corner top-left"></span>
+<span class="video-corner top-right"></span>
+<span class="video-corner bottom-left"></span>
+<span class="video-corner bottom-right"></span>
 
 </div>
 
@@ -3784,7 +3922,7 @@ document.querySelectorAll(".nav-links a")
 
 
 /* =====================================================
-   PREMIUM CUSTOM VIDEO PLAYER
+   ULTRA PREMIUM CUSTOM VIDEO PLAYER
    ===================================================== */
 
 const portfolioVideo =
@@ -3795,6 +3933,9 @@ document.getElementById("videoFrame");
 
 const videoOverlay =
 document.getElementById("videoOverlay");
+
+const videoControls =
+document.getElementById("videoControls");
 
 const videoPlayBtn =
 document.getElementById("videoPlayBtn");
@@ -3818,6 +3959,9 @@ const videoDuration =
 document.getElementById("videoDuration");
 
 
+let videoControlsTimer = null;
+
+
 /* ================= FORMAT TIME ================= */
 
 function formatVideoTime(seconds){
@@ -3829,91 +3973,224 @@ function formatVideoTime(seconds){
     const minutes =
     Math.floor(seconds / 60);
 
-    const secs =
+    const remainingSeconds =
     Math.floor(seconds % 60);
 
-    return (
-        String(minutes).padStart(2,"0")
-        + ":" +
-        String(secs).padStart(2,"0")
+    return String(minutes).padStart(2,"0")
+        + ":"
+        + String(remainingSeconds).padStart(2,"0");
+
+}
+
+
+/* ================= SHOW CONTROLS ================= */
+
+function showVideoControls(){
+
+    videoFrame.classList.add(
+        "controls-visible"
+    );
+
+    clearTimeout(
+        videoControlsTimer
+    );
+
+
+    if(!portfolioVideo.paused){
+
+        videoControlsTimer =
+        setTimeout(function(){
+
+            videoFrame.classList.remove(
+                "controls-visible"
+            );
+
+        },3000);
+
+    }
+
+}
+
+
+/* ================= KEEP CONTROLS ================= */
+
+function keepVideoControls(){
+
+    videoFrame.classList.add(
+        "controls-visible"
+    );
+
+    clearTimeout(
+        videoControlsTimer
     );
 
 }
 
 
-/* ================= PLAY BUTTON ================= */
+/* ================= UPDATE PLAY BUTTON ================= */
 
 function updatePlayButton(){
 
     const icon =
     videoPlayBtn.querySelector("i");
 
+
     if(portfolioVideo.paused){
 
-        icon.classList.remove("fa-pause");
-        icon.classList.add("fa-play");
+        icon.classList.remove(
+            "fa-pause"
+        );
+
+        icon.classList.add(
+            "fa-play"
+        );
 
         videoPlayBtn.setAttribute(
             "aria-label",
             "Play"
         );
 
-        videoFrame.classList.add("paused");
-
     }else{
 
-        icon.classList.remove("fa-play");
-        icon.classList.add("fa-pause");
+        icon.classList.remove(
+            "fa-play"
+        );
+
+        icon.classList.add(
+            "fa-pause"
+        );
 
         videoPlayBtn.setAttribute(
             "aria-label",
             "Pause"
         );
 
-        videoFrame.classList.remove("paused");
+    }
+
+}
+
+
+/* ================= UPDATE MUTE ================= */
+
+function updateMuteButton(){
+
+    const icon =
+    videoMuteBtn.querySelector("i");
+
+
+    if(
+        portfolioVideo.muted ||
+        portfolioVideo.volume === 0
+    ){
+
+        icon.className =
+        "fa-solid fa-volume-xmark";
+
+        videoMuteBtn.setAttribute(
+            "aria-label",
+            "Unmute"
+        );
+
+    }else if(
+        portfolioVideo.volume < .5
+    ){
+
+        icon.className =
+        "fa-solid fa-volume-low";
+
+        videoMuteBtn.setAttribute(
+            "aria-label",
+            "Mute"
+        );
+
+    }else{
+
+        icon.className =
+        "fa-solid fa-volume-high";
+
+        videoMuteBtn.setAttribute(
+            "aria-label",
+            "Mute"
+        );
 
     }
 
 }
 
 
-/* ================= OVERLAY ================= */
+/* ================= UPDATE VOLUME BAR ================= */
 
-function updateVideoOverlay(){
+function updateVolumeBar(){
 
-    if(portfolioVideo.paused){
+    const percentage =
+    (portfolioVideo.volume * 100) + "%";
 
-        videoOverlay.classList.remove(
-            "playing"
-        );
+    videoVolume.style.setProperty(
+        "--volume",
+        percentage
+    );
 
-    }else{
+}
 
-        videoOverlay.classList.add(
-            "playing"
-        );
 
+/* ================= UPDATE PROGRESS ================= */
+
+function updateVideoProgress(){
+
+    if(
+        !Number.isFinite(
+            portfolioVideo.duration
+        )
+    ){
+        return;
     }
+
+
+    videoProgress.max =
+    portfolioVideo.duration;
+
+
+    videoProgress.value =
+    portfolioVideo.currentTime;
+
+
+    const percentage =
+    (
+        portfolioVideo.currentTime /
+        portfolioVideo.duration
+    ) * 100;
+
+
+    videoProgress.style.setProperty(
+        "--progress",
+        percentage + "%"
+    );
+
+
+    videoCurrentTime.textContent =
+    formatVideoTime(
+        portfolioVideo.currentTime
+    );
 
 }
 
 
 /* ================= PLAY / PAUSE ================= */
 
-async function toggleVideo(){
+function toggleVideo(){
 
     if(portfolioVideo.paused){
 
-        try{
+        const playPromise =
+        portfolioVideo.play();
 
-            await portfolioVideo.play();
+        if(playPromise !== undefined){
 
-        }catch(error){
+            playPromise.catch(function(){
 
-            console.log(
-                "Video playback error:",
-                error
-            );
+                updatePlayButton();
+
+            });
 
         }
 
@@ -3926,9 +4203,9 @@ async function toggleVideo(){
 }
 
 
-/* ================= PLAY BUTTON EVENT ================= */
+/* ================= OVERLAY PLAY ================= */
 
-videoPlayBtn.addEventListener(
+videoOverlay.addEventListener(
     "click",
     function(event){
 
@@ -3940,19 +4217,7 @@ videoPlayBtn.addEventListener(
 );
 
 
-/* ================= BIG PLAY OVERLAY ================= */
-
-videoOverlay.addEventListener(
-    "click",
-    function(){
-
-        toggleVideo();
-
-    }
-);
-
-
-/* ================= KEYBOARD ================= */
+/* ================= OVERLAY KEYBOARD ================= */
 
 videoOverlay.addEventListener(
     "keydown",
@@ -3973,31 +4238,77 @@ videoOverlay.addEventListener(
 );
 
 
-/* ================= PLAY ================= */
+/* ================= VIDEO CLICK ================= */
 
 portfolioVideo.addEventListener(
-    "play",
+    "click",
     function(){
 
-        updatePlayButton();
-        updateVideoOverlay();
+        const controlsHidden =
+        !videoFrame.classList.contains(
+            "controls-visible"
+        );
+
+
+        /*
+         * If controls are hidden:
+         * show controls only.
+         * DO NOT pause/play.
+         */
+
+        if(controlsHidden){
+
+            showVideoControls();
+
+            return;
+
+        }
+
+
+        /*
+         * If controls are visible:
+         * normal play/pause behavior.
+         */
+
+        toggleVideo();
+
+        showVideoControls();
 
     }
 );
 
 
-/* ================= PAUSE ================= */
+/* ================= PLAY EVENT ================= */
+
+portfolioVideo.addEventListener(
+    "play",
+    function(){
+
+        videoOverlay.classList.add(
+            "playing"
+        );
+
+        updatePlayButton();
+
+        showVideoControls();
+
+    }
+);
+
+
+/* ================= PAUSE EVENT ================= */
 
 portfolioVideo.addEventListener(
     "pause",
     function(){
 
-        updatePlayButton();
-        updateVideoOverlay();
-
-        videoFrame.classList.add(
-            "controls-visible"
+        videoOverlay.classList.remove(
+            "playing"
         );
+
+        updatePlayButton();
+
+        keepVideoControls();
 
     }
 );
@@ -4009,15 +4320,21 @@ portfolioVideo.addEventListener(
     "ended",
     function(){
 
-        updatePlayButton();
-        updateVideoOverlay();
-
-        videoProgress.value =
-        portfolioVideo.duration;
+        videoOverlay.classList.remove(
+            "playing"
+        );
 
         videoFrame.classList.add(
-            "paused"
+            "controls-visible"
         );
+
+        clearTimeout(
+            videoControlsTimer
+        );
+
+        updatePlayButton();
+
+        updateVideoProgress();
 
     }
 );
@@ -4034,8 +4351,14 @@ portfolioVideo.addEventListener(
             portfolioVideo.duration
         );
 
+        videoCurrentTime.textContent =
+        "00:00";
+
         videoProgress.max =
         portfolioVideo.duration;
+
+        videoProgress.value =
+        0;
 
     }
 );
@@ -4047,38 +4370,29 @@ portfolioVideo.addEventListener(
     "timeupdate",
     function(){
 
-        if(!portfolioVideo.duration){
-            return;
-        }
-
-        videoProgress.value =
-        portfolioVideo.currentTime;
-
-        videoCurrentTime.textContent =
-        formatVideoTime(
-            portfolioVideo.currentTime
-        );
+        updateVideoProgress();
 
     }
 );
 
 
-/* ================= SEEK ================= */
+/* ================= PLAY BUTTON ================= */
 
-videoProgress.addEventListener(
-    "input",
-    function(){
+videoPlayBtn.addEventListener(
+    "click",
+    function(event){
 
-        portfolioVideo.currentTime =
-        Number(
-            videoProgress.value
-        );
+        event.stopPropagation();
+
+        toggleVideo();
+
+        showVideoControls();
 
     }
 );
 
 
-/* ================= MUTE ================= */
+/* ================= MUTE BUTTON ================= */
 
 videoMuteBtn.addEventListener(
     "click",
@@ -4091,85 +4405,23 @@ videoMuteBtn.addEventListener(
 
         updateMuteButton();
 
+        showVideoControls();
+
     }
 );
-
-
-/* ================= MUTE ICON ================= */
-
-function updateMuteButton(){
-
-    const icon =
-    videoMuteBtn.querySelector("i");
-
-    if(
-        portfolioVideo.muted ||
-        portfolioVideo.volume === 0
-    ){
-
-        icon.classList.remove(
-            "fa-volume-high",
-            "fa-volume-low"
-        );
-
-        icon.classList.add(
-            "fa-volume-xmark"
-        );
-
-        videoMuteBtn.setAttribute(
-            "aria-label",
-            "Unmute"
-        );
-
-    }else if(
-        portfolioVideo.volume < .5
-    ){
-
-        icon.classList.remove(
-            "fa-volume-high",
-            "fa-volume-xmark"
-        );
-
-        icon.classList.add(
-            "fa-volume-low"
-        );
-
-        videoMuteBtn.setAttribute(
-            "aria-label",
-            "Mute"
-        );
-
-    }else{
-
-        icon.classList.remove(
-            "fa-volume-low",
-            "fa-volume-xmark"
-        );
-
-        icon.classList.add(
-            "fa-volume-high"
-        );
-
-        videoMuteBtn.setAttribute(
-            "aria-label",
-            "Mute"
-        );
-
-    }
-
-}
 
 
 /* ================= VOLUME ================= */
 
 videoVolume.addEventListener(
     "input",
-    function(){
+    function(event){
+
+        event.stopPropagation();
 
         portfolioVideo.volume =
-        Number(
-            videoVolume.value
-        );
+        Number(event.target.value);
+
 
         if(
             portfolioVideo.volume > 0
@@ -4180,46 +4432,76 @@ videoVolume.addEventListener(
 
         }
 
+
         updateMuteButton();
+
+        updateVolumeBar();
+
+        showVideoControls();
 
     }
 );
 
 
-/* ================= FULLSCREEN ================= */
+/* ================= TIMELINE ================= */
 
-videoFullscreenBtn.addEventListener(
-    "click",
-    async function(event){
+videoProgress.addEventListener(
+    "input",
+    function(event){
 
         event.stopPropagation();
 
-        try{
+        portfolioVideo.currentTime =
+        Number(event.target.value);
 
-            if(document.fullscreenElement){
+        updateVideoProgress();
 
-                await document.exitFullscreen();
+        showVideoControls();
 
-            }else if(
-                videoFrame.requestFullscreen
-            ){
+    }
+);
 
-                await videoFrame.requestFullscreen();
 
-            }else if(
-                videoFrame.webkitRequestFullscreen
-            ){
+/* ================= CONTROL CLICK ================= */
 
-                videoFrame.webkitRequestFullscreen();
+videoControls.addEventListener(
+    "click",
+    function(event){
 
-            }
+        event.stopPropagation();
 
-        }catch(error){
+        showVideoControls();
 
-            console.log(
-                "Fullscreen error:",
-                error
-            );
+    }
+);
+
+
+/* ================= CONTROL TOUCH ================= */
+
+videoControls.addEventListener(
+    "touchstart",
+    function(event){
+
+        event.stopPropagation();
+
+        showVideoControls();
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* ================= CONTROL MOUSE MOVE ================= */
+
+videoControls.addEventListener(
+    "mousemove",
+    function(){
+
+        if(!portfolioVideo.paused){
+
+            showVideoControls();
 
         }
 
@@ -4227,20 +4509,78 @@ videoFullscreenBtn.addEventListener(
 );
 
 
-/* ================= FULLSCREEN ICON ================= */
+/* ================= FULLSCREEN ================= */
 
-document.addEventListener(
-    "fullscreenchange",
-    updateFullscreenIcon
+function toggleVideoFullscreen(){
+
+    if(
+        !document.fullscreenElement &&
+        !document.webkitFullscreenElement
+    ){
+
+        if(
+            videoFrame.requestFullscreen
+        ){
+
+            videoFrame.requestFullscreen();
+
+        }else if(
+            videoFrame.webkitRequestFullscreen
+        ){
+
+            videoFrame.webkitRequestFullscreen();
+
+        }
+
+    }else{
+
+        if(
+            document.exitFullscreen
+        ){
+
+            document.exitFullscreen();
+
+        }else if(
+            document.webkitExitFullscreen
+        ){
+
+            document.webkitExitFullscreen();
+
+        }
+
+    }
+
+}
+
+
+videoFullscreenBtn.addEventListener(
+    "click",
+    function(event){
+
+        event.stopPropagation();
+
+        toggleVideoFullscreen();
+
+        showVideoControls();
+
+    }
 );
 
+
+/* ================= FULLSCREEN ICON ================= */
 
 function updateFullscreenIcon(){
 
     const icon =
     videoFullscreenBtn.querySelector("i");
 
-    if(document.fullscreenElement){
+
+    const fullscreenActive =
+    document.fullscreenElement ||
+    document.webkitFullscreenElement;
+
+
+    if(fullscreenActive){
 
         icon.classList.remove(
             "fa-expand"
@@ -4275,84 +4615,69 @@ function updateFullscreenIcon(){
 }
 
 
-/* ================= VIDEO CLICK ================= */
-
-portfolioVideo.addEventListener(
-    "click",
+document.addEventListener(
+    "fullscreenchange",
     function(){
 
-        toggleVideo();
+        updateFullscreenIcon();
+
+        keepVideoControls();
 
     }
 );
 
 
-/* ================= CONTROL VISIBILITY ================= */
-
-let controlsTimer;
-
-function showVideoControls(){
-
-    videoFrame.classList.add(
-        "controls-visible"
-    );
-
-    clearTimeout(
-        controlsTimer
-    );
-
-    if(!portfolioVideo.paused){
-
-        controlsTimer =
-        setTimeout(
-            function(){
-
-                videoFrame.classList.remove(
-                    "controls-visible"
-                );
-
-            },
-            2800
-        );
-
-    }
-
-}
-
-
-videoFrame.addEventListener(
-    "mousemove",
-    showVideoControls
-);
-
-
-videoFrame.addEventListener(
-    "touchstart",
+document.addEventListener(
+    "webkitfullscreenchange",
     function(){
 
-        showVideoControls();
+        updateFullscreenIcon();
 
-    },
-    {
-        passive:true
+        keepVideoControls();
+
     }
 );
 
 
-/* ================= INITIAL VIDEO STATE ================= */
+/* ================= INITIAL STATE ================= */
 
-portfolioVideo.volume = 1;
+/*
+ * IMPORTANT:
+ * Controls must remain hidden before video starts.
+ */
 
-videoVolume.value = 1;
+videoFrame.classList.remove(
+    "controls-visible"
+);
+
+videoOverlay.classList.remove(
+    "playing"
+);
+
+portfolioVideo.volume =
+1;
+
+portfolioVideo.muted =
+false;
 
 updatePlayButton();
 
-updateVideoOverlay();
-
 updateMuteButton();
 
-videoFrame.classList.add(
-    "paused"
+updateVolumeBar();
+
+videoCurrentTime.textContent =
+"00:00";
+
+videoDuration.textContent =
+"00:00";
+
+videoProgress.value =
+0;
+
+videoProgress.style.setProperty(
+    "--progress",
+    "0%"
 );
 
 
@@ -4377,9 +4702,7 @@ function startProjectCounter(){
     const startTime =
     performance.now();
 
-    projectCount.classList.add(
-        "counting"
-    );
+    projectCount.classList.add("counting");
 
 
     function updateCounter(currentTime){
@@ -4388,21 +4711,13 @@ function startProjectCounter(){
         currentTime - startTime;
 
         const progress =
-        Math.min(
-            elapsed / duration,
-            1
-        );
+        Math.min(elapsed / duration,1);
 
         const eased =
-        1 - Math.pow(
-            1 - progress,
-            3
-        );
+        1 - Math.pow(1 - progress,3);
 
         const current =
-        Math.floor(
-            target * eased
-        );
+        Math.floor(target * eased);
 
         projectCount.textContent =
         current;
@@ -4422,15 +4737,12 @@ function startProjectCounter(){
             projectCount.style.textShadow =
             "0 0 16px rgba(212,175,55,.35)";
 
-            setTimeout(
-                function(){
+            setTimeout(function(){
 
-                    projectCount.style.textShadow =
-                    "0 0 5px rgba(212,175,55,.08)";
+                projectCount.style.textShadow =
+                "0 0 5px rgba(212,175,55,.08)";
 
-                },
-                1200
-            );
+            },1200);
 
         }
 
@@ -4451,19 +4763,17 @@ new IntersectionObserver(
 
 function(entries){
 
-    entries.forEach(
-        function(entry){
+    entries.forEach(function(entry){
 
-            if(entry.isIntersecting){
+        if(entry.isIntersecting){
 
-                startProjectCounter();
+            startProjectCounter();
 
-                projectObserver.disconnect();
-
-            }
+            projectObserver.disconnect();
 
         }
-    );
+
+    });
 
 },
 {
@@ -4569,19 +4879,16 @@ function openHiddenStar(){
     );
 
 
-    setTimeout(
-        function(){
+    setTimeout(function(){
 
-            hiddenStarText.textContent =
-            newText;
+        hiddenStarText.textContent =
+        newText;
 
-            hiddenStarText.classList.remove(
-                "text-changing"
-            );
+        hiddenStarText.classList.remove(
+            "text-changing"
+        );
 
-        },
-        180
-    );
+    },180);
 
 
     hiddenStarMessage.classList.add(
