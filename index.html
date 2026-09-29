@@ -10,6 +10,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
@@ -584,6 +585,90 @@ nav{
 }
 
 
+/* =====================================================
+   FULLSCREEN VIDEO FIX
+   ===================================================== */
+
+.video-frame:fullscreen{
+    width:100vw;
+    height:100vh;
+    max-width:none;
+    max-height:none;
+    aspect-ratio:auto;
+
+    margin:0;
+    padding:0;
+
+    border-radius:0;
+    background:#000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.video-frame:-webkit-full-screen{
+    width:100vw;
+    height:100vh;
+    max-width:none;
+    max-height:none;
+    aspect-ratio:auto;
+
+    margin:0;
+    padding:0;
+
+    border-radius:0;
+    background:#000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+.video-frame:fullscreen video,
+.video-frame:-webkit-full-screen video{
+    width:100%;
+    height:100%;
+
+    max-width:100%;
+    max-height:100%;
+
+    object-fit:contain;
+    object-position:center;
+
+    border-radius:0;
+    background:#000;
+}
+
+.video-frame:fullscreen::before,
+.video-frame:fullscreen::after,
+.video-frame:-webkit-full-screen::before,
+.video-frame:-webkit-full-screen::after{
+    display:none;
+}
+
+.video-frame:fullscreen .video-overlay,
+.video-frame:-webkit-full-screen .video-overlay{
+    border-radius:0;
+}
+
+.video-frame:fullscreen .video-controls,
+.video-frame:-webkit-full-screen .video-controls{
+    left:18px;
+    right:18px;
+    bottom:18px;
+}
+
+.video-frame:fullscreen .video-corner,
+.video-frame:-webkit-full-screen .video-corner{
+    position:fixed;
+}
+
+
 /* ================= PREMIUM VIDEO OVERLAY ================= */
 
 .video-overlay{
@@ -854,9 +939,6 @@ nav{
     pointer-events:none;
 }
 
-
-/* CONTROL BUTTON */
-
 .video-control-btn{
     width:38px;
     height:38px;
@@ -915,9 +997,6 @@ nav{
     transform:scale(.94);
 }
 
-
-/* TIME */
-
 .video-time{
     display:flex;
     align-items:center;
@@ -940,18 +1019,12 @@ nav{
     color:#777;
 }
 
-
-/* PROGRESS AREA */
-
 .video-progress-wrap{
     flex:1;
     min-width:70px;
     display:flex;
     align-items:center;
 }
-
-
-/* MAIN TIMELINE */
 
 .video-progress{
     width:100%;
@@ -971,9 +1044,6 @@ nav{
     outline:none;
     cursor:pointer;
 }
-
-
-/* WEBKIT TIMELINE */
 
 .video-progress::-webkit-slider-runnable-track{
     height:4px;
@@ -1018,9 +1088,6 @@ nav{
     transform:scale(1.25);
 }
 
-
-/* FIREFOX TIMELINE */
-
 .video-progress::-moz-range-track{
     height:4px;
     border-radius:20px;
@@ -1047,9 +1114,6 @@ nav{
 
     cursor:pointer;
 }
-
-
-/* VOLUME */
 
 .video-volume-wrap{
     display:flex;
@@ -1117,15 +1181,9 @@ nav{
     background:#d4af37;
 }
 
-
-/* FULLSCREEN */
-
 .video-fullscreen{
     margin-left:auto;
 }
-
-
-/* FOCUS */
 
 .video-control-btn:focus-visible,
 .video-progress:focus-visible,
@@ -1135,7 +1193,7 @@ nav{
 }
 
 
-/* VIDEO CORNERS */
+/* ================= VIDEO CORNERS ================= */
 
 .video-corner{
     position:absolute;
@@ -2604,6 +2662,42 @@ footer{
     .mindset-box > *{
         animation-duration:8s;
     }
+
+    /* FULLSCREEN MOBILE */
+
+    .video-frame:fullscreen,
+    .video-frame:-webkit-full-screen{
+        width:100vw;
+        height:100vh;
+        aspect-ratio:auto;
+        border-radius:0;
+        padding:0;
+        background:#000;
+    }
+
+    .video-frame:fullscreen video,
+    .video-frame:-webkit-full-screen video{
+        width:100%;
+        height:100%;
+        max-width:100%;
+        max-height:100%;
+        object-fit:contain;
+        object-position:center;
+        border-radius:0;
+    }
+
+    .video-frame:fullscreen .video-controls,
+    .video-frame:-webkit-full-screen .video-controls{
+        left:10px;
+        right:10px;
+        bottom:10px;
+        border-radius:12px;
+    }
+
+    .video-frame:fullscreen .video-corner,
+    .video-frame:-webkit-full-screen .video-corner{
+        display:none;
+    }
 }
 
 
@@ -3133,8 +3227,6 @@ Your browser does not support the video element.
 </video>
 
 
-<!-- PREMIUM PLAY OVERLAY -->
-
 <div
 class="video-overlay"
 id="videoOverlay"
@@ -3154,10 +3246,6 @@ tabindex="0">
 
 </div>
 
-
-<!-- =====================================================
-     PREMIUM CUSTOM VIDEO CONTROLS
-     ===================================================== -->
 
 <div
 class="video-controls"
@@ -3243,8 +3331,6 @@ aria-label="Fullscreen">
 
 </div>
 
-
-<!-- CINEMATIC CORNERS -->
 
 <span class="video-corner top-left"></span>
 <span class="video-corner top-right"></span>
@@ -3855,7 +3941,7 @@ MAMUN’S HIDDEN STAR
 <div class="hidden-star-text-box">
 
 <p id="hiddenStarText">
-You found something most visitors miss.
+What you create becomes part of what people remember.
 </p>
 
 </div>
@@ -3958,7 +4044,6 @@ document.getElementById("videoCurrentTime");
 const videoDuration =
 document.getElementById("videoDuration");
 
-
 let videoControlsTimer = null;
 
 
@@ -3994,7 +4079,6 @@ function showVideoControls(){
     clearTimeout(
         videoControlsTimer
     );
-
 
     if(!portfolioVideo.paused){
 
@@ -4033,7 +4117,6 @@ function updatePlayButton(){
 
     const icon =
     videoPlayBtn.querySelector("i");
-
 
     if(portfolioVideo.paused){
 
@@ -4076,7 +4159,6 @@ function updateMuteButton(){
 
     const icon =
     videoMuteBtn.querySelector("i");
-
 
     if(
         portfolioVideo.muted ||
@@ -4145,14 +4227,11 @@ function updateVideoProgress(){
         return;
     }
 
-
     videoProgress.max =
     portfolioVideo.duration;
 
-
     videoProgress.value =
     portfolioVideo.currentTime;
-
 
     const percentage =
     (
@@ -4160,12 +4239,10 @@ function updateVideoProgress(){
         portfolioVideo.duration
     ) * 100;
 
-
     videoProgress.style.setProperty(
         "--progress",
         percentage + "%"
     );
-
 
     videoCurrentTime.textContent =
     formatVideoTime(
@@ -4249,13 +4326,6 @@ portfolioVideo.addEventListener(
             "controls-visible"
         );
 
-
-        /*
-         * If controls are hidden:
-         * show controls only.
-         * DO NOT pause/play.
-         */
-
         if(controlsHidden){
 
             showVideoControls();
@@ -4263,12 +4333,6 @@ portfolioVideo.addEventListener(
             return;
 
         }
-
-
-        /*
-         * If controls are visible:
-         * normal play/pause behavior.
-         */
 
         toggleVideo();
 
@@ -4422,7 +4486,6 @@ videoVolume.addEventListener(
         portfolioVideo.volume =
         Number(event.target.value);
 
-
         if(
             portfolioVideo.volume > 0
         ){
@@ -4431,7 +4494,6 @@ videoVolume.addEventListener(
             false;
 
         }
-
 
         updateMuteButton();
 
@@ -4509,20 +4571,30 @@ videoControls.addEventListener(
 );
 
 
-/* ================= FULLSCREEN ================= */
+/* =====================================================
+   FULLSCREEN
+   ===================================================== */
 
 function toggleVideoFullscreen(){
 
-    if(
-        !document.fullscreenElement &&
-        !document.webkitFullscreenElement
-    ){
+    const fullscreenActive =
+    document.fullscreenElement ||
+    document.webkitFullscreenElement;
 
-        if(
-            videoFrame.requestFullscreen
-        ){
+    if(!fullscreenActive){
 
+        if(videoFrame.requestFullscreen){
+
+            const fullscreenPromise =
             videoFrame.requestFullscreen();
+
+            if(fullscreenPromise){
+
+                fullscreenPromise.catch(
+                    function(){}
+                );
+
+            }
 
         }else if(
             videoFrame.webkitRequestFullscreen
@@ -4534,11 +4606,18 @@ function toggleVideoFullscreen(){
 
     }else{
 
-        if(
-            document.exitFullscreen
-        ){
+        if(document.exitFullscreen){
 
+            const exitPromise =
             document.exitFullscreen();
+
+            if(exitPromise){
+
+                exitPromise.catch(
+                    function(){}
+                );
+
+            }
 
         }else if(
             document.webkitExitFullscreen
@@ -4574,11 +4653,9 @@ function updateFullscreenIcon(){
     const icon =
     videoFullscreenBtn.querySelector("i");
 
-
     const fullscreenActive =
     document.fullscreenElement ||
     document.webkitFullscreenElement;
-
 
     if(fullscreenActive){
 
@@ -4641,11 +4718,6 @@ document.addEventListener(
 
 /* ================= INITIAL STATE ================= */
 
-/*
- * IMPORTANT:
- * Controls must remain hidden before video starts.
- */
-
 videoFrame.classList.remove(
     "controls-visible"
 );
@@ -4702,7 +4774,9 @@ function startProjectCounter(){
     const startTime =
     performance.now();
 
-    projectCount.classList.add("counting");
+    projectCount.classList.add(
+        "counting"
+    );
 
 
     function updateCounter(currentTime){
@@ -4810,25 +4884,45 @@ document.getElementById("closeSecret");
 
 const hiddenStarTexts = [
 
-    "You found something most visitors miss.",
+    "What you create becomes part of what people remember.",
 
-    "Some details are meant to be discovered.",
+    "True creativity begins where imitation ends.",
 
-    "A small secret in a digital world.",
+    "Great work is not made to impress everyone, but to mean something to someone.",
 
-    "Curiosity brought you here.",
+    "The value of an idea is revealed by what it becomes.",
 
-    "Not everything needs to be obvious.",
+    "Perfection lives in the details most people never notice.",
 
-    "You looked a little closer. ★",
+    "A meaningful creation outlives the moment in which it was created.",
 
-    "Hidden by design. Discovered by you.",
+    "Design is not decoration; it is thought made visible.",
 
-    "Every detail has a story.",
+    "The strongest ideas are often the simplest ones, refined with patience.",
 
-    "Keep exploring. There may be more.",
+    "Creativity is seeing possibilities where others see limitations.",
 
-    "Welcome to the hidden side of Mamun's portfolio."
+    "Time changes trends, but meaning gives good work longevity.",
+
+    "What looks simple is often the result of countless thoughtful decisions.",
+
+    "A vision without execution remains a thought; execution gives it a life.",
+
+    "The difference between good and remarkable often lives in the smallest detail.",
+
+    "When purpose leads creativity, beauty becomes meaningful.",
+
+    "Every creation carries the mindset of its creator.",
+
+    "Attention may be captured in a moment; trust is earned over time.",
+
+    "The best digital experiences don’t simply speak, they make people feel.",
+
+    "Creativity has no value until it creates meaning for someone.",
+
+    "Build with purpose, refine with patience, and let the work speak.",
+
+    "In a world full of noise, meaningful work has its own voice."
 
 ];
 
@@ -4951,7 +5045,6 @@ document.addEventListener(
 );
 
 </script>
-
 
 </body>
 </html>
