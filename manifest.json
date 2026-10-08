@@ -28,5 +28,13 @@
   "categories": [
     "business",
     "personalization"
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.jpg",
+      "sizes": "1080x2400",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
   ]
 }
