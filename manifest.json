@@ -1,23 +1,32 @@
 {
+  "id": "com.mamunofficial.app",
   "name": "Mamun Official",
   "short_name": "Mamun",
-  "description": "Official portfolio of MD Abdul Al Mamun",
-  "start_url": "/",
-  "scope": "/",
+  "description": "Official portfolio of MD Abdul Al Mamun — Digital Creative.",
+  "start_url": "https://sajjad446.com/",
+  "scope": "https://sajjad446.com/",
   "display": "standalone",
-  "background_color": "#050505",
+  "background_color": "#000000",
   "theme_color": "#050505",
   "orientation": "portrait",
+  "dir": "auto",
+  "lang": "en",
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
+  ],
+  "categories": [
+    "business",
+    "personalization"
   ]
 }
