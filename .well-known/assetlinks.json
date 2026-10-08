@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sajjad446.twa",
+      "sha256_cert_fingerprints": [
+        "07:7C:EF:B3:31:63:B2:E7:14:94:F6:6F:A0:48:EC:CF:4C:DD:B7:52:3E:28:98:C6:F8:AA:F3:6A:E7:77:54:41"
+      ]
+    }
+  }
+]
