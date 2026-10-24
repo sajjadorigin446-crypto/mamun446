@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="Meet Mamun AI, your intelligent guide to the portfolio, services and creative work of MD Abdul Al Mamun.">
+<title>Mamun AI — Intelligent Portfolio Assistant</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --bg: #090909;
+  --surface: #10100f;
+  --surface2: #171612;
+  --surface3: #211c10;
+  --gold: #d4af37;
+  --gold-light: #f5e4a5;
+  --text: #f5f2e9;
+  --muted: #a29c8f;
+  --border: rgba(212,175,55,.19);
+  --radius: 20px;
+  --font: "DM Sans", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.09), transparent 43%),
+    radial-gradient(ellipse at 100% 60%, rgba(212,175,55,.025), transparent 35%),
+    var(--bg);
+}
+
+button, textarea { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button:disabled { cursor: not-allowed; opacity: .55; }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px max(18px, calc((100% - 1120px)/2));
+  background: rgba(9,9,9,.91);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--gold-light);
+  border: 1px solid rgba(212,175,55,.38);
+  border-radius: 13px;
+  background: linear-gradient(145deg,#241e0e,#11110e);
+  box-shadow: 0 0 24px rgba(212,175,55,.08);
+}
+
+.brand-name {
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.brand-name .gold { color: var(--gold); }
+
+.brand-sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #b9b1a0;
+  font-size: 12px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+
+.back-link:hover { color: var(--gold-light); }
+
+main {
+  width: min(100% - 30px, 860px);
+  margin: 0 auto;
+  padding: 34px 0 25px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 28px;
+  animation: fadeUp .65s ease both;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  color: var(--gold-light);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  background: rgba(212,175,55,.04);
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(212,175,55,.8);
+}
+
+h1 {
+  margin: 20px 0 12px;
+  font-family: Inter, sans-serif;
+  font-size: clamp(33px, 7vw, 53px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+  font-weight: 800;
+}
+
+h1 .gold {
+  color: var(--gold-light);
+  text-shadow: 0 0 35px rgba(212,175,55,.13);
+}
+
+.hero-description {
+  max-width: 480px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.chat-shell {
+  overflow: hidden;
+  border: 1px solid rgba(212,175,55,.23);
+  border-radius: var(--radius);
+  background: rgba(15,15,14,.96);
+  box-shadow:
+    0 24px 75px rgba(0,0,0,.36),
+    0 0 45px rgba(212,175,55,.035);
+  animation: fadeUp .7s .1s ease both;
+}
+
+.chat-head {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  background: linear-gradient(105deg,rgba(212,175,55,.075),transparent 70%);
+  border-bottom: 1px solid rgba(255,255,255,.055);
+}
+
+.ai-avatar {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--gold-light);
+  background: linear-gradient(145deg,#29210f,#11110e);
+  border: 1px solid rgba(212,175,55,.3);
+  border-radius: 14px;
+}
+
+.chat-heading {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.chat-status {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #bca34d;
+}
+
+.head-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.icon-btn:hover {
+  color: var(--gold-light);
+  background: var(--surface3);
+  border-color: var(--border);
+}
+
+.messages {
+  height: min(49dvh, 440px);
+  min-height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #5d4b22 transparent;
+  padding: 22px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  scroll-behavior: smooth;
+}
+
+.message {
+  max-width: 94%;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  animation: messageIn .22s ease both;
+}
+
+.message.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.mini-avatar {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--gold-light);
+  background: #211b0e;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.message.user .mini-avatar {
+  color: #eee4c5;
+  background: #282216;
+}
+
+.bubble {
+  min-width: 0;
+  padding: 12px 14px;
+  color: #eeeae0;
+  background: #171715;
+  border: 1px solid rgba(255,255,255,.065);
+  border-radius: 4px 15px 15px 15px;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.message.user .bubble {
+  background: #262013;
+  border-color: rgba(212,175,55,.16);
+  border-radius: 15px 4px 15px 15px;
+}
+
+.typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 1px;
+}
+
+.typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: bounce .75s infinite alternate;
+}
+
+.typing span:nth-child(2) { animation-delay: .18s; }
+.typing span:nth-child(3) { animation-delay: .36s; }
+
+.quick-area {
+  padding: 0 17px 19px;
+}
+
+.quick-title {
+  margin-bottom: 11px;
+  color: #898274;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.quick-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-btn {
+  min-height: 36px;
+  padding: 9px 12px;
+  text-align: left;
+  color: #ded3b5;
+  background: #15140f;
+  border: 1px solid rgba(212,175,55,.19);
+  border-radius: 10px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: color .2s, background .2s, border-color .2s;
+}
+
+.quick-btn:hover {
+  color: var(--gold-light);
+  background: #211b0e;
+  border-color: rgba(212,175,55,.6);
+}
+
+.composer {
+  padding: 14px 15px 12px;
+  background: #10100f;
+  border-top: 1px solid rgba(255,255,255,.065);
+}
+
+.input-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  padding: 8px 8px 8px 13px;
+  background: #090909;
+  border: 1px solid rgba(212,175,55,.22);
+  border-radius: 15px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.input-wrap:focus-within {
+  border-color: rgba(212,175,55,.62);
+  box-shadow: 0 0 0 3px rgba(212,175,55,.045);
+}
+
+#prompt {
+  width: 100%;
+  min-width: 0;
+  max-height: 130px;
+  resize: none;
+  padding: 9px 2px;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+#prompt::placeholder { color: #777165; }
+
+#send {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #151208;
+  background: linear-gradient(135deg,#f3e2a0,#c3a03a);
+  border: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 3px 15px rgba(212,175,55,.08);
+  transition: transform .2s, filter .2s;
+}
+
+#send:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+#send:disabled { opacity: .5; }
+
+.composer-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 2px 0;
+  color: #777164;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+#charCount { white-space: nowrap; }
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+  margin-top: 20px;
+  animation: fadeUp .7s .2s ease both;
+}
+
+.feature {
+  padding: 17px 13px;
+  border: 1px solid rgba(255,255,255,.065);
+  border-radius: 15px;
+  background: rgba(17,17,16,.8);
+}
+
+.feature-icon {
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+  color: var(--gold-light);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(212,175,55,.045);
+  font-size: 12px;
+}
+
+.feature h3 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.feature p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.75;
+}
+
+.footer {
+  padding: 24px 0 10px;
+  color: #817b6e;
+  font-size: 10px;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.footer strong {
+  color: #d8bb65;
+  font-weight: 600;
+}
+
+.footer a:hover { color: var(--gold-light); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes messageIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  from { opacity: .35; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(-4px); }
+}
+
+@media (min-width: 700px) {
+  main { padding-top: 48px; }
+  .messages { padding: 25px 23px; }
+  .quick-area { padding: 0 23px 22px; }
+  .composer { padding: 17px 20px 13px; }
+  .features { gap: 14px; }
+  .feature { padding: 20px 17px; }
+}
+
+@media (max-width: 480px) {
+  .topbar { min-height: 62px; padding: 9px 13px; }
+  .brand-icon { width: 37px; height: 37px; }
+  .brand-name { font-size: 13px; }
+  .brand-sub { font-size: 8px; letter-spacing: 1.3px; }
+  .back-link { gap: 6px; font-size: 10px; }
+  main { width: calc(100% - 18px); padding-top: 27px; }
+  .hero { margin-bottom: 22px; }
+  h1 { letter-spacing: -1.3px; }
+  .hero-description { font-size: 12px; padding: 0 7px; }
+  .chat-head { padding: 12px; }
+  .messages { min-height: 290px; height: 46dvh; padding: 17px 10px; }
+  .message { max-width: 97%; gap: 7px; }
+  .bubble { padding: 11px 12px; font-size: 12px; }
+  .quick-area { padding: 0 11px 15px; }
+  .quick-list { gap: 7px; }
+  .quick-btn { font-size: 10px; padding: 9px 10px; }
+  .composer { padding: 11px 10px; }
+  .composer-footer { font-size: 8px; }
+  .features { gap: 7px; }
+  .feature { padding: 12px 9px; }
+  .feature-icon { width: 29px; height: 29px; margin-bottom: 9px; }
+  .feature h3 { font-size: 10px; }
+  .feature p { font-size: 9px; }
+}
+
+@media (max-width: 350px) {
+  .back-link span { display: none; }
+  .features { grid-template-columns: 1fr; }
+  .feature { display: flex; gap: 11px; align-items: flex-start; }
+  .feature-icon { flex-shrink: 0; margin: 0; }
+  .feature h3 { margin-top: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <a class="brand" href="https://sajjad446.com/" aria-label="Mamun portfolio home">
+    <span class="brand-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+    <span>
+      <span class="brand-name">MAMUN<span class="gold">.</span>AI</span>
+      <span class="brand-sub">Intelligent Portfolio Assistant</span>
+    </span>
+  </a>
+
+  <a class="back-link" href="https://sajjad446.com/">
+    <i class="fa-solid fa-arrow-left"></i>
+    <span>Back to Portfolio</span>
+  </a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">
+      <span class="pulse"></span>
+      PERSONAL AI EXPERIENCE
+    </div>
+
+    <h1>Meet <span class="gold">Mamun AI.</span></h1>
+
+    <p class="hero-description">
+      Your intelligent guide to my creative services, skills and portfolio.
+      Ask a question and let's explore what we can create together.
+    </p>
+  </section>
+
+  <section class="chat-shell" aria-label="Mamun AI chat">
+    <div class="chat-head">
+      <div class="ai-avatar">
+        <i class="fa-solid fa-sparkles"></i>
+      </div>
+
+      <div>
+        <div class="chat-heading">Mamun's AI Assistant</div>
+        <div class="chat-status" id="status">
+          <span class="status-dot"></span>Ready to assist
+        </div>
+      </div>
+
+      <div class="head-actions">
+        <button class="icon-btn" id="newChat" type="button"
+          aria-label="Start a new chat" title="New conversation">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="messages" id="messages" role="log" aria-live="polite" aria-relevant="additions">
+      <div class="message assistant">
+        <div class="mini-avatar"><i class="fa-solid fa-sparkles"></i></div>
+        <div class="bubble">Hello! Welcome to my digital space. ✨
+
+I'm Mamun AI, your guide to MD Abdul Al Mamun's portfolio, creative services and professional work.
+
+You can ask me questions in English or Bangla. How can I help you today?</div>
+      </div>
+    </div>
+
+    <div class="quick-area" id="quickArea">
+      <div class="quick-title">Start a conversation</div>
+      <div class="quick-list">
+        <button class="quick-btn" type="button"
+          data-prompt="What services does Mamun offer?">
+          <i class="fa-solid fa-layer-group"></i> Explore Services
+        </button>
+
+        <button class="quick-btn" type="button"
+          data-prompt="Tell me about Mamun's skills and professional experience.">
+          <i class="fa-solid fa-star"></i> Skills & Experience
+        </button>
+
+        <button class="quick-btn" type="button"
+          data-prompt="How can I contact Mamun for a project?">
+          <i class="fa-solid fa-envelope"></i> Get in Touch
+        </button>
+
+        <button class="quick-btn" type="button"
+          data-prompt="Tell me about Mamun's portfolio and projects.">
+          <i class="fa-solid fa-briefcase"></i> Portfolio
+        </button>
+
+        <button class="quick-btn" type="button"
+          data-prompt="মামুন কী কী সার্ভিস দেন? বাংলায় বিস্তারিত বলো।">
+          <i class="fa-solid fa-language"></i> বাংলায় জানুন
+        </button>
+      </div>
+    </div>
+
+    <form class="composer" id="chatForm">
+      <div class="input-wrap">
+        <textarea id="prompt" rows="1" maxlength="3000"
+          placeholder="Ask Mamun AI anything..."
+          aria-label="Type your message" required></textarea>
+
+        <button id="send" type="submit" aria-label="Send message">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+
+      <div class="composer-footer">
+        <span>AI can make mistakes. Verify important information.</span>
+        <span id="charCount">0 / 3000</span>
+      </div>
+    </form>
+  </section>
+
+  <section class="features" aria-label="Assistant capabilities">
+    <article class="feature">
+      <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+      <div>
+        <h3>Quick Answers</h3>
+        <p>Get helpful answers about services and professional work.</p>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature-icon"><i class="fa-solid fa-comments"></i></div>
+      <div>
+        <h3>Natural Chat</h3>
+        <p>Ask naturally in Bangla or English and explore ideas.</p>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div>
+        <h3>Secure Connection</h3>
+        <p>AI requests go through the configured backend, not a public API key.</p>
+      </div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    Crafted with precision by <strong>MD Abdul Al Mamun</strong><br>
+    <a href="https://sajjad446.com/">sajjad446.com</a>
+    &nbsp;·&nbsp; A luxury digital experience
+  </footer>
+</main>
+
+<script>
+(() => {
+  "use strict";
+
+  // Your deployed Cloudflare Worker endpoint.
+  const API_URL =
+    "https://mamunaiassistant.sajjadorigin446.workers.dev/";
+
+  const form = document.getElementById("chatForm");
+  const prompt = document.getElementById("prompt");
+  const send = document.getElementById("send");
+  const messagesEl = document.getElementById("messages");
+  const quickArea = document.getElementById("quickArea");
+  const newChat = document.getElementById("newChat");
+  const status = document.getElementById("status");
+  const charCount = document.getElementById("charCount");
+
+  let history = [];
+  let busy = false;
+  let requestController = null;
+
+  const welcomeMessage =
+    "Hello! Welcome to my digital space. ✨\n\n" +
+    "I'm Mamun AI, your guide to MD Abdul Al Mamun's portfolio, " +
+    "creative services and professional work.\n\n" +
+    "You can ask me questions in English or Bangla. How can I help you today?";
+
+  function scrollToBottom() {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function addMessage(role, text) {
+    const row = document.createElement("div");
+    row.className = "message " + role;
+
+    const avatar = document.createElement("div");
+    avatar.className = "mini-avatar";
+    avatar.innerHTML = role === "user"
+      ? '<i class="fa-solid fa-user"></i>'
+      : '<i class="fa-solid fa-sparkles"></i>';
+
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    // Use textContent to prevent visitor or model text from being
+    // interpreted as executable HTML.
+    bubble.textContent = text;
+
+    row.append(avatar, bubble);
+    messagesEl.appendChild(row);
+    scrollToBottom();
+    return row;
+  }
+
+  function showTyping() {
+    const row = document.createElement("div");
+    row.className = "message assistant";
+    row.id = "typingIndicator";
+
+    const avatar = document.createElement("div");
+    avatar.className = "mini-avatar";
+    avatar.innerHTML = '<i class="fa-solid fa-sparkles"></i>';
+
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    const typing = document.createElement("span");
+    typing.className = "typing";
+    typing.setAttribute("aria-label", "Mamun AI is thinking");
+
+    for (let i = 0; i < 3; i++) {
+      typing.appendChild(document.createElement("span"));
+    }
+
+    bubble.appendChild(typing);
+    row.append(avatar, bubble);
+    messagesEl.appendChild(row);
+    scrollToBottom();
+  }
+
+  function removeTyping() {
+    document.getElementById("typingIndicator")?.remove();
+  }
+
+  function setBusy(value) {
+    busy = value;
+    send.disabled = value;
+    prompt.disabled = value;
+    newChat.disabled = value;
+
+    status.innerHTML = value
+      ? '<span class="status-dot"></span>Thinking...'
+      : '<span class="status-dot"></span>Ready to assist';
+
+    if (!value) prompt.focus({ preventScroll: true });
+  }
+
+  async function sendMessage(value) {
+    const text = value.trim();
+
+    if (!text || busy) return;
+
+    if (text.length > 3000) {
+      addMessage("assistant", "Your message is too long. Please shorten it and try again.");
+      return;
+    }
+
+    quickArea.hidden = true;
+    addMessage("user", text);
+
+    history.push({ role: "user", content: text });
+
+    setBusy(true);
+    showTyping();
+
+    requestController = new AbortController();
+    const timeoutId = setTimeout(() => requestController?.abort(), 45000);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: history.slice(-10) }),
+        signal: requestController.signal,
+        cache: "no-store"
+      });
+
+      let data;
+
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error("The AI server returned an invalid response.");
+      }
+
+      if (!response.ok) {
+        throw new Error(
+          data.error || "The AI service is unavailable. Please try again."
+        );
+      }
+
+      if (typeof data.reply !== "string" || !data.reply.trim()) {
+        throw new Error("No answer was received. Please try again.");
+      }
+
+      history.push({ role: "assistant", content: data.reply });
+      history = history.slice(-10);
+
+      removeTyping();
+      addMessage("assistant", data.reply);
+
+    } catch (error) {
+      removeTyping();
+
+      let message = error?.message || "Something went wrong.";
+
+      if (error?.name === "AbortError") {
+        message = "The request took too long. Please try again.";
+      } else if (error instanceof TypeError) {
+        message = "Could not connect to the AI server. Check the backend configuration and try again.";
+      }
+
+      // Do not retain a failed user message in conversation history.
+      history.pop();
+      addMessage("assistant", "Sorry! " + message);
+      console.error("Mamun AI request failed:", error);
+
+    } finally {
+      clearTimeout(timeoutId);
+      requestController = null;
+      setBusy(false);
+    }
+  }
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    if (busy) return;
+
+    const text = prompt.value.trim();
+    if (!text) return;
+
+    prompt.value = "";
+    prompt.style.height = "auto";
+    charCount.textContent = "0 / 3000";
+
+    sendMessage(text);
+  });
+
+  prompt.addEventListener("input", () => {
+    prompt.style.height = "auto";
+    prompt.style.height = Math.min(prompt.scrollHeight, 130) + "px";
+    charCount.textContent = prompt.value.length + " / 3000";
+  });
+
+  prompt.addEventListener("keydown", event => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+
+      if (!busy) {
+        form.requestSubmit();
+      }
+    }
+  });
+
+  document.querySelectorAll("[data-prompt]").forEach(button => {
+    button.addEventListener("click", () => {
+      if (busy) return;
+      sendMessage(button.dataset.prompt || "");
+    });
+  });
+
+  newChat.addEventListener("click", () => {
+    if (busy) return;
+
+    history = [];
+    messagesEl.replaceChildren();
+
+    const row = document.createElement("div");
+    row.className = "message assistant";
+
+    const avatar = document.createElement("div");
+    avatar.className = "mini-avatar";
+    avatar.innerHTML = '<i class="fa-solid fa-sparkles"></i>';
+
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.textContent = welcomeMessage;
+
+    row.append(avatar, bubble);
+    messagesEl.appendChild(row);
+
+    quickArea.hidden = false;
+    prompt.value = "";
+    prompt.style.height = "auto";
+    charCount.textContent = "0 / 3000";
+    scrollToBottom();
+    prompt.focus({ preventScroll: true });
+  });
+
+  // Initial ready state. No API key is stored in this page.
+  prompt.setAttribute("autocomplete", "off");
+})();
+</script>
+
+</body>
+</html>
