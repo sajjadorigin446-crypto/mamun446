@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="Meet Mamun Assistant — your premium digital companion for web design, graphic design, digital marketing and more.">
+<title>Mamun Assistant | Digital Companion</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+  --bg:#080808;
+  --panel:#101010;
+  --panel2:#151515;
+  --gold:#d4af37;
+  --gold-light:#f4df91;
+  --text:#f6f3eb;
+  --muted:#96938b;
+  --border:rgba(212,175,55,.19);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,Arial,sans-serif;min-height:100vh;
+  background-image:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.09),transparent 42%);
+}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.app{min-height:100vh;display:flex;flex-direction:column}
+.topbar{
+  height:72px;padding:0 6%;display:flex;align-items:center;
+  justify-content:space-between;border-bottom:1px solid var(--border);
+  background:rgba(8,8,8,.88);backdrop-filter:blur(18px);
+  position:sticky;top:0;z-index:10;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{
+  width:40px;height:40px;border:1px solid rgba(212,175,55,.55);
+  border-radius:13px;display:grid;place-items:center;color:var(--gold);
+  background:linear-gradient(145deg,#201b0d,#0c0c0c);
+  box-shadow:0 0 24px rgba(212,175,55,.08);
+}
+.brand-name{font-size:15px;font-weight:800;letter-spacing:.2px}
+.brand-sub{font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:1.6px}
+.status{
+  display:flex;align-items:center;gap:8px;font-size:11px;color:#c9c3b2;
+  border:1px solid var(--border);padding:9px 12px;border-radius:30px;
+}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+main{width:100%;max-width:900px;margin:0 auto;padding:48px 22px 22px;flex:1;display:flex;flex-direction:column}
+.hero{text-align:center;margin:8px 0 30px;animation:fadeUp .7s ease both}
+.hero-mark{
+  width:76px;height:76px;margin:0 auto 22px;border-radius:25px;
+  border:1px solid rgba(212,175,55,.4);display:grid;place-items:center;
+  font-size:29px;color:var(--gold-light);
+  background:linear-gradient(145deg,rgba(212,175,55,.14),rgba(255,255,255,.015));
+  box-shadow:0 0 55px rgba(212,175,55,.08),inset 0 0 25px rgba(212,175,55,.035);
+}
+.eyebrow{color:var(--gold);font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(30px,6vw,48px);letter-spacing:-1.9px;line-height:1.13;margin:14px 0 13px;font-weight:800}
+h1 span{color:var(--gold-light)}
+.hero p{color:var(--muted);font-size:14px;line-height:1.8;max-width:510px;margin:0 auto}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:25px 0 29px}
+.chip{
+  border:1px solid var(--border);border-radius:30px;background:rgba(255,255,255,.025);
+  color:#d8d3c7;padding:10px 14px;font-size:11px;transition:.25s;
+}
+.chip i{color:var(--gold);margin-right:7px}
+.chip:hover{border-color:var(--gold);background:rgba(212,175,55,.07);transform:translateY(-2px)}
+.chat-shell{
+  border:1px solid rgba(212,175,55,.22);border-radius:22px;overflow:hidden;
+  background:linear-gradient(145deg,rgba(19,19,19,.98),rgba(10,10,10,.98));
+  box-shadow:0 24px 90px rgba(0,0,0,.38);animation:fadeUp .8s ease both;
+}
+.chat-head{
+  padding:17px 20px;border-bottom:1px solid rgba(255,255,255,.065);
+  display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.015);
+}
+.assistant-info{display:flex;align-items:center;gap:11px}
+.mini-avatar{
+  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(212,175,55,.1);color:var(--gold);border:1px solid var(--border)
+}
+.assistant-title{font-size:13px;font-weight:700}
+.assistant-caption{font-size:10px;color:var(--muted);margin-top:5px}
+.clear-btn{background:none;border:1px solid rgba(255,255,255,.1);color:var(--muted);border-radius:10px;padding:9px 11px;font-size:11px}
+.clear-btn:hover{color:var(--gold);border-color:var(--border)}
+.messages{
+  height:350px;overflow-y:auto;padding:23px 20px;display:flex;flex-direction:column;gap:18px;
+  scrollbar-width:thin;scrollbar-color:#51431c transparent;
+}
+.message{display:flex;gap:10px;max-width:88%;animation:fadeUp .25s ease both}
+.message.user{align-self:flex-end;flex-direction:row-reverse}
+.msg-avatar{
+  width:30px;height:30px;flex-shrink:0;border-radius:10px;display:grid;place-items:center;
+  background:#211b0c;border:1px solid var(--border);color:var(--gold);font-size:11px
+}
+.user .msg-avatar{background:#242018;color:var(--gold-light)}
+.bubble{
+  padding:13px 15px;border-radius:4px 15px 15px 15px;
+  background:#181818;border:1px solid rgba(255,255,255,.055);
+  font-size:12px;line-height:1.85;color:#e9e5dc;overflow-wrap:anywhere;
+}
+.user .bubble{border-radius:15px 4px 15px 15px;background:rgba(212,175,55,.09);border-color:rgba(212,175,55,.17)}
+.bubble strong{color:var(--gold-light)}
+.bubble a{color:var(--gold-light);text-decoration:underline;text-underline-offset:3px}
+.time{font-size:9px;color:#77746c;margin-top:8px}
+.typing{display:flex;gap:5px;padding:5px 2px}
+.typing span{height:5px;width:5px;background:var(--gold);border-radius:50%;animation:pulse 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+.suggestions{padding:0 20px 17px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.suggestions button{white-space:nowrap;background:transparent;border:1px solid var(--border);color:#c9c2b3;padding:9px 12px;border-radius:25px;font-size:10px}
+.suggestions button:hover{color:var(--gold-light);background:rgba(212,175,55,.07)}
+.composer-wrap{padding:14px 17px 17px;border-top:1px solid rgba(255,255,255,.07)}
+.composer{
+  display:flex;align-items:center;gap:10px;border:1px solid rgba(212,175,55,.23);
+  background:#090909;border-radius:15px;padding:7px 8px 7px 15px;
+  transition:border-color .2s,box-shadow .2s
+}
+.composer:focus-within{border-color:rgba(212,175,55,.65);box-shadow:0 0 0 3px rgba(212,175,55,.04)}
+#userInput{flex:1;min-width:0;background:transparent;border:0;outline:none;color:white;font-size:12px;padding:10px 0}
+#userInput::placeholder{color:#6f6c64}
+.send-btn{
+  height:39px;width:42px;flex-shrink:0;border:0;border-radius:11px;
+  background:linear-gradient(135deg,#f2dc8b,#c29b28);color:#171208;transition:.2s
+}
+.send-btn:hover{transform:scale(1.04);box-shadow:0 0 20px rgba(212,175,55,.2)}
+.send-btn:disabled{opacity:.45;cursor:not-allowed}
+.disclaimer{text-align:center;font-size:9px;color:#6e6b63;margin:12px 0 0;line-height:1.7}
+.footer{text-align:center;padding:20px 15px 26px;color:#666258;font-size:10px}
+.footer span{color:var(--gold)}
+.footer a:hover{color:var(--gold)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+@media(min-height:900px){.messages{height:390px}}
+@media(max-width:600px){
+  .topbar{height:65px;padding:0 16px}
+  .brand-icon{width:36px;height:36px}
+  .brand-name{font-size:13px}
+  .brand-sub{font-size:9px;letter-spacing:1px}
+  .status{font-size:10px;padding:8px 10px}
+  main{padding:34px 12px 15px}
+  .hero{margin:4px 4px 24px}
+  .hero-mark{width:65px;height:65px;border-radius:21px;font-size:25px;margin-bottom:19px}
+  h1{letter-spacing:-1.2px}
+  .hero p{font-size:12px}
+  .chips{gap:7px;margin:20px 0 24px}
+  .chip{font-size:10px;padding:9px 11px}
+  .chat-shell{border-radius:18px}
+  .chat-head{padding:14px}
+  .messages{height:340px;padding:18px 12px}
+  .message{max-width:94%;gap:7px}
+  .bubble{font-size:12px;padding:11px 12px}
+  .msg-avatar{width:27px;height:27px}
+  .suggestions{padding:0 12px 14px}
+  .composer-wrap{padding:12px}
+  #userInput{font-size:12px}
+  .footer{font-size:9px}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="https://sajjad446.com/" aria-label="Mamun Official home">
+      <div class="brand-icon"><i class="fa-solid fa-sparkles"></i></div>
+      <div>
+        <div class="brand-name">MAMUN <span style="color:var(--gold)">ASSISTANT</span></div>
+        <div class="brand-sub">YOUR DIGITAL COMPANION</div>
+      </div>
+    </a>
+    <div class="status"><span class="status-dot"></span> Ready to help</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-mark"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+      <div class="eyebrow">Intelligence · Creativity · Support</div>
+      <h1>How can I help <span>you today?</span></h1>
+      <p>Your personal digital companion for creative ideas, website information, design services and everyday questions.</p>
+
+      <div class="chips">
+        <button class="chip" data-prompt="What services does Mamun offer?"><i class="fa-solid fa-layer-group"></i>Services</button>
+        <button class="chip" data-prompt="Tell me about Mamun"><i class="fa-regular fa-user"></i>About Mamun</button>
+        <button class="chip" data-prompt="How can I contact Mamun?"><i class="fa-regular fa-paper-plane"></i>Contact</button>
+        <button class="chip" data-prompt="Give me creative website ideas"><i class="fa-regular fa-lightbulb"></i>Creative ideas</button>
+      </div>
+    </section>
+
+    <section class="chat-shell">
+      <div class="chat-head">
+        <div class="assistant-info">
+          <div class="mini-avatar"><i class="fa-solid fa-sparkles"></i></div>
+          <div>
+            <div class="assistant-title">Mamun Assistant</div>
+            <div class="assistant-caption">Digital Creative · Online companion</div>
+          </div>
+        </div>
+        <button class="clear-btn" id="clearChat"><i class="fa-solid fa-rotate-left"></i> New chat</button>
+      </div>
+
+      <div class="messages" id="messages" aria-live="polite">
+        <div class="message">
+          <div class="msg-avatar"><i class="fa-solid fa-sparkles"></i></div>
+          <div>
+            <div class="bubble">
+              Hello! Welcome to <strong>Mamun Assistant.</strong> ✨<br><br>
+              I'm here to help you explore Mamun's digital services, learn about the website, brainstorm creative ideas and answer supported questions.<br><br>
+              What would you like to know?
+            </div>
+            <div class="time">YOUR DIGITAL COMPANION</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <button data-prompt="What services does Mamun offer?">Explore services</button>
+        <button data-prompt="Tell me about web design">Web design</button>
+        <button data-prompt="Tell me about graphic design">Graphic design</button>
+        <button data-prompt="Tell me about digital marketing">Digital marketing</button>
+      </div>
+
+      <div class="composer-wrap">
+        <form class="composer" id="chatForm">
+          <input id="userInput" type="text" placeholder="Ask me anything..." autocomplete="off" maxlength="1000" aria-label="Your message">
+          <button class="send-btn" id="sendBtn" type="submit" aria-label="Send message"><i class="fa-solid fa-arrow-up"></i></button>
+        </form>
+        <div class="disclaimer">This is a lightweight website assistant, not a live AI model. Avoid sharing private information.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Crafted with <span>♥</span> by <a href="https://sajjad446.com/">Mamun Digital Creative</a>
+    <br><br>© <span id="year"></span> Mamun Assistant. All rights reserved.
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+  const messages = $("messages");
+  const input = $("userInput");
+  const form = $("chatForm");
+  const sendBtn = $("sendBtn");
+
+  $("year").textContent = new Date().getFullYear();
+
+  const knowledge = [
+    {
+      keys:["hello","hi","hey","assalamu","salam","good morning","good evening"],
+      answer:"Hello! 👋 Welcome to Mamun Assistant. I can help you explore digital services, website information and creative ideas. What would you like to know?"
+    },
+    {
+      keys:["who are you","your name","what are you","introduce yourself"],
+      answer:"I'm <strong>Mamun Assistant</strong>, a lightweight digital companion created for Mamun's website. I can answer supported questions about the website and digital creative services."
+    },
+    {
+      keys:["about mamun","who is mamun","tell me about mamun","mamun profile"],
+      answer:"Mamun is a <strong>Digital Creative</strong> offering creative and digital solutions. Explore the official website for available information, portfolio highlights and ways to get in touch.<br><br><a href='https://sajjad446.com/' target='_blank' rel='noopener noreferrer'>Visit sajjad446.com ↗</a>"
+    },
+    {
+      keys:["service","services","what can mamun do","what does mamun offer"],
+      answer:"Mamun's core digital services include:<br><br>✦ <strong>Web Design</strong> — modern, responsive website experiences.<br>✦ <strong>Graphic Design</strong> — creative visual communication and promotional designs.<br>✦ <strong>Digital Marketing</strong> — digital promotion and online growth support.<br><br>For project inquiries, visit <a href='https://sajjad446.com/' target='_blank' rel='noopener noreferrer'>the official website</a>."
+    },
+    {
+      keys:["web design","website design","web development","website"],
+      answer:"Great websites combine visual design, usability, speed and mobile responsiveness. Mamun's digital services include web design. If you have a project in mind, prepare your goals, required pages and preferred visual style before discussing the project."
+    },
+    {
+      keys:["graphic design","poster","banner","logo design","social media design"],
+      answer:"Graphic design helps communicate a brand's message through visuals. Common deliverables include social media creatives, promotional graphics, banners and brand assets. Tell me what kind of design you need, and I can help you plan the concept."
+    },
+    {
+      keys:["digital marketing","seo","marketing","traffic","social media marketing"],
+      answer:"Digital marketing can include search engine optimization (SEO), content strategy, social media promotion and audience research. The best strategy depends on your target audience, budget and goals."
+    },
+    {
+      keys:["contact","email","hire","work with","project inquiry","get in touch"],
+      answer:"You can explore Mamun's official website and use the available contact options to discuss a project.<br><br><a href='https://sajjad446.com/' target='_blank' rel='noopener noreferrer'>Open Mamun's website ↗</a><br><br>Please verify contact details on the official website before sending sensitive information."
+    },
+    {
+      keys:["portfolio","projects","previous work","work samples"],
+      answer:"You can explore Mamun's website for portfolio information and creative work samples.<br><br><a href='https://sajjad446.com/' target='_blank' rel='noopener noreferrer'>Explore the portfolio ↗</a>"
+    },
+    {
+      keys:["price","pricing","cost","how much","budget","rate"],
+      answer:"Project pricing depends on scope, complexity, timeline and deliverables. I don't have a verified current price list, so please use the official website's contact options to request a project-specific quote."
+    },
+    {
+      keys:["thank","thanks","thank you"],
+      answer:"You're very welcome! ✨ I'm glad to help. Feel free to ask another question about digital services or creative ideas."
+    },
+    {
+      keys:["help","what can you do","capabilities"],
+      answer:"Here's what I can help with in this demo:<br><br>✦ Mamun's digital services<br>✦ Website and portfolio navigation<br>✦ Basic web, graphic design and marketing information<br>✦ Creative brainstorming and project planning<br><br>I don't have live AI reasoning or unrestricted knowledge in this frontend-only version."
+    }
+  ];
+
+  function normalize(text){
+    return text.toLowerCase()
+      .replace(/[^\p{L}\p{N}\s]/gu," ")
+      .replace(/\s+/g," ").trim();
+  }
+
+  function getAnswer(question){
+    const q = normalize(question);
+
+    if(!q) return "Please type a question first.";
+
+    for(const item of knowledge){
+      if(item.keys.some(key => {
+        const k = normalize(key);
+        return q === k || q.includes(k);
+      })){
+        return item.answer;
+      }
+    }
+
+    if(/\b(bangla|bengali|বাংলা)\b/.test(q)){
+      return "I can respond to supported questions in English. This demo has a limited built-in knowledge base and doesn't understand every question like a real AI model.";
+    }
+
+    return "Thanks for your question! I don't have a verified answer for that yet in this demo. Try asking about <strong>Mamun's services, web design, graphic design, digital marketing, portfolio or contact information.</strong><br><br>For general questions beyond these topics, a real AI connection would be needed.";
+  }
+
+  function addMessage(text, role, isHTML=false){
+    const row = document.createElement("div");
+    row.className = "message " + role;
+
+    const avatar = document.createElement("div");
+    avatar.className = "msg-avatar";
+    avatar.innerHTML = role === "user"
+      ? '<i class="fa-regular fa-user"></i>'
+      : '<i class="fa-solid fa-sparkles"></i>';
+
+    const content = document.createElement("div");
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+
+    if(isHTML && role === "bot"){
+      bubble.innerHTML = text;
+    }else{
+      bubble.textContent = text;
+    }
+
+    const time = document.createElement("div");
+    time.className = "time";
+    time.textContent = new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"});
+
+    content.appendChild(bubble);
+    content.appendChild(time);
+    row.appendChild(avatar);
+    row.appendChild(content);
+    messages.appendChild(row);
+    messages.scrollTop = messages.scrollHeight;
+    return row;
+  }
+
+  function showReply(question){
+    const row = document.createElement("div");
+    row.className = "message bot";
+
+    const avatar = document.createElement("div");
+    avatar.className = "msg-avatar";
+    avatar.innerHTML = '<i class="fa-solid fa-sparkles"></i>';
+
+    const content = document.createElement("div");
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+
+    content.appendChild(bubble);
+    row.appendChild(avatar);
+    row.appendChild(content);
+    messages.appendChild(row);
+    messages.scrollTop = messages.scrollHeight;
+    sendBtn.disabled = true;
+
+    window.setTimeout(() => {
+      bubble.innerHTML = getAnswer(question);
+      const time = document.createElement("div");
+      time.className = "time";
+      time.textContent = "MAMUN ASSISTANT";
+      content.appendChild(time);
+      messages.scrollTop = messages.scrollHeight;
+      sendBtn.disabled = false;
+      input.focus();
+    }, 450);
+  }
+
+  function submitQuestion(question){
+    const clean = question.trim();
+    if(!clean || sendBtn.disabled) return;
+    addMessage(clean, "user");
+    showReply(clean);
+  }
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const question = input.value.trim();
+    if(!question) return;
+    input.value = "";
+    submitQuestion(question);
+  });
+
+  document.querySelectorAll("[data-prompt]").forEach(button => {
+    button.addEventListener("click", () => {
+      const question = button.getAttribute("data-prompt");
+      if(sendBtn.disabled) return;
+      input.value = "";
+      submitQuestion(question);
+    });
+  });
+
+  $("clearChat").addEventListener("click", () => {
+    if(sendBtn.disabled) return;
+    messages.replaceChildren();
+    const row = document.createElement("div");
+    row.className = "message bot";
+    row.innerHTML = `
+      <div class="msg-avatar"><i class="fa-solid fa-sparkles"></i></div>
+      <div>
+        <div class="bubble">New conversation started. ✨<br><br>What would you like to explore today?</div>
+        <div class="time">MAMUN ASSISTANT</div>
+      </div>`;
+    messages.appendChild(row);
+    input.value = "";
+    input.focus();
+  });
+})();
+</script>
+</body>
+</html>
